@@ -2,6 +2,11 @@ import axios from "axios";
 
 const SERVER_URL = "http://localhost:9000";
 
+export const getHeader= () => {
+  const url = `${SERVER_URL}/header`;
+  return axios.get(url);
+};
+
 export const getAllServing = () => {
   const url = `${SERVER_URL}/serving`;
   return axios.get(url);
