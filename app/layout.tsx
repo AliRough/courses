@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fa" dir="rtl">
-      <body className="">
+      <body className=" ">
         {children}
 
         <Script src="vendor/aos/aos.js" />
