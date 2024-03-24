@@ -1,7 +1,7 @@
 'use client'
 
 import { useCourseAll } from '@/app/(src)/hooks/request/requestCourse'
-import CourseTile from '@/app/(src)/course/courseTile/index';
+import CourseTile from '@/app/(src)/course/courseTile';
 
 import { TCourses } from '@/app/(src)/model/course.d';
 

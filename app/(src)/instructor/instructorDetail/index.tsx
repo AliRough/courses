@@ -3,9 +3,11 @@
 import Image from 'next/image';
 
 import { useInstructorById } from '@/app/(src)/hooks/request/requestInstructor';
-import CourseTile from '@/app/(src)/course/courseTile/index';
+import CourseTile from '@/app/(src)/course/courseTile';
 import Rating from '@/app/(src)/componenets/rating';
 import InstructorRelated from '@/app/(src)/instructor/instructorDetail/instructorRelated';
+import Testimonials from '@/app/(src)/testimonials';
+
 import { TCourses } from '@/app/(src)/model/course.d'
 
 const InstructorDetail = ({ params }: { params: { id: number } }) => {
@@ -14,7 +16,7 @@ const InstructorDetail = ({ params }: { params: { id: number } }) => {
     const { data } = useInstructorById(id)
 
     return (<>
-        <section className='pt-5 pb-0'>
+        <section className='pt-5 pb-8'>
             <div className='container'>
                 <div className='row g-0 g-lg-5'>
                     <div className='col-lg-4'>
@@ -100,7 +102,6 @@ const InstructorDetail = ({ params }: { params: { id: number } }) => {
                             </li>}
                         </ul>
 
-
                         <div className='row mt-4 g-3'>
 
                             <div className='col-sm-6 col-lg-4'>
@@ -143,8 +144,6 @@ const InstructorDetail = ({ params }: { params: { id: number } }) => {
                             </div>
                         </div>
 
-
-
                         {data?.courses?.length && <div className='row g-4 mt-4'>
                             <h2 className='fs-4'>لیست دوره ها</h2>
                             {data?.courses?.map((e: TCourses) => <div key={e?.id} className='col-sm-6'>
@@ -155,6 +154,7 @@ const InstructorDetail = ({ params }: { params: { id: number } }) => {
                 </div>
             </div>
         </section >
+        <Testimonials />
         <InstructorRelated />
     </>
     );
