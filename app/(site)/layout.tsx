@@ -1,13 +1,15 @@
 
 import React, { ReactElement } from 'react'
 import Header from './componenets/Header'
-import { LayoutProps } from '@/.next/types/app/layout'
+import Footer from './componenets/Footer'
 
-export default function layout({children }:LayoutProps) :ReactElement{
+
+export default function layout({children }:any) :ReactElement{
   return (
     <>
     <Header/>
     {children}
+    <Footer/>
     </>
   )
 }

@@ -10,7 +10,7 @@ export default function Test() {
   // Queries
   let getdata = async () => {
     let { data } = await axios.get(
-      "https://jsonplaceholder.typicode.com/todo  ",
+      "https://jsonplaceholder.typicode.com/todos",
     );
 
     return data;
@@ -25,7 +25,8 @@ export default function Test() {
   return (
     <div>
       {isLoading ? (
-<Loading/>      ) : (
+        <Loading />
+      ) : (
         data?.map((data: any) => (
           <span className="btn btn-primary mx-2  " key={data.id}>
             {data.title}

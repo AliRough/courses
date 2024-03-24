@@ -17082,6 +17082,9 @@ textarea.form-control-lg {
   .w-md-400px {
     width: 400px !important;
   }
+  .w-md-auto {
+    width: auto !important;
+  }
 }
 @media (min-width: 992px) {
   .vh-lg-100 {
@@ -17161,6 +17164,9 @@ textarea.form-control-lg {
   }
   .w-lg-400px {
     width: 400px !important;
+  }
+  .w-lg-auto {
+    width: auto !important;
   }
 }
 @media (min-width: 1200px) {
