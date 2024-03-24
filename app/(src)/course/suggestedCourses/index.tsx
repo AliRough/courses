@@ -9,6 +9,8 @@ const SuggestedCourses = () => {
 
     const { data } = useCourseAll()
 
+    console.log('Not completed')
+
     return (<section className='pt-0'>
         <div className='container'>
 

@@ -9,6 +9,8 @@ import { TCourses } from '@/app/(src)/model/course.d';
 
 const CourseTile = ({ data }: { data: TCourses }) => {
 
+    console.log('Not completed')
+
     return (
         <div className='card shadow h-100'>
 

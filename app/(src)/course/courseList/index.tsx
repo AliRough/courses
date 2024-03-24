@@ -14,6 +14,8 @@ const CourseList = () => {
 
     const { data } = useCourseAll()
 
+    console.log('Not completed')
+
     return (<>
         <HeaderBody name={'لیست دوره ها'} />
 

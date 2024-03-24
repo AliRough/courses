@@ -3,6 +3,9 @@
 import Image from "next/image";
 
 const Testimonials = () => {
+    
+    console.log('Not completed')
+
     return (<section className="pt-0">
         <div className="container">
             <div className="bg-light p-4 rounded-3">

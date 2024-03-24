@@ -17,7 +17,8 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
 
     const { data } = useCourseById(id);
 
-    console.log(data)
+    console.log('Not completed')
+
     return (<>
         <section className='bg-light py-0 py-sm-5'>
             <div className='container'>

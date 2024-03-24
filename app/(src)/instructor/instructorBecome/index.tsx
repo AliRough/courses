@@ -3,6 +3,9 @@
 import Image from "next/image";
 
 const InstructorBecome = () => {
+
+    console.log('Not completed')
+
     return (<>
         <section className="bg-light py-5 position-relative overflow-hidden">
 

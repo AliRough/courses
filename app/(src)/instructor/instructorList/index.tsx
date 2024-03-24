@@ -15,6 +15,7 @@ const InstructorListAll = () => {
     const { data, isPending } = useInstructorAll()
 
     console.log('link جذب مدرس')
+    console.log('Not completed')
 
     return (<>
         <HeaderBody name='لیست مدرس' />
