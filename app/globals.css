@@ -1,5 +1,7 @@
-@import url("../public/style-rtl.css");
-@import url("../public/vendor/font-awesome/css/all.min.css");
-@import url("../public/vendor/bootstrap-icons/bootstrap-icons.css");
-@import url("../public/vendor/tiny-slider/tiny-slider.css");
-@import url("../public/vendor/glightbox/css/glightbox.css");
+@import url('../public/style-rtl.css');
+@import url('../public/vendor/font-awesome/css/all.min.css');
+@import url('../public/vendor/bootstrap-icons/bootstrap-icons.css');
+@import url('../public/vendor/choices/css/choices.min.css');
+@import url('../public/vendor/tiny-slider/tiny-slider.css');
+@import url('../public/vendor/glightbox/css/glightbox.css');
+@import url('../public/vendor/aos/aos.css');
