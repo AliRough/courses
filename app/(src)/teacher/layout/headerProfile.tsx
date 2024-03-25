@@ -1,6 +1,7 @@
 'use client'
 
 import Image from "next/image";
+import Link from "next/link";
 
 const LayoutProfileHeaderT = () => {
 
@@ -36,7 +37,7 @@ const LayoutProfileHeaderT = () => {
                                 </div>
 
                                 <div className="d-flex align-items-center mt-2 mt-md-0">
-                                    <a href="instructor-create-course.html" className="btn btn-success mb-0">افزودن دوره</a>
+                                    <Link href="/profile/t/create-course" className="btn btn-success mb-0">افزودن دوره</Link>
                                 </div>
                             </div>
                         </div>
