@@ -6,6 +6,7 @@ import Link from 'next/link';
 
 import { useCourseById } from '@/app/(src)/hooks/request/requestCourse';
 import SuggestedCourses from '@/app/(src)/course/suggestedCourses';
+import Testimonials from '@/app/(src)/testimonials';
 
 import { TCurriculum, TCurriculumDetail } from '@/app/(src)/model/course.d';
 import { TFaq, TTag } from '@/app/(src)/model/other.d';
@@ -16,7 +17,8 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
 
     const { data } = useCourseById(id);
 
-    console.log(data)
+    console.log('Not completed')
+
     return (<>
         <section className='bg-light py-0 py-sm-5'>
             <div className='container'>
@@ -791,6 +793,7 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
             </div>
         </section>
 
+        <Testimonials />
         <SuggestedCourses />
     </>);
 }

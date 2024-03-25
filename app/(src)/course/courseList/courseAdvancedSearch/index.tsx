@@ -6,6 +6,9 @@ import CourseFillterLavel from '@/app/(src)/course/courseList/courseAdvancedSear
 import CoursefillterPrice from '@/app/(src)/course/courseList/courseAdvancedSearch/coursefillterPrice';
 
 const CourseAdvancedSearch = () => {
+
+    console.log('Not completed')
+
     return (<div className='col-lg-4 col-xl-3'>
 
         <div className='offcanvas-lg offcanvas-end' tabIndex='-1' id='offcanvasSidebar'>
@@ -25,13 +28,10 @@ const CourseAdvancedSearch = () => {
                 </form>
             </div>
 
-
             <div className='d-grid p-2 p-lg-0 text-center'>
                 <button className='btn btn-primary mb-0'>نتیجه فیلتر</button>
             </div>
-
         </div>
-
     </div>);
 }
 

@@ -9,6 +9,8 @@ import { TInstructorRelated } from '@/app/(src)/model/instructor.d';
 
 const InstructorTile = ({ data }: { data: TInstructorRelated }) => {
 
+    console.log('Not completed')
+
     return (<div className='card bg-transparent'>
         <div className='position-relative'>
 
