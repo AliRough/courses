@@ -18,7 +18,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <TanstackProvider>
           {children}
         </TanstackProvider>
-
         <Script src='/vendor/aos/aos.js' />
         <Script src='/vendor/bootstrap/dist/js/bootstrap.bundle.min.js' />
         <Script src='/vendor/apexcharts/js/apexcharts.min.js' />

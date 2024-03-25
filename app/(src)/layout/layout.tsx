@@ -1,7 +1,6 @@
-
-import React, { ReactElement } from 'react'
-import Header from '../site/componenets/Header'
-import { LayoutProps } from '@/.next/types/app/layout'
+import React, { ReactElement } from 'react';
+import Header from '../site/componenets/Header';
+import { LayoutProps } from '@/.next/types/app/layout';
 
 export default function layout({ children }: LayoutProps): ReactElement {
   return (
@@ -9,5 +8,5 @@ export default function layout({ children }: LayoutProps): ReactElement {
       <Header />
       {children}
     </>
-  )
+  );
 }

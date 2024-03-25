@@ -5,7 +5,6 @@ export default function NotFound() {
   return (
     <>
       {/* <Header /> */}
-
       {/* **************** MAIN CONTENT START **************** */}
       <main>
         <section className='pt-5'>
@@ -39,7 +38,6 @@ export default function NotFound() {
           </div>
         </section>
       </main>
-
       {/* **************** MAIN CONTENT END **************** */}
       {/* Pre loader */}
       <div className='preloader'>
