@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 
-const ProfileTeacherEditProfile = () => {
+const ProfileStudentEditProfile = () => {
   console.log('Not completed');
 
   return (
@@ -327,4 +327,4 @@ const ProfileTeacherEditProfile = () => {
   );
 };
 
-export default ProfileTeacherEditProfile;
+export default ProfileStudentEditProfile;

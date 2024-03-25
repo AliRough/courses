@@ -91,7 +91,6 @@ export default async function Header({ children }: LayoutProps) {
                                   >
                                     {subItem.children.map((subSubItem: any) => (
                                       <li key={subItem.id}>
-                                        {' '}
                                         <Link
                                           className='dropdown-item'
                                           href='course-categories.html'

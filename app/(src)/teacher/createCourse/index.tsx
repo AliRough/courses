@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 
-const CreateCourseT = () => {
+const ProfileTeacherCreateCourse = () => {
   console.log('Not completed');
 
   return (
@@ -1169,4 +1169,4 @@ const CreateCourseT = () => {
   );
 };
 
-export default CreateCourseT;
+export default ProfileTeacherCreateCourse;

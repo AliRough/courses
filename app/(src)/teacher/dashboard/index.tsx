@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 
-const ProfileTeacherDashboardT = () => {
+const ProfileTeacherDashboard = () => {
   console.log('Not completed');
 
   return (
@@ -362,4 +362,4 @@ const ProfileTeacherDashboardT = () => {
   );
 };
 
-export default ProfileTeacherDashboardT;
+export default ProfileTeacherDashboard;

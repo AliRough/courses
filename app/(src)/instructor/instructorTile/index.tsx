@@ -25,11 +25,11 @@ const InstructorTile = ({ data }: { data: TInstructorRelated }) => {
           <div className='w-100 mt-auto text-end'>
             <Link href='#' className='badge text-bg-info rounded-1'>
               <i className='fas fa-user-graduate me-2'></i>
-              {data?.courses}{' '}
+              {data?.courses}
             </Link>
             <Link href='#' className='badge text-bg-orange rounded-1'>
               <i className='fas fa-clipboard-list me-2'></i>
-              {data?.students}{' '}
+              {data?.students}
             </Link>
           </div>
         </div>

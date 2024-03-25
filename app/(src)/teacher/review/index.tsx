@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 
-const ProfileTeacherReviewT = () => {
+const ProfileTeacherReview = () => {
   console.log('Not completed');
 
   return (
@@ -361,4 +361,4 @@ const ProfileTeacherReviewT = () => {
   );
 };
 
-export default ProfileTeacherReviewT;
+export default ProfileTeacherReview;

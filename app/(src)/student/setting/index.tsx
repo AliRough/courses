@@ -1,6 +1,6 @@
 'use client';
 
-const ProfileTeacherSetting = () => {
+const ProfileStudentSetting = () => {
   console.log('Not completed');
 
   return (
@@ -91,4 +91,4 @@ const ProfileTeacherSetting = () => {
   );
 };
 
-export default ProfileTeacherSetting;
+export default ProfileStudentSetting;

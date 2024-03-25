@@ -1,9 +1,1 @@
-'use client';
-
-const LayoutProfileS = ({
-  children,
-}: Readonly<{ children: React.ReactNode }>) => {
-  return <></>;
-};
-
-export default LayoutProfileS;
+export { default } from '@/app/(src)/student/layout';

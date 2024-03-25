@@ -1,6 +1,6 @@
 'use client';
 
-const ProfileTeacherDeleteAccount = () => {
+const ProfileStudentDeleteAccount = () => {
   console.log('Not completed');
 
   return (
@@ -42,4 +42,4 @@ const ProfileTeacherDeleteAccount = () => {
   );
 };
 
-export default ProfileTeacherDeleteAccount;
+export default ProfileStudentDeleteAccount;

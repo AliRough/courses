@@ -1,6 +1,6 @@
 'use client';
 
-const ProfileTeacherOrderT = () => {
+const ProfileTeacherOrder = () => {
   console.log('Not completed');
 
   return (
@@ -183,4 +183,4 @@ const ProfileTeacherOrderT = () => {
   );
 };
 
-export default ProfileTeacherOrderT;
+export default ProfileTeacherOrder;

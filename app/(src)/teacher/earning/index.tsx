@@ -1,6 +1,6 @@
 'use client';
 
-const ProfileTeacherEarningT = () => {
+const ProfileTeacherEarning = () => {
   console.log('Not completed');
 
   return (
@@ -104,4 +104,4 @@ const ProfileTeacherEarningT = () => {
   );
 };
 
-export default ProfileTeacherEarningT;
+export default ProfileTeacherEarning;

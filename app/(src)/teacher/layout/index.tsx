@@ -1,19 +1,27 @@
 'use client';
 
-import LayoutProfileSidebarMenuT from './sidebarMenu';
-import LayoutProfileHeaderT from './headerProfile';
+import { usePathname } from 'next/navigation';
 
-const LayoutProfileT = ({
+import LayoutProfileTeacherHeader from '@/app/(src)/teacher/layout/headerProfile';
+import LayoutProfileTeacherSidebarMenu from '@/app/(src)/teacher/layout/sidebarMenu';
+
+const LayoutProfileTeacher = ({
   children,
 }: Readonly<{ children: React.ReactNode }>) => {
   console.log('Not completed');
 
+  const notSidbarAndMenu = ['create-course'];
+  const path = usePathname();
+  const pathNow = path.split('/profile/t/')[1].split('/')[0];
+
+  if (notSidbarAndMenu.includes(pathNow)) return <>{children}</>;
+
   return (
     <>
-      <LayoutProfileHeaderT />
-      <LayoutProfileSidebarMenuT>{children}</LayoutProfileSidebarMenuT>
+      <LayoutProfileTeacherHeader />
+      <LayoutProfileTeacherSidebarMenu>{children}</LayoutProfileTeacherSidebarMenu>
     </>
   );
 };
 
-export default LayoutProfileT;
+export default LayoutProfileTeacher;

@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-const LayoutProfileHeaderT = () => {
+const LayoutProfileTeacherHeader = () => {
   console.log('Not completed');
 
   return (
@@ -37,7 +37,7 @@ const LayoutProfileHeaderT = () => {
                 <div className='col d-md-flex justify-content-between align-items-center mt-4'>
                   <div>
                     <h1 className='my-1 fs-5'>
-                      الهام حسینی{' '}
+                      الهام حسینی
                       <i className='bi bi-patch-check-fill text-info small'></i>
                     </h1>
                     <ul className='list-inline mb-0'>
@@ -86,4 +86,4 @@ const LayoutProfileHeaderT = () => {
   );
 };
 
-export default LayoutProfileHeaderT;
+export default LayoutProfileTeacherHeader;
