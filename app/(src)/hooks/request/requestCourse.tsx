@@ -7,8 +7,8 @@ import * as api from '@/app/(src)/api/courseApi';
 import { TCourse } from '@/app/(src)/model/course.d';
 
 export const useCourseAll = () => {
-    return useQuery({ queryKey: ['course_all'], queryFn: api.CourseAllApi })
-}
+  return useQuery({ queryKey: ['course_all'], queryFn: api.CourseAllApi });
+};
 
 export const useCourseById = (id: number): UseQueryResult<TCourse, Error> => {
     return useQuery({ queryKey: ['course', id], queryFn: () => api.CourseByIdApi(id) })

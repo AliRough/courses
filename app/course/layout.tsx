@@ -1,5 +1,7 @@
-import Footer from "../(src)/componenets/Footer";
-import Header from "../(src)/componenets/Header";
+'use client';
+
+import Footer from '@/app/(src)/componenets/Footer';
+import Header from '@/app/(src)/componenets/Header';
 
 export default function Layout({
   children,

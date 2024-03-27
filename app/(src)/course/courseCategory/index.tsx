@@ -1,10 +1,9 @@
-'use client'
+'use client';
 
 const CourseCategory = () => {
-    
-    console.log('Not completed')
+  console.log('Not completed');
 
-    return (<>CourseCategory</>);
-}
+  return <>CourseCategory</>;
+};
 
 export default CourseCategory;

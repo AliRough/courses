@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import HeaderBody from '@/app/(src)/componenets/headerBody';
 import PaginationCenter from '@/app/(src)/componenets/pagination';
@@ -11,45 +11,36 @@ import Newsletter from '@/app/(src)/componenets/other/newsletter';
 import { TCourses } from '@/app/(src)/model/course.d';
 
 const CourseList = () => {
+  const { data } = useCourseAll();
 
-    const { data } = useCourseAll()
+  console.log('Not completed');
 
-    console.log('Not completed')
-
-    return (<>
-        <HeaderBody name={'لیست دوره ها'} />
-
-        <section className='py-5'>
-            <div className='container'>
-                <div className='row'>
-
-                    <div className='col-lg-8 col-xl-9'>
-
-                        <CourseListFillter />
-
-                        <div className='row g-4'>
-
-                            {data?.map((e: TCourses) => <div key={e?.id} className='col-sm-6 col-xl-4'>
-                                <CourseTile data={e} />
-                            </div>)}
-
-                        </div>
-
-                        <div className='col-12'>
-                            <PaginationCenter />
-                        </div>
-
-                    </div>
-
-                    <CourseAdvancedSearch />
-
-                </div>
+  return (
+    <>
+      <HeaderBody name={'لیست دوره ها'} />
+      <section className='py-5'>
+        <div className='container'>
+          <div className='row'>
+            <div className='col-lg-8 col-xl-9'>
+              <CourseListFillter />
+              <div className='row g-4'>
+                {data?.map((e: TCourses) => (
+                  <div key={e?.id} className='col-sm-6 col-xl-4'>
+                    <CourseTile data={e} />
+                  </div>
+                ))}
+              </div>
+              <div className='col-12'>
+                <PaginationCenter />
+              </div>
             </div>
-        </section>
-
-        <Newsletter />
-
-    </>);
-}
+            <CourseAdvancedSearch />
+          </div>
+        </div>
+      </section>
+      <Newsletter />
+    </>
+  );
+};
 
 export default CourseList;
