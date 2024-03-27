@@ -269,7 +269,8 @@
       "liked": true,
       "rating": 4.5,
       "videos": 65,
-      "time": "9 ساعت"
+      "time": "9 ساعت",
+      "category": "طراحی وب"
     },
     {
       "id": 2,
@@ -280,7 +281,8 @@
       "liked": true,
       "rating": 4,
       "videos": 20,
-      "time": "12 دقیقه"
+      "time": "12 دقیقه",
+      "category": "طراحی وب"
     },
     {
       "id": 3,
@@ -291,7 +293,8 @@
       "liked": true,
       "rating": 4,
       "videos": 20,
-      "time": "12 دقیقه"
+      "time": "12 دقیقه",
+      "category": "طراحی گرافیکی"
     },
     {
       "id": 4,
@@ -302,7 +305,8 @@
       "liked": true,
       "rating": 4,
       "videos": 20,
-      "time": "12 دقیقه"
+      "time": "12 دقیقه",
+      "category": "طراحی گرافیکی"
     },
     {
       "id": 5,
@@ -313,7 +317,8 @@
       "liked": true,
       "rating": 4,
       "videos": 20,
-      "time": "12 دقیقه"
+      "time": "12 دقیقه",
+      "category": "طراحی وب"
     },
     {
       "id": 6,
@@ -324,7 +329,8 @@
       "liked": true,
       "rating": 4,
       "videos": 20,
-      "time": "12 دقیقه"
+      "time": "12 دقیقه",
+      "category": "دیجیتال مارکتنیگ"
     },
     {
       "id": 7,
@@ -335,7 +341,8 @@
       "liked": true,
       "rating": 4,
       "videos": 20,
-      "time": "12 دقیقه"
+      "time": "12 دقیقه",
+      "category": "دیجیتال مارکتنیگ"
     },
     {
       "id": 8,
@@ -346,7 +353,8 @@
       "liked": true,
       "rating": 4,
       "videos": 20,
-      "time": "12 دقیقه"
+      "time": "12 دقیقه",
+      "category": "طراحی وب"
     },
     {
       "id": 9,
@@ -357,7 +365,8 @@
       "liked": true,
       "rating": 4,
       "videos": 20,
-      "time": "12 دقیقه"
+      "time": "12 دقیقه",
+      "category": "طراحی وب"
     },
     {
       "id": 10,
@@ -368,7 +377,8 @@
       "liked": true,
       "rating": 4,
       "videos": 20,
-      "time": "12 دقیقه"
+      "time": "12 دقیقه",
+      "category": "طراحی وب"
     }
   ],
   "teachers": [

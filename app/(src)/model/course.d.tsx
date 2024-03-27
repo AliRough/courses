@@ -13,6 +13,7 @@ export type TCourses = {
     rating: number;
     videos: number;
     time: string;
+    category: string;
 }
 export type TCurriculum = {
     title: string;
