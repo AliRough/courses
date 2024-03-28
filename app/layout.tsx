@@ -1,7 +1,12 @@
 import type { Metadata } from 'next';
-import './globals.css';
 import Script from 'next/script';
 import TanstackProvider from './tanstackProvider';
+
+import './globals.css';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -11,13 +16,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang='fa' dir='rtl'>
       <body>
-        <TanstackProvider>
-          {children}
-        </TanstackProvider>
+        <TanstackProvider>{children}</TanstackProvider>
         <Script src='/vendor/aos/aos.js' />
         <Script src='/vendor/bootstrap/dist/js/bootstrap.bundle.min.js' />
         <Script src='/vendor/apexcharts/js/apexcharts.min.js' />

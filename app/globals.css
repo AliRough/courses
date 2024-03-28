@@ -7,3 +7,35 @@
 @import url('../public/vendor/aos/aos.css');
 @import url('../public/vendor/apexcharts/css/apexcharts.css');
 @import url('../public/vendor/quill/css/quill.snow.css');
+
+.recentSlider:hover .nextBtn {
+  right: 0;
+}
+.recentSlider:hover .pervBtn {
+  left: 0;
+}
+
+.recentSlider button {
+  color: white;
+  margin: 0.5rem;
+  z-index: 2;
+  position: absolute;
+  top: 50%;
+  aspect-ratio: 1/1;
+  border: transparent;
+  padding: 1.2rem;
+  border-radius: 50%;
+  background: rgba(29, 29, 29, 0.4);
+  overflow: hidden;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  transition: all 0.5s;
+  transform: translateY(-50%);
+}
+.recentSlider .nextBtn {
+  right: -30%;
+}
+.recentSlider .pervBtn {
+  left: -30%;
+}
