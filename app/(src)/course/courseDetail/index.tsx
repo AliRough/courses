@@ -638,7 +638,7 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                         <div className='d-md-flex my-4'>
                           <div className='avatar avatar-xl me-4 flex-shrink-0'>
                             <Image
-                              unoptimized
+                              unoptimized={true}
                               width='500'
                               height='500'
                               className='avatar-img rounded-circle'
@@ -713,7 +713,7 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                         <div className='d-md-flex mb-4 ps-4 ps-md-5'>
                           <div className='avatar avatar-lg me-4 flex-shrink-0'>
                             <Image
-                              unoptimized
+                              unoptimized={true}
                               width='500'
                               height='500'
                               className='avatar-img rounded-circle'
@@ -742,7 +742,7 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                         <div className='d-md-flex my-4'>
                           <div className='avatar avatar-xl me-4 flex-shrink-0'>
                             <Image
-                              unoptimized
+                              unoptimized={true}
                               width='500'
                               height='500'
                               className='avatar-img rounded-circle'

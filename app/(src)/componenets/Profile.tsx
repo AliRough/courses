@@ -1,35 +1,32 @@
-'use client'
+'use client';
 
-import React, { useState } from 'react'
-import Image from 'next/image'
+import React, { useState } from 'react';
+import Image from 'next/image';
 
 export default function Profile() {
-
-  const [theme, setTheme]: any = useState()
+  const [theme, setTheme]: any = useState();
 
   const changeThemeHandler = (e: any) => {
     console.log(setTheme);
 
-
     if (e.target.dataset.bsThemeValue === 'auto') {
-
       localStorage.removeItem('theme');
       console.log(window.matchMedia('(prefers-color-scheme: dark)').matches);
 
-      window.matchMedia('(prefers-color-scheme: dark)').matches ?
-        document.documentElement.dataset.bsTheme = 'dark' :
-        document.documentElement.dataset.bsTheme = 'light';
+      window.matchMedia('(prefers-color-scheme: dark)').matches
+        ? (document.documentElement.dataset.bsTheme = 'dark')
+        : (document.documentElement.dataset.bsTheme = 'light');
 
-      setTheme()
-
-    } else if (e.target.dataset.bsThemeValue === 'dark' || e.target.dataset.bsThemeValue === 'light') {
-
+      setTheme();
+    } else if (
+      e.target.dataset.bsThemeValue === 'dark' ||
+      e.target.dataset.bsThemeValue === 'light'
+    ) {
       localStorage.setItem('theme', e.target.dataset.bsThemeValue);
       document.documentElement.dataset.bsTheme = e.target.dataset.bsThemeValue;
-      setTheme(e.target.dataset.bsThemeValue)
+      setTheme(e.target.dataset.bsThemeValue);
     }
-
-  }
+  };
   return (
     <div className='dropdown ms-1 ms-lg-0'>
       <a
@@ -43,6 +40,7 @@ export default function Profile() {
         aria-expanded='false'
       >
         <Image
+          unoptimized={true}
           width={100}
           height={100}
           className='avatar-img rounded-circle'
@@ -60,6 +58,7 @@ export default function Profile() {
             {/* Avatar */}
             <div className='avatar me-3'>
               <Image
+                unoptimized={true}
                 width={100}
                 height={100}
                 className='avatar-img rounded-circle shadow'
@@ -76,7 +75,6 @@ export default function Profile() {
           </div>
         </li>
         <li>
-          
           <hr className='dropdown-divider' />
         </li>
         {/* Links */}
@@ -105,7 +103,6 @@ export default function Profile() {
           </a>
         </li>
         <li>
-          
           <hr className='dropdown-divider' />
         </li>
         {/* Dark mode options START */}
@@ -135,7 +132,6 @@ export default function Profile() {
               className={`btn btn-sm mb-0 ${theme === 'dark' && 'active'} `}
               data-bs-theme-value='dark'
               onClick={changeThemeHandler}
-
             >
               <svg
                 xmlns='http://www.w3.org/2000/svg'
@@ -156,7 +152,6 @@ export default function Profile() {
               className={`btn btn-sm mb-0  ${!theme && 'active'}`}
               data-bs-theme-value='auto'
               onClick={changeThemeHandler}
-
             >
               <svg
                 xmlns='http://www.w3.org/2000/svg'
@@ -176,5 +171,5 @@ export default function Profile() {
         {/* Dark mode options END*/}
       </ul>
     </div>
-  )
+  );
 }

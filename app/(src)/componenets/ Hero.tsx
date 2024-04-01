@@ -287,6 +287,7 @@ export default function Hero() {
             {/* Icon logos START */}
             <div className='p-2 bg-white shadow rounded-3 position-absolute top-50 start-0 translate-middle-y mt-n7 d-none d-sm-block'>
               <Image
+                unoptimized={true}
                 className='position-static w-auto h-auto '
                 fill={true}
                 src='/images/client/science.svg'
@@ -295,6 +296,7 @@ export default function Hero() {
             </div>
             <div className='p-2 bg-white shadow rounded-3 position-absolute top-0 end-0 me-5'>
               <Image
+                unoptimized={true}
                 className='position-static w-auto h-auto '
                 fill={true}
                 src='/images/client/angular.svg'
@@ -303,6 +305,7 @@ export default function Hero() {
             </div>
             <div className='p-2 bg-white shadow rounded-3 position-absolute top-50 end-0 translate-middle-y mt-5 ms-5 d-none d-lg-block z-index-9'>
               <Image
+                unoptimized={true}
                 className='position-static w-auto h-auto '
                 fill={true}
                 src='/images/client/figma.svg'
@@ -343,6 +346,7 @@ export default function Hero() {
               <ul className='avatar-group mb-0'>
                 <li className='avatar avatar-sm'>
                   <Image
+                    unoptimized={true}
                     className='position-static w-auto h-auto avatar-img rounded-circle border-white '
                     fill={true}
                     src='/images/avatar/01.jpg'
@@ -351,6 +355,7 @@ export default function Hero() {
                 </li>
                 <li className='avatar avatar-sm'>
                   <Image
+                    unoptimized={true}
                     className='position-static w-auto h-auto  avatar-img rounded-circle border-white'
                     fill={true}
                     src='/images/avatar/02.jpg'
@@ -359,6 +364,7 @@ export default function Hero() {
                 </li>
                 <li className='avatar avatar-sm'>
                   <Image
+                    unoptimized={true}
                     className='position-static w-auto h-auto  avatar-img rounded-circle border-white'
                     fill={true}
                     src='/images/avatar/03.jpg'
@@ -367,6 +373,7 @@ export default function Hero() {
                 </li>
                 <li className='avatar avatar-sm'>
                   <Image
+                    unoptimized={true}
                     className='position-static w-auto h-auto  avatar-img rounded-circle border-white'
                     fill={true}
                     src='/images/avatar/04.jpg'
@@ -385,6 +392,7 @@ export default function Hero() {
             {/* Image */}
             <div className='position-relative'>
               <Image
+                unoptimized={true}
                 priority
                 className='position-static '
                 width={386}

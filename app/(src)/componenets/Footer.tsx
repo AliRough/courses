@@ -12,17 +12,19 @@ export default function Footer() {
             {/* logo */}
             <a className='me-0' href='index.html'>
               <Image
+                unoptimized={true}
                 width={100}
                 height={100}
                 className='light-mode-item h-40px'
-                src='images/logo.svg'
+                src='/images/logo.svg'
                 alt='logo'
               />
               <Image
+                unoptimized={true}
                 width={100}
                 height={100}
                 className='dark-mode-item h-40px'
-                src='images/logo-light.svg'
+                src='/images/logo-light.svg'
                 alt='logo'
               />
             </a>
@@ -167,9 +169,10 @@ export default function Footer() {
               <div className='col-6 col-sm-4 col-md-3 col-lg-6'>
                 <a href='#'>
                   <Image
+                    unoptimized={true}
                     width={100}
                     height={100}
-                    src='images/client/google-play.svg'
+                    src='/images/client/google-play.svg'
                     alt=''
                   />
                 </a>
@@ -178,9 +181,10 @@ export default function Footer() {
               <div className='col-6 col-sm-4 col-md-3 col-lg-6'>
                 <a href='#'>
                   <Image
+                    unoptimized={true}
                     width={100}
                     height={100}
-                    src='images/client/app-store.svg'
+                    src='/images/client/app-store.svg'
                     alt='app-store'
                   />
                 </a>
@@ -232,10 +236,11 @@ export default function Footer() {
                         <li>
                           <a className='dropdown-item me-4' href='#'>
                             <Image
+                              unoptimized={true}
                               width={100}
                               height={100}
                               className='fa-fw me-2'
-                              src='images/flags/uk.svg'
+                              src='/images/flags/uk.svg'
                               alt=''
                             />
                             فارسی
@@ -244,10 +249,11 @@ export default function Footer() {
                         <li>
                           <a className='dropdown-item me-4' href='#'>
                             <Image
+                              unoptimized={true}
                               width={100}
                               height={100}
                               className='fa-fw me-2'
-                              src='images/flags/gr.svg'
+                              src='/images/flags/gr.svg'
                               alt=''
                             />
                             انگلیسی
@@ -256,10 +262,11 @@ export default function Footer() {
                         <li>
                           <a className='dropdown-item me-4' href='#'>
                             <Image
+                              unoptimized={true}
                               width={100}
                               height={100}
                               className='fa-fw me-2'
-                              src='images/flags/sp.svg'
+                              src='/images/flags/sp.svg'
                               alt=''
                             />
                             فرانسوی

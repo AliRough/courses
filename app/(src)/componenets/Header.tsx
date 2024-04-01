@@ -19,6 +19,7 @@ export default async function Header({ children }: LayoutProps) {
             {/* Logo START */}
             <Link className='navbar-brand' href='/'>
               <Image
+                unoptimized={true}
                 width={100}
                 height={100}
                 className='light-mode-item navbar-brand-item'
@@ -26,6 +27,7 @@ export default async function Header({ children }: LayoutProps) {
                 alt='logo'
               />
               <Image
+                unoptimized={true}
                 width={100}
                 height={100}
                 className='dark-mode-item navbar-brand-item'

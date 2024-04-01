@@ -14,9 +14,9 @@ export default function NotFound() {
                 {/* Image */}
                 <div className='relative h-200px h-md-400px mb-4 overflow-hidden '>
                   <Image
-                  unoptimized={true} 
+                    unoptimized={true}
                     fill={true}
-                    src='images/element/error404-01.svg'
+                    src='/images/element/error404-01.svg'
                     className=''
                     alt=''
                   />

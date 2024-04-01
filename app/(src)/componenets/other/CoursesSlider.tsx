@@ -40,6 +40,7 @@ export default function CoursesSlider({ datas }: any) {
             <div className='card action-trigger-hover border bg-transparent m-1 m-md-0 '>
               {/* Image */}
               <Image
+                unoptimized={true}
                 width={100}
                 height={100}
                 src={'/' + data.image}
@@ -108,6 +109,7 @@ export default function CoursesSlider({ datas }: any) {
                   <div className='d-flex align-items-center'>
                     <div className='avatar avatar-sm'>
                       <Image
+                        unoptimized={true}
                         width={100}
                         height={100}
                         className='avatar-img rounded-1'
