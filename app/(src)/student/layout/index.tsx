@@ -12,7 +12,10 @@ const LayoutProfileStudent = ({
 
   const notSidbarAndMenu = [''];
   const path = usePathname();
-  const pathNow = path.split('/profile/s/')[1].split('/')[0];
+  const pathNow = path.split('/profile/s/')[1].split('/')[0];3
+  console.log("path",path);
+  console.log(pathNow);
+  
 
   if (notSidbarAndMenu.includes(pathNow)) return <>{children}</>;
 

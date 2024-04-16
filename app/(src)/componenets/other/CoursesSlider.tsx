@@ -19,7 +19,7 @@ export default function CoursesSlider({ datas }: any) {
         className='arrow-round arrow-blur arrow-hover recentSlider'
         modules={[Navigation, Autoplay]}
         loop={true}
-        autoplay={true}
+        // autoplay={true}
         breakpoints={{
           640: {
             slidesPerView: 1,

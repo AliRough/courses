@@ -8,6 +8,10 @@
 @import url('../public/vendor/apexcharts/css/apexcharts.css');
 @import url('../public/vendor/quill/css/quill.snow.css');
 
+* {
+  direction: rtl !important;
+}
+
 .recentSlider:hover .nextBtn {
   right: 0;
 }
