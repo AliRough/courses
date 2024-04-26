@@ -5,7 +5,7 @@ import { TCourses } from '../model/course.d';
 import CourseTile from '../course/courseTile';
 
 export default function PopularCourses() {
-  const { data } = useCourseByTag('طراحی وب');
+  const { data }:any = useCourseByTag('طراحی وب');
   const [tag, setTag] = useState();
 
   let filterdData = data?.filter((course: any) => course.category === tag);
