@@ -17,7 +17,7 @@ const ProfileStudentDashboard = () => {
               <div className='d-flex'>
                 <h5
                   className='purecounter mb-0 fw-bold'
-                  data-purecounter-start='0'
+                  data-purecounter-start={0}
                   data-purecounter-end='9'
                   data-purecounter-delay='200'
                 >
@@ -38,7 +38,7 @@ const ProfileStudentDashboard = () => {
               <div className='d-flex'>
                 <h5
                   className='purecounter mb-0 fw-bold'
-                  data-purecounter-start='0'
+                  data-purecounter-start={0}
                   data-purecounter-end='52'
                   data-purecounter-delay='200'
                 >
@@ -59,7 +59,7 @@ const ProfileStudentDashboard = () => {
               <div className='d-flex'>
                 <h5
                   className='purecounter mb-0 fw-bold'
-                  data-purecounter-start='0'
+                  data-purecounter-start={0}
                   data-purecounter-end='8'
                   data-purecounter-delay='300'
                 >
@@ -161,9 +161,9 @@ const ProfileStudentDashboard = () => {
                               data-aos-duration='1000'
                               data-aos-easing='ease-in-out'
                               style={{ width: '85%' }}
-                              aria-valuenow='85'
-                              aria-valuemin='0'
-                              aria-valuemax='100'
+                              aria-valuenow={85}
+                              aria-valuemin={0}
+                              aria-valuemax={100}
                             ></div>
                           </div>
                         </div>
@@ -214,9 +214,9 @@ const ProfileStudentDashboard = () => {
                               data-aos-duration='1000'
                               data-aos-easing='ease-in-out'
                               style={{ width: '100%' }}
-                              aria-valuenow='100'
-                              aria-valuemin='0'
-                              aria-valuemax='100'
+                              aria-valuenow={100}
+                              aria-valuemin={0}
+                              aria-valuemax={100}
                             ></div>
                           </div>
                         </div>
@@ -267,9 +267,9 @@ const ProfileStudentDashboard = () => {
                               data-aos-duration='1000'
                               data-aos-easing='ease-in-out'
                               style={{ width: '60%' }}
-                              aria-valuenow='60'
-                              aria-valuemin='0'
-                              aria-valuemax='100'
+                              aria-valuenow={60}
+                              aria-valuemin={0}
+                              aria-valuemax={100}
                             ></div>
                           </div>
                         </div>
@@ -320,9 +320,9 @@ const ProfileStudentDashboard = () => {
                               data-aos-duration='1000'
                               data-aos-easing='ease-in-out'
                               style={{ width: '40%' }}
-                              aria-valuenow='40'
-                              aria-valuemin='0'
-                              aria-valuemax='100'
+                              aria-valuenow={40}
+                              aria-valuemin={0}
+                              aria-valuemax={100}
                             ></div>
                           </div>
                         </div>
@@ -373,9 +373,9 @@ const ProfileStudentDashboard = () => {
                               data-aos-duration='1000'
                               data-aos-easing='ease-in-out'
                               style={{ width: '90%' }}
-                              aria-valuenow='90'
-                              aria-valuemin='0'
-                              aria-valuemax='100'
+                              aria-valuenow={90}
+                              aria-valuemin={0}
+                              aria-valuemax={100}
                             ></div>
                           </div>
                         </div>

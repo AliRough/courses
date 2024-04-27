@@ -86,13 +86,13 @@ const ProfileStudentCourseList = () => {
                             className='progress-bar bg-primary aos'
                             role='progressbar'
                             data-aos='slide-left'
-                            data-aos-delay='200'
-                            data-aos-duration='1000'
+                            data-aos-delay={200}
+                            data-aos-duration={1000}
                             data-aos-easing='ease-in-out'
                             style={{ width: '85%' }}
-                            aria-valuenow='85'
-                            aria-valuemin='0'
-                            aria-valuemax='100'
+                            aria-valuenow={85}
+                            aria-valuemin={0}
+                            aria-valuemax={100}
                           ></div>
                         </div>
                       </div>
@@ -137,9 +137,9 @@ const ProfileStudentCourseList = () => {
                             data-aos-duration='1000'
                             data-aos-easing='ease-in-out'
                             style={{ width: '100%' }}
-                            aria-valuenow='100'
-                            aria-valuemin='0'
-                            aria-valuemax='100'
+                            aria-valuenow={100}
+                            aria-valuemin={0}
+                            aria-valuemax={100}
                           ></div>
                         </div>
                       </div>
@@ -184,9 +184,9 @@ const ProfileStudentCourseList = () => {
                             data-aos-duration='1000'
                             data-aos-easing='ease-in-out'
                             style={{ width: '60%' }}
-                            aria-valuenow='60'
-                            aria-valuemin='0'
-                            aria-valuemax='100'
+                            aria-valuenow={60}
+                            aria-valuemin={0}
+                            aria-valuemax={100}
                           ></div>
                         </div>
                       </div>
@@ -231,9 +231,9 @@ const ProfileStudentCourseList = () => {
                             data-aos-duration='1000'
                             data-aos-easing='ease-in-out'
                             style={{ width: '40%' }}
-                            aria-valuenow='40'
-                            aria-valuemin='0'
-                            aria-valuemax='100'
+                            aria-valuenow={40}
+                            aria-valuemin={0}
+                            aria-valuemax={100}
                           ></div>
                         </div>
                       </div>
@@ -278,9 +278,9 @@ const ProfileStudentCourseList = () => {
                             data-aos-duration='1000'
                             data-aos-easing='ease-in-out'
                             style={{ width: '90%' }}
-                            aria-valuenow='90'
-                            aria-valuemin='0'
-                            aria-valuemax='100'
+                            aria-valuenow={90}
+                            aria-valuemin={0}
+                            aria-valuemax={100}
                           ></div>
                         </div>
                       </div>

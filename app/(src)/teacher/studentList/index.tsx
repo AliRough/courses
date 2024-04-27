@@ -107,9 +107,9 @@ const ProfileTeacherStudentList = () => {
                         data-aos-duration='1000'
                         data-aos-easing='ease-in-out'
                         style={{ width: '85%' }}
-                        aria-valuenow='85'
-                        aria-valuemin='0'
-                        aria-valuemax='100'
+                        aria-valuenow={85}
+                        aria-valuemin={0}
+                        aria-valuemax={100}
                       ></div>
                     </div>
                   </div>
@@ -180,9 +180,9 @@ const ProfileTeacherStudentList = () => {
                         data-aos-duration='1000'
                         data-aos-easing='ease-in-out'
                         style={{ width: '40%' }}
-                        aria-valuenow='40'
-                        aria-valuemin='0'
-                        aria-valuemax='100'
+                        aria-valuenow={40}
+                        aria-valuemin={0}
+                        aria-valuemax={100}
                       />
                     </div>
                   </div>
@@ -253,9 +253,9 @@ const ProfileTeacherStudentList = () => {
                         data-aos-duration='1000'
                         data-aos-easing='ease-in-out'
                         style={{ width: '62%' }}
-                        aria-valuenow='62'
-                        aria-valuemin='0'
-                        aria-valuemax='100'
+                        aria-valuenow={62}
+                        aria-valuemin={0}
+                        aria-valuemax={100}
                       ></div>
                     </div>
                   </div>
@@ -326,9 +326,9 @@ const ProfileTeacherStudentList = () => {
                         data-aos-duration='1000'
                         data-aos-easing='ease-in-out'
                         style={{ width: '60%' }}
-                        aria-valuenow='60'
-                        aria-valuemin='0'
-                        aria-valuemax='100'
+                        aria-valuenow={60}
+                        aria-valuemin={0}
+                        aria-valuemax={100}
                       ></div>
                     </div>
                   </div>
@@ -399,9 +399,9 @@ const ProfileTeacherStudentList = () => {
                         data-aos-duration='1000'
                         data-aos-easing='ease-in-out'
                         style={{ width: '35%' }}
-                        aria-valuenow='35'
-                        aria-valuemin='0'
-                        aria-valuemax='100'
+                        aria-valuenow={35}
+                        aria-valuemin={0}
+                        aria-valuemax={100}
                       ></div>
                     </div>
                   </div>
@@ -472,9 +472,9 @@ const ProfileTeacherStudentList = () => {
                         data-aos-duration='1000'
                         data-aos-easing='ease-in-out'
                         style={{ width: '42%' }}
-                        aria-valuenow='42'
-                        aria-valuemin='0'
-                        aria-valuemax='100'
+                        aria-valuenow={42}
+                        aria-valuemin={0}
+                        aria-valuemax={100}
                       ></div>
                     </div>
                   </div>
@@ -517,7 +517,7 @@ const ProfileTeacherStudentList = () => {
           >
             <ul className='pagination pagination-sm pagination-primary-soft d-inline-block d-md-flex rounded mb-0'>
               <li className='page-item mb-0'>
-                <a className='page-link' href='#' tabIndex='-1'>
+                <a className='page-link' href='#' tabIndex={-1}>
                   <i className='fas fa-angle-right'></i>
                 </a>
               </li>

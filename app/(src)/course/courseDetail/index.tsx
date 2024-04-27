@@ -482,9 +482,9 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                                   className='progress-bar bg-warning'
                                   role='progressbar'
                                   style={{ width: '100%' }}
-                                  aria-valuenow='100'
-                                  aria-valuemin='0'
-                                  aria-valuemax='100'
+                                  aria-valuenow={100}
+                                  aria-valuemin={0}
+                                  aria-valuemax={100}
                                 />
                               </div>
                             </div>
@@ -513,9 +513,9 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                                   className='progress-bar bg-warning'
                                   role='progressbar'
                                   style={{ width: '80%' }}
-                                  aria-valuenow='80'
-                                  aria-valuemin='0'
-                                  aria-valuemax='100'
+                                  aria-valuenow={80}
+                                  aria-valuemin={0}
+                                  aria-valuemax={100}
                                 ></div>
                               </div>
                             </div>
@@ -544,9 +544,9 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                                   className='progress-bar bg-warning'
                                   role='progressbar'
                                   style={{ width: '60%' }}
-                                  aria-valuenow='60'
-                                  aria-valuemin='0'
-                                  aria-valuemax='100'
+                                  aria-valuenow={60}
+                                  aria-valuemin={0}
+                                  aria-valuemax={100}
                                 ></div>
                               </div>
                             </div>
@@ -575,9 +575,9 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                                   className='progress-bar bg-warning'
                                   role='progressbar'
                                   style={{ width: '40%' }}
-                                  aria-valuenow='40'
-                                  aria-valuemin='0'
-                                  aria-valuemax='100'
+                                  aria-valuenow={40}
+                                  aria-valuemin={0}
+                                  aria-valuemax={100}
                                 ></div>
                               </div>
                             </div>
@@ -606,9 +606,9 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                                   className='progress-bar bg-warning'
                                   role='progressbar'
                                   style={{ width: '20%' }}
-                                  aria-valuenow='20'
-                                  aria-valuemin='0'
-                                  aria-valuemax='100'
+                                  aria-valuenow={20}
+                                  aria-valuemin={0}
+                                  aria-valuemax={100}
                                 ></div>
                               </div>
                             </div>
@@ -837,7 +837,7 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                               id='inputState2'
                               className='form-select js-choice'
                             >
-                              <option selected=''>★★★★★ (5/5)</option>
+                              <option selected>★★★★★ (5/5)</option>
                               <option>★★★★☆ (4/5)</option>
                               <option>★★★☆☆ (3/5)</option>
                               <option>★★☆☆☆ (2/5)</option>
@@ -849,7 +849,7 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                               className='form-control'
                               id='exampleFormControlTextarea1'
                               placeholder='دیدگاه خود را بنویسید'
-                              rows='3'
+                              rows={3}
                             ></textarea>
                           </div>
                           <div className='col-12'>

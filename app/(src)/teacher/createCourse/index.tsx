@@ -209,7 +209,7 @@ const ProfileTeacherCreateCourse = () => {
                     )}
                     {steper === 2 && <Two submit={submit} />}
                     {steper === 3 && <Three submit={submit} />}
-                    {steper === 4 && <Four submit={submit} />}
+                    {/* {steper === 4 && <Four submit={submit} />} */}
                   </div>
                 </div>
               </div>

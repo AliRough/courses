@@ -34,9 +34,9 @@ const ProfileStudentSubscription = () => {
             data-aos-duration='1000'
             data-aos-easing='ease-in-out'
             style={{ width: '85%' }}
-            aria-valuenow='85'
-            aria-valuemin='0'
-            aria-valuemax='100'
+            aria-valuenow={85}
+            aria-valuemin={0}
+            aria-valuemax={100}
           ></div>
         </div>
       </div>

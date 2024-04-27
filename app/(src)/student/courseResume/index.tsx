@@ -87,9 +87,9 @@ const ProfileStudentCourseResume = () => {
                           data-aos-duration='1000'
                           data-aos-easing='ease-in-out'
                           style={{ width: '80%' }}
-                          aria-valuenow='80'
-                          aria-valuemin='0'
-                          aria-valuemax='100'
+                          aria-valuenow={80}
+                          aria-valuemin={0}
+                          aria-valuemax={100}
                         ></div>
                       </div>
                     </div>
@@ -303,9 +303,9 @@ const ProfileStudentCourseResume = () => {
                           data-aos-duration='1000'
                           data-aos-easing='ease-in-out'
                           style={{ width: '0%' }}
-                          aria-valuenow='0'
-                          aria-valuemin='0'
-                          aria-valuemax='100'
+                          aria-valuenow={0}
+                          aria-valuemin={0}
+                          aria-valuemax={100}
                         ></div>
                       </div>
                     </div>
@@ -446,9 +446,9 @@ const ProfileStudentCourseResume = () => {
                           data-aos-duration='1000'
                           data-aos-easing='ease-in-out'
                           style={{ width: '35%' }}
-                          aria-valuenow='35'
-                          aria-valuemin='0'
-                          aria-valuemax='100'
+                          aria-valuenow={35}
+                          aria-valuemin={0}
+                          aria-valuemax={100}
                         ></div>
                       </div>
                     </div>
@@ -601,9 +601,9 @@ const ProfileStudentCourseResume = () => {
                           data-aos-duration='1000'
                           data-aos-easing='ease-in-out'
                           style={{ width: '0%' }}
-                          aria-valuenow='0'
-                          aria-valuemin='0'
-                          aria-valuemax='100'
+                          aria-valuenow={0}
+                          aria-valuemin={0}
+                          aria-valuemax={100}
                         ></div>
                       </div>
                     </div>

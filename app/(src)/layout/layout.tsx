@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
-import Header from '../site/componenets/Header';
 import { LayoutProps } from '@/.next/types/app/layout';
+import Header from '../componenets/Header';
 
 export default function layout({ children }: LayoutProps): ReactElement {
   return (
