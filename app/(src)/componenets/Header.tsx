@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { getHeader } from '@/app/(src)/api/layoutApi';
 
 export default async function Header({ children }: LayoutProps) {
-  const { data } = await getHeader();
+  const headerRes = await getHeader();
 
   // await get
   return (
@@ -56,7 +56,7 @@ export default async function Header({ children }: LayoutProps) {
             <div className='navbar-collapse w-100 collapse' id='navbarCollapse'>
               {/* Nav Main menu START */}
               <ul className='navbar-nav navbar-nav-scroll mx-auto'>
-                {data?.menu.map((item: any) => {
+                {headerRes?.data?.menu.map((item: any) => {
                   return (
                     <li className='nav-item dropdown' key={item.id}>
                       <Link
