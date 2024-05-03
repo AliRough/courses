@@ -18,6 +18,7 @@ import Two from './steps/Two';
 import Three from './steps/Three';
 import Four from './steps/Four';
 import { useState } from 'react';
+import Header from '../../componenets/Header';
 
 const ProfileTeacherCreateCourse = () => {
   console.log('Not completed');
@@ -61,7 +62,6 @@ const ProfileTeacherCreateCourse = () => {
     // درصورت نیاز قبل از ارسال تغییرات نهایی لحاظ بشه
     console.log(data);
   };
-
 
   // برای راحتی کار پارامتر ها اینجا قرار میگیرن.بعد فقط اینپوتس ارسال میشه سمت یو آی
   // const stepOneData: TCreateCourseInputsOne = {

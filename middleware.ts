@@ -3,6 +3,7 @@ import type { NextRequest } from 'next/server';
 
 export function middleware(request: NextRequest) {
   const orginalPath: string = request.nextUrl.href;
+  // console.log(orginalPath);
 
   const newPath: string = ConvertUrlToStandard(orginalPath);
   let isToken: boolean = request.cookies.has('Authorization');
@@ -13,6 +14,22 @@ export function middleware(request: NextRequest) {
      با توجه به اینکه صفحه‌ها با حروف بزرگ منجر به خطای 404 می‌شوند، برای جلوگیری
      از این خطا، آدرس‌ها را به حروف کوچک تبدیل کرده و ریدایرکت میکنیم.
    */
+return
+  if (
+    request.nextUrl.pathname !== '/login' &&
+    !isToken &&
+    orginalPath.includes('/profile')
+  ) {
+    const path = request.nextUrl.pathname.replaceAll('/', '$slash$');
+    let search = request.nextUrl.search;
+    if (request.nextUrl.pathname !== '/') {
+      search = search
+        ? `${search}&redirect=${path}`
+        : `?redirect=${path + search}`;
+    }
+    return NextResponse.redirect(new URL(`/login${search}`, request.url));
+  }
+
   return;
   if (newPath !== orginalPath) {
     return NextResponse.redirect(new URL(newPath));

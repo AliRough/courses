@@ -4,8 +4,6 @@ import Link from 'next/link';
 export default function NotFound() {
   return (
     <>
-      {/* <Header /> */}
-      {/* **************** MAIN CONTENT START **************** */}
       <main>
         <section className='pt-5'>
           <div className='container'>
@@ -38,13 +36,6 @@ export default function NotFound() {
           </div>
         </section>
       </main>
-      {/* **************** MAIN CONTENT END **************** */}
-      {/* Pre loader */}
-      <div className='preloader'>
-        <div className='preloader-item'>
-          <div className='spinner-grow text-primary' />
-        </div>
-      </div>
     </>
   );
 }

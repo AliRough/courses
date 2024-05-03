@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Profile() {
   const [theme, setTheme]: any = useState();
@@ -79,16 +80,16 @@ export default function Profile() {
         </li>
         {/* Links */}
         <li>
-          <a className='dropdown-item' href='#'>
+          <Link className='dropdown-item' href='#'>
             <i className='bi bi-person fa-fw me-2' />
             ویرایش
-          </a>
+          </Link>
         </li>
         <li>
-          <a className='dropdown-item' href='#'>
+          <Link className='dropdown-item' href='#'>
             <i className='bi bi-gear fa-fw me-2' />
             تنظیمات
-          </a>
+          </Link>
         </li>
         <li>
           <a className='dropdown-item' href='#'>

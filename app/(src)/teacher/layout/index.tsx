@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation';
 
 import LayoutProfileTeacherHeader from '@/app/(src)/teacher/layout/headerProfile';
 import LayoutProfileTeacherSidebarMenu from '@/app/(src)/teacher/layout/sidebarMenu';
+import Header from '../../componenets/Header';
 
 const LayoutProfileTeacher = ({
   children,
@@ -19,7 +20,9 @@ const LayoutProfileTeacher = ({
   return (
     <>
       <LayoutProfileTeacherHeader />
-      <LayoutProfileTeacherSidebarMenu>{children}</LayoutProfileTeacherSidebarMenu>
+      <LayoutProfileTeacherSidebarMenu>
+        {children}
+      </LayoutProfileTeacherSidebarMenu>
     </>
   );
 };

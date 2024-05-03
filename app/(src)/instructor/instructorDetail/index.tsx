@@ -9,11 +9,13 @@ import InstructorRelated from '@/app/(src)/instructor/instructorDetail/instructo
 import Testimonials from '@/app/(src)/testimonials';
 
 import { TCourses } from '@/app/(src)/model/course.d';
+import Header from '../../componenets/Header';
 
 const InstructorDetail = ({ params }: { params: { id: number } }) => {
   const id = params?.id;
 
   const { data } = useInstructorById(id);
+  console.log(data);
 
   console.log('Not completed');
 

@@ -1157,5 +1157,850 @@
         "twitter": "#"
       }
     }
+  ],
+  "instructors": [
+    {
+      "id": "1",
+      "name": "میلاد ناصری",
+      "university": "دانشگاه تهران",
+      "description": "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.",
+      "rating": 4.5,
+      "image": "/images/instructor/01.jpg",
+      "categrory": "دیجیتال مارکتنیگ",
+      "social_media": {
+        "telegram": "#",
+        "instagram": "#",
+        "facebook": "#",
+        "twitter": "#",
+        "linkedin": "#"
+      }
+    },
+    {
+      "id": "2",
+      "name": "لیلا مرادی",
+      "university": "دانشگاه آزاد",
+      "description": "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.",
+      "rating": 4,
+      "image": "/images/instructor/02.jpg",
+      "categrory": "طراح گرافیک",
+      "social_media": {
+        "telegram": "#",
+        "instagram": "#",
+        "facebook": "#",
+        "twitter": "#"
+      }
+    },
+    {
+      "id": "3",
+      "name": "سعید محمدی",
+      "university": "دانشگاه شریف",
+      "description": "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.",
+      "rating": 3.8,
+      "image": "/images/instructor/03.jpg",
+      "categrory": "مهندس فیزیک",
+      "social_media": {
+        "telegram": "#",
+        "instagram": "#",
+        "facebook": "#",
+        "twitter": "#"
+      }
+    },
+    {
+      "id": "4",
+      "name": "سارا تقی زاده",
+      "university": "دانشگاه امیرکبیر",
+      "description": "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.",
+      "rating": 4.5,
+      "image": "/images/instructor/04.jpg",
+      "categrory": "طراح گرافیک",
+      "social_media": {
+        "telegram": "#",
+        "instagram": "#",
+        "facebook": "#",
+        "twitter": "#"
+      }
+    },
+    {
+      "id": "5",
+      "name": "نیلوفر علیزاده",
+      "university": "دانشگاه پیام نور",
+      "description": "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.",
+      "rating": 4.8,
+      "image": "/images/instructor/05.jpg",
+      "categrory": "طراح وب",
+      "social_media": {
+        "telegram": "#",
+        "instagram": "#",
+        "facebook": "#",
+        "twitter": "#"
+      }
+    },
+    {
+      "id": "6",
+      "name": "شیما حسینی",
+      "university": "دانشگاه تهران",
+      "description": "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.",
+      "rating": 4.2,
+      "image": "/images/instructor/06.jpg",
+      "categrory": "مهندس عمران",
+      "social_media": {
+        "telegram": "#",
+        "instagram": "#",
+        "facebook": "#",
+        "twitter": "#"
+      }
+    },
+    {
+      "id": "7",
+      "name": "سهراب حجازی",
+      "university": "دانشگاه شریف",
+      "description": "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.",
+      "rating": 4.5,
+      "image": "/images/instructor/07.jpg",
+      "categrory": "دیجیتال مارکتنیگ",
+      "social_media": {
+        "telegram": "#",
+        "instagram": "#",
+        "facebook": "#",
+        "twitter": "#"
+      }
+    },
+    {
+      "id": "8",
+      "name": "میلاد ناصری",
+      "university": "دانشگاه تهران",
+      "description": "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.",
+      "rating": 4.5,
+      "image": "/images/instructor/08.jpg",
+      "categrory": "دیجیتال مارکتنیگ",
+      "social_media": {
+        "telegram": "#",
+        "instagram": "#",
+        "facebook": "#",
+        "twitter": "#"
+      }
+    },
+    {
+      "id": "9",
+      "name": "لیلا مرادی",
+      "university": "دانشگاه آزاد",
+      "description": "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.",
+      "rating": 4,
+      "image": "/images/instructor/09.jpg",
+      "categrory": "طراح گرافیک",
+      "social_media": {
+        "telegram": "#",
+        "instagram": "#",
+        "facebook": "#",
+        "twitter": "#"
+      }
+    },
+    {
+      "id": "10",
+      "name": "سعید محمدی",
+      "university": "دانشگاه شریف",
+      "description": "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.",
+      "rating": 3.8,
+      "image": "/images/instructor/10.jpg",
+      "categrory": "مهندس فیزیک",
+      "social_media": {
+        "telegram": "#",
+        "instagram": "#",
+        "facebook": "#",
+        "twitter": "#"
+      }
+    },
+    {
+      "id": "11",
+      "name": "سارا تقی زاده",
+      "university": "دانشگاه امیرکبیر",
+      "description": "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.",
+      "rating": 4.5,
+      "image": "/images/instructor/11.jpg",
+      "categrory": "طراح گرافیک",
+      "social_media": {
+        "telegram": "#",
+        "instagram": "#",
+        "facebook": "#",
+        "twitter": "#"
+      }
+    }
+  ],
+  "instructor": [
+    {
+      "id": "1",
+      "name": "میلاد ناصری",
+      "university": "دانشگاه تهران",
+      "description": "از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.",
+      "rating": 4.5,
+      "image": "/images/instructor/01.jpg",
+      "categrory": "دیجیتال مارکتنیگ",
+      "address": "تهران، میدان آزادی، نرسیده به خیابان ولیعصر",
+      "email": "example@gmail.com",
+      "phone": "09380147520",
+      "website": "https://example.com",
+      "number_of_courses": 16,
+      "number_of_students": 15,
+      "years_of_teaching_experience": 14,
+      "skill": [
+        { "name": "طراحی گرافیک", "percent": 90 },
+        { "name": "طراحی وب", "percent": 80 },
+        { "name": "HTML/CSS", "percent": 60 },
+        { "name": "UI/UX", "percent": 50 }
+      ],
+      "education": [
+        {
+          "university": "دانشگاه امیرکبیر",
+          "level_of_education": "لیسانس گرافیک کامپیوتری"
+        },
+        {
+          "university": "دانشگاه دانشگاه شریف",
+          "level_of_education": "کارشناسی ارشد گرافیک کامپیوتری"
+        },
+        {
+          "university": "دانشگاه آزاد تهران",
+          "level_of_education": "لیسانس گرافیک کامپیوتری"
+        }
+      ],
+      "social_media": {
+        "telegram": "#",
+        "instagram": "#",
+        "facebook": "#",
+        "twitter": "#"
+      },
+      "courses": [
+        {
+          "id": 1,
+          "title": "آموزش Photoshop",
+          "level": "مبتدی",
+          "image": "/images/courses/4by3/01.jpg",
+          "description": "با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک",
+          "liked": true,
+          "rating": 4.5,
+          "videos": 65,
+          "time": "9 ساعت"
+        },
+        {
+          "id": 2,
+          "title": "آموزش Sketch",
+          "level": "همه سطح",
+          "image": "/images/courses/4by3/02.jpg",
+          "description": "با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک",
+          "liked": true,
+          "rating": 4,
+          "videos": 20,
+          "time": "12 دقیقه"
+        },
+        {
+          "id": 3,
+          "title": "آموزش Sketch",
+          "level": "مقدماتی",
+          "image": "/images/courses/4by3/03.jpg",
+          "description": "با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک",
+          "liked": true,
+          "rating": 4,
+          "videos": 20,
+          "time": "12 دقیقه"
+        },
+        {
+          "id": 4,
+          "title": "آموزش Sketch",
+          "level": "مقدماتی",
+          "image": "/images/courses/4by3/04.jpg",
+          "description": "با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک",
+          "liked": true,
+          "rating": 4,
+          "videos": 20,
+          "time": "12 دقیقه"
+        },
+        {
+          "id": 5,
+          "title": "آموزش Sketch",
+          "level": "مقدماتی",
+          "image": "/images/courses/4by3/05.jpg",
+          "description": "با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک",
+          "liked": true,
+          "rating": 4,
+          "videos": 20,
+          "time": "12 دقیقه"
+        },
+        {
+          "id": 6,
+          "title": "آموزش Sketch",
+          "level": "مقدماتی",
+          "image": "/images/courses/4by3/06.jpg",
+          "description": "با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک",
+          "liked": true,
+          "rating": 4,
+          "videos": 20,
+          "time": "12 دقیقه"
+        },
+        {
+          "id": 7,
+          "title": "آموزش Sketch",
+          "level": "مقدماتی",
+          "image": "/images/courses/4by3/07.jpg",
+          "description": "با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک",
+          "liked": true,
+          "rating": 4,
+          "videos": 20,
+          "time": "12 دقیقه"
+        },
+        {
+          "id": 8,
+          "title": "آموزش Sketch",
+          "level": "مقدماتی",
+          "image": "/images/courses/4by3/08.jpg",
+          "description": "با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک",
+          "liked": true,
+          "rating": 4,
+          "videos": 20,
+          "time": "12 دقیقه"
+        },
+        {
+          "id": 9,
+          "title": "آموزش Sketch",
+          "level": "مقدماتی",
+          "image": "/images/courses/4by3/09.jpg",
+          "description": "با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک",
+          "liked": true,
+          "rating": 4,
+          "videos": 20,
+          "time": "12 دقیقه"
+        },
+        {
+          "id": 10,
+          "title": "آموزش Sketch",
+          "level": "مقدماتی",
+          "image": "/images/courses/4by3/10.jpg",
+          "description": "با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک",
+          "liked": true,
+          "rating": 4,
+          "videos": 20,
+          "time": "12 دقیقه"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "میلاد ناصری",
+      "university": "دانشگاه تهران",
+      "description": "از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.",
+      "rating": 4.5,
+      "image": "/images/instructor/02.jpg",
+      "categrory": "دیجیتال مارکتنیگ",
+      "address": "تهران، میدان آزادی، نرسیده به خیابان ولیعصر",
+      "email": "example@gmail.com",
+      "phone": "09380147520",
+      "website": "https://example.com",
+      "number_of_courses": 10,
+      "number_of_students": 36,
+      "years_of_teaching_experience": 11,
+      "skill": [
+        { "name": "طراحی گرافیک", "percent": 90 },
+        { "name": "طراحی وب", "percent": 80 },
+        { "name": "HTML/CSS", "percent": 60 },
+        { "name": "UI/UX", "percent": 50 }
+      ],
+      "education": [
+        {
+          "university": "دانشگاه امیرکبیر",
+          "level_of_education": "لیسانس گرافیک کامپیوتری"
+        },
+        {
+          "university": "دانشگاه دانشگاه شریف",
+          "level_of_education": "کارشناسی ارشد گرافیک کامپیوتری"
+        },
+        {
+          "university": "دانشگاه آزاد تهران",
+          "level_of_education": "لیسانس گرافیک کامپیوتری"
+        }
+      ],
+      "social_media": {
+        "telegram": "#",
+        "instagram": "#",
+        "facebook": "#",
+        "twitter": "#"
+      }
+    },
+    {
+      "id": "3",
+      "name": "میلاد ناصری",
+      "university": "دانشگاه تهران",
+      "description": "از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.",
+      "rating": 4.5,
+      "image": "/images/instructor/03.jpg",
+      "categrory": "دیجیتال مارکتنیگ",
+      "address": "تهران، میدان آزادی، نرسیده به خیابان ولیعصر",
+      "email": "example@gmail.com",
+      "phone": "09380147520",
+      "website": "https://example.com",
+      "number_of_courses": 10,
+      "number_of_students": 36,
+      "years_of_teaching_experience": 11,
+      "skill": [
+        { "name": "طراحی گرافیک", "percent": 90 },
+        { "name": "طراحی وب", "percent": 80 },
+        { "name": "HTML/CSS", "percent": 60 },
+        { "name": "UI/UX", "percent": 50 }
+      ],
+      "education": [
+        {
+          "university": "دانشگاه امیرکبیر",
+          "level_of_education": "لیسانس گرافیک کامپیوتری"
+        },
+        {
+          "university": "دانشگاه دانشگاه شریف",
+          "level_of_education": "کارشناسی ارشد گرافیک کامپیوتری"
+        },
+        {
+          "university": "دانشگاه آزاد تهران",
+          "level_of_education": "لیسانس گرافیک کامپیوتری"
+        }
+      ],
+      "social_media": {
+        "telegram": "#",
+        "instagram": "#",
+        "facebook": "#",
+        "twitter": "#"
+      }
+    },
+    {
+      "id": "4",
+      "name": "میلاد ناصری",
+      "university": "دانشگاه تهران",
+      "description": "از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.",
+      "rating": 4.5,
+      "image": "/images/instructor/04.jpg",
+      "categrory": "دیجیتال مارکتنیگ",
+      "address": "تهران، میدان آزادی، نرسیده به خیابان ولیعصر",
+      "email": "example@gmail.com",
+      "phone": "09380147520",
+      "website": "https://example.com",
+      "number_of_courses": 10,
+      "number_of_students": 36,
+      "years_of_teaching_experience": 11,
+      "skill": [
+        { "name": "طراحی گرافیک", "percent": 90 },
+        { "name": "طراحی وب", "percent": 80 },
+        { "name": "HTML/CSS", "percent": 60 },
+        { "name": "UI/UX", "percent": 50 }
+      ],
+      "education": [
+        {
+          "university": "دانشگاه امیرکبیر",
+          "level_of_education": "لیسانس گرافیک کامپیوتری"
+        },
+        {
+          "university": "دانشگاه دانشگاه شریف",
+          "level_of_education": "کارشناسی ارشد گرافیک کامپیوتری"
+        },
+        {
+          "university": "دانشگاه آزاد تهران",
+          "level_of_education": "لیسانس گرافیک کامپیوتری"
+        }
+      ],
+      "social_media": {
+        "telegram": "#",
+        "instagram": "#",
+        "facebook": "#",
+        "twitter": "#"
+      }
+    },
+    {
+      "id": "5",
+      "name": "میلاد ناصری",
+      "university": "دانشگاه تهران",
+      "description": "از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.",
+      "rating": 4.5,
+      "image": "/images/instructor/05.jpg",
+      "categrory": "دیجیتال مارکتنیگ",
+      "address": "تهران، میدان آزادی، نرسیده به خیابان ولیعصر",
+      "email": "example@gmail.com",
+      "phone": "09380147520",
+      "website": "https://example.com",
+      "number_of_courses": 10,
+      "number_of_students": 36,
+      "years_of_teaching_experience": 11,
+      "skill": [
+        { "name": "طراحی گرافیک", "percent": 90 },
+        { "name": "طراحی وب", "percent": 80 },
+        { "name": "HTML/CSS", "percent": 60 },
+        { "name": "UI/UX", "percent": 50 }
+      ],
+      "education": [
+        {
+          "university": "دانشگاه امیرکبیر",
+          "level_of_education": "لیسانس گرافیک کامپیوتری"
+        },
+        {
+          "university": "دانشگاه دانشگاه شریف",
+          "level_of_education": "کارشناسی ارشد گرافیک کامپیوتری"
+        },
+        {
+          "university": "دانشگاه آزاد تهران",
+          "level_of_education": "لیسانس گرافیک کامپیوتری"
+        }
+      ],
+      "social_media": {
+        "telegram": "#",
+        "instagram": "#",
+        "facebook": "#",
+        "twitter": "#"
+      }
+    },
+    {
+      "id": "6",
+      "name": "میلاد ناصری",
+      "university": "دانشگاه تهران",
+      "description": "از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.",
+      "rating": 4.5,
+      "image": "/images/instructor/06.jpg",
+      "categrory": "دیجیتال مارکتنیگ",
+      "address": "تهران، میدان آزادی، نرسیده به خیابان ولیعصر",
+      "email": "example@gmail.com",
+      "phone": "09380147520",
+      "website": "https://example.com",
+      "number_of_courses": 10,
+      "number_of_students": 36,
+      "years_of_teaching_experience": 11,
+      "skill": [
+        { "name": "طراحی گرافیک", "percent": 90 },
+        { "name": "طراحی وب", "percent": 80 },
+        { "name": "HTML/CSS", "percent": 60 },
+        { "name": "UI/UX", "percent": 50 }
+      ],
+      "education": [
+        {
+          "university": "دانشگاه امیرکبیر",
+          "level_of_education": "لیسانس گرافیک کامپیوتری"
+        },
+        {
+          "university": "دانشگاه دانشگاه شریف",
+          "level_of_education": "کارشناسی ارشد گرافیک کامپیوتری"
+        },
+        {
+          "university": "دانشگاه آزاد تهران",
+          "level_of_education": "لیسانس گرافیک کامپیوتری"
+        }
+      ],
+      "social_media": {
+        "telegram": "#",
+        "instagram": "#",
+        "facebook": "#",
+        "twitter": "#"
+      }
+    },
+    {
+      "id": "7",
+      "name": "میلاد ناصری",
+      "university": "دانشگاه تهران",
+      "description": "از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.",
+      "rating": 4.5,
+      "image": "/images/instructor/07.jpg",
+      "categrory": "دیجیتال مارکتنیگ",
+      "address": "تهران، میدان آزادی، نرسیده به خیابان ولیعصر",
+      "email": "example@gmail.com",
+      "phone": "09380147520",
+      "website": "https://example.com",
+      "number_of_courses": 10,
+      "number_of_students": 36,
+      "years_of_teaching_experience": 11,
+      "skill": [
+        { "name": "طراحی گرافیک", "percent": 90 },
+        { "name": "طراحی وب", "percent": 80 },
+        { "name": "HTML/CSS", "percent": 60 },
+        { "name": "UI/UX", "percent": 50 }
+      ],
+      "education": [
+        {
+          "university": "دانشگاه امیرکبیر",
+          "level_of_education": "لیسانس گرافیک کامپیوتری"
+        },
+        {
+          "university": "دانشگاه دانشگاه شریف",
+          "level_of_education": "کارشناسی ارشد گرافیک کامپیوتری"
+        },
+        {
+          "university": "دانشگاه آزاد تهران",
+          "level_of_education": "لیسانس گرافیک کامپیوتری"
+        }
+      ],
+      "social_media": {
+        "telegram": "#",
+        "instagram": "#",
+        "facebook": "#",
+        "twitter": "#"
+      }
+    },
+    {
+      "id": "8",
+      "name": "میلاد ناصری",
+      "university": "دانشگاه تهران",
+      "description": "از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.",
+      "rating": 4.5,
+      "image": "/images/instructor/08.jpg",
+      "categrory": "دیجیتال مارکتنیگ",
+      "address": "تهران، میدان آزادی، نرسیده به خیابان ولیعصر",
+      "email": "example@gmail.com",
+      "phone": "09380147520",
+      "website": "https://example.com",
+      "number_of_courses": 10,
+      "number_of_students": 36,
+      "years_of_teaching_experience": 11,
+      "skill": [
+        { "name": "طراحی گرافیک", "percent": 90 },
+        { "name": "طراحی وب", "percent": 80 },
+        { "name": "HTML/CSS", "percent": 60 },
+        { "name": "UI/UX", "percent": 50 }
+      ],
+      "education": [
+        {
+          "university": "دانشگاه امیرکبیر",
+          "level_of_education": "لیسانس گرافیک کامپیوتری"
+        },
+        {
+          "university": "دانشگاه دانشگاه شریف",
+          "level_of_education": "کارشناسی ارشد گرافیک کامپیوتری"
+        },
+        {
+          "university": "دانشگاه آزاد تهران",
+          "level_of_education": "لیسانس گرافیک کامپیوتری"
+        }
+      ],
+      "social_media": {
+        "telegram": "#",
+        "instagram": "#",
+        "facebook": "#",
+        "twitter": "#"
+      }
+    },
+    {
+      "id": "9",
+      "name": "میلاد ناصری",
+      "university": "دانشگاه تهران",
+      "description": "از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.",
+      "rating": 4.5,
+      "image": "/images/instructor/09.jpg",
+      "categrory": "دیجیتال مارکتنیگ",
+      "address": "تهران، میدان آزادی، نرسیده به خیابان ولیعصر",
+      "email": "example@gmail.com",
+      "phone": "09380147520",
+      "website": "https://example.com",
+      "number_of_courses": 10,
+      "number_of_students": 36,
+      "years_of_teaching_experience": 11,
+      "skill": [
+        { "name": "طراحی گرافیک", "percent": 90 },
+        { "name": "طراحی وب", "percent": 80 },
+        { "name": "HTML/CSS", "percent": 60 },
+        { "name": "UI/UX", "percent": 50 }
+      ],
+      "education": [
+        {
+          "university": "دانشگاه امیرکبیر",
+          "level_of_education": "لیسانس گرافیک کامپیوتری"
+        },
+        {
+          "university": "دانشگاه دانشگاه شریف",
+          "level_of_education": "کارشناسی ارشد گرافیک کامپیوتری"
+        },
+        {
+          "university": "دانشگاه آزاد تهران",
+          "level_of_education": "لیسانس گرافیک کامپیوتری"
+        }
+      ],
+      "social_media": {
+        "telegram": "#",
+        "instagram": "#",
+        "facebook": "#",
+        "twitter": "#"
+      }
+    },
+    {
+      "id": "10",
+      "name": "میلاد ناصری",
+      "university": "دانشگاه تهران",
+      "description": "از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.",
+      "rating": 4.5,
+      "image": "/images/instructor/10.jpg",
+      "categrory": "دیجیتال مارکتنیگ",
+      "address": "تهران، میدان آزادی، نرسیده به خیابان ولیعصر",
+      "email": "example@gmail.com",
+      "phone": "09380147520",
+      "website": "https://example.com",
+      "number_of_courses": 10,
+      "number_of_students": 36,
+      "years_of_teaching_experience": 11,
+      "skill": [
+        { "name": "طراحی گرافیک", "percent": 90 },
+        { "name": "طراحی وب", "percent": 80 },
+        { "name": "HTML/CSS", "percent": 60 },
+        { "name": "UI/UX", "percent": 50 }
+      ],
+      "education": [
+        {
+          "university": "دانشگاه امیرکبیر",
+          "level_of_education": "لیسانس گرافیک کامپیوتری"
+        },
+        {
+          "university": "دانشگاه دانشگاه شریف",
+          "level_of_education": "کارشناسی ارشد گرافیک کامپیوتری"
+        },
+        {
+          "university": "دانشگاه آزاد تهران",
+          "level_of_education": "لیسانس گرافیک کامپیوتری"
+        }
+      ],
+      "social_media": {
+        "telegram": "#",
+        "instagram": "#",
+        "facebook": "#",
+        "twitter": "#"
+      }
+    },
+    {
+      "id": "11",
+      "name": "میلاد ناصری",
+      "university": "دانشگاه تهران",
+      "description": "از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.",
+      "rating": 4.5,
+      "image": "/images/instructor/11.jpg",
+      "categrory": "دیجیتال مارکتنیگ",
+      "address": "تهران، میدان آزادی، نرسیده به خیابان ولیعصر",
+      "email": "example@gmail.com",
+      "phone": "09380147520",
+      "website": "https://example.com",
+      "number_of_courses": 10,
+      "number_of_students": 36,
+      "years_of_teaching_experience": 11,
+      "skill": [
+        { "name": "طراحی گرافیک", "percent": 90 },
+        { "name": "طراحی وب", "percent": 80 },
+        { "name": "HTML/CSS", "percent": 60 },
+        { "name": "UI/UX", "percent": 50 }
+      ],
+      "education": [
+        {
+          "university": "دانشگاه امیرکبیر",
+          "level_of_education": "لیسانس گرافیک کامپیوتری"
+        },
+        {
+          "university": "دانشگاه دانشگاه شریف",
+          "level_of_education": "کارشناسی ارشد گرافیک کامپیوتری"
+        },
+        {
+          "university": "دانشگاه آزاد تهران",
+          "level_of_education": "لیسانس گرافیک کامپیوتری"
+        }
+      ],
+      "social_media": {
+        "telegram": "#",
+        "instagram": "#",
+        "facebook": "#",
+        "twitter": "#"
+      }
+    }
+  ],
+  "instructor_related": [
+    {
+      "id": "1",
+      "name": "میلاد ناصری",
+      "rating": 4.5,
+      "image": "/images/instructor/01.jpg",
+      "categrory": "دیجیتال مارکتنیگ",
+      "courses": 12,
+      "students": 45
+    },
+    {
+      "id": "2",
+      "name": "لیلا مرادی",
+      "rating": 4,
+      "image": "/images/instructor/02.jpg",
+      "categrory": "طراح گرافیک",
+      "courses": 12,
+      "students": 45
+    },
+    {
+      "id": "3",
+      "name": "سعید محمدی",
+      "rating": 3.8,
+      "image": "/images/instructor/03.jpg",
+      "categrory": "مهندس فیزیک",
+      "courses": 12,
+      "students": 45
+    },
+    {
+      "id": "4",
+      "name": "سارا تقی زاده",
+      "rating": 4.5,
+      "image": "/images/instructor/04.jpg",
+      "categrory": "طراح گرافیک",
+      "courses": 12,
+      "students": 45
+    },
+    {
+      "id": "5",
+      "name": "نیلوفر علیزاده",
+      "rating": 4.8,
+      "image": "/images/instructor/05.jpg",
+      "categrory": "طراح وب",
+      "courses": 12,
+      "students": 45
+    },
+    {
+      "id": "6",
+      "name": "شیما حسینی",
+      "rating": 4.2,
+      "image": "/images/instructor/06.jpg",
+      "categrory": "مهندس عمران",
+      "courses": 12,
+      "students": 45
+    },
+    {
+      "id": "7",
+      "name": "سهراب حجازی",
+      "rating": 4.5,
+      "image": "/images/instructor/07.jpg",
+      "categrory": "دیجیتال مارکتنیگ",
+      "courses": 12,
+      "students": 45
+    },
+    {
+      "id": "8",
+      "name": "میلاد ناصری",
+      "rating": 4.5,
+      "image": "/images/instructor/08.jpg",
+      "categrory": "دیجیتال مارکتنیگ",
+      "courses": 12,
+      "students": 45
+    },
+    {
+      "id": "9",
+      "name": "لیلا مرادی",
+      "rating": 4,
+      "image": "/images/instructor/09.jpg",
+      "categrory": "طراح گرافیک",
+      "courses": 12,
+      "students": 45
+    },
+    {
+      "id": "10",
+      "name": "سعید محمدی",
+      "rating": 3.8,
+      "image": "/images/instructor/10.jpg",
+      "categrory": "مهندس فیزیک",
+      "courses": 12,
+      "students": 45
+    },
+    {
+      "id": "11",
+      "name": "سارا تقی زاده",
+      "rating": 4.5,
+      "image": "/images/instructor/11.jpg",
+      "categrory": "طراح گرافیک",
+      "courses": 12,
+      "students": 45
+    }
   ]
 }
