@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 export default function singIn() {
@@ -183,7 +184,7 @@ export default function singIn() {
                     {/* Sign up link */}
                     <div className='mt-4 text-center'>
                       <span>
-                        حساب کاربری ندارید؟ <a href='sign-up.html'>ثبت نام</a>
+                        حساب کاربری ندارید؟ <Link href='signUp'>ثبت نام</Link>
                       </span>
                     </div>
                   </div>

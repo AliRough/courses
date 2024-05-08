@@ -203,14 +203,7 @@ export default function Footer() {
             <div className='d-lg-flex justify-content-between align-items-center py-3 text-center text-md-left'>
               {/* copyright text */}
               <div className='text-primary-hover'>
-                ارائه شده در سایت
-                <a
-                  href='https://www.rtl-theme.com/'
-                  target='_blank'
-                  className='text-body'
-                >
-                  راست چین
-                </a>
+               تمامی حقوق این سایت محفوظ است
               </div>
               {/* copyright links*/}
               <div className='justify-content-center mt-3 mt-lg-0'>
