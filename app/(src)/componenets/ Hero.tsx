@@ -23,7 +23,7 @@ export const getDataTest = async () => {
 };
 
 export default function Hero() {
-  const [data, setdata] = useState();
+  const [data, setdata]: any = useState();
   useEffect(() => {
     const dataes = getDataTest().then((data) => {
       console.log(data.data);
@@ -31,7 +31,7 @@ export default function Hero() {
       return data.data;
     });
   }, []);
-  console.log(data);
+  console.log(data?.decoration);
 
   return (
     <>
@@ -39,7 +39,7 @@ export default function Hero() {
         the test api is
         <br />
         {/* <div className="text-bg-danger "></div> */}
-        {data ? data[0].description : ' loading'}
+        {data ? data[0].description : 'loading'}
       </div>
       <section className='position-relative overflow-hidden pt-5 pt-lg-3'>
         {/* SVG START */}
