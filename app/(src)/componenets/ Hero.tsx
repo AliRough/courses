@@ -156,7 +156,6 @@ export default function Hero() {
             width='1360.5px'
             height='793px'
             viewBox='0 0 1360.5 793'
-            style={{ enableBackground: 'new 0 0 1360.5 793' }}
             xmlSpace='preserve'
           >
             <path
