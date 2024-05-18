@@ -11,14 +11,15 @@ const LayoutProfileStudentHeader = () => {
   const [cookies, setCookie, removeCookie] = useCookies(['Authorization']);
   // console.log();
 
-  console.log(localStorage.getItem('userData'));
   let item = cookies.Authorization;
+  console.log(cookies.Authorization);
+
   useEffect(() => {
     if (item) {
-      setAuthUser(JSON.parse(item));
+      setAuthUser(item);
       // const authUserdata=JSON.parse(item)
     }
-  });
+  }, []);
   console.log('Not completed');
   console.log(authUserdata);
 

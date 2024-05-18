@@ -11,24 +11,24 @@ export const authUserState = atom({
   },
 });
 
-export const todoListState = atom({
-  key: 'todoListState',
-  default: [
-    { name: 'Apples', isCompleted: false },
-    { name: 'Eggs', isCompleted: false },
-    { name: 'Butter', isCompleted: false },
-  ],
-});
-export const todoListState2 = atom({
-  key: 'todoListState',
-  default: [
-    { name: 'Apples', isCompleted: false },
-    { name: 'Eggs', isCompleted: false },
-    { name: 'Butter', isCompleted: false },
-  ],
-});
+// export const todoListState = atom({
+//   key: 'todoListState',
+//   default: [
+//     { name: 'Apples', isCompleted: false },
+//     { name: 'Eggs', isCompleted: false },
+//     { name: 'Butter', isCompleted: false },
+//   ],
+// });
+// export const todoListState2 = atom({
+//   key: 'todoListState',
+//   default: [
+//     { name: 'Apples', isCompleted: false },
+//     { name: 'Eggs', isCompleted: false },
+//     { name: 'Butter', isCompleted: false },
+//   ],
+// });
 
-export const todoListFilterState = atom({
-  key: 'todoListFilterState',
-  default: 'Hepsini göster',
-});
+// export const todoListFilterState = atom({
+//   key: 'todoListFilterState',
+//   default: 'Hepsini göster',
+// });

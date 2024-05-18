@@ -7,21 +7,23 @@ import Link from 'next/link';
 import { getHeader } from '@/app/(src)/api/layoutApi';
 import { useRecoilState } from 'recoil';
 import { authUserState } from '../state/atoms';
+import { useCookies } from 'react-cookie';
 
 export default function Header({ children }: any) {
-  const [headerRes, setHeaderRes]:any = useState();
+  const [headerRes, setHeaderRes]: any = useState();
+  const [cookies, setCookie, removeCookie] = useCookies(['Authorization']);
 
   const [authUserdata, setAuthUser] = useRecoilState(authUserState);
   console.log('auth', authUserdata.email);
 
-  console.log(localStorage.getItem('userData'));
-  let item = localStorage.getItem('userData');
+  // console.log(localStorage.getItem('userData'));
+  // let item = localStorage.getItem('userData');
   useEffect(() => {
     const fetchData = async () => {
       let data: any = await getHeader();
       setHeaderRes(data);
-      if (item) {
-        setAuthUser(JSON.parse(item));
+      if (cookies.Authorization) {
+        setAuthUser(JSON.parse(cookies.Authorization));
       }
     };
     fetchData();
@@ -157,7 +159,7 @@ export default function Header({ children }: any) {
             {/* Main navbar END */}
             {/* Profile START */}
             {/* Profile START */}
-            {authUserdata.name ? (
+            {authUserdata.email ? (
               <Profile {...authUserdata} />
             ) : (
               <Link href={'/auth/signUp'}>

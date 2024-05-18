@@ -8,7 +8,7 @@ import { signUpValidate } from '../validations/authValidate';
 import { registerUser } from '@/app/(src)/api/authApi';
 import { redirect, useRouter } from 'next/navigation';
 import { useRecoilState } from 'recoil';
-import { authUserState, todoListState } from '../state/atoms';
+import { authUserState } from '../state/atoms';
 // import { RMutation } from '../hooks/request/authUser';
 import { useMutation } from '@tanstack/react-query';
 import * as api from '@/app/(src)/api/authApi';
