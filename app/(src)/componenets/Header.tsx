@@ -9,10 +9,10 @@ import { useRecoilState } from 'recoil';
 import { authUserState } from '../state/atoms';
 
 export default function Header({ children }: any) {
-  const [headerRes, setHeaderRes] = useState();
+  const [headerRes, setHeaderRes]:any = useState();
 
   const [authUserdata, setAuthUser] = useRecoilState(authUserState);
-  console.log('auth', authUserState.name);
+  console.log('auth', authUserdata.email);
 
   console.log(localStorage.getItem('userData'));
   let item = localStorage.getItem('userData');
