@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function Profile() {
+export default function Profile({ name, email }: any) {
   const [theme, setTheme]: any = useState();
 
   const changeThemeHandler = (e: any) => {
@@ -45,7 +45,7 @@ export default function Profile() {
           width={100}
           height={100}
           className='avatar-img rounded-circle'
-          src='/images/avatar/01.jpg'
+          src='/images/avatar/User.png'
           alt='avatar'
         />
       </a>
@@ -63,15 +63,15 @@ export default function Profile() {
                 width={100}
                 height={100}
                 className='avatar-img rounded-circle shadow'
-                src='/images/avatar/01.jpg'
+                src='/images/avatar/User.png'
                 alt='avatar'
               />
             </div>
             <div>
               <a className='h6' href='#'>
-                الهام حسینی
+                {name}{' '}
               </a>
-              <p className='small m-0'>example@gmail.com</p>
+              <p className='small m-0 '>{email}</p>
             </div>
           </div>
         </li>
@@ -108,7 +108,7 @@ export default function Profile() {
         </li>
         {/* Dark mode options START */}
         <li>
-          <div className='bg-light dark-mode-switch theme-icon-active d-flex align-items-center p-1 rounded mt-2'>
+          <div className='bg-light dark-mode-switch theme-icon-active d-flex align-items-center p-1 rounded mt-2 justify-content-center '>
             <button
               type='button'
               className={`btn btn-sm mb-0 ${theme === 'light' && 'active'} `}

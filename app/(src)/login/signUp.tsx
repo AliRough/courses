@@ -1,7 +1,79 @@
+'use client';
+import { ErrorMessage } from '@hookform/error-message';
+import { zodResolver } from '@hookform/resolvers/zod';
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { signUpValidate } from '../validations/authValidate';
+import { registerUser } from '@/app/(src)/api/authApi';
+import { redirect, useRouter } from 'next/navigation';
+import { useRecoilState } from 'recoil';
+import { authUserState, todoListState } from '../state/atoms';
+// import { RMutation } from '../hooks/request/authUser';
+import { useMutation } from '@tanstack/react-query';
+import * as api from '@/app/(src)/api/authApi';
+import { useAuthUser } from '../hooks/request/authUser';
+import Image from 'next/image';
+import { useCookies } from 'react-cookie';
 
-export default function signUp() {
+export default function SignUp() {
+  const router = useRouter();
+
+  const [authUserdata, setAuthUser] = useRecoilState(authUserState);
+
+  // const R: any = RMutation();
+  // const { mutate, isPending, data, isError, isSuccess, error } = useAuthUser();
+  // console.log(isPending);
+  // console.log('sucses', isSuccess);
+
+  const [isPending, setIsPending] = useState(false);
+  const [cookies, setCookie, removeCookie] = useCookies(['Authorization']);
+
+  // onSuccess: () => {
+  //   // Invalidate and refetch
+  //   QueryClient.invalidateQueries({ queryKey: ['R'] });
+  // },
+  // });
+  const signUpFormHandler: any = async (data: any) => {
+    setIsPending(true);
+    console.log(data);
+    // await R(data);
+    let response: any = await api.registerUser(data);
+    console.log('response', response);
+
+    if (response?.status === 201) {
+      setAuthUser(data);
+      setCookie('Authorization', JSON.stringify(data));
+      // localStorage.setItem('userData', JSON.stringify(data));
+
+      router.push('/profile/s/dashboard');
+    }
+    setIsPending(false);
+    // data.password !== data.passwordConfirmation && console.log('error');
+  };
+
+  console.log(authUserdata);
+
+  const {
+    // ساختار پارامتر
+    register,
+    // کنترل دکمه سابمت به صورت اتوماتیک حالت رفرش رو غیر فعال میکنه.
+    handleSubmit,
+    // اگه اروری تولید کرد انتقال بده
+    formState: { errors },
+    watch,
+    setValue,
+  } = useForm({
+    resolver: zodResolver(signUpValidate),
+  });
+
+  const input: any = {
+    name: register('name'),
+    email: register('email'),
+    password: register('password'),
+    passwordConfirmation: register('passwordConfirmation'),
+  };
+
   return (
     <main>
       <section className='p-0 d-flex align-items-center position-relative overflow-hidden'>
@@ -20,39 +92,49 @@ export default function signUp() {
                   </p>
                 </div>
                 {/* SVG Image */}
-                <img
-                  src='assets/images/element/02.svg'
-                  className='mt-5'
+                <Image
+                  width={100}
+                  height={100}
+                  src='/images/element/02.svg'
+                  className='mt-5 w-100'
                   alt=''
                 />
                 {/* Info */}
                 <div className='d-sm-flex mt-5 align-items-center justify-content-center'>
                   <ul className='avatar-group mb-2 mb-sm-0'>
                     <li className='avatar avatar-sm'>
-                      <img
+                      <Image
+                        width={100}
+                        height={100}
                         className='avatar-img rounded-circle'
-                        src='assets/images/avatar/01.jpg'
+                        src='/images/avatar/01.jpg'
                         alt='avatar'
                       />
                     </li>
                     <li className='avatar avatar-sm'>
-                      <img
+                      <Image
+                        width={100}
+                        height={100}
                         className='avatar-img rounded-circle'
-                        src='assets/images/avatar/02.jpg'
+                        src='/images/avatar/02.jpg'
                         alt='avatar'
                       />
                     </li>
                     <li className='avatar avatar-sm'>
-                      <img
+                      <Image
+                        width={100}
+                        height={100}
                         className='avatar-img rounded-circle'
-                        src='assets/images/avatar/03.jpg'
+                        src='/images/avatar/03.jpg'
                         alt='avatar'
                       />
                     </li>
                     <li className='avatar avatar-sm'>
-                      <img
+                      <Image
+                        width={100}
+                        height={100}
                         className='avatar-img rounded-circle'
-                        src='assets/images/avatar/04.jpg'
+                        src='/images/avatar/04.jpg'
                         alt='avatar'
                       />
                     </li>
@@ -70,8 +152,10 @@ export default function signUp() {
               <div className='row my-5'>
                 <div className='col-sm-10 col-xl-8 m-auto'>
                   {/* Title */}
-                  <img
-                    src='assets/images/element/03.svg'
+                  <Image
+                    width={100}
+                    height={100}
+                    src='/images/element/03.svg'
                     className='h-40px mb-2'
                     alt=''
                   />
@@ -80,15 +164,32 @@ export default function signUp() {
                     از دیدن شما خوشحالم! لطفا با حساب کاربری خود ثبت نام کنید.
                   </p>
                   {/* Form START */}
-                  <form>
+                  <form onSubmit={handleSubmit(signUpFormHandler)}>
+                    {/* Name */}
+                    <div className='mb-4'>
+                      <label className='form-label'>نام کاربری</label>
+                      <div className='input-group input-group-lg'>
+                        <span className='input-group-text bg-light rounded-start border-0 text-secondary px-3'>
+                          <i className='bi bi-person-fill '></i>{' '}
+                        </span>
+                        <input
+                          type='text'
+                          className='form-control border-0 bg-light rounded-end ps-1'
+                          placeholder='نام مستعار'
+                          {...input.name}
+                        />
+                      </div>
+                      <ErrorMessage
+                        errors={errors}
+                        name='name'
+                        render={({ message }) => (
+                          <p className='text-danger'>{message}</p>
+                        )}
+                      />
+                    </div>
                     {/* Email */}
                     <div className='mb-4'>
-                      <label
-                        htmlFor='exampleInputEmail1'
-                        className='form-label'
-                      >
-                        ایمیل
-                      </label>
+                      <label className='form-label'>ایمیل</label>
                       <div className='input-group input-group-lg'>
                         <span className='input-group-text bg-light rounded-start border-0 text-secondary px-3'>
                           <i className='bi bi-envelope-fill' />
@@ -97,15 +198,20 @@ export default function signUp() {
                           type='email'
                           className='form-control border-0 bg-light rounded-end ps-1'
                           placeholder='***@gmail.com'
-                          id='exampleInputEmail1'
+                          {...input.email}
                         />
                       </div>
+                      <ErrorMessage
+                        errors={errors}
+                        name='email'
+                        render={({ message }) => (
+                          <p className='text-danger'>{message}</p>
+                        )}
+                      />
                     </div>
                     {/* Password */}
                     <div className='mb-4'>
-                      <label htmlFor='inputPassword5' className='form-label'>
-                        رمز عبور *
-                      </label>
+                      <label className='form-label'>رمز عبور *</label>
                       <div className='input-group input-group-lg'>
                         <span className='input-group-text bg-light rounded-start border-0 text-secondary px-3'>
                           <i className='fas fa-lock' />
@@ -114,15 +220,20 @@ export default function signUp() {
                           type='password'
                           className='form-control border-0 bg-light rounded-end ps-1'
                           placeholder='*********'
-                          id='inputPassword5'
+                          {...input.password}
                         />
                       </div>
+                      <ErrorMessage
+                        errors={errors}
+                        name='password'
+                        render={({ message }) => (
+                          <p className='text-danger'>{message}</p>
+                        )}
+                      />
                     </div>
                     {/* Confirm Password */}
                     <div className='mb-4'>
-                      <label htmlFor='inputPassword6' className='form-label'>
-                        تایید رمز عبور *
-                      </label>
+                      <label className='form-label'>تایید رمز عبور *</label>
                       <div className='input-group input-group-lg'>
                         <span className='input-group-text bg-light rounded-start border-0 text-secondary px-3'>
                           <i className='fas fa-lock' />
@@ -131,9 +242,16 @@ export default function signUp() {
                           type='password'
                           className='form-control border-0 bg-light rounded-end ps-1'
                           placeholder='*********'
-                          id='inputPassword6'
+                          {...input.passwordConfirmation}
                         />
                       </div>
+                      <ErrorMessage
+                        errors={errors}
+                        name='passwordConfirmation'
+                        render={({ message }) => (
+                          <p className='text-danger'>{message}</p>
+                        )}
+                      />
                     </div>
                     {/* Check box */}
                     <div className='mb-4'>
@@ -143,10 +261,7 @@ export default function signUp() {
                           className='form-check-input'
                           id='checkbox-1'
                         />
-                        <label
-                          className='form-check-label'
-                          htmlFor='checkbox-1'
-                        >
+                        <label className='form-check-label'>
                           با ثبت نام <a href='#'>شرایط و قوانین سایت</a> را
                           خواهید پذیرفت.
                         </label>
@@ -155,37 +270,17 @@ export default function signUp() {
                     {/* Button */}
                     <div className='align-items-center mt-0'>
                       <div className='d-grid'>
-                        <button className='btn btn-primary mb-0' type='button'>
+                        <button
+                          className={`btn btn-primary mb-0 ${isPending && 'disabled'}`}
+                          type='submit'
+                        >
                           ثبت نام
                         </button>
                       </div>
                     </div>
                   </form>
                   {/* Form END */}
-                  {/* Social buttons */}
-                  <div className='row'>
-                    {/* Divider with text */}
-                    <div className='position-relative my-4'>
-                      <hr />
-                      <p className='small position-absolute top-50 start-50 translate-middle bg-body px-5'>
-                        یا
-                      </p>
-                    </div>
-                    {/* Social btn */}
-                    <div className='col-xxl-6 d-grid'>
-                      <a href='#' className='btn bg-google mb-2 mb-xxl-0'>
-                        <i className='fab fa-fw fa-google text-white me-2' />
-                        با Google
-                      </a>
-                    </div>
-                    {/* Social btn */}
-                    <div className='col-xxl-6 d-grid'>
-                      <a href='#' className='btn bg-facebook mb-0'>
-                        <i className='fab fa-fw fa-facebook-f me-2' />
-                        با Facebook
-                      </a>
-                    </div>
-                  </div>
+
                   {/* Sign up link */}
                   <div className='mt-4 text-center'>
                     <span>

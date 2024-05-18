@@ -5,7 +5,6 @@
  * @version 1.4.0
  **/
 
-
 /* ===================
 Table Of Content
 ======================
@@ -37,11 +36,11 @@ Table Of Content
 26 FLATPICKER
 ====================== */
 
-("use strict");
+('use strict');
 !(function () {
   (window.Element.prototype.removeClass = function () {
     let className =
-        arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : "",
+        arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : '',
       selectors = this;
     if (!(selectors instanceof HTMLElement) && selectors !== null) {
       selectors = document.querySelector(selectors);
@@ -53,7 +52,7 @@ Table Of Content
   }),
     (window.Element.prototype.addClass = function () {
       let className =
-          arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : "",
+          arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : '',
         selectors = this;
       if (!(selectors instanceof HTMLElement) && selectors !== null) {
         selectors = document.querySelector(selectors);
@@ -65,7 +64,7 @@ Table Of Content
     }),
     (window.Element.prototype.toggleClass = function () {
       let className =
-          arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : "",
+          arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : '',
         selectors = this;
       if (!(selectors instanceof HTMLElement) && selectors !== null) {
         selectors = document.querySelector(selectors);
@@ -76,7 +75,7 @@ Table Of Content
       return this;
     }),
     (window.Element.prototype.isVariableDefined = function () {
-      return !!this && typeof this != "undefined" && this != null;
+      return !!this && typeof this != 'undefined' && this != null;
     });
 })();
 
@@ -120,7 +119,7 @@ var e = {
       e.flatPicker();
   },
   isVariableDefined: function (el) {
-    return typeof !!el && el != "undefined" && el != null;
+    return typeof !!el && el != 'undefined' && el != null;
   },
   getParents: function (el, selector, filter) {
     const result = [];
@@ -182,7 +181,7 @@ var e = {
     return sibs;
   },
   on: function (selectors, type, listener) {
-    document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener('DOMContentLoaded', () => {
       if (!(selectors instanceof HTMLElement) && selectors !== null) {
         selectors = document.querySelector(selectors);
       }
@@ -190,10 +189,10 @@ var e = {
     });
   },
   onAll: function (selectors, type, listener) {
-    document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll(selectors).forEach((element) => {
-        if (type.indexOf(",") > -1) {
-          let types = type.split(",");
+        if (type.indexOf(',') > -1) {
+          let types = type.split(',');
           types.forEach((type) => {
             element.addEventListener(type, listener);
           });
@@ -251,11 +250,11 @@ var e = {
   // START: 01 Preloader
   preLoader: function () {
     window.onload = function () {
-      var preloader = e.select(".preloader");
+      var preloader = e.select('.preloader');
       if (e.isVariableDefined(preloader)) {
-        preloader.className += " animate__animated animate__fadeOut";
+        preloader.className += ' animate__animated animate__fadeOut';
         setTimeout(function () {
-          preloader.style.display = "none";
+          preloader.style.display = 'none';
         }, 200);
       }
     };
@@ -265,57 +264,57 @@ var e = {
   // START: 02 Mega Menu
   megaMenu: function () {
     e.onAll(
-      ".dropdown-menu a.dropdown-item.dropdown-toggle",
-      "click",
+      '.dropdown-menu a.dropdown-item.dropdown-toggle',
+      'click',
       function (event) {
         var element = this;
         event.preventDefault();
         event.stopImmediatePropagation();
         if (
           e.isVariableDefined(element.nextElementSibling) &&
-          !element.nextElementSibling.classList.contains("show")
+          !element.nextElementSibling.classList.contains('show')
         ) {
-          const parents = e.getParents(element, ".dropdown-menu");
-          e.removeClass(parents.querySelector(".show"), "show");
-          if (e.isVariableDefined(parents.querySelector(".dropdown-opened"))) {
+          const parents = e.getParents(element, '.dropdown-menu');
+          e.removeClass(parents.querySelector('.show'), 'show');
+          if (e.isVariableDefined(parents.querySelector('.dropdown-opened'))) {
             e.removeClass(
-              parents.querySelector(".dropdown-opened"),
-              "dropdown-opened"
+              parents.querySelector('.dropdown-opened'),
+              'dropdown-opened',
             );
           }
         }
-        var $subMenu = e.getNextSiblings(element, ".dropdown-menu");
-        e.toggleClass($subMenu, "show");
-        $subMenu.previousElementSibling.toggleClass("dropdown-opened");
-        var parents = e.getParents(element, "li.nav-item.dropdown.show");
+        var $subMenu = e.getNextSiblings(element, '.dropdown-menu');
+        e.toggleClass($subMenu, 'show');
+        $subMenu.previousElementSibling.toggleClass('dropdown-opened');
+        var parents = e.getParents(element, 'li.nav-item.dropdown.show');
         if (e.isVariableDefined(parents) && parents.length > 0) {
-          e.on(parents, "hidden.bs.dropdown", function (event) {
-            e.removeAllClass(".dropdown-submenu .show");
+          e.on(parents, 'hidden.bs.dropdown', function (event) {
+            e.removeAllClass('.dropdown-submenu .show');
           });
         }
-      }
+      },
     );
   },
   // END: Mega Menu
 
   // START: 03 Sticky Header
   stickyHeader: function () {
-    var stickyNav = e.select(".navbar-sticky");
+    var stickyNav = e.select('.navbar-sticky');
     if (e.isVariableDefined(stickyNav)) {
       var stickyHeight = stickyNav.offsetHeight;
-      stickyNav.insertAdjacentHTML("afterend", '<div id="sticky-space"></div>');
-      var stickySpace = e.select("#sticky-space");
+      stickyNav.insertAdjacentHTML('afterend', '<div id="sticky-space"></div>');
+      var stickySpace = e.select('#sticky-space');
       if (e.isVariableDefined(stickySpace)) {
-        document.addEventListener("scroll", function (event) {
+        document.addEventListener('scroll', function (event) {
           var scTop = window.pageYOffset || document.documentElement.scrollTop;
           if (scTop >= 400) {
-            stickySpace.addClass("active");
-            e.select("#sticky-space.active").style.height = stickyHeight + "px";
-            stickyNav.addClass("navbar-sticky-on");
+            stickySpace.addClass('active');
+            e.select('#sticky-space.active').style.height = stickyHeight + 'px';
+            stickyNav.addClass('navbar-sticky-on');
           } else {
-            stickySpace.removeClass("active");
-            stickySpace.style.height = "0px";
-            stickyNav.removeClass("navbar-sticky-on");
+            stickySpace.removeClass('active');
+            stickySpace.style.height = '0px';
+            stickyNav.removeClass('navbar-sticky-on');
           }
         });
       }
@@ -325,74 +324,74 @@ var e = {
 
   // START: 04 Tiny Slider
   tinySlider: function () {
-    var $carousel = e.select(".tiny-slider-inner");
+    var $carousel = e.select('.tiny-slider-inner');
     if (e.isVariableDefined($carousel)) {
-      var tnsCarousel = e.selectAll(".tiny-slider-inner");
+      var tnsCarousel = e.selectAll('.tiny-slider-inner');
       tnsCarousel.forEach((slider) => {
         var slider1 = slider;
-        var sliderMode = slider1.getAttribute("data-mode")
-          ? slider1.getAttribute("data-mode")
-          : "carousel";
-        var sliderAxis = slider1.getAttribute("data-axis")
-          ? slider1.getAttribute("data-axis")
-          : "horizontal";
-        var sliderSpace = slider1.getAttribute("data-gutter")
-          ? slider1.getAttribute("data-gutter")
+        var sliderMode = slider1.getAttribute('data-mode')
+          ? slider1.getAttribute('data-mode')
+          : 'carousel';
+        var sliderAxis = slider1.getAttribute('data-axis')
+          ? slider1.getAttribute('data-axis')
+          : 'horizontal';
+        var sliderSpace = slider1.getAttribute('data-gutter')
+          ? slider1.getAttribute('data-gutter')
           : 30;
-        var sliderEdge = slider1.getAttribute("data-edge")
-          ? slider1.getAttribute("data-edge")
+        var sliderEdge = slider1.getAttribute('data-edge')
+          ? slider1.getAttribute('data-edge')
           : 0;
 
-        var sliderItems = slider1.getAttribute("data-items")
-          ? slider1.getAttribute("data-items")
+        var sliderItems = slider1.getAttribute('data-items')
+          ? slider1.getAttribute('data-items')
           : 4; //option: number (items in all device)
-        var sliderItemsXl = slider1.getAttribute("data-items-xl")
-          ? slider1.getAttribute("data-items-xl")
+        var sliderItemsXl = slider1.getAttribute('data-items-xl')
+          ? slider1.getAttribute('data-items-xl')
           : Number(sliderItems); //option: number (items in 1200 to end )
-        var sliderItemsLg = slider1.getAttribute("data-items-lg")
-          ? slider1.getAttribute("data-items-lg")
+        var sliderItemsLg = slider1.getAttribute('data-items-lg')
+          ? slider1.getAttribute('data-items-lg')
           : Number(sliderItemsXl); //option: number (items in 992 to 1199 )
-        var sliderItemsMd = slider1.getAttribute("data-items-md")
-          ? slider1.getAttribute("data-items-md")
+        var sliderItemsMd = slider1.getAttribute('data-items-md')
+          ? slider1.getAttribute('data-items-md')
           : Number(sliderItemsLg); //option: number (items in 768 to 991 )
-        var sliderItemsSm = slider1.getAttribute("data-items-sm")
-          ? slider1.getAttribute("data-items-sm")
+        var sliderItemsSm = slider1.getAttribute('data-items-sm')
+          ? slider1.getAttribute('data-items-sm')
           : Number(sliderItemsMd); //option: number (items in 576 to 767 )
-        var sliderItemsXs = slider1.getAttribute("data-items-xs")
-          ? slider1.getAttribute("data-items-xs")
+        var sliderItemsXs = slider1.getAttribute('data-items-xs')
+          ? slider1.getAttribute('data-items-xs')
           : Number(sliderItemsSm); //option: number (items in start to 575 )
 
-        var sliderSpeed = slider1.getAttribute("data-speed")
-          ? slider1.getAttribute("data-speed")
+        var sliderSpeed = slider1.getAttribute('data-speed')
+          ? slider1.getAttribute('data-speed')
           : 500;
-        var sliderautoWidth = slider1.getAttribute("data-autowidth") === "true"; //option: true or false
-        var sliderArrow = slider1.getAttribute("data-arrow") !== "false"; //option: true or false
-        var sliderDots = slider1.getAttribute("data-dots") !== "false"; //option: true or false
+        var sliderautoWidth = slider1.getAttribute('data-autowidth') === 'true'; //option: true or false
+        var sliderArrow = slider1.getAttribute('data-arrow') !== 'false'; //option: true or false
+        var sliderDots = slider1.getAttribute('data-dots') !== 'false'; //option: true or false
 
-        var sliderAutoPlay = slider1.getAttribute("data-autoplay") !== "false"; //option: true or false
-        var sliderAutoPlayTime = slider1.getAttribute("data-autoplaytime")
-          ? slider1.getAttribute("data-autoplaytime")
+        var sliderAutoPlay = slider1.getAttribute('data-autoplay') !== 'false'; //option: true or false
+        var sliderAutoPlayTime = slider1.getAttribute('data-autoplaytime')
+          ? slider1.getAttribute('data-autoplaytime')
           : 4000;
         var sliderHoverPause =
-          slider1.getAttribute("data-hoverpause") === "true"; //option: true or false
-        if (e.isVariableDefined(e.select(".custom-thumb"))) {
-          var sliderNavContainer = e.select(".custom-thumb");
+          slider1.getAttribute('data-hoverpause') === 'true'; //option: true or false
+        if (e.isVariableDefined(e.select('.custom-thumb'))) {
+          var sliderNavContainer = e.select('.custom-thumb');
         }
-        var sliderLoop = slider1.getAttribute("data-loop") !== "false"; //option: true or false
-        var sliderRewind = slider1.getAttribute("data-rewind") === "true"; //option: true or false
+        var sliderLoop = slider1.getAttribute('data-loop') !== 'false'; //option: true or false
+        var sliderRewind = slider1.getAttribute('data-rewind') === 'true'; //option: true or false
         var sliderAutoHeight =
-          slider1.getAttribute("data-autoheight") === "true"; //option: true or false
+          slider1.getAttribute('data-autoheight') === 'true'; //option: true or false
         var sliderfixedWidth =
-          slider1.getAttribute("data-fixedwidth") === "true"; //option: true or false
-        var sliderTouch = slider1.getAttribute("data-touch") !== "false"; //option: true or false
-        var sliderDrag = slider1.getAttribute("data-drag") !== "false"; //option: true or false
+          slider1.getAttribute('data-fixedwidth') === 'true'; //option: true or false
+        var sliderTouch = slider1.getAttribute('data-touch') !== 'false'; //option: true or false
+        var sliderDrag = slider1.getAttribute('data-drag') !== 'false'; //option: true or false
         // Check if document DIR is RTL
         var ifRtl = document
-          .getElementsByTagName("html")[0]
-          .getAttribute("dir");
+          .getElementsByTagName('html')[0]
+          .getAttribute('dir');
         var sliderDirection;
-        if (ifRtl === "rtl") {
-          sliderDirection = "rtl";
+        if (ifRtl === 'rtl') {
+          sliderDirection = 'rtl';
         }
 
         var tnsSlider = tns({
@@ -452,9 +451,9 @@ var e = {
 
   // START: 05 Sticky Bar
   stickyBar: function () {
-    var sb = e.select("[data-sticky]");
+    var sb = e.select('[data-sticky]');
     if (e.isVariableDefined(sb)) {
-      var sticky = new Sticky("[data-sticky]");
+      var sticky = new Sticky('[data-sticky]');
     }
   },
   // END: Sticky Bar
@@ -463,7 +462,7 @@ var e = {
   // Enable tooltips everywhere via data-toggle attribute
   toolTipFunc: function () {
     var tooltipTriggerList = [].slice.call(
-      e.selectAll('[data-bs-toggle="tooltip"]')
+      e.selectAll('[data-bs-toggle="tooltip"]'),
     );
     var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
       return new bootstrap.Tooltip(tooltipTriggerEl);
@@ -475,7 +474,7 @@ var e = {
   // Enable popover everywhere via data-toggle attribute
   popOverFunc: function () {
     var popoverTriggerList = [].slice.call(
-      e.selectAll('[data-bs-toggle="popover"]')
+      e.selectAll('[data-bs-toggle="popover"]'),
     );
     var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
       return new bootstrap.Popover(popoverTriggerEl);
@@ -486,12 +485,12 @@ var e = {
   // START: 08 Back to Top
   backTotop: function () {
     var scrollpos = window.scrollY;
-    var backBtn = e.select(".back-top");
+    var backBtn = e.select('.back-top');
     if (e.isVariableDefined(backBtn)) {
-      var add_class_on_scroll = () => backBtn.addClass("back-top-show");
-      var remove_class_on_scroll = () => backBtn.removeClass("back-top-show");
+      var add_class_on_scroll = () => backBtn.addClass('back-top-show');
+      var remove_class_on_scroll = () => backBtn.removeClass('back-top-show');
 
-      window.addEventListener("scroll", function () {
+      window.addEventListener('scroll', function () {
         scrollpos = window.scrollY;
         if (scrollpos >= 800) {
           add_class_on_scroll();
@@ -500,11 +499,11 @@ var e = {
         }
       });
 
-      backBtn.addEventListener("click", () =>
+      backBtn.addEventListener('click', () =>
         window.scrollTo({
           top: 0,
-          behavior: "smooth",
-        })
+          behavior: 'smooth',
+        }),
       );
     }
   },
@@ -512,12 +511,12 @@ var e = {
 
   // START: 09 GLightbox
   lightBox: function () {
-    var light = e.select("[data-glightbox]");
+    var light = e.select('[data-glightbox]');
     if (e.isVariableDefined(light)) {
       var lb = GLightbox({
-        selector: "*[data-glightbox]",
-        openEffect: "fade",
-        closeEffect: "fade",
+        selector: '*[data-glightbox]',
+        openEffect: 'fade',
+        closeEffect: 'fade',
       });
     }
   },
@@ -525,21 +524,21 @@ var e = {
 
   // START: 10 Isotope
   enableIsotope: function () {
-    var isGridItem = e.select(".grid-item");
+    var isGridItem = e.select('.grid-item');
     if (e.isVariableDefined(isGridItem)) {
       // Code only for normal Grid
-      var onlyGrid = e.select("[data-isotope]");
+      var onlyGrid = e.select('[data-isotope]');
       if (e.isVariableDefined(onlyGrid)) {
-        var allGrid = e.selectAll("[data-isotope]");
+        var allGrid = e.selectAll('[data-isotope]');
         allGrid.forEach((gridItem) => {
-          var gridItemData = gridItem.getAttribute("data-isotope");
+          var gridItemData = gridItem.getAttribute('data-isotope');
           var gridItemDataObj = JSON.parse(gridItemData);
           var iso = new Isotope(gridItem, {
-            itemSelector: ".grid-item",
+            itemSelector: '.grid-item',
             layoutMode: gridItemDataObj.layoutMode,
           });
 
-          imagesLoaded(gridItem).on("progress", function () {
+          imagesLoaded(gridItem).on('progress', function () {
             // layout Isotope after each image loads
             iso.layout();
           });
@@ -547,32 +546,32 @@ var e = {
       }
 
       // Code only for normal Grid
-      var onlyGridFilter = e.select(".grid-menu");
+      var onlyGridFilter = e.select('.grid-menu');
       if (e.isVariableDefined(onlyGridFilter)) {
-        var filterMenu = e.selectAll(".grid-menu");
+        var filterMenu = e.selectAll('.grid-menu');
         filterMenu.forEach((menu) => {
-          var filterContainer = menu.getAttribute("data-target");
+          var filterContainer = menu.getAttribute('data-target');
           var a = menu.dataset.target;
           var b = e.select(a);
-          var filterContainerItemData = b.getAttribute("data-isotope");
+          var filterContainerItemData = b.getAttribute('data-isotope');
           var filterContainerItemDataObj = JSON.parse(filterContainerItemData);
           var filter = new Isotope(filterContainer, {
-            itemSelector: ".grid-item",
-            transitionDuration: "0.7s",
+            itemSelector: '.grid-item',
+            transitionDuration: '0.7s',
             layoutMode: filterContainerItemDataObj.layoutMode,
           });
 
-          var menuItems = menu.querySelectorAll("li a");
+          var menuItems = menu.querySelectorAll('li a');
           menuItems.forEach((menuItem) => {
-            menuItem.addEventListener("click", function (event) {
-              var filterValue = menuItem.getAttribute("data-filter");
+            menuItem.addEventListener('click', function (event) {
+              var filterValue = menuItem.getAttribute('data-filter');
               filter.arrange({ filter: filterValue });
-              menuItems.forEach((control) => control.removeClass("active"));
-              menuItem.addClass("active");
+              menuItems.forEach((control) => control.removeClass('active'));
+              menuItem.addClass('active');
             });
           });
 
-          imagesLoaded(filterContainer).on("progress", function () {
+          imagesLoaded(filterContainer).on('progress', function () {
             filter.layout();
           });
         });
@@ -583,24 +582,24 @@ var e = {
 
   // START: 11 Choices
   choicesSelect: function () {
-    var choice = e.select(".js-choice");
+    var choice = e.select('.js-choice');
 
     if (e.isVariableDefined(choice)) {
-      var element = document.querySelectorAll(".js-choice");
+      var element = document.querySelectorAll('.js-choice');
 
       element.forEach(function (item) {
         var removeItemBtn =
-          item.getAttribute("data-remove-item-button") == "true" ? true : false;
+          item.getAttribute('data-remove-item-button') == 'true' ? true : false;
         var placeHolder =
-          item.getAttribute("data-placeholder") == "false" ? false : true;
-        var placeHolderVal = item.getAttribute("data-placeholder-val")
-          ? item.getAttribute("data-placeholder-val")
-          : "افزودن";
-        var maxItemCount = item.getAttribute("data-max-item-count")
-          ? item.getAttribute("data-max-item-count")
+          item.getAttribute('data-placeholder') == 'false' ? false : true;
+        var placeHolderVal = item.getAttribute('data-placeholder-val')
+          ? item.getAttribute('data-placeholder-val')
+          : 'افزودن';
+        var maxItemCount = item.getAttribute('data-max-item-count')
+          ? item.getAttribute('data-max-item-count')
           : 3;
         var searchEnabled =
-          item.getAttribute("data-search-enabled") == "false" ? false : true;
+          item.getAttribute('data-search-enabled') == 'false' ? false : true;
 
         var choices = new Choices(item, {
           removeItemButton: removeItemBtn,
@@ -616,11 +615,11 @@ var e = {
 
   // START: 12 AOS Animation
   aosFunc: function () {
-    var aos = e.select(".aos");
+    var aos = e.select('.aos');
     if (e.isVariableDefined(aos)) {
       AOS.init({
         duration: 500,
-        easing: "ease-out-quart",
+        easing: 'ease-out-quart',
         once: true,
       });
     }
@@ -629,12 +628,12 @@ var e = {
 
   // START: 13 Dashboard Chart
   dashboardChart: function () {
-    var ac = e.select("#ChartPayout");
+    var ac = e.select('#ChartPayout');
     if (e.isVariableDefined(ac)) {
       var options = {
         series: [
           {
-            name: "Payout",
+            name: 'Payout',
             data: [
               2909, 1259, 950, 1563, 1825, 2526, 2010, 3260, 3005, 3860, 4039,
             ],
@@ -642,7 +641,7 @@ var e = {
         ],
         chart: {
           height: 300,
-          type: "area",
+          type: 'area',
           toolbar: {
             show: false,
           },
@@ -652,23 +651,23 @@ var e = {
           enabled: true,
         },
         stroke: {
-          curve: "smooth",
+          curve: 'smooth',
         },
-        colors: [ThemeColor.getCssVariableValue("--bs-primary")],
+        colors: [ThemeColor.getCssVariableValue('--bs-primary')],
         xaxis: {
-          type: "Payout",
+          type: 'Payout',
           categories: [
-            "فروردین",
-            "اردیبهشت",
-            "خرداد",
-            "تیر",
-            "مرداد",
-            "شهریور",
-            "مهر",
-            "آبان",
-            "آذر",
-            "دی",
-            "بهمن",
+            'فروردین',
+            'اردیبهشت',
+            'خرداد',
+            'تیر',
+            'مرداد',
+            'شهریور',
+            'مهر',
+            'آبان',
+            'آذر',
+            'دی',
+            'بهمن',
           ],
           axisBorder: {
             show: false,
@@ -691,7 +690,7 @@ var e = {
           y: {
             title: {
               formatter: function (e) {
-                return "" + "تومان";
+                return '' + 'تومان';
               },
             },
           },
@@ -701,8 +700,8 @@ var e = {
         },
       };
       var chart = new ApexCharts(
-        document.querySelector("#ChartPayout"),
-        options
+        document.querySelector('#ChartPayout'),
+        options,
       );
       chart.render();
     }
@@ -711,12 +710,12 @@ var e = {
 
   // START: 14 Earning Chart
   earningChart: function () {
-    var cpe = e.select("#ChartPayoutEarning");
+    var cpe = e.select('#ChartPayoutEarning');
     if (e.isVariableDefined(cpe)) {
       var options = {
         series: [
           {
-            name: "Payout",
+            name: 'Payout',
             data: [
               500, 700, 900, 1500, 1800, 1000, 0, 2000, 3200, 3000, 4800, 4000,
             ],
@@ -724,7 +723,7 @@ var e = {
         ],
         chart: {
           height: 300,
-          type: "area",
+          type: 'area',
           sparkline: {
             enabled: !0,
           },
@@ -733,23 +732,23 @@ var e = {
           enabled: false,
         },
         stroke: {
-          curve: "smooth",
+          curve: 'smooth',
         },
-        colors: [ThemeColor.getCssVariableValue("--bs-primary")],
+        colors: [ThemeColor.getCssVariableValue('--bs-primary')],
         xaxis: {
-          type: "Payout",
+          type: 'Payout',
           categories: [
-            "فروردین",
-            "اردیبهشت",
-            "خرداد",
-            "تیر",
-            "مرداد",
-            "شهریور",
-            "مهر",
-            "آبان",
-            "آذر",
-            "دی",
-            "بهمن",
+            'فروردین',
+            'اردیبهشت',
+            'خرداد',
+            'تیر',
+            'مرداد',
+            'شهریور',
+            'مهر',
+            'آبان',
+            'آذر',
+            'دی',
+            'بهمن',
           ],
         },
         grid: {},
@@ -757,7 +756,7 @@ var e = {
           y: {
             title: {
               formatter: function (e) {
-                return "" + "تومان";
+                return '' + 'تومان';
               },
             },
           },
@@ -767,8 +766,8 @@ var e = {
         },
       };
       var chart = new ApexCharts(
-        document.querySelector("#ChartPayoutEarning"),
-        options
+        document.querySelector('#ChartPayoutEarning'),
+        options,
       );
       chart.render();
     }
@@ -777,30 +776,30 @@ var e = {
 
   // START: 15 Earning Chart 2
   earningChart2: function () {
-    var cpv = e.select("#ChartPageViews");
+    var cpv = e.select('#ChartPageViews');
     if (e.isVariableDefined(cpv)) {
       // CHART: Page Views
       var options = {
         series: [50, 20, 20, 10, 10],
-        labels: ["دوره-1", "دوره-2", "دوره-3", "دوره-4", "دوره-5"],
+        labels: ['دوره-1', 'دوره-2', 'دوره-3', 'دوره-4', 'دوره-5'],
         chart: {
           height: 300,
           width: 300,
           offsetX: 50,
-          type: "donut",
+          type: 'donut',
           sparkline: {
             enabled: !0,
           },
         },
         colors: [
-          ThemeColor.getCssVariableValue("--bs-success"),
-          ThemeColor.getCssVariableValue("--bs-warning"),
-          ThemeColor.getCssVariableValue("--bs-danger"),
-          ThemeColor.getCssVariableValue("--bs-primary"),
-          ThemeColor.getCssVariableValue("--bs-secondary"),
+          ThemeColor.getCssVariableValue('--bs-success'),
+          ThemeColor.getCssVariableValue('--bs-warning'),
+          ThemeColor.getCssVariableValue('--bs-danger'),
+          ThemeColor.getCssVariableValue('--bs-primary'),
+          ThemeColor.getCssVariableValue('--bs-secondary'),
         ],
         tooltip: {
-          theme: "dark",
+          theme: 'dark',
         },
         responsive: [
           {
@@ -811,15 +810,15 @@ var e = {
                 height: 200,
               },
               legend: {
-                position: "bottom",
+                position: 'bottom',
               },
             },
           },
         ],
       };
       var chart = new ApexCharts(
-        document.querySelector("#ChartPageViews"),
-        options
+        document.querySelector('#ChartPageViews'),
+        options,
       );
       chart.render();
     }
@@ -828,29 +827,29 @@ var e = {
 
   // START: 16 Traffic Chart
   trafficChart: function () {
-    var cpv = e.select("#ChartTrafficViews");
+    var cpv = e.select('#ChartTrafficViews');
     if (e.isVariableDefined(cpv)) {
       // CHART: Page Views
       var options = {
         series: [70, 15, 10, 5],
-        labels: ["دوره-1", "دوره-2", "دوره-3", "دوره-4", "دوره-5"],
+        labels: ['دوره-1', 'دوره-2', 'دوره-3', 'دوره-4', 'دوره-5'],
         chart: {
           height: 200,
           width: 200,
           offsetX: 0,
-          type: "donut",
+          type: 'donut',
           sparkline: {
             enabled: !0,
           },
         },
         colors: [
-          ThemeColor.getCssVariableValue("--bs-primary"),
-          ThemeColor.getCssVariableValue("--bs-success"),
-          ThemeColor.getCssVariableValue("--bs-warning"),
-          ThemeColor.getCssVariableValue("--bs-danger"),
+          ThemeColor.getCssVariableValue('--bs-primary'),
+          ThemeColor.getCssVariableValue('--bs-success'),
+          ThemeColor.getCssVariableValue('--bs-warning'),
+          ThemeColor.getCssVariableValue('--bs-danger'),
         ],
         tooltip: {
-          theme: "dark",
+          theme: 'dark',
         },
         responsive: [
           {
@@ -861,15 +860,15 @@ var e = {
                 height: 200,
               },
               legend: {
-                position: "bottom",
+                position: 'bottom',
               },
             },
           },
         ],
       };
       var chart = new ApexCharts(
-        document.querySelector("#ChartTrafficViews"),
-        options
+        document.querySelector('#ChartTrafficViews'),
+        options,
       );
       chart.render();
     }
@@ -878,18 +877,18 @@ var e = {
 
   // START: 17 Active student Chart
   activeChart: function () {
-    var jj = document.querySelector("#activeChartstudent");
-    if (typeof jj != "undefined" && jj != null) {
+    var jj = document.querySelector('#activeChartstudent');
+    if (typeof jj != 'undefined' && jj != null) {
       var options = {
         series: [
           {
-            name: "Conversion",
+            name: 'Conversion',
             data: [200, 290, 500, 500, 430, 316, 478, 700],
           },
         ],
         chart: {
           height: 130,
-          type: "area",
+          type: 'area',
           sparkline: {
             enabled: !0,
           },
@@ -898,23 +897,23 @@ var e = {
           enabled: false,
         },
         stroke: {
-          curve: "smooth",
+          curve: 'smooth',
         },
-        colors: [ThemeColor.getCssVariableValue("--bs-success")],
+        colors: [ThemeColor.getCssVariableValue('--bs-success')],
         xaxis: {
-          type: "category",
+          type: 'category',
           categories: [
-            "تیر 01",
-            "تیر 02",
-            "تیر 03",
-            "تیر 04",
-            "تیر 05",
-            "تیر 06",
-            "تیر 07",
-            "تیر 08",
-            "تیر 09 ",
-            "تیر 10",
-            "تیر 11",
+            'تیر 01',
+            'تیر 02',
+            'تیر 03',
+            'تیر 04',
+            'تیر 05',
+            'تیر 06',
+            'تیر 07',
+            'تیر 08',
+            'تیر 09 ',
+            'تیر 10',
+            'تیر 11',
           ],
         },
         grid: {},
@@ -922,7 +921,7 @@ var e = {
           y: {
             title: {
               formatter: function (e) {
-                return "";
+                return '';
               },
             },
           },
@@ -932,8 +931,8 @@ var e = {
         },
       };
       var chart = new ApexCharts(
-        document.querySelector("#activeChartstudent"),
-        options
+        document.querySelector('#activeChartstudent'),
+        options,
       );
       chart.render();
     }
@@ -942,18 +941,18 @@ var e = {
 
   // START: 18 Active student Chart 2
   activeChart2: function () {
-    var jj = document.querySelector("#activeChartstudent2");
-    if (typeof jj != "undefined" && jj != null) {
+    var jj = document.querySelector('#activeChartstudent2');
+    if (typeof jj != 'undefined' && jj != null) {
       var options = {
         series: [
           {
-            name: "Conversion",
+            name: 'Conversion',
             data: [200, 290, 325, 500, 600, 316, 478, 700],
           },
         ],
         chart: {
           height: 130,
-          type: "area",
+          type: 'area',
           sparkline: {
             enabled: !0,
           },
@@ -962,23 +961,23 @@ var e = {
           enabled: false,
         },
         stroke: {
-          curve: "smooth",
+          curve: 'smooth',
         },
-        colors: [ThemeColor.getCssVariableValue("--bs-purple")],
+        colors: [ThemeColor.getCssVariableValue('--bs-purple')],
         xaxis: {
-          type: "category",
+          type: 'category',
           categories: [
-            "تیر 01",
-            "تیر 02",
-            "تیر 03",
-            "تیر 04",
-            "تیر 05",
-            "تیر 06",
-            "تیر 07",
-            "تیر 08",
-            "تیر 09 ",
-            "تیر 10",
-            "تیر 11",
+            'تیر 01',
+            'تیر 02',
+            'تیر 03',
+            'تیر 04',
+            'تیر 05',
+            'تیر 06',
+            'تیر 07',
+            'تیر 08',
+            'تیر 09 ',
+            'تیر 10',
+            'تیر 11',
           ],
         },
         grid: {},
@@ -986,7 +985,7 @@ var e = {
           y: {
             title: {
               formatter: function (e) {
-                return "";
+                return '';
               },
             },
           },
@@ -996,8 +995,8 @@ var e = {
         },
       };
       var chart = new ApexCharts(
-        document.querySelector("#activeChartstudent2"),
-        options
+        document.querySelector('#activeChartstudent2'),
+        options,
       );
       chart.render();
     }
@@ -1006,28 +1005,28 @@ var e = {
 
   // START: 19 Review chart
   reviewChart: function () {
-    var ff = document.querySelector("#apexChartPageViews");
-    if (typeof ff != "undefined" && ff != null) {
+    var ff = document.querySelector('#apexChartPageViews');
+    if (typeof ff != 'undefined' && ff != null) {
       var options = {
         series: [80, 30],
-        labels: ["مثبت", "منفی"],
+        labels: ['مثبت', 'منفی'],
         chart: {
           height: 300,
           width: 300,
-          type: "donut",
+          type: 'donut',
           sparkline: {
             enabled: !0,
           },
         },
         stroke: {
-          colors: "transparent",
+          colors: 'transparent',
         },
         colors: [
-          ThemeColor.getCssVariableValue("--bs-success"),
-          ThemeColor.getCssVariableValue("--bs-danger"),
+          ThemeColor.getCssVariableValue('--bs-success'),
+          ThemeColor.getCssVariableValue('--bs-danger'),
         ],
         tooltip: {
-          theme: "dark",
+          theme: 'dark',
         },
         responsive: [
           {
@@ -1038,15 +1037,15 @@ var e = {
                 width: 100,
               },
               legend: {
-                position: "bottom",
+                position: 'bottom',
               },
             },
           },
         ],
       };
       var chart = new ApexCharts(
-        document.querySelector("#apexChartPageViews"),
-        options
+        document.querySelector('#apexChartPageViews'),
+        options,
       );
       chart.render();
     }
@@ -1055,11 +1054,11 @@ var e = {
 
   // START: 20 Quill Editor
   quill: function () {
-    var ql = e.select("#quilleditor");
+    var ql = e.select('#quilleditor');
     if (e.isVariableDefined(ql)) {
-      var editor = new Quill("#quilleditor", {
-        modules: { toolbar: "#quilltoolbar" },
-        theme: "snow",
+      var editor = new Quill('#quilleditor', {
+        modules: { toolbar: '#quilltoolbar' },
+        theme: 'snow',
       });
     }
   },
@@ -1067,24 +1066,24 @@ var e = {
 
   // START: 21 Stepper
   stepper: function () {
-    var stp = e.select("#stepper");
+    var stp = e.select('#stepper');
     if (e.isVariableDefined(stp)) {
-      var nxtBtn = document.querySelectorAll(".next-btn");
-      var prvBtn = document.querySelectorAll(".prev-btn");
+      var nxtBtn = document.querySelectorAll('.next-btn');
+      var prvBtn = document.querySelectorAll('.prev-btn');
 
-      var stepper = new Stepper(document.querySelector("#stepper"), {
+      var stepper = new Stepper(document.querySelector('#stepper'), {
         linear: false,
         animation: true,
       });
 
       nxtBtn.forEach(function (button) {
-        button.addEventListener("click", () => {
+        button.addEventListener('click', () => {
           stepper.next();
         });
       });
 
       prvBtn.forEach(function (button) {
-        button.addEventListener("click", () => {
+        button.addEventListener('click', () => {
           stepper.previous();
         });
       });
@@ -1094,24 +1093,24 @@ var e = {
 
   // START: 22 Video player
   videoPlyr: function () {
-    var vdp = e.select(".video-player");
+    var vdp = e.select('.video-player');
     if (e.isVariableDefined(vdp)) {
       // youtube
-      const playerYoutube = new Plyr("#player-youtube", {});
+      const playerYoutube = new Plyr('#player-youtube', {});
       window.player = playerYoutube;
 
       // Vimeo
-      const playerVimeo = new Plyr("#player-vimeo", {});
+      const playerVimeo = new Plyr('#player-vimeo', {});
       window.player = playerVimeo;
 
       // HTML video
-      const playerHtmlvideo = new Plyr("video", {
+      const playerHtmlvideo = new Plyr('video', {
         captions: { active: true },
       });
       window.player = playerHtmlvideo;
 
       // HTML audio
-      const playerHtmlaudio = new Plyr("audio", {
+      const playerHtmlaudio = new Plyr('audio', {
         captions: { active: true },
       });
       window.player = playerHtmlaudio;
@@ -1121,22 +1120,22 @@ var e = {
 
   // START: 23 Pricing
   pricing: function () {
-    var p = e.select(".price-wrap");
+    var p = e.select('.price-wrap');
     if (e.isVariableDefined(p)) {
-      var pWrap = e.selectAll(".price-wrap");
+      var pWrap = e.selectAll('.price-wrap');
       pWrap.forEach((item) => {
-        var priceSwitch = item.querySelector(".price-toggle"),
-          priceElement = item.querySelectorAll(".plan-price");
+        var priceSwitch = item.querySelector('.price-toggle'),
+          priceElement = item.querySelectorAll('.plan-price');
 
-        priceSwitch.addEventListener("change", function () {
+        priceSwitch.addEventListener('change', function () {
           if (priceSwitch.checked) {
             priceElement.forEach((pItem) => {
-              var dd = pItem.getAttribute("data-annual-price");
+              var dd = pItem.getAttribute('data-annual-price');
               pItem.innerHTML = dd;
             });
           } else {
             priceElement.forEach((pItem) => {
-              var ee = pItem.getAttribute("data-monthly-price");
+              var ee = pItem.getAttribute('data-monthly-price');
               pItem.innerHTML = ee;
             });
           }
@@ -1149,13 +1148,13 @@ var e = {
   // START: 24 Sticky element
   stickyElement: function () {
     var scrollpos = window.scrollY;
-    var sp = e.select(".sticky-element");
+    var sp = e.select('.sticky-element');
     if (e.isVariableDefined(sp)) {
-      var add_class_on_scroll = () => sp.addClass("sticky-element-sticked");
+      var add_class_on_scroll = () => sp.addClass('sticky-element-sticked');
       var remove_class_on_scroll = () =>
-        sp.removeClass("sticky-element-sticked");
+        sp.removeClass('sticky-element-sticked');
 
-      window.addEventListener("scroll", function () {
+      window.addEventListener('scroll', function () {
         scrollpos = window.scrollY;
         if (scrollpos >= 800) {
           add_class_on_scroll();
@@ -1169,19 +1168,19 @@ var e = {
 
   // START: 25 Overlay scrollbars
   overlayScrollbars: function () {
-    var os = e.select(".custom-scrollbar");
+    var os = e.select('.custom-scrollbar');
     if (os) {
-      document.addEventListener("DOMContentLoaded", function () {
-        var cs = document.querySelectorAll(".custom-scrollbar");
+      document.addEventListener('DOMContentLoaded', function () {
+        var cs = document.querySelectorAll('.custom-scrollbar');
         cs.forEach((c) => {
           OverlayScrollbars(c, {
             scrollbars: {
-              autoHide: "leave",
+              autoHide: 'leave',
               autoHideDelay: 200,
             },
             overflowBehavior: {
-              x: "visible-hidden",
-              y: "scroll",
+              x: 'visible-hidden',
+              y: 'scroll',
             },
           });
         });
@@ -1192,36 +1191,36 @@ var e = {
 
   // START: 26 Flatpicker
   flatPicker: function () {
-    var picker = e.select(".flatpickr");
+    var picker = e.select('.flatpickr');
     if (e.isVariableDefined(picker)) {
-      var element = e.selectAll(".flatpickr");
+      var element = e.selectAll('.flatpickr');
       element.forEach(function (item) {
         var mode =
-          item.getAttribute("data-mode") == "multiple"
-            ? "multiple"
-            : item.getAttribute("data-mode") == "range"
-            ? "range"
-            : "single";
+          item.getAttribute('data-mode') == 'multiple'
+            ? 'multiple'
+            : item.getAttribute('data-mode') == 'range'
+              ? 'range'
+              : 'single';
         var enableTime =
-          item.getAttribute("data-enableTime") == "true" ? true : false;
+          item.getAttribute('data-enableTime') == 'true' ? true : false;
         var noCalendar =
-          item.getAttribute("data-noCalendar") == "true" ? true : false;
-        var inline = item.getAttribute("data-inline") == "true" ? true : false;
-        var dateFormat = item.getAttribute("data-date-format")
-          ? item.getAttribute("data-date-format")
-          : item.getAttribute("data-enableTime") == "true"
-          ? "h:i K"
-          : "d M";
+          item.getAttribute('data-noCalendar') == 'true' ? true : false;
+        var inline = item.getAttribute('data-inline') == 'true' ? true : false;
+        var dateFormat = item.getAttribute('data-date-format')
+          ? item.getAttribute('data-date-format')
+          : item.getAttribute('data-enableTime') == 'true'
+            ? 'h:i K'
+            : 'd M';
 
         flatpickr(item, {
           mode: mode,
           enableTime: enableTime,
           noCalendar: noCalendar,
           inline: inline,
-          animate: "false",
-          position: "top",
+          animate: 'false',
+          position: 'top',
           dateFormat: dateFormat, //Check supported characters here: https://flatpickr.js.org/formatting/
-          disableMobile: "true",
+          disableMobile: 'true',
         });
       });
     }
@@ -1230,79 +1229,73 @@ var e = {
 };
 e.init();
 
-
-const storedTheme = localStorage.getItem("theme");
+const storedTheme = localStorage.getItem('theme');
 
 const getPreferredTheme = () => {
   if (storedTheme) {
     return storedTheme;
   }
-  return window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? "dark"
-    : "light";
+  //default  light
+  return 'light';
+  // default auto
+  return window.matchMedia('(prefers-color-scheme: dark)').matches
+    ? 'dark'
+    : 'light';
 };
 
 const setTheme = function (theme) {
   if (
-    theme === "auto" &&
-    window.matchMedia("(prefers-color-scheme: dark)").matches
+    theme === 'auto' &&
+    window.matchMedia('(prefers-color-scheme: dark)').matches
   ) {
-    document.documentElement.setAttribute("data-bs-theme", "dark");
+    document.documentElement.setAttribute('data-bs-theme', 'dark');
   } else {
-    document.documentElement.setAttribute("data-bs-theme", theme);
+    document.documentElement.setAttribute('data-bs-theme', theme);
   }
 };
 
 setTheme(getPreferredTheme());
 
-window.addEventListener("DOMContentLoaded", () => {
-  var el = document.querySelector(".theme-icon-active");
-  if (el != "undefined" && el != null) {
+window.addEventListener('DOMContentLoaded', () => {
+  var el = document.querySelector('.theme-icon-active');
+  if (el != 'undefined' && el != null) {
     const showActiveTheme = (theme) => {
-      const activeThemeIcon = document.querySelector(
-        ".theme-icon-active use"
-      );
+      const activeThemeIcon = document.querySelector('.theme-icon-active use');
       const btnToActive = document.querySelector(
-        `[data-bs-theme-value="${theme}"]`
+        `[data-bs-theme-value="${theme}"]`,
       );
       const svgOfActiveBtn = btnToActive
-        .querySelector(".mode-switch use")
-        .getAttribute("href");
+        .querySelector('.mode-switch use')
+        .getAttribute('href');
 
-      document
-        .querySelectorAll("[data-bs-theme-value]")
-        .forEach((element) => {
-          element.classList.remove("active");
-        });
+      document.querySelectorAll('[data-bs-theme-value]').forEach((element) => {
+        element.classList.remove('active');
+      });
 
-      btnToActive.classList.add("active");
-      activeThemeIcon.setAttribute("href", svgOfActiveBtn);
+      btnToActive.classList.add('active');
+      activeThemeIcon.setAttribute('href', svgOfActiveBtn);
     };
 
     window
-      .matchMedia("(prefers-color-scheme: dark)")
-      .addEventListener("change", () => {
-        if (storedTheme !== "light" || storedTheme !== "dark") {
+      .matchMedia('(prefers-color-scheme: dark)')
+      .addEventListener('change', () => {
+        if (storedTheme !== 'light' || storedTheme !== 'dark') {
           setTheme(getPreferredTheme());
         }
       });
 
     showActiveTheme(getPreferredTheme());
 
-    document
-      .querySelectorAll("[data-bs-theme-value]")
-      .forEach((toggle) => {
-        toggle.addEventListener("click", () => {
-          const theme = toggle.getAttribute("data-bs-theme-value");
-          localStorage.setItem("theme", theme);
-          setTheme(theme);
-          showActiveTheme(theme);
-        });
+    document.querySelectorAll('[data-bs-theme-value]').forEach((toggle) => {
+      toggle.addEventListener('click', () => {
+        const theme = toggle.getAttribute('data-bs-theme-value');
+        localStorage.setItem('theme', theme);
+        setTheme(theme);
+        showActiveTheme(theme);
       });
+    });
   }
 });
 
-!!localStorage.getItem('theme')&&(
-
-  document.documentElement.dataset.bsTheme=localStorage.getItem('theme')
-)
+!!localStorage.getItem('theme') &&
+  (document.documentElement.dataset.bsTheme = localStorage.getItem('theme'));

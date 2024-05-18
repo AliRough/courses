@@ -14,9 +14,9 @@ export function middleware(request: NextRequest) {
      با توجه به اینکه صفحه‌ها با حروف بزرگ منجر به خطای 404 می‌شوند، برای جلوگیری
      از این خطا، آدرس‌ها را به حروف کوچک تبدیل کرده و ریدایرکت میکنیم.
    */
-return
+  return;
   if (
-    request.nextUrl.pathname !== '/login' &&
+    request.nextUrl.pathname !== '/auth/login' &&
     !isToken &&
     orginalPath.includes('/profile')
   ) {
@@ -27,9 +27,8 @@ return
         ? `${search}&redirect=${path}`
         : `?redirect=${path + search}`;
     }
-    return NextResponse.redirect(new URL(`/login${search}`, request.url));
+    return NextResponse.redirect(new URL(`/auth/login${search}`, request.url));
   }
-
   return;
   if (newPath !== orginalPath) {
     return NextResponse.redirect(new URL(newPath));
@@ -39,7 +38,7 @@ return
     If the token is present and the next URL pathname is "/login"
     در صورتی که توکن وجود دارد و مسیر آدرس لاگین بود
    */
-  if (request.nextUrl.pathname === '/login' && isToken) {
+  if (request.nextUrl.pathname === '/auth/login' && isToken) {
     return NextResponse.redirect(new URL('/', request.url));
   }
 

@@ -33,3 +33,4 @@ export const CourseByTagApi = async (tag: string) => {
     throw error.response.data;
   }
 };
+

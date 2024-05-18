@@ -3,7 +3,7 @@ import { TCreateCourseInputsTow, TCreateCourseValidate } from '../createCourse';
 import { ErrorMessage } from '@hookform/error-message';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { CreateCourseValidateTow } from '../createCourseValidate';
+import { CreateCourseValidateTow } from '../../../validations/createCourseValidate';
 import Image from 'next/image';
 
 export default function Tow({ submit }: any) {

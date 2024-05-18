@@ -126,6 +126,27 @@
       {
         "id": 6,
         "title": "مقالات"
+      },
+      {
+        "id": 1,
+        "title": "سایت",
+        "children": [
+          {
+            "id": 1,
+            "title": " صفحه دوره",
+            "src": "course"
+          },
+          {
+            "id": 1,
+            "title": " صفحه همه دوره",
+            "src": "course/all"
+          },
+          {
+            "id": 1,
+            "title": " صفحه مدرس",
+            "src": "profile/t/dashboard"
+          }
+        ]
       }
     ],
     "megamenu": []
@@ -142,23 +163,27 @@
       "last_updated": "2024/10/10 10:20:10",
       "language": "فارسی",
       "enrolled": 12,
-
       "lectures": 30,
       "duration": "4 ساعت",
-
       "category": "طراحی وب",
-
       "price": 2000000,
       "discoun": 1500000,
       "discount_percent": 20,
       "time_left_discount": "2024/10/10 10:20:10",
-
       "certificate": true,
-
       "tags": [
-        { "name": "PHP", "link": "#" },
-        { "name": "HTML", "link": "#" },
-        { "name": "javascript", "link": "#" }
+        {
+          "name": "PHP",
+          "link": "#"
+        },
+        {
+          "name": "HTML",
+          "link": "#"
+        },
+        {
+          "name": "javascript",
+          "link": "#"
+        }
       ],
       "curriculum": [
         {
@@ -230,10 +255,22 @@
         "number_of_students": 36,
         "years_of_teaching_experience": 11,
         "skill": [
-          { "name": "طراحی گرافیک", "percent": 90 },
-          { "name": "طراحی وب", "percent": 80 },
-          { "name": "HTML/CSS", "percent": 60 },
-          { "name": "UI/UX", "percent": 50 }
+          {
+            "name": "طراحی گرافیک",
+            "percent": 90
+          },
+          {
+            "name": "طراحی وب",
+            "percent": 80
+          },
+          {
+            "name": "HTML/CSS",
+            "percent": 60
+          },
+          {
+            "name": "UI/UX",
+            "percent": 50
+          }
         ],
         "education": [
           {
@@ -280,23 +317,27 @@
       "last_updated": "2024/10/10",
       "language": "فارسی",
       "enrolled": 102,
-
       "lectures": 30,
       "duration": "4 ساعت",
-
       "category": "طراحی طراحی",
-
       "price": 2000000,
       "discoun": 1500000,
       "discount_percent": 20,
       "time_left_discount": "4",
-
       "certificate": true,
-
       "tags": [
-        { "name": "PHP", "link": "#" },
-        { "name": "HTML", "link": "#" },
-        { "name": "javascript", "link": "#" }
+        {
+          "name": "PHP",
+          "link": "#"
+        },
+        {
+          "name": "HTML",
+          "link": "#"
+        },
+        {
+          "name": "javascript",
+          "link": "#"
+        }
       ],
       "curriculum": [
         {
@@ -376,10 +417,22 @@
         "years_of_teaching_experience": 11,
         "comments": 354,
         "skill": [
-          { "name": "طراحی گرافیک", "percent": 90 },
-          { "name": "طراحی وب", "percent": 80 },
-          { "name": "HTML/CSS", "percent": 60 },
-          { "name": "UI/UX", "percent": 50 }
+          {
+            "name": "طراحی گرافیک",
+            "percent": 90
+          },
+          {
+            "name": "طراحی وب",
+            "percent": 80
+          },
+          {
+            "name": "HTML/CSS",
+            "percent": 60
+          },
+          {
+            "name": "UI/UX",
+            "percent": 50
+          }
         ],
         "education": [
           {
@@ -416,7 +469,6 @@
       "comments": ""
     }
   ],
-
   "courses": [
     {
       "id": 1,
@@ -723,10 +775,22 @@
       "number_of_students": 36,
       "years_of_teaching_experience": 11,
       "skill": [
-        { "name": "طراحی گرافیک", "percent": 90 },
-        { "name": "طراحی وب", "percent": 80 },
-        { "name": "HTML/CSS", "percent": 60 },
-        { "name": "UI/UX", "percent": 50 }
+        {
+          "name": "طراحی گرافیک",
+          "percent": 90
+        },
+        {
+          "name": "طراحی وب",
+          "percent": 80
+        },
+        {
+          "name": "HTML/CSS",
+          "percent": 60
+        },
+        {
+          "name": "UI/UX",
+          "percent": 50
+        }
       ],
       "education": [
         {
@@ -765,10 +829,22 @@
       "number_of_students": 36,
       "years_of_teaching_experience": 11,
       "skill": [
-        { "name": "طراحی گرافیک", "percent": 90 },
-        { "name": "طراحی وب", "percent": 80 },
-        { "name": "HTML/CSS", "percent": 60 },
-        { "name": "UI/UX", "percent": 50 }
+        {
+          "name": "طراحی گرافیک",
+          "percent": 90
+        },
+        {
+          "name": "طراحی وب",
+          "percent": 80
+        },
+        {
+          "name": "HTML/CSS",
+          "percent": 60
+        },
+        {
+          "name": "UI/UX",
+          "percent": 50
+        }
       ],
       "education": [
         {
@@ -807,10 +883,22 @@
       "number_of_students": 36,
       "years_of_teaching_experience": 11,
       "skill": [
-        { "name": "طراحی گرافیک", "percent": 90 },
-        { "name": "طراحی وب", "percent": 80 },
-        { "name": "HTML/CSS", "percent": 60 },
-        { "name": "UI/UX", "percent": 50 }
+        {
+          "name": "طراحی گرافیک",
+          "percent": 90
+        },
+        {
+          "name": "طراحی وب",
+          "percent": 80
+        },
+        {
+          "name": "HTML/CSS",
+          "percent": 60
+        },
+        {
+          "name": "UI/UX",
+          "percent": 50
+        }
       ],
       "education": [
         {
@@ -849,10 +937,22 @@
       "number_of_students": 36,
       "years_of_teaching_experience": 11,
       "skill": [
-        { "name": "طراحی گرافیک", "percent": 90 },
-        { "name": "طراحی وب", "percent": 80 },
-        { "name": "HTML/CSS", "percent": 60 },
-        { "name": "UI/UX", "percent": 50 }
+        {
+          "name": "طراحی گرافیک",
+          "percent": 90
+        },
+        {
+          "name": "طراحی وب",
+          "percent": 80
+        },
+        {
+          "name": "HTML/CSS",
+          "percent": 60
+        },
+        {
+          "name": "UI/UX",
+          "percent": 50
+        }
       ],
       "education": [
         {
@@ -891,10 +991,22 @@
       "number_of_students": 36,
       "years_of_teaching_experience": 11,
       "skill": [
-        { "name": "طراحی گرافیک", "percent": 90 },
-        { "name": "طراحی وب", "percent": 80 },
-        { "name": "HTML/CSS", "percent": 60 },
-        { "name": "UI/UX", "percent": 50 }
+        {
+          "name": "طراحی گرافیک",
+          "percent": 90
+        },
+        {
+          "name": "طراحی وب",
+          "percent": 80
+        },
+        {
+          "name": "HTML/CSS",
+          "percent": 60
+        },
+        {
+          "name": "UI/UX",
+          "percent": 50
+        }
       ],
       "education": [
         {
@@ -933,10 +1045,22 @@
       "number_of_students": 36,
       "years_of_teaching_experience": 11,
       "skill": [
-        { "name": "طراحی گرافیک", "percent": 90 },
-        { "name": "طراحی وب", "percent": 80 },
-        { "name": "HTML/CSS", "percent": 60 },
-        { "name": "UI/UX", "percent": 50 }
+        {
+          "name": "طراحی گرافیک",
+          "percent": 90
+        },
+        {
+          "name": "طراحی وب",
+          "percent": 80
+        },
+        {
+          "name": "HTML/CSS",
+          "percent": 60
+        },
+        {
+          "name": "UI/UX",
+          "percent": 50
+        }
       ],
       "education": [
         {
@@ -975,10 +1099,22 @@
       "number_of_students": 36,
       "years_of_teaching_experience": 11,
       "skill": [
-        { "name": "طراحی گرافیک", "percent": 90 },
-        { "name": "طراحی وب", "percent": 80 },
-        { "name": "HTML/CSS", "percent": 60 },
-        { "name": "UI/UX", "percent": 50 }
+        {
+          "name": "طراحی گرافیک",
+          "percent": 90
+        },
+        {
+          "name": "طراحی وب",
+          "percent": 80
+        },
+        {
+          "name": "HTML/CSS",
+          "percent": 60
+        },
+        {
+          "name": "UI/UX",
+          "percent": 50
+        }
       ],
       "education": [
         {
@@ -1017,10 +1153,22 @@
       "number_of_students": 36,
       "years_of_teaching_experience": 11,
       "skill": [
-        { "name": "طراحی گرافیک", "percent": 90 },
-        { "name": "طراحی وب", "percent": 80 },
-        { "name": "HTML/CSS", "percent": 60 },
-        { "name": "UI/UX", "percent": 50 }
+        {
+          "name": "طراحی گرافیک",
+          "percent": 90
+        },
+        {
+          "name": "طراحی وب",
+          "percent": 80
+        },
+        {
+          "name": "HTML/CSS",
+          "percent": 60
+        },
+        {
+          "name": "UI/UX",
+          "percent": 50
+        }
       ],
       "education": [
         {
@@ -1059,10 +1207,22 @@
       "number_of_students": 36,
       "years_of_teaching_experience": 11,
       "skill": [
-        { "name": "طراحی گرافیک", "percent": 90 },
-        { "name": "طراحی وب", "percent": 80 },
-        { "name": "HTML/CSS", "percent": 60 },
-        { "name": "UI/UX", "percent": 50 }
+        {
+          "name": "طراحی گرافیک",
+          "percent": 90
+        },
+        {
+          "name": "طراحی وب",
+          "percent": 80
+        },
+        {
+          "name": "HTML/CSS",
+          "percent": 60
+        },
+        {
+          "name": "UI/UX",
+          "percent": 50
+        }
       ],
       "education": [
         {
@@ -1101,10 +1261,22 @@
       "number_of_students": 36,
       "years_of_teaching_experience": 11,
       "skill": [
-        { "name": "طراحی گرافیک", "percent": 90 },
-        { "name": "طراحی وب", "percent": 80 },
-        { "name": "HTML/CSS", "percent": 60 },
-        { "name": "UI/UX", "percent": 50 }
+        {
+          "name": "طراحی گرافیک",
+          "percent": 90
+        },
+        {
+          "name": "طراحی وب",
+          "percent": 80
+        },
+        {
+          "name": "HTML/CSS",
+          "percent": 60
+        },
+        {
+          "name": "UI/UX",
+          "percent": 50
+        }
       ],
       "education": [
         {
@@ -1143,10 +1315,22 @@
       "number_of_students": 36,
       "years_of_teaching_experience": 11,
       "skill": [
-        { "name": "طراحی گرافیک", "percent": 90 },
-        { "name": "طراحی وب", "percent": 80 },
-        { "name": "HTML/CSS", "percent": 60 },
-        { "name": "UI/UX", "percent": 50 }
+        {
+          "name": "طراحی گرافیک",
+          "percent": 90
+        },
+        {
+          "name": "طراحی وب",
+          "percent": 80
+        },
+        {
+          "name": "HTML/CSS",
+          "percent": 60
+        },
+        {
+          "name": "UI/UX",
+          "percent": 50
+        }
       ],
       "education": [
         {
@@ -1355,10 +1539,22 @@
       "number_of_students": 15,
       "years_of_teaching_experience": 14,
       "skill": [
-        { "name": "طراحی گرافیک", "percent": 90 },
-        { "name": "طراحی وب", "percent": 80 },
-        { "name": "HTML/CSS", "percent": 60 },
-        { "name": "UI/UX", "percent": 50 }
+        {
+          "name": "طراحی گرافیک",
+          "percent": 90
+        },
+        {
+          "name": "طراحی وب",
+          "percent": 80
+        },
+        {
+          "name": "HTML/CSS",
+          "percent": 60
+        },
+        {
+          "name": "UI/UX",
+          "percent": 50
+        }
       ],
       "education": [
         {
@@ -1509,10 +1705,22 @@
       "number_of_students": 36,
       "years_of_teaching_experience": 11,
       "skill": [
-        { "name": "طراحی گرافیک", "percent": 90 },
-        { "name": "طراحی وب", "percent": 80 },
-        { "name": "HTML/CSS", "percent": 60 },
-        { "name": "UI/UX", "percent": 50 }
+        {
+          "name": "طراحی گرافیک",
+          "percent": 90
+        },
+        {
+          "name": "طراحی وب",
+          "percent": 80
+        },
+        {
+          "name": "HTML/CSS",
+          "percent": 60
+        },
+        {
+          "name": "UI/UX",
+          "percent": 50
+        }
       ],
       "education": [
         {
@@ -1551,10 +1759,22 @@
       "number_of_students": 36,
       "years_of_teaching_experience": 11,
       "skill": [
-        { "name": "طراحی گرافیک", "percent": 90 },
-        { "name": "طراحی وب", "percent": 80 },
-        { "name": "HTML/CSS", "percent": 60 },
-        { "name": "UI/UX", "percent": 50 }
+        {
+          "name": "طراحی گرافیک",
+          "percent": 90
+        },
+        {
+          "name": "طراحی وب",
+          "percent": 80
+        },
+        {
+          "name": "HTML/CSS",
+          "percent": 60
+        },
+        {
+          "name": "UI/UX",
+          "percent": 50
+        }
       ],
       "education": [
         {
@@ -1593,10 +1813,22 @@
       "number_of_students": 36,
       "years_of_teaching_experience": 11,
       "skill": [
-        { "name": "طراحی گرافیک", "percent": 90 },
-        { "name": "طراحی وب", "percent": 80 },
-        { "name": "HTML/CSS", "percent": 60 },
-        { "name": "UI/UX", "percent": 50 }
+        {
+          "name": "طراحی گرافیک",
+          "percent": 90
+        },
+        {
+          "name": "طراحی وب",
+          "percent": 80
+        },
+        {
+          "name": "HTML/CSS",
+          "percent": 60
+        },
+        {
+          "name": "UI/UX",
+          "percent": 50
+        }
       ],
       "education": [
         {
@@ -1635,10 +1867,22 @@
       "number_of_students": 36,
       "years_of_teaching_experience": 11,
       "skill": [
-        { "name": "طراحی گرافیک", "percent": 90 },
-        { "name": "طراحی وب", "percent": 80 },
-        { "name": "HTML/CSS", "percent": 60 },
-        { "name": "UI/UX", "percent": 50 }
+        {
+          "name": "طراحی گرافیک",
+          "percent": 90
+        },
+        {
+          "name": "طراحی وب",
+          "percent": 80
+        },
+        {
+          "name": "HTML/CSS",
+          "percent": 60
+        },
+        {
+          "name": "UI/UX",
+          "percent": 50
+        }
       ],
       "education": [
         {
@@ -1677,10 +1921,22 @@
       "number_of_students": 36,
       "years_of_teaching_experience": 11,
       "skill": [
-        { "name": "طراحی گرافیک", "percent": 90 },
-        { "name": "طراحی وب", "percent": 80 },
-        { "name": "HTML/CSS", "percent": 60 },
-        { "name": "UI/UX", "percent": 50 }
+        {
+          "name": "طراحی گرافیک",
+          "percent": 90
+        },
+        {
+          "name": "طراحی وب",
+          "percent": 80
+        },
+        {
+          "name": "HTML/CSS",
+          "percent": 60
+        },
+        {
+          "name": "UI/UX",
+          "percent": 50
+        }
       ],
       "education": [
         {
@@ -1719,10 +1975,22 @@
       "number_of_students": 36,
       "years_of_teaching_experience": 11,
       "skill": [
-        { "name": "طراحی گرافیک", "percent": 90 },
-        { "name": "طراحی وب", "percent": 80 },
-        { "name": "HTML/CSS", "percent": 60 },
-        { "name": "UI/UX", "percent": 50 }
+        {
+          "name": "طراحی گرافیک",
+          "percent": 90
+        },
+        {
+          "name": "طراحی وب",
+          "percent": 80
+        },
+        {
+          "name": "HTML/CSS",
+          "percent": 60
+        },
+        {
+          "name": "UI/UX",
+          "percent": 50
+        }
       ],
       "education": [
         {
@@ -1761,10 +2029,22 @@
       "number_of_students": 36,
       "years_of_teaching_experience": 11,
       "skill": [
-        { "name": "طراحی گرافیک", "percent": 90 },
-        { "name": "طراحی وب", "percent": 80 },
-        { "name": "HTML/CSS", "percent": 60 },
-        { "name": "UI/UX", "percent": 50 }
+        {
+          "name": "طراحی گرافیک",
+          "percent": 90
+        },
+        {
+          "name": "طراحی وب",
+          "percent": 80
+        },
+        {
+          "name": "HTML/CSS",
+          "percent": 60
+        },
+        {
+          "name": "UI/UX",
+          "percent": 50
+        }
       ],
       "education": [
         {
@@ -1803,10 +2083,22 @@
       "number_of_students": 36,
       "years_of_teaching_experience": 11,
       "skill": [
-        { "name": "طراحی گرافیک", "percent": 90 },
-        { "name": "طراحی وب", "percent": 80 },
-        { "name": "HTML/CSS", "percent": 60 },
-        { "name": "UI/UX", "percent": 50 }
+        {
+          "name": "طراحی گرافیک",
+          "percent": 90
+        },
+        {
+          "name": "طراحی وب",
+          "percent": 80
+        },
+        {
+          "name": "HTML/CSS",
+          "percent": 60
+        },
+        {
+          "name": "UI/UX",
+          "percent": 50
+        }
       ],
       "education": [
         {
@@ -1845,10 +2137,22 @@
       "number_of_students": 36,
       "years_of_teaching_experience": 11,
       "skill": [
-        { "name": "طراحی گرافیک", "percent": 90 },
-        { "name": "طراحی وب", "percent": 80 },
-        { "name": "HTML/CSS", "percent": 60 },
-        { "name": "UI/UX", "percent": 50 }
+        {
+          "name": "طراحی گرافیک",
+          "percent": 90
+        },
+        {
+          "name": "طراحی وب",
+          "percent": 80
+        },
+        {
+          "name": "HTML/CSS",
+          "percent": 60
+        },
+        {
+          "name": "UI/UX",
+          "percent": 50
+        }
       ],
       "education": [
         {
@@ -1887,10 +2191,22 @@
       "number_of_students": 36,
       "years_of_teaching_experience": 11,
       "skill": [
-        { "name": "طراحی گرافیک", "percent": 90 },
-        { "name": "طراحی وب", "percent": 80 },
-        { "name": "HTML/CSS", "percent": 60 },
-        { "name": "UI/UX", "percent": 50 }
+        {
+          "name": "طراحی گرافیک",
+          "percent": 90
+        },
+        {
+          "name": "طراحی وب",
+          "percent": 80
+        },
+        {
+          "name": "HTML/CSS",
+          "percent": 60
+        },
+        {
+          "name": "UI/UX",
+          "percent": 50
+        }
       ],
       "education": [
         {

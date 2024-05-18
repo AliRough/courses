@@ -1,81 +1,210 @@
-import React from "react";
+'use client';
+import Link from 'next/link';
+import React, { useEffect, useState } from 'react';
+import { getAllCategories } from '../api/categoriesApi';
 
 export default function Counter() {
+  const [categories, setCategories] = useState();
+  useEffect(() => {
+    const fetchData = async () => {
+      let { data } = await getAllCategories();
+      console.log(data);
+
+      setCategories(data);
+    };
+    fetchData();
+  }, []);
+
   return (
     <>
-     {/* =======================
+      {/* =======================
 Main Banner END */}
-{/* =======================
+      {/* =======================
 Counter START */}
-<section className="py-0 py-xl-5">
-  <div className="container">
-    <div className="row g-4">
-      {/* Counter item */}
-      <div className="col-sm-6 col-xl-3">
-        <div className="d-flex justify-content-center align-items-center p-4 bg-warning bg-opacity-15 rounded-3">
-          <span className="display-6 lh-1 text-warning mb-0"><i className="fas fa-tv" /></span>
-          <div className="ms-4 h6 fw-normal mb-0">
-            <div className="d-flex">
-              <h5 className="purecounter mb-0 fw-bold" data-purecounter-start={0} data-purecounter-end={10} data-purecounter-delay={200}>
-                0
-              </h5>
-              <span className="mb-0 h5">دوره</span>
-            </div>
-            <p className="mb-0">آموزش آنلاین</p>
-          </div>
-        </div>
-      </div>
-      {/* Counter item */}
-      <div className="col-sm-6 col-xl-3">
-        <div className="d-flex justify-content-center align-items-center p-4 bg-blue bg-opacity-10 rounded-3">
-          <span className="display-6 lh-1 text-blue mb-0"><i className="fas fa-user-tie" /></span>
-          <div className="ms-4 h6 fw-normal mb-0">
-            <div className="d-flex">
-              <h5 className="purecounter mb-0 fw-bold" data-purecounter-start={0} data-purecounter-end={200} data-purecounter-delay={200}>
-                0
-              </h5>
-              <span className="mb-0 h5">مـدرس</span>
-            </div>
-            <p className="mb-0">مجرب و باسابقه</p>
-          </div>
-        </div>
-      </div>
-      {/* Counter item */}
-      <div className="col-sm-6 col-xl-3">
-        <div className="d-flex justify-content-center align-items-center p-4 bg-purple bg-opacity-10 rounded-3">
-          <span className="display-6 lh-1 text-purple mb-0"><i className="fas fa-user-graduate" /></span>
-          <div className="ms-4 h6 fw-normal mb-0">
-            <div className="d-flex">
-              <h5 className="purecounter mb-0 fw-bold" data-purecounter-start={0} data-purecounter-end={60} data-purecounter-delay={200}>
-                0
-              </h5>
-              <span className="mb-0 h5">هنرجـو</span>
-            </div>
-            <p className="mb-0">دانشجوی آنلاین</p>
-          </div>
-        </div>
-      </div>
-      {/* Counter item */}
-      <div className="col-sm-6 col-xl-3">
-        <div className="d-flex justify-content-center align-items-center p-4 bg-info bg-opacity-10 rounded-3">
-          <span className="display-6 lh-1 text-info mb-0"><i className="bi bi-patch-check-fill" /></span>
-          <div className="ms-4 h6 fw-normal mb-0">
-            <div className="d-flex">
-              <h5 className="purecounter mb-0 fw-bold" data-purecounter-start={0} data-purecounter-end={6} data-purecounter-delay={300}>
-                0
-              </h5>
-              <span className="mb-0 h5">مدرک بین المللی</span>
-            </div>
-            <p className="mb-0">دوره های گواهی شده</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-{/* =======================
-Counter END */}
 
+      <section className=''>
+        <div className='container'>
+          <div className='row g-4'>
+            {categories?.map((c) => (
+              <>
+                <div className='col-sm-6 col-lg-4 col-xl-3'>
+                  <div className='card card-body shadow rounded-3'>
+                    <div className='d-flex align-items-center'>
+                      {/* Icon */}
+                      <div className='icon-lg bg-purple bg-opacity-10 rounded-circle text-purple'>
+                        <i className='fas fa-tools' />
+                      </div>
+                      <div className='ms-3'>
+                        <h5 className='mb-0 fw-normal'>
+                          <Link href='course/all' className='stretched-link'>
+                            {c.title}
+                          </Link>
+                        </h5>
+                        <span>89 دوره</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </>
+            ))}
+            {/* Category item */}
+            <div className='col-sm-6 col-lg-4 col-xl-3'>
+              <div className='card card-body shadow rounded-3'>
+                <div className='d-flex align-items-center'>
+                  {/* Icon */}
+                  <div className='icon-lg bg-purple bg-opacity-10 rounded-circle text-purple'>
+                    <i className='fas fa-tools' />
+                  </div>
+                  <div className='ms-3'>
+                    <h5 className='mb-0 fw-normal'>
+                      <Link href='course/all' className='stretched-link'>
+                        مهندسی عمران
+                      </Link>
+                    </h5>
+                    <span>89 دوره</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* Category item */}
+            <div className='col-sm-6 col-lg-4 col-xl-3'>
+              <div className='card card-body shadow rounded-3'>
+                <div className='d-flex align-items-center'>
+                  {/* Icon */}
+                  <div className='icon-lg bg-danger bg-opacity-10 rounded-circle text-danger'>
+                    <i className='fas fa-heartbeat' />
+                  </div>
+                  <div className='ms-3'>
+                    <h5 className='mb-0 fw-normal'>
+                      <Link href='course/all' className='stretched-link'>
+                        پزشکی و سلامت
+                      </Link>
+                    </h5>
+                    <span>95 دوره</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* Category item */}
+            <div className='col-sm-6 col-lg-4 col-xl-3'>
+              <div className='card card-body shadow rounded-3'>
+                <div className='d-flex align-items-center'>
+                  {/* Icon */}
+                  <div className='icon-lg bg-blue bg-opacity-10 rounded-circle text-blue'>
+                    <i className='fas fa-photo-video' />
+                  </div>
+                  <div className='ms-3'>
+                    <h5 className='mb-0 fw-normal'>
+                      <Link href='course/all' className='stretched-link'>
+                        طراحی گرافیک
+                      </Link>
+                    </h5>
+                    <span>38 دوره</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* Category item */}
+            <div className='col-sm-6 col-lg-4 col-xl-3'>
+              <div className='card card-body shadow rounded-3'>
+                <div className='d-flex align-items-center'>
+                  {/* Icon */}
+                  <div className='icon-lg bg-success bg-opacity-10 rounded-circle text-success'>
+                    <i className='fas fa-laptop-code' />
+                  </div>
+                  <div className='ms-3'>
+                    <h5 className='mb-0 fw-normal'>
+                      <Link href='course/all' className='stretched-link'>
+                        برنامه نویسی
+                      </Link>
+                    </h5>
+                    <span>105 دوره</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* Category item */}
+            <div className='col-sm-6 col-lg-4 col-xl-3'>
+              <div className='card card-body shadow rounded-3'>
+                <div className='d-flex align-items-center'>
+                  {/* Icon */}
+                  <div className='icon-lg bg-orange bg-opacity-10 rounded-circle text-orange'>
+                    <i className='fas fa-crop-alt' />
+                  </div>
+                  <div className='ms-3'>
+                    <h5 className='mb-0 fw-normal'>
+                      <Link href='course/all' className='stretched-link'>
+                        طراحی سایت
+                      </Link>
+                    </h5>
+                    <span>72 دوره</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* Category item */}
+            <div className='col-sm-6 col-lg-4 col-xl-3'>
+              <div className='card card-body shadow rounded-3'>
+                <div className='d-flex align-items-center'>
+                  {/* Icon */}
+                  <div className='icon-lg bg-primary bg-opacity-10 rounded-circle text-primary'>
+                    <i className='fas fa-business-time' />
+                  </div>
+                  <div className='ms-3'>
+                    <h5 className='mb-0 fw-normal'>
+                      <Link href='course/all' className='stretched-link'>
+                        استارت آپ
+                      </Link>
+                    </h5>
+                    <span>68 دوره</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* Category item */}
+            <div className='col-sm-6 col-lg-4 col-xl-3'>
+              <div className='card card-body shadow rounded-3'>
+                <div className='d-flex align-items-center'>
+                  {/* Icon */}
+                  <div className='icon-lg bg-info bg-opacity-10 rounded-circle text-info'>
+                    <i className='fas fa-music' />
+                  </div>
+                  <div className='ms-3'>
+                    <h5 className='mb-0 fw-normal'>
+                      <Link href='course/all' className='stretched-link'>
+                        موزیک
+                      </Link>
+                    </h5>
+                    <span>51 دوره</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* Category item */}
+            <div className='col-sm-6 col-lg-4 col-xl-3'>
+              <div className='card card-body shadow rounded-3'>
+                <div className='d-flex align-items-center'>
+                  {/* Icon */}
+                  <div className='icon-lg bg-warning bg-opacity-15 rounded-circle text-warning'>
+                    <i className='fas fa-palette' />
+                  </div>
+                  <div className='ms-3'>
+                    <h5 className='mb-0 fw-normal'>
+                      <Link href='course/all' className='stretched-link'>
+                        هنر
+                      </Link>
+                    </h5>
+                    <span>69 دوره</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* =======================
+Counter END */}
     </>
   );
 }

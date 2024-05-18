@@ -2,7 +2,7 @@
 
 import { useQuery, UseQueryResult } from '@tanstack/react-query';
 
-import * as api from '@/app/(src)/api/courseApi';
+  import * as api from '@/app/(src)/api/courseApi';
 
 import { TCourse } from '@/app/(src)/model/course.d';
 

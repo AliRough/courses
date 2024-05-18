@@ -1,7 +1,7 @@
 'use client';
 
 import { UseFormRegisterReturn, FieldErrors } from 'react-hook-form';
-import { CreateCourseValidate } from './createCourseValidate';
+import { CreateCourseValidate } from '../../validations/createCourseValidate';
 
 export type TCreateCourseValidate = z.infer<typeof CreateCourseValidate>;
 
@@ -18,7 +18,7 @@ export type TCreateCourseInputsOne = {
   short_description: UseFormRegisterReturn<string>;
   title: UseFormRegisterReturn<string>;
 };
-export type   TCreateCourseInputsTow = {
+export type TCreateCourseInputsTow = {
   image: UseFormRegisterReturn<string>;
   // certificate: UseFormRegisterReturn<string>;
 };

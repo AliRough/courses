@@ -1,18 +1,36 @@
-import { LayoutProps } from '@/.next/types/app/layout';
+// import { LayoutProps } from '@/.next/types/app/layout';
+'use client';
 import Image from 'next/image';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Profile from './Profile';
 import Link from 'next/link';
 import { getHeader } from '@/app/(src)/api/layoutApi';
+import { useRecoilState } from 'recoil';
+import { authUserState } from '../state/atoms';
 
-export default async function Header({ children }: LayoutProps) {
-  const headerRes = await getHeader();
+export default function Header({ children }: any) {
+  const [headerRes, setHeaderRes] = useState();
 
+  const [authUserdata, setAuthUser] = useRecoilState(authUserState);
+  console.log('auth', authUserState.name);
+
+  console.log(localStorage.getItem('userData'));
+  let item = localStorage.getItem('userData');
+  useEffect(() => {
+    const fetchData = async () => {
+      let data: any = await getHeader();
+      setHeaderRes(data);
+      if (item) {
+        setAuthUser(JSON.parse(item));
+      }
+    };
+    fetchData();
+  }, []);
   // await get
   return (
     <>
       {/* Header START */}
-      <header className='navbar-light navbar-sticky header-static'>
+      <header className='navbar-light navbar-sticky header-static bg-light'>
         {/* Nav START */}
         <nav className='navbar navbar-expand-xl'>
           <div className='container-fluid px-3 px-xl-5'>
@@ -56,12 +74,14 @@ export default async function Header({ children }: LayoutProps) {
             <div className='navbar-collapse w-100 collapse' id='navbarCollapse'>
               {/* Nav Main menu START */}
               <ul className='navbar-nav navbar-nav-scroll mx-auto'>
-                {headerRes?.data?.menu.map((item: any) => {
+                {headerRes?.data?.menu?.map((item: any) => {
+                  console.log(item?.src);
+
                   return (
-                    <li className='nav-item dropdown' key={item.id}>
+                    <li className='nav-item dropdown ' key={item.id}>
                       <Link
                         className={`nav-link   ${item.children && 'dropdown-toggle'}`}
-                        href='#'
+                        href={item?.src || '#'}
                         id='demoMenu'
                         data-bs-toggle='dropdown'
                         aria-haspopup='true'
@@ -71,7 +91,7 @@ export default async function Header({ children }: LayoutProps) {
                       </Link>
                       {item.children && (
                         <ul
-                          className='dropdown-menu'
+                          className='dropdown-menu bg-light'
                           aria-labelledby='demoMenu'
                         >
                           {item.children.map((subItem: any) => {
@@ -82,20 +102,20 @@ export default async function Header({ children }: LayoutProps) {
                               >
                                 <Link
                                   className={`dropdown-item  ${subItem.children && ' dropdown-toggle '}`}
-                                  href='#'
+                                  href={subItem?.src || '#'}
                                 >
                                   {subItem.title}
                                 </Link>
                                 {subItem.children && (
                                   <ul
-                                    className='dropdown-menu dropdown-menu-start'
+                                    className='dropdown-menu dropdown-menu-start bg-light'
                                     data-bs-popper='none'
                                   >
                                     {subItem.children.map((subSubItem: any) => (
-                                      <li key={subItem.id}>
+                                      <li key={subSubItem.id}>
                                         <Link
                                           className='dropdown-item'
-                                          href='course-categories.html'
+                                          href={subSubItem?.src || '#'}
                                         >
                                           {subSubItem.title}
                                         </Link>
@@ -136,9 +156,19 @@ export default async function Header({ children }: LayoutProps) {
             </div>
             {/* Main navbar END */}
             {/* Profile START */}
-
-            <Profile />
             {/* Profile START */}
+            {authUserdata.name ? (
+              <Profile {...authUserdata} />
+            ) : (
+              <Link href={'/auth/signUp'}>
+                <div className='navbar-nav d-none d-lg-inline-block'>
+                  <button className='btn btn-danger-soft mb-0'>
+                    <i className='fas fa-sign-in-alt me-2' />
+                    ثبت نام
+                  </button>
+                </div>
+              </Link>
+            )}
           </div>
         </nav>
         {/* Nav END */}

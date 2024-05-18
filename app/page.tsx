@@ -13,8 +13,8 @@ export default function page() {
       <Header />
       <Hero />
       <Counter />
-      <PopularCourses />
       <TrendingCourses />
+      <PopularCourses />
 
       <Footer />
     </>

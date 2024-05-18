@@ -11,7 +11,7 @@ export const getHeader = async () => {
     const data = await axios.get('/header');
     return data;
   } catch (error: any) {
-    // throw error.response.data;
+    throw error.response.data;
   }
 };
 

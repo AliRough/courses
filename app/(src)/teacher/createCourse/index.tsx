@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import ProfileTeacherCreateCourseUi from './createCourseUi';
-import { CreateCourseValidateOne } from './createCourseValidate';
+import { CreateCourseValidateOne } from '../../validations/createCourseValidate';
 import {
   TCreateCourseValidate,
   TCreateCourseInputsOne,

@@ -1,9 +1,13 @@
 import React from 'react';
-import { TCreateCourseInputsOne, TCreateCourseProps, TCreateCourseValidate } from '../createCourse';
+import {
+  TCreateCourseInputsOne,
+  TCreateCourseProps,
+  TCreateCourseValidate,
+} from '../createCourse';
 import { ErrorMessage } from '@hookform/error-message';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { CreateCourseValidateOne } from '../createCourseValidate';
+import { CreateCourseValidateOne } from '../../../validations/createCourseValidate';
 
 export default function One({
   // input,
@@ -43,7 +47,7 @@ export default function One({
   };
 
   console.log(price);
-  
+
   return (
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
     <form onSubmit={handleSubmit(submit)}>

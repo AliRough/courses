@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
-import TanstackProvider from './tanstackProvider';
+import RecoilTanstackProvider from './RecoilTanstackProvider';
 
 import './globals.css';
 import 'swiper/css';
@@ -22,7 +22,8 @@ export default function RootLayout({
   return (
     <html lang='fa' dir='rtl'>
       <body>
-        <TanstackProvider>{children}</TanstackProvider>
+        <RecoilTanstackProvider>{children}</RecoilTanstackProvider>
+
         <Script src='/vendor/aos/aos.js' />
         <Script src='/vendor/bootstrap/dist/js/bootstrap.bundle.min.js' />
         <Script src='/vendor/apexcharts/js/apexcharts.min.js' />
