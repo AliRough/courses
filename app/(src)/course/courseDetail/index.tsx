@@ -72,17 +72,17 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                       <source
                         src='assets/images/videos/360p.mp4'
                         type='video/mp4'
-                        size={360}
+                        // size={360}
                       />
                       <source
                         src='assets/images/videos/720p.mp4'
                         type='video/mp4'
-                        size={720}
+                        // size={720}
                       />
                       <source
                         src='assets/images/videos/1080p.mp4'
                         type='video/mp4'
-                        size={1080}
+                        // size={1080}
                       />
                       {/* Caption files */}
                       <track
