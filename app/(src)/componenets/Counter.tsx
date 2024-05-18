@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { getAllCategories } from '../api/categoriesApi';
 
 export default function Counter() {
-  const [categories, setCategories] = useState();
+  const [categories, setCategories]: any = useState();
   useEffect(() => {
     const fetchData = async () => {
       let { data } = await getAllCategories();
@@ -25,27 +25,25 @@ Counter START */}
       <section className=''>
         <div className='container'>
           <div className='row g-4'>
-            {categories?.map((c) => (
-              <>
-                <div className='col-sm-6 col-lg-4 col-xl-3'>
-                  <div className='card card-body shadow rounded-3'>
-                    <div className='d-flex align-items-center'>
-                      {/* Icon */}
-                      <div className='icon-lg bg-purple bg-opacity-10 rounded-circle text-purple'>
-                        <i className='fas fa-tools' />
-                      </div>
-                      <div className='ms-3'>
-                        <h5 className='mb-0 fw-normal'>
-                          <Link href='course/all' className='stretched-link'>
-                            {c.title}
-                          </Link>
-                        </h5>
-                        <span>89 دوره</span>
-                      </div>
+            {categories?.map((c: any, index: any) => (
+              <div className='col-sm-6 col-lg-4 col-xl-3' key={index}>
+                <div className='card card-body shadow rounded-3'>
+                  <div className='d-flex align-items-center'>
+                    {/* Icon */}
+                    <div className='icon-lg bg-purple bg-opacity-10 rounded-circle text-purple'>
+                      <i className='fas fa-tools' />
+                    </div>
+                    <div className='ms-3'>
+                      <h5 className='mb-0 fw-normal'>
+                        <Link href='course/all' className='stretched-link'>
+                          {c.title}
+                        </Link>
+                      </h5>
+                      <span>89 دوره</span>
                     </div>
                   </div>
                 </div>
-              </>
+              </div>
             ))}
             {/* Category item */}
             <div className='col-sm-6 col-lg-4 col-xl-3'>
