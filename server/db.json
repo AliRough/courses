@@ -134,17 +134,17 @@
           {
             "id": 1,
             "title": " صفحه دوره",
-            "src": "course"
+            "src": "/course"
           },
           {
             "id": 1,
             "title": " صفحه همه دوره",
-            "src": "course/all"
+            "src": "/course/all"
           },
           {
             "id": 1,
             "title": " صفحه مدرس",
-            "src": "profile/t/dashboard"
+            "src": "/profile/t/dashboard"
           }
         ]
       }

@@ -44,7 +44,7 @@ export default function SignIn() {
 
     if (response?.status === 200) {
       setAuthUser(data);
-      setCookie('Authorization', data);
+      setCookie('Authorization', data,{ path: '/' });
 
       // localStorage.setItem('userData', JSON.stringify(data));
 

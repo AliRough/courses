@@ -15,6 +15,7 @@ export default function Header({ children }: any) {
 
   const [authUserdata, setAuthUser] = useRecoilState(authUserState);
   console.log('auth', authUserdata.email);
+  console.log('auth', cookies.Authorization);
 
   // console.log(localStorage.getItem('userData'));
   // let item = localStorage.getItem('userData');
@@ -23,7 +24,7 @@ export default function Header({ children }: any) {
       let data: any = await getHeader();
       setHeaderRes(data);
       if (cookies.Authorization) {
-        setAuthUser(JSON.parse(cookies.Authorization));
+        setAuthUser(cookies.Authorization);
       }
     };
     fetchData();

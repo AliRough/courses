@@ -43,3 +43,9 @@
 .recentSlider .pervBtn {
   left: -30%;
 }
+
+@media (min-width: 540px) {
+  .sm-shadow {
+    box-shadow: var(--bs-box-shadow) !important;
+  }
+}

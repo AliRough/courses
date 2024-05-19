@@ -56,7 +56,7 @@ const LayoutProfileStudentHeader = () => {
                 </div>
                 <div className='col d-sm-flex justify-content-between align-items-center'>
                   <div>
-                    <h1 className='my-1 fs-4'>{authUserdata.name}</h1>
+                    <h1 className='my-3 fs-4'>{authUserdata.name}</h1>
                     <ul className='list-inline mb-0'>
                       <li className='list-inline-item me-3 mb-1 mb-sm-0'>
                         <span className='h6'>255</span>

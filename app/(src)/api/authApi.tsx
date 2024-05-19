@@ -8,7 +8,7 @@ import { redirect } from 'next/navigation';
 
 const baseUrl = 'https://eduapi.liara.run/api/auth';
 
-axios.defaults.baseURL = baseUrl;
+// axios.defaults.baseURL = baseUrl;
 
 const SetUserAtom = (data: any) => {
   const [authUserdata, setAuthUser] = useRecoilState(authUserState);
@@ -18,7 +18,7 @@ const SetUserAtom = (data: any) => {
 
 export const registerUser = async (formData: any) => {
   try {
-    const data = await axios.post('/register', formData);
+    const data = await axios.post('https://eduapi.liara.run/api/auth/register', formData);
     console.log(data);
     if (data.status === 201) {
       console.log(formData);

@@ -43,7 +43,7 @@ export default function SignUp() {
 
     if (response?.status === 201) {
       setAuthUser(data);
-      setCookie('Authorization', JSON.stringify(data));
+      setCookie('Authorization', data, { path: '/' });
       // localStorage.setItem('userData', JSON.stringify(data));
 
       router.push('/profile/s/dashboard');
