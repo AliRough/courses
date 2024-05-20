@@ -1,7 +1,7 @@
 'use client';
 import { atom } from 'recoil';
 
-export const authUserState = atom({
+export const authUserState: any = atom({
   key: 'authUser',
   default: {
     name: null,
