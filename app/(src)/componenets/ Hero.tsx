@@ -36,7 +36,7 @@ export default function Hero() {
   return (
     <>
       {/* ---------------------- */}
-      <section className='bg-light position-relative  pt-0 '>
+      <section className='bg-light position-relative  pt-0 pt-md-5 '>
         <figure className='position-absolute top-50 start-0  translate-middle-y ms-n7 d-none d-xxl-block'>
           <svg className='rotate-74 fill-danger opacity-1'>
             <circle cx='180.4' cy='15.5' r='7.7' />
@@ -262,16 +262,16 @@ export default function Hero() {
                 </form>
               </div>
 
-              <div className='row g justify-content-center my-5 '>
+              <div className='row g justify-content-center my-md-5 '>
                 {/* Counter item */}
                 <div className='col-6 col-sm-6 col-md-4 col-xl-6 col-xxl-3'>
-                  <div className='d-flex ms-4 ms-md-0  align-items-center justify-content-center '>
+                  <div className='d-flex flex-column    ms-md-0  align-items-center justify-content-center  py-2 '>
                     {/* Icon */}
-                    <div className='icon-lg bg-body shadow rounded-circle text-info mb-0'>
+                    <div className='icon-lg bg-body shadow rounded-circle text-info mb-0 mb-2'>
                       <i className='fas fa-user-graduate fa-fw' />
                     </div>
-                    <div className='ms-3'>
-                      <div className='d-flex flex-row-reverse justify-content-end text-dark'>
+                    <div className=''>
+                      <div className='d-flex flex-row-reverse justify-content-center text-dark'>
                         <h5
                           className='purecounter mb-0 fw-bold'
                           data-purecounter-start={0}
@@ -288,33 +288,37 @@ export default function Hero() {
                 </div>
                 {/* Counter item */}
                 <div className='col-6 col-sm-6 col-md-4 col-xl-6 col-xxl-3'>
-                  <div className='d-flex ms-4 ms-md-0  align-items-center justify-content-center '>
+                  <div className='d-flex flex-column    ms-md-0  align-items-center justify-content-center  py-2 '>
                     {/* Icon */}
-                    <div className='icon-lg bg-body shadow rounded-circle text-purple mb-0'>
-                      <i className='fas fa-chalkboard-teacher fa-fw' />
+                    <div className='icon-lg bg-body shadow rounded-circle text-info mb-0 mb-2'>
+                      <i className='fas fa-user-graduate fa-fw' />
                     </div>
-                    <div className='ms-3 text-start'>
-                      <h5
-                        className='purecounter mb-0 fw-bold'
-                        data-purecounter-start={0}
-                        data-purecounter-end={105}
-                        data-purecounter-delay={300}
-                      >
-                        0
-                      </h5>
+                    <div className=''>
+                      <div className='d-flex flex-row-reverse justify-content-center text-dark'>
+                        <h5
+                          className='purecounter mb-0 fw-bold'
+                          data-purecounter-start={0}
+                          data-purecounter-end={10}
+                          data-purecounter-delay={500}
+                        >
+                          0
+                        </h5>
+                        <span className='mb-0 h5'>K</span>
+                      </div>
                       <span className='mb-0'>رضایتمندی اولیا</span>
                     </div>
                   </div>
                 </div>
+
                 {/* Counter item */}
                 <div className='col-6 col-sm-6 col-md-4 col-xl-6 col-xxl-3'>
-                  <div className='d-flex ms-4 ms-md-0  align-items-center justify-content-center '>
+                  <div className='d-flex flex-column    ms-md-0  align-items-center justify-content-center  py-2 '>
                     {/* Icon */}
-                    <div className='icon-lg bg-body shadow rounded-circle text-danger mb-0'>
+                    <div className='icon-lg bg-body shadow rounded-circle text-danger mb-0 mb-2'>
                       <i className='fas fa-book-reader fa-fw' />
                     </div>
-                    <div className='ms-3'>
-                      <div className='d-flex flex-row-reverse justify-content-end text-dark'>
+                    <div className=''>
+                      <div className='d-flex flex-row-reverse justify-content-center text-dark'>
                         <h5
                           className='purecounter mb-0 fw-bold'
                           data-purecounter-start={0}
@@ -330,13 +334,13 @@ export default function Hero() {
                   </div>
                 </div>
                 <div className='col-6 col-sm-6 col-md-4 col-xl-6 col-xxl-3'>
-                  <div className='d-flex ms-4 ms-md-0  align-items-center justify-content-center '>
+                  <div className='d-flex flex-column    ms-md-0  align-items-center justify-content-center  py-2 '>
                     {/* Icon */}
-                    <div className='icon-lg bg-body shadow rounded-circle text-danger mb-0'>
+                    <div className='icon-lg bg-body shadow rounded-circle text-danger mb-0 mb-2'>
                       <i className='fas fa-book-reader fa-fw' />
                     </div>
-                    <div className='ms-3'>
-                      <div className='d-flex flex-row-reverse justify-content-end text-dark'>
+                    <div className=''>
+                      <div className='d-flex flex-row-reverse justify-content-center text-dark'>
                         <h5
                           className='purecounter mb-0 fw-bold'
                           data-purecounter-start={0}
