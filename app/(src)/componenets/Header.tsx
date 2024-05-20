@@ -8,6 +8,7 @@ import { getHeader } from '@/app/(src)/api/layoutApi';
 import { useRecoilState } from 'recoil';
 import { authUserState } from '../state/atoms';
 import { useCookies } from 'react-cookie';
+import * as api from '@/app/(src)/api/authApi';
 
 export default function Header({ children }: any) {
   const [headerRes, setHeaderRes]: any = useState();
@@ -23,11 +24,21 @@ export default function Header({ children }: any) {
     const fetchData = async () => {
       let data: any = await getHeader();
       setHeaderRes(data);
-      if (cookies.Authorization) {
-        setAuthUser(cookies.Authorization);
-      }
     };
     fetchData();
+  }, []);
+  useEffect(() => {
+    if (cookies.Authorization && !authUserdata.email) {
+      const fetchData = async () => {
+        const { data } = await api.getUserByToken(cookies.Authorization);
+        console.log('dddddddddddddddddddddddddd', data);
+
+        setAuthUser(data);
+      };
+      fetchData();
+
+      // setAuthUser(cookies.Authorization);
+    }
   }, []);
   // await get
   return (
@@ -160,7 +171,7 @@ export default function Header({ children }: any) {
             {/* Main navbar END */}
             {/* Profile START */}
             {/* Profile START */}
-            {authUserdata.email ? (
+            {authUserdata.name ? (
               <Profile {...authUserdata} />
             ) : (
               <Link href={'/auth/signUp'}>

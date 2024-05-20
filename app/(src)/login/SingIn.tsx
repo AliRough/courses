@@ -11,7 +11,7 @@ import { useRecoilState } from 'recoil';
 import { authUserState } from '../state/atoms';
 // import { RMutation } from '../hooks/request/authUser';
 import { useMutation } from '@tanstack/react-query';
-import * as api from '@/app/(src)/api/authApi';
+  import * as api from '@/app/(src)/api/authApi';
 import { useAuthUser } from '../hooks/request/authUser';
 import Image from 'next/image';
 import { useCookies } from 'react-cookie';
@@ -43,8 +43,11 @@ export default function SignIn() {
     console.log('response', response);
 
     if (response?.status === 200) {
-      setAuthUser(data);
-      setCookie('Authorization', data,{ path: '/' });
+      const userData = await api.getUserByToken(response.data.accessToken);
+      // console.log(userData);
+
+      setAuthUser(userData);
+      setCookie('Authorization', response.data.accessToken, { path: '/' });
 
       // localStorage.setItem('userData', JSON.stringify(data));
 

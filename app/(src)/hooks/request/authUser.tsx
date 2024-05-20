@@ -23,10 +23,7 @@ import { authUserState } from '../../state/atoms';
 //     // },
 //   });
 // };
-const SetUserAtom = (data: any) => {
-  const [authUserdata, setAuthUser] = useRecoilState(authUserState);
-  setAuthUser(data);
-};
+
 
 export const useAuthUser: any = (data: any) =>
   useMutation({

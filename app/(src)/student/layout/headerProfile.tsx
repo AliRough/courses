@@ -14,14 +14,14 @@ const LayoutProfileStudentHeader = () => {
   let item = cookies.Authorization;
   console.log(cookies.Authorization);
 
-  useEffect(() => {
-    if (item) {
-      setAuthUser(item);
-      // const authUserdata=JSON.parse(item)
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (item) {
+  //     setAuthUser(item);
+  //     // const authUserdata=JSON.parse(item)
+  //   }
+  // }, []);
   console.log('Not completed');
-  console.log(authUserdata);
+  console.log('aaaaaaaaaaaaaaaaaaaaaaa', authUserdata);
 
   return (
     <section className='pt-0'>

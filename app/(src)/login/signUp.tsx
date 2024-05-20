@@ -42,7 +42,7 @@ export default function SignUp() {
     console.log('response', response);
 
     if (response?.status === 201) {
-      setAuthUser(data);
+      // setAuthUser(data);
       setCookie('Authorization', data, { path: '/' });
       // localStorage.setItem('userData', JSON.stringify(data));
 

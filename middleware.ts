@@ -14,6 +14,12 @@ export function middleware(request: NextRequest) {
      با توجه به اینکه صفحه‌ها با حروف بزرگ منجر به خطای 404 می‌شوند، برای جلوگیری
      از این خطا، آدرس‌ها را به حروف کوچک تبدیل کرده و ریدایرکت میکنیم.
    */
+  if (orginalPath.includes('/profile')) {
+    let token = request.cookies.get('Authorization');
+    if (!token) {
+      return NextResponse.redirect(new URL(`/auth/login`, request.url));
+    }
+  }
   return;
   if (
     request.nextUrl.pathname !== '/auth/login' &&

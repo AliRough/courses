@@ -8,6 +8,11 @@ export const authUserState = atom({
     email: null,
     password: null,
     passwordConfirmation: null,
+    aliasName: null,
+    mobile: null,
+    emailVerifiedAt: null,
+    mobileVerifiedAt: null,
+    createdAt: null,
   },
 });
 

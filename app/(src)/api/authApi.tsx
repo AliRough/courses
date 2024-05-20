@@ -10,15 +10,12 @@ const baseUrl = 'https://eduapi.liara.run/api/auth';
 
 // axios.defaults.baseURL = baseUrl;
 
-const SetUserAtom = (data: any) => {
-  const [authUserdata, setAuthUser] = useRecoilState(authUserState);
-
-  setAuthUser(data);
-};
-
 export const registerUser = async (formData: any) => {
   try {
-    const data = await axios.post('https://eduapi.liara.run/api/auth/register', formData);
+    const data = await axios.post(
+      'https://eduapi.liara.run/api/auth/register',
+      formData,
+    );
     console.log(data);
     if (data.status === 201) {
       console.log(formData);
@@ -34,7 +31,10 @@ export const registerUser = async (formData: any) => {
 
 export const logInUser = async (formData: any) => {
   try {
-    const data = await axios.post('/login', formData);
+    const data = await axios.post(
+      'https://eduapi.liara.run/api/auth/login',
+      formData,
+    );
     console.log(data);
     if (data.status === 201) {
       console.log(formData);
@@ -45,5 +45,37 @@ export const logInUser = async (formData: any) => {
     return data;
   } catch (error: any) {
     throw error.response.data;
+  }
+};
+export const getUserByToken = async (token: string) => {
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+  try {
+    const data = await axios.get('https://eduapi.liara.run/api/user', config);
+    return data.data;
+  } catch (error: any) {
+    throw error.response.data;
+  }
+};
+
+export const logOutUser = async (token: string) => {
+  const config = {
+    headers: { Authorization: `bearer ${token}`, Accept: 'application/json' },
+  };
+  console.log(config);
+
+  try {
+    const data = await axios.post(
+      'https://eduapi.liara.run/api/auth/logout',
+      config,
+    );
+    console.log(data);
+
+    // return;
+  } catch (error: any) {
+    console.log(error);
+
+    // throw error.response.data;
   }
 };

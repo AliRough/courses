@@ -3,9 +3,20 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useCookies } from 'react-cookie';
+import { useRecoilState } from 'recoil';
+import { authUserState } from '../state/atoms';
+import { useRouter } from 'next/router';
+import { redirect } from 'next/dist/server/api-utils';
+import * as api from '@/app/(src)/api/authApi';
 
 export default function Profile({ name, email }: any) {
   const [theme, setTheme]: any = useState();
+  const [authUserdata, setAuthUser] = useRecoilState(authUserState);
+
+  const [cookies, setCookie, removeCookie] = useCookies(['Authorization']);
+
+  // const router = useRouter();
 
   const changeThemeHandler = (e: any) => {
     console.log(setTheme);
@@ -27,6 +38,32 @@ export default function Profile({ name, email }: any) {
       document.documentElement.dataset.bsTheme = e.target.dataset.bsThemeValue;
       setTheme(e.target.dataset.bsThemeValue);
     }
+  };
+  3;
+  const logOutHamdler = async (e: any) => {
+    console.log(e);
+    // removeCookie('Authorization', { path: '/' });
+    // console.log(authUserdata);
+
+    const data = await api.logOutUser(cookies.Authorization);
+    // setAuthUser({
+    //   name: null,
+    //   aliasName: null,
+    //   email: null,
+    //   mobile: null,
+    //   emailVerifiedAt: null,
+    //   mobileVerifiedAt: null,
+    //   createdAt: null,
+    // });
+    // res.redirect('/auth/login')
+    // router.push('/auth/login');
+
+    console.log(data);
+  };
+
+  const testHandler = async () => {
+    const res = await api.getUserByToken(cookies.Authorization);
+    console.log(res);
   };
   return (
     <div className='dropdown ms-1 ms-lg-0'>
@@ -98,10 +135,22 @@ export default function Profile({ name, email }: any) {
           </a>
         </li>
         <li>
-          <a className='dropdown-item bg-danger-soft-hover' href='#'>
+          <button
+            className='dropdown-item bg-danger-soft-hover'
+            onClick={testHandler}
+          >
+            <i className='bi bi-power fa-fw me-2' />
+            تست api
+          </button>
+        </li>
+        <li>
+          <button
+            className='dropdown-item bg-danger-soft-hover'
+            onClick={logOutHamdler}
+          >
             <i className='bi bi-power fa-fw me-2' />
             خروج
-          </a>
+          </button>
         </li>
         <li>
           <hr className='dropdown-divider' />
