@@ -15,6 +15,47 @@ export default function Counter() {
     fetchData();
   }, []);
 
+  const dataicon: any = [
+    {
+      divStyle: 'icon-lg bg-purple bg-opacity-10 rounded-circle text-purple',
+      iconStyle: 'fas fa-tools',
+    },
+
+    {
+      divStyle: 'icon-lg bg-danger bg-opacity-10 rounded-circle text-danger',
+      iconStyle: 'fas fa-heartbeat',
+    },
+
+    {
+      divStyle: 'icon-lg bg-blue bg-opacity-10 rounded-circle text-blue',
+      iconStyle: 'fas fa-photo-video',
+    },
+
+    {
+      divStyle: 'icon-lg bg-success bg-opacity-10 rounded-circle text-success',
+      iconStyle: 'fas fa-laptop-code',
+    },
+
+    {
+      divStyle: 'icon-lg bg-orange bg-opacity-10 rounded-circle text-orange',
+      iconStyle: 'fas fa-crop-alt',
+    },
+
+    {
+      divStyle: 'icon-lg bg-primary bg-opacity-10 rounded-circle text-primary',
+      iconStyle: 'fas fa-business-time',
+    },
+
+    {
+      divStyle: 'icon-lg bg-info bg-opacity-10 rounded-circle text-info',
+      iconStyle: 'fas fa-music',
+    },
+
+    {
+      divStyle: 'icon-lg bg-warning bg-opacity-15 rounded-circle text-warning',
+      iconStyle: 'fas fa-palette',
+    },
+  ];
   return (
     <>
       {/* =======================
@@ -33,8 +74,24 @@ Counter START */}
                 <div className='card card-body rounded-3 px-0  '>
                   <div className='d-flex flex-column   align-items-center justify-content-center   '>
                     {/* Icon */}
-                    <div className='icon-lg bg-purple bg-opacity-10 rounded-circle text-purple '>
-                      <i className='fas fa-tools' />
+                    <div
+                      className={
+                        dataicon.length > index
+                          ? dataicon[index]?.divStyle
+                          : dataicon[
+                              Math.floor(Math.random() * dataicon.length)
+                            ]?.divStyle
+                      }
+                    >
+                      <i
+                        className={
+                          dataicon.length > index
+                            ? dataicon[index]?.iconStyle
+                            : dataicon[
+                                Math.floor(Math.random() * dataicon.length)
+                              ]?.iconStyle
+                        }
+                      />
                     </div>
                     <div className='mt-2'>
                       <h5 className='mb-0 fw-normal h6 text-center fw-normal  '>
