@@ -5,7 +5,7 @@ import CoursesSlider from './other/CoursesSlider';
 
 export default function TrendingCourses() {
   const { data } = useCourseAll();
-
+  
   return (
     <>
       {/* =======================

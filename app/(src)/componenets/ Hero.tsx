@@ -36,7 +36,7 @@ export default function Hero() {
   return (
     <>
       {/* ---------------------- */}
-      <section className='bg-light position-relative   '>
+      <section className='bg-light position-relative  pt-0 '>
         <figure className='position-absolute top-50 start-0  translate-middle-y ms-n7 d-none d-xxl-block'>
           <svg className='rotate-74 fill-danger opacity-1'>
             <circle cx='180.4' cy='15.5' r='7.7' />
@@ -191,7 +191,7 @@ export default function Hero() {
           </svg>
         </span>
 
-        <div className='container pt-5 mt-0 mt-lg-5'>
+        <div className='container pt-md-5 mt-0 mt-lg-5'>
           {/* Title and SVG START */}
           <div className='row position-relative mb-0 mb-sm-5 pb-0 pb-lg-5'>
             <div className='col-lg-8 text-center mx-auto position-relative'>
@@ -239,7 +239,9 @@ export default function Hero() {
                 </svg>
               </figure>
               {/* Title */}
-              <h1>تحصیلات، استعدادها و فرصت های شغلی، همه در اینجا</h1>
+              <h1 className='mt-5 fw-normal h3 '>
+                تحصیلات، استعدادها و فرصت های شغلی، همه در اینجا
+              </h1>
 
               {/* Search course */}
               <div className='col-md-8 text-center mx-auto pb-5 pt-5 '>
@@ -260,10 +262,10 @@ export default function Hero() {
                 </form>
               </div>
 
-              <div className='row g-4 justify-content-center my-5 '>
+              <div className='row g justify-content-center my-5 '>
                 {/* Counter item */}
-                <div className='col-sm-6 col-md-4 col-xl-6 col-xxl-3'>
-                  <div className='d-flex ms-4 ms-md-0  align-items-center'>
+                <div className='col-6 col-sm-6 col-md-4 col-xl-6 col-xxl-3'>
+                  <div className='d-flex ms-4 ms-md-0  align-items-center justify-content-center '>
                     {/* Icon */}
                     <div className='icon-lg bg-body shadow rounded-circle text-info mb-0'>
                       <i className='fas fa-user-graduate fa-fw' />
@@ -285,8 +287,8 @@ export default function Hero() {
                   </div>
                 </div>
                 {/* Counter item */}
-                <div className='col-sm-6 col-md-4 col-xl-6 col-xxl-3'>
-                  <div className='d-flex ms-4 ms-md-0  align-items-center'>
+                <div className='col-6 col-sm-6 col-md-4 col-xl-6 col-xxl-3'>
+                  <div className='d-flex ms-4 ms-md-0  align-items-center justify-content-center '>
                     {/* Icon */}
                     <div className='icon-lg bg-body shadow rounded-circle text-purple mb-0'>
                       <i className='fas fa-chalkboard-teacher fa-fw' />
@@ -305,8 +307,8 @@ export default function Hero() {
                   </div>
                 </div>
                 {/* Counter item */}
-                <div className='col-sm-6 col-md-4 col-xl-6 col-xxl-3'>
-                  <div className='d-flex ms-4 ms-md-0  align-items-center'>
+                <div className='col-6 col-sm-6 col-md-4 col-xl-6 col-xxl-3'>
+                  <div className='d-flex ms-4 ms-md-0  align-items-center justify-content-center '>
                     {/* Icon */}
                     <div className='icon-lg bg-body shadow rounded-circle text-danger mb-0'>
                       <i className='fas fa-book-reader fa-fw' />
@@ -327,8 +329,8 @@ export default function Hero() {
                     </div>
                   </div>
                 </div>
-                <div className='col-sm-6 col-md-4 col-xl-6 col-xxl-3'>
-                  <div className='d-flex ms-4 ms-md-0  align-items-center'>
+                <div className='col-6 col-sm-6 col-md-4 col-xl-6 col-xxl-3'>
+                  <div className='d-flex ms-4 ms-md-0  align-items-center justify-content-center '>
                     {/* Icon */}
                     <div className='icon-lg bg-body shadow rounded-circle text-danger mb-0'>
                       <i className='fas fa-book-reader fa-fw' />

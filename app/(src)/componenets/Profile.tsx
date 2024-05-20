@@ -42,19 +42,20 @@ export default function Profile({ name, email }: any) {
   3;
   const logOutHamdler = async (e: any) => {
     console.log(e);
-    // removeCookie('Authorization', { path: '/' });
     // console.log(authUserdata);
 
     const data = await api.logOutUser(cookies.Authorization);
-    // setAuthUser({
-    //   name: null,
-    //   aliasName: null,
-    //   email: null,
-    //   mobile: null,
-    //   emailVerifiedAt: null,
-    //   mobileVerifiedAt: null,
-    //   createdAt: null,
-    // });
+    removeCookie('Authorization', { path: '/' });
+
+    setAuthUser({
+      name: null,
+      aliasName: null,
+      email: null,
+      mobile: null,
+      emailVerifiedAt: null,
+      mobileVerifiedAt: null,
+      createdAt: null,
+    });
     // res.redirect('/auth/login')
     // router.push('/auth/login');
 

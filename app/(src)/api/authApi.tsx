@@ -60,22 +60,35 @@ export const getUserByToken = async (token: string) => {
 };
 
 export const logOutUser = async (token: string) => {
-  const config = {
-    headers: { Authorization: `bearer ${token}`, Accept: 'application/json' },
+  let config = {
+    method: 'post',
+    maxBodyLength: Infinity,
+    url: 'https://eduapi.liara.run/api/auth/logout',
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
   };
-  console.log(config);
-
-  try {
-    const data = await axios.post(
-      'https://eduapi.liara.run/api/auth/logout',
-      config,
-    );
-    console.log(data);
-
-    // return;
-  } catch (error: any) {
-    console.log(error);
-
-    // throw error.response.data;
-  }
+  axios
+    .request(config)
+    .then((response) => {
+      console.log(JSON.stringify(response.data));
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  // const config: any = {
+  //   headers: { Authorization: `Bearer ${token}`, Accept: 'application/json' },
+  // };
+  // console.log(config);
+  // try {
+  //   const data = await axios.post(
+  //     'https://eduapi.liara.run/api/auth/logout',
+  //     config,
+  //   );
+  //   console.log(data);
+  //   // return;
+  // } catch (error: any) {
+  //   console.log(error);
+  //   // throw error.response.data;
+  // }
 };

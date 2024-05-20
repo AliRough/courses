@@ -5,11 +5,221 @@ import { TCourses } from '../model/course.d';
 import CourseTile from '../course/courseTile';
 
 export default function PopularCourses() {
-  const { data }: any = useCourseByTag('طراحی وب');
+  // const { data }: any = useCourseByTag('طراحی وب');
   const [tag, setTag]: any = useState();
 
-  let filterdData = data?.filter((course: any) => course.category === tag);
+  let data = [
+    {
+      id: 1,
+      title: 'آموزش Photoshop',
+      level: 'مبتدی',
+      image: 'images/courses/4by3/01.jpg',
+      description:
+        'با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک',
+      liked: true,
+      rating: 4.5,
+      videos: 65,
+      time: '9 ساعت',
+      category: 'طراحی وب',
+    },
+    {
+      id: 2,
+      title: 'آموزش Sketch',
+      level: 'همه سطح',
+      image: 'images/courses/4by3/02.jpg',
+      description:
+        'با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک',
+      liked: true,
+      rating: 4,
+      videos: 20,
+      time: '12 دقیقه',
+      category: 'طراحی وب',
+    },
+    {
+      id: 3,
+      title: 'آموزش Sketch',
+      level: 'مقدماتی',
+      image: 'images/courses/4by3/03.jpg',
+      description:
+        'با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک',
+      liked: true,
+      rating: 4,
+      videos: 20,
+      time: '12 دقیقه',
+      category: 'طراحی گرافیکی',
+    },
+    {
+      id: 4,
+      title: 'آموزش Sketch',
+      level: 'مقدماتی',
+      image: 'images/courses/4by3/04.jpg',
+      description:
+        'با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک',
+      liked: true,
+      rating: 4,
+      videos: 20,
+      time: '12 دقیقه',
+      category: 'طراحی گرافیکی',
+    },
 
+    {
+      id: 5,
+      title: 'آموزش Sketch',
+      level: 'مقدماتی',
+      image: 'images/courses/4by3/05.jpg',
+      description:
+        'با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک',
+      liked: true,
+      rating: 4,
+      videos: 20,
+      time: '12 دقیقه',
+      category: 'طراحی وب',
+    },
+    {
+      id: 6,
+      title: 'آموزش Sketch',
+      level: 'مقدماتی',
+      image: 'images/courses/4by3/06.jpg',
+      description:
+        'با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک',
+      liked: true,
+      rating: 4,
+      videos: 20,
+      time: '12 دقیقه',
+      category: 'دیجیتال مارکتنیگ',
+    },
+    {
+      id: 7,
+      title: 'آموزش Sketch',
+      level: 'مقدماتی',
+      image: 'images/courses/4by3/07.jpg',
+      description:
+        'با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک',
+      liked: true,
+      rating: 4,
+      videos: 20,
+      time: '12 دقیقه',
+      category: 'دیجیتال مارکتنیگ',
+    },
+    {
+      id: 8,
+      title: 'آموزش Sketch',
+      level: 'مقدماتی',
+      image: 'images/courses/4by3/08.jpg',
+      description:
+        'با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک',
+      liked: true,
+      rating: 4,
+      videos: 20,
+      time: '12 دقیقه',
+      category: 'طراحی وب',
+    },
+    {
+      id: 9,
+      title: 'آموزش Sketch',
+      level: 'مقدماتی',
+      image: 'images/courses/4by3/09.jpg',
+      description:
+        'با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک',
+      liked: true,
+      rating: 4,
+      videos: 20,
+      time: '12 دقیقه',
+      category: 'طراحی وب',
+    },
+    {
+      id: 10,
+      title: 'آموزش Sketch',
+      level: 'مقدماتی',
+      image: 'images/courses/4by3/10.jpg',
+      description:
+        'با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک',
+      liked: true,
+      rating: 4,
+      videos: 20,
+      time: '12 دقیقه',
+      category: 'طراحی وب',
+    },
+    {
+      id: 11,
+      title: 'آموزش Sketch',
+      level: 'مقدماتی',
+      image: 'images/courses/4by3/04.jpg',
+      description:
+        'با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک',
+      liked: true,
+      rating: 4,
+      videos: 20,
+      time: '12 دقیقه',
+      category: 'طراحی گرافیکی',
+    },
+    {
+      id: 12,
+      title: 'آموزش Sketch',
+      level: 'مقدماتی',
+      image: 'images/courses/4by3/04.jpg',
+      description:
+        'با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک',
+      liked: true,
+      rating: 4,
+      videos: 20,
+      time: '12 دقیقه',
+      category: 'طراحی گرافیکی',
+    },
+    {
+      id: 13,
+      title: 'آموزش Sketch',
+      level: 'مقدماتی',
+      image: 'images/courses/4by3/04.jpg',
+      description:
+        'با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک',
+      liked: true,
+      rating: 4,
+      videos: 20,
+      time: '12 دقیقه',
+      category: 'طراحی گرافیکی',
+    },
+    {
+      id: 14,
+      title: 'آموزش Sketch',
+      level: 'مقدماتی',
+      image: 'images/courses/4by3/04.jpg',
+      description:
+        'با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک',
+      liked: true,
+      rating: 4,
+      videos: 20,
+      time: '12 دقیقه',
+      category: 'طراحی گرافیکی',
+    },
+    {
+      id: 15,
+      title: 'آموزش Sketch',
+      level: 'مقدماتی',
+      image: 'images/courses/4by3/04.jpg',
+      description:
+        'با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک',
+      liked: true,
+      rating: 4,
+      videos: 20,
+      time: '12 دقیقه',
+      category: 'طراحی گرافیکی',
+    },
+    {
+      id: 16,
+      title: 'آموزش Sketch',
+      level: 'مقدماتی',
+      image: 'images/courses/4by3/04.jpg',
+      description:
+        'با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک',
+      liked: true,
+      rating: 4,
+      videos: 20,
+      time: '12 دقیقه',
+      category: 'طراحی گرافیکی',
+    },
+  ];
+  let filterdData = data?.filter((course: any) => course.category === tag);
   const showCoursHandler = (e: any) => {
     setTag(e.target.dataset.tag);
   };
