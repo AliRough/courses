@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 import { useCookies } from 'react-cookie';
 
 const LayoutProfileStudentHeader = () => {
-  const [authUserdata, setAuthUser] = useRecoilState(authUserState);
+  const [authUserdata, setAuthUser]: any = useRecoilState(authUserState);
   const [cookies, setCookie, removeCookie] = useCookies(['Authorization']);
   // console.log();
 

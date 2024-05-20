@@ -12,7 +12,7 @@ import * as api from '@/app/(src)/api/authApi';
 
 export default function Profile({ name, email }: any) {
   const [theme, setTheme]: any = useState();
-  const [authUserdata, setAuthUser] = useRecoilState(authUserState);
+  const [authUserdata, setAuthUser]:any = useRecoilState(authUserState);
 
   const [cookies, setCookie, removeCookie] = useCookies(['Authorization']);
 

@@ -19,7 +19,7 @@ import { useCookies } from 'react-cookie';
 export default function SignIn() {
   const router = useRouter();
 
-  const [authUserdata, setAuthUser] = useRecoilState(authUserState);
+  const [authUserdata, setAuthUser]:any = useRecoilState(authUserState);
 
   // const R: any = RMutation();
   // const { mutate, isPending, data, isError, isSuccess, error } = useAuthUser();

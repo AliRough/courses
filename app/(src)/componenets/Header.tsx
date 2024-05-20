@@ -14,7 +14,7 @@ export default function Header({ children }: any) {
   const [headerRes, setHeaderRes]: any = useState();
   const [cookies, setCookie, removeCookie] = useCookies(['Authorization']);
 
-  const [authUserdata, setAuthUser] = useRecoilState(authUserState);
+  const [authUserdata, setAuthUser]:any = useRecoilState(authUserState);
   console.log('auth', authUserdata.email);
   console.log('auth', cookies.Authorization);
 
