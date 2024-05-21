@@ -24,7 +24,7 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
     <>
       <section className='pt-3 pt-xl-5'>
         <div className='container' data-stickyContainer>
-          <div className='row g-4'>
+          <div className='row g-4  '>
             {/* Main content START */}
             <div className='col-xl-8'>
               <div className='row g-4'>
@@ -800,8 +800,8 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
             </div>
             {/* Main content END */}
             {/* Right sidebar START */}
-            <div className='col-xl-4'>
-              <div data-sticky={true} data-marginTop={80} data-stickyFor={768}>
+            <div className='col-xl-4  '>
+              <div className='position-sticky top-0  '>
                 <div className='row g-4'>
                   <div className='col-md-6 col-xl-12'>
                     {/* Course info START */}
@@ -1041,16 +1041,6 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
 
       <Testimonials />
       <TrendingCourses />
-
-      <Script src='/vendor/aos/aos.js' />
-      <Script src='/vendor/bootstrap/dist/js/bootstrap.bundle.min.js' />
-      <Script src='/vendor/apexcharts/js/apexcharts.min.js' />
-      <Script src='/vendor/choices/js/choices.min.js' />
-      <Script src='/vendor/tiny-slider/tiny-slider-rtl.js' />
-      <Script src='/vendor/glightbox/js/glightbox.js' />
-      <Script src='/vendor/quill/js/quill.min.js' />
-      <Script src='/vendor/purecounterjs/dist/purecounter_vanilla.js' />
-      <Script src='/functions.js' />
     </>
   );
 };

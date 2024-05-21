@@ -32,7 +32,6 @@ export default function RootLayout({
         <Script src='/vendor/glightbox/js/glightbox.js' />
         <Script src='/vendor/quill/js/quill.min.js' />
         <Script src='/vendor/purecounterjs/dist/purecounter_vanilla.js' />
-        <Script src='/vendor/sticky-js/sticky.min.js' />
         <Script src='/functions.js' />
       </body>
     </html>
