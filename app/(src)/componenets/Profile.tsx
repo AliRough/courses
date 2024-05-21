@@ -6,17 +6,17 @@ import Link from 'next/link';
 import { useCookies } from 'react-cookie';
 import { useRecoilState } from 'recoil';
 import { authUserState } from '../state/atoms';
-import { useRouter } from 'next/router';
 import { redirect } from 'next/dist/server/api-utils';
 import * as api from '@/app/(src)/api/authApi';
+import { useRouter } from 'next/navigation';
 
 export default function Profile({ name, email }: any) {
   const [theme, setTheme]: any = useState();
-  const [authUserdata, setAuthUser]:any = useRecoilState(authUserState);
+  const [authUserdata, setAuthUser]: any = useRecoilState(authUserState);
 
   const [cookies, setCookie, removeCookie] = useCookies(['Authorization']);
 
-  // const router = useRouter();
+  const router = useRouter();
 
   const changeThemeHandler = (e: any) => {
     console.log(setTheme);
@@ -57,7 +57,7 @@ export default function Profile({ name, email }: any) {
       createdAt: null,
     });
     // res.redirect('/auth/login')
-    // router.push('/auth/login');
+    router.push('/');
 
     console.log(data);
   };
