@@ -4,11 +4,11 @@ import axios from 'axios';
 
 const baseUrl = process.env.NEXT_PUBLIC_APP_URL;
 
-axios.defaults.baseURL = baseUrl;
+// axios.defaults.baseURL = baseUrl;
 
 export const CourseAllApi = async () => {
   try {
-    const data = await axios.get('/courses');
+    const data = await axios.get('https://eduapi.liara.run/api/courses');
     return data.data;
   } catch (error: any) {
     throw error.response.data;
@@ -17,7 +17,7 @@ export const CourseAllApi = async () => {
 
 export const CourseByIdApi = async (id: number) => {
   try {
-    const data = await axios.get('/course/' + id);
+    const data = await axios.get('https://eduapi.liara.run/api/courses/' + id);
     return data.data;
   } catch (error: any) {
     throw error.response.data;
@@ -26,11 +26,10 @@ export const CourseByIdApi = async (id: number) => {
 
 export const CourseByTagApi = async (tag: string) => {
   try {
-    const data = await axios.get('/courses');
+    const data = await axios.get('http://localhost:9000/courses');
 
     return data.data;
   } catch (error: any) {
     throw error.response.data;
   }
 };
-

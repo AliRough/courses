@@ -10,11 +10,13 @@ import Testimonials from '@/app/(src)/testimonials';
 import { TCurriculum, TCurriculumDetail } from '@/app/(src)/model/course.d';
 import { TFaq, TTag } from '@/app/(src)/model/other.d';
 import TrendingCourses from '@/app/(src)/componenets/TrendingCourses';
+import Script from 'next/script';
 
 const CourseDetail = ({ params }: { params: { id: number } }) => {
   const { id } = params;
 
   const { data } = useCourseById(id);
+  console.log('----------------------------------->', data);
 
   console.log('Not completed');
 
@@ -804,6 +806,15 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                   <div className='col-md-6 col-xl-12'>
                     {/* Course info START */}
                     <div className='card card-body border p-4'>
+                      {data && (
+                        <img
+                          className='rounded-3 mb-3'
+                          src={
+                            'https://fanavaran.liara.run/' + data?.data?.cover
+                          }
+                          alt=''
+                        />
+                      )}
                       {/* Price and share button */}
                       <div className='d-flex justify-content-between align-items-center'>
                         {/* Price */}
@@ -1030,6 +1041,16 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
 
       <Testimonials />
       <TrendingCourses />
+
+      <Script src='/vendor/aos/aos.js' />
+      <Script src='/vendor/bootstrap/dist/js/bootstrap.bundle.min.js' />
+      <Script src='/vendor/apexcharts/js/apexcharts.min.js' />
+      <Script src='/vendor/choices/js/choices.min.js' />
+      <Script src='/vendor/tiny-slider/tiny-slider-rtl.js' />
+      <Script src='/vendor/glightbox/js/glightbox.js' />
+      <Script src='/vendor/quill/js/quill.min.js' />
+      <Script src='/vendor/purecounterjs/dist/purecounter_vanilla.js' />
+      <Script src='/functions.js' />
     </>
   );
 };

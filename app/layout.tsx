@@ -23,7 +23,7 @@ export default function RootLayout({
     <html lang='fa' dir='rtl'>
       <body>
         <RecoilTanstackProvider>{children}</RecoilTanstackProvider>
-
+        <Script src='/vendor/plyr/plyr.js' />
         <Script src='/vendor/aos/aos.js' />
         <Script src='/vendor/bootstrap/dist/js/bootstrap.bundle.min.js' />
         <Script src='/vendor/apexcharts/js/apexcharts.min.js' />
@@ -32,6 +32,7 @@ export default function RootLayout({
         <Script src='/vendor/glightbox/js/glightbox.js' />
         <Script src='/vendor/quill/js/quill.min.js' />
         <Script src='/vendor/purecounterjs/dist/purecounter_vanilla.js' />
+        <Script src='/vendor/sticky-js/sticky.min.js' />
         <Script src='/functions.js' />
       </body>
     </html>

@@ -7,6 +7,6 @@ export const getAllCategories = async () => {
 
     return data.data;
   } catch (error: any) {
-    throw error.response.data;
+    throw error;
   }
 };

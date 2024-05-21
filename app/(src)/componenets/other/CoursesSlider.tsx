@@ -48,7 +48,7 @@ export default function CoursesSlider({ datas }: any) {
                   unoptimized={true}
                   width={100}
                   height={100}
-                  src={'/' + data.image}
+                  src={'https://fanavaran.liara.run/' + data.cover}
                   className='card-img-top'
                   alt='course image'
                 />
@@ -77,7 +77,7 @@ export default function CoursesSlider({ datas }: any) {
                   </div>
                   {/* Title */}
                   <h5 className='card-title fw-normal'>
-                    <a href='#'>{data.title}</a>
+                    <a href={`/course/${data.id}`}>{data.title}</a>
                   </h5>
                   {/* Rating */}
                   <div className='d-flex justify-content-between mb-2'>

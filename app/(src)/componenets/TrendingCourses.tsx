@@ -5,7 +5,8 @@ import CoursesSlider from './other/CoursesSlider';
 
 export default function TrendingCourses() {
   const { data } = useCourseAll();
-  
+  console.log(data?.data);
+
   return (
     <>
       {/* =======================
@@ -21,7 +22,7 @@ Trending courses START */}
           </div>
           <div className='row'>
             {/* Slider START */}
-            <CoursesSlider datas={data} />
+            <CoursesSlider datas={data?.data} />
 
             {/* Slider END */}
           </div>

@@ -14,7 +14,7 @@ export default function Header({ children }: any) {
   const [headerRes, setHeaderRes]: any = useState();
   const [cookies, setCookie, removeCookie] = useCookies(['Authorization']);
 
-  const [authUserdata, setAuthUser]:any = useRecoilState(authUserState);
+  const [authUserdata, setAuthUser]: any = useRecoilState(authUserState);
   console.log('auth', authUserdata.email);
   console.log('auth', cookies.Authorization);
 
@@ -89,8 +89,6 @@ export default function Header({ children }: any) {
               {/* Nav Main menu START */}
               <ul className='navbar-nav navbar-nav-scroll mx-auto'>
                 {headerRes?.data?.menu?.map((item: any) => {
-                  console.log(item?.src);
-
                   return (
                     <li className='nav-item dropdown ' key={item.id}>
                       <Link
