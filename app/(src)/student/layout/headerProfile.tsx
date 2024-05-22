@@ -12,7 +12,6 @@ const LayoutProfileStudentHeader = () => {
   // console.log();
 
   let item = cookies.Authorization;
-  console.log(cookies.Authorization);
 
   // useEffect(() => {
   //   if (item) {
@@ -21,7 +20,6 @@ const LayoutProfileStudentHeader = () => {
   //   }
   // }, []);
   console.log('Not completed');
-  console.log('aaaaaaaaaaaaaaaaaaaaaaa', authUserdata);
 
   return (
     <section className='pt-0'>

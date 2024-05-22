@@ -11,27 +11,178 @@ import { useCookies } from 'react-cookie';
 import * as api from '@/app/(src)/api/authApi';
 
 export default function Header({ children }: any) {
-  const [headerRes, setHeaderRes]: any = useState();
+  const [headerRes, setHeaderRes]: any = useState({
+    data: {
+      menu: [
+        {
+          id: 1,
+          title: 'فرانت اند',
+          children: [
+            {
+              id: 1,
+              title: 'آموزش 1',
+            },
+            {
+              id: 2,
+              title: 'آموزش 2',
+            },
+            {
+              id: 3,
+              title: 'آموزش 3',
+            },
+            {
+              id: 4,
+              title: 'آموزش 4',
+            },
+            {
+              id: 5,
+              title: 'آموزش 5',
+            },
+            {
+              id: 6,
+              title: 'آموزش 6',
+            },
+            {
+              id: 7,
+              title: 'آموزش 7',
+            },
+            {
+              id: 8,
+              title: 'آموزش 8',
+            },
+            {
+              id: 9,
+              title: 'آموزش 9',
+            },
+            {
+              id: 10,
+              title: 'آموزش 10',
+            },
+            {
+              id: 11,
+              title: 'آموزش 11',
+            },
+          ],
+        },
+        {
+          id: 2,
+          title: 'امنیت',
+          children: [
+            {
+              id: 1,
+              title: 'نقشه راه',
+              children: [
+                {
+                  id: 1,
+                  title: 'دسته بندی',
+                },
+                {
+                  id: 2,
+                  title: 'نقشه راه 1',
+                },
+                {
+                  id: 3,
+                  title: 'نقشه راه 2',
+                },
+                {
+                  id: 4,
+                  title: 'نقشه راه 3',
+                },
+                {
+                  id: 5,
+                  title: 'نقشه راه 4',
+                },
+              ],
+            },
+            {
+              id: 2,
+              title: ' شبکه با گرایش امنیت',
+            },
+            {
+              id: 3,
+              title: ' لینوکس با گرایش امنیت',
+            },
+            {
+              id: 4,
+              title: ' آموزش هکر قانونمند ',
+            },
+            {
+              id: 5,
+              title: ' آموزش کالی لینوکس',
+            },
+            {
+              id: 6,
+              title: ' آموزش پایتون سیاه',
+            },
+            {
+              id: 7,
+              title: ' آموزش Burp Suite',
+            },
+            {
+              id: 8,
+              title: ' آموزش جاوااسکریپت سیاه',
+            },
+          ],
+        },
+        {
+          id: 3,
+          title: 'پایتون',
+        },
+        {
+          id: 4,
+          title: 'پی اچ پی',
+        },
+        {
+          id: 5,
+          title: 'ارتقای مهارت ها',
+        },
+        {
+          id: 6,
+          title: 'مقالات',
+        },
+        {
+          id: 1,
+          title: 'سایت',
+          children: [
+            {
+              id: 1,
+              title: ' صفحه دوره',
+              src: '/course',
+            },
+            {
+              id: 1,
+              title: ' صفحه همه دوره',
+              src: '/course/all',
+            },
+            {
+              id: 1,
+              title: ' صفحه مدرس',
+              src: '/profile/t/dashboard',
+            },
+          ],
+        },
+      ],
+      megamenu: [],
+    },
+  });
   const [cookies, setCookie, removeCookie] = useCookies(['Authorization']);
 
   const [authUserdata, setAuthUser]: any = useRecoilState(authUserState);
-  console.log('auth', authUserdata.email);
-  console.log('auth', cookies.Authorization);
 
   // console.log(localStorage.getItem('userData'));
   // let item = localStorage.getItem('userData');
-  useEffect(() => {
-    const fetchData = async () => {
-      let data: any = await getHeader();
-      setHeaderRes(data);
-    };
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     let data: any = await getHeader();
+
+  //     setHeaderRes(data);
+  //   };
+  //   fetchData();
+  // }, []);
   useEffect(() => {
     if (cookies.Authorization && !authUserdata.email) {
       const fetchData = async () => {
         const { data } = await api.getUserByToken(cookies.Authorization);
-        console.log('dddddddddddddddddddddddddd', data);
 
         setAuthUser(data);
       };
@@ -87,12 +238,12 @@ export default function Header({ children }: any) {
             {/* Main navbar START */}
             <div className='navbar-collapse w-100 collapse' id='navbarCollapse'>
               {/* Nav Main menu START */}
-              <ul className='navbar-nav navbar-nav-scroll mx-auto'>
+              <ul className='navbar-nav navbar-nav-scroll mx-auto  '>
                 {headerRes?.data?.menu?.map((item: any) => {
                   return (
                     <li className='nav-item dropdown ' key={item.id}>
                       <Link
-                        className={`nav-link   ${item.children && 'dropdown-toggle'}`}
+                        className={`nav-link   ${item.children && ' dropdown-toggle '}`}
                         href={item?.src || '#'}
                         id='demoMenu'
                         data-bs-toggle='dropdown'
@@ -172,11 +323,11 @@ export default function Header({ children }: any) {
             {authUserdata.name ? (
               <Profile {...authUserdata} />
             ) : (
-              <Link href={'/auth/signUp'}>
+              <Link href={'/auth/login'}>
                 <div className='navbar-nav d-none d-lg-inline-block'>
-                  <button className='btn btn-danger-soft mb-0'>
+                  <button className='btn btn-primary-soft mb-0'>
                     <i className='fas fa-sign-in-alt me-2' />
-                    ثبت نام
+                    وارد شوید
                   </button>
                 </div>
               </Link>

@@ -11,15 +11,16 @@ import { useRecoilState } from 'recoil';
 import { authUserState } from '../state/atoms';
 // import { RMutation } from '../hooks/request/authUser';
 import { useMutation } from '@tanstack/react-query';
-  import * as api from '@/app/(src)/api/authApi';
+import * as api from '@/app/(src)/api/authApi';
 import { useAuthUser } from '../hooks/request/authUser';
 import Image from 'next/image';
 import { useCookies } from 'react-cookie';
+import Loading from '@/app/loading';
 
 export default function SignIn() {
   const router = useRouter();
 
-  const [authUserdata, setAuthUser]:any = useRecoilState(authUserState);
+  const [authUserdata, setAuthUser]: any = useRecoilState(authUserState);
 
   // const R: any = RMutation();
   // const { mutate, isPending, data, isError, isSuccess, error } = useAuthUser();
@@ -262,6 +263,13 @@ export default function SignIn() {
           </div>
         </section>
       </main>
+      {isPending && (
+        <div className='preloader opacity-50 '>
+          <div className='preloader-item'>
+            <div className='spinner-grow text-primary' />
+          </div>
+        </div>
+      )}
       {/* **************** MAIN CONTENT END **************** */}
     </>
   );

@@ -307,7 +307,7 @@ var e = {
       if (e.isVariableDefined(stickySpace)) {
         document.addEventListener('scroll', function (event) {
           var scTop = window.pageYOffset || document.documentElement.scrollTop;
-          if (scTop >= 400) {
+          if (scTop >= 400 && e.select('#sticky-space.active')) {
             stickySpace.addClass('active');
             e.select('#sticky-space.active').style.height = stickyHeight + 'px';
             stickyNav.addClass('navbar-sticky-on');
