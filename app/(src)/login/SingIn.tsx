@@ -17,7 +17,11 @@ import Image from 'next/image';
 import { useCookies } from 'react-cookie';
 import Loading from '@/app/loading';
 
+import { toast } from 'react-toastify';
+
 export default function SignIn() {
+  const notify = () => toast('Wow so easy!');
+
   const router = useRouter();
 
   const [authUserdata, setAuthUser]: any = useRecoilState(authUserState);
@@ -53,6 +57,7 @@ export default function SignIn() {
       // localStorage.setItem('userData', JSON.stringify(data));
 
       router.push('/profile/s/dashboard');
+      toast.success('با موفقیت وارد شدید');
     }
     setIsPending(false);
     // data.password !== data.passwordConfirmation && console.log('error');

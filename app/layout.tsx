@@ -7,6 +7,9 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import 'react-toastify/dist/ReactToastify.css';
+
+import { ToastContainer } from 'react-toastify';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -22,7 +25,10 @@ export default function RootLayout({
   return (
     <html lang='fa' dir='rtl'>
       <body>
+        <ToastContainer className={'fw-bold '} />
+
         <RecoilTanstackProvider>{children}</RecoilTanstackProvider>
+
         <Script src='/vendor/plyr/plyr.js' />
         <Script src='/vendor/aos/aos.js' />
         <Script src='/vendor/bootstrap/dist/js/bootstrap.bundle.min.js' />

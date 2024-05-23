@@ -14,7 +14,7 @@ const CourseTile = ({ data }: { data: TCourses }) => {
     <div className='card shadow h-100'>
       <Image
         unoptimized={true}
-        src={'/' + data?.image}
+        src={'https://fanavaran.liara.run/' + data?.cover}
         width='500'
         height='500'
         className='card-img-top'

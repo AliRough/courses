@@ -24,7 +24,7 @@ const CourseList = () => {
             <div className='col-lg-8 col-xl-9'>
               <CourseListFillter />
               <div className='row g-4'>
-                {data?.map((e: TCourses) => (
+                {data?.data?.map((e: TCourses) => (
                   <div key={e?.id} className='col-sm-6 col-xl-4'>
                     <CourseTile data={e} />
                   </div>

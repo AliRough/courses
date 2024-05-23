@@ -4,17 +4,17 @@ import { TInstructor } from '@/app/(src)/model/instructor.d';
 import { TFaq, TTag } from '@/app/(src)/model/other.d';
 
 export type TCourses = {
-    id: number;
-    title: string;
-    level: string;
-    image: string;
-    description: string;
-    liked: boolean;
-    rating: number;
-    videos: number;
-    time: string;
-    category: string;
-}
+  id: number;
+  title: string;
+  level: string;
+  cover: string;
+  description: string;
+  liked: boolean;
+  rating: number;
+  videos: number;
+  time: string;
+  category: string;
+};
 export type TCurriculum = {
   title: string;
   count: number;
