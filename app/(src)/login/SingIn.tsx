@@ -91,7 +91,7 @@ export default function SignIn() {
           <div className='container-fluid'>
             <div className='row'>
               {/* left */}
-              <div className='col-12 col-lg-6 d-md-flex align-items-center justify-content-center bg-primary bg-opacity-10 vh-lg-100'>
+              <div className='d-none col-lg-6 d-md-flex align-items-center justify-content-center bg-primary bg-opacity-10 vh-lg-100'>
                 <div className='p-3 p-lg-5'>
                   {/* Title */}
                   <div className='text-center'>

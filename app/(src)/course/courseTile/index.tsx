@@ -9,12 +9,13 @@ import { TCourses } from '@/app/(src)/model/course.d';
 
 const CourseTile = ({ data }: { data: TCourses }) => {
   console.log('Not completed');
+  console.log(data);
 
   return (
     <div className='card shadow h-100'>
       <Image
         unoptimized={true}
-        src={'https://fanavaran.liara.run/' + data?.cover}
+        src={'/' + data?.image || 'https://fanavaran.liara.run/' + data?.cover}
         width='500'
         height='500'
         className='card-img-top'
@@ -39,7 +40,7 @@ const CourseTile = ({ data }: { data: TCourses }) => {
           {data?.rating && <Rating data={data?.rating} />}
         </ul>
       </div>
-      <div className='card-footer pt-0 pb-3'>
+      <div className='card-footer pt-0 pb-3 '>
         <hr />
         <div className='d-flex justify-content-between'>
           <span className='h6 fw-light mb-0'>

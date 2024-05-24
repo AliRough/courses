@@ -5,7 +5,6 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { signUpValidate } from '../validations/authValidate';
-import { registerUser } from '@/app/(src)/api/authApi';
 import { redirect, useRouter } from 'next/navigation';
 import { useRecoilState } from 'recoil';
 import { authUserState } from '../state/atoms';

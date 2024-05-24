@@ -44,12 +44,13 @@ Main Banner START */}
 
           {/* Content START */}
           <div className='container'>
-            <div className='row align-items-end justify-content-xl-between '>
+            <div className='row align-items-end justify-content-xl-between justify-content-center '>
               {/* Left content START */}
-              <div className='col-lg-6 col-xl-5 position-relative z-index-1 text-center text-lg-start mb-2 mb-xl-0'>
+              <div className='col-md-9 col-lg-6 col-xl-5 position-relative z-index-1  text-center text-lg-start mb-2 mb-xl-0'>
                 {/* Title */}
-                <h1 className='mb-4 fw-bolder'>
+                <h1 className='mb-4 display-6 tw-font-[Kalameh] tw-font-black   '>
                   به دانشگاه آنلاین ما
+                  <br />
                   <span className='position-relative d-inline-block  '>
                     خوش آمدید
                     {/* SVG decoration */}
@@ -70,15 +71,12 @@ Main Banner START */}
                   </span>
                 </h1>
                 {/* Content */}
-                <p className='mb-3'>
-                  معتبرترین دوره های آنلاین و گواهینامه های بازاریابی، فناوری
-                  اطلاعات، برنامه نویسی و بانک های اطلاعاتی.
-                </p>
+
                 {/* Search bar */}
-                <form className='border rounded p-2 mb-4'>
+                <form className='!tw-border rounded p-2 mb-4 tw-shadow-md '>
                   <div className='input-group'>
                     <input
-                      className='form-control border-0 me-1'
+                      className='form-control border-0 me-1 '
                       type='search'
                       placeholder='جستجو...'
                     />
@@ -86,14 +84,27 @@ Main Banner START */}
                       type='button'
                       className='btn btn-primary mb-0 rounded'
                     >
-                      <i className='fas fa-search' />
+                      <svg
+                        xmlns='http://www.w3.org/2000/svg'
+                        fill='none'
+                        viewBox='0 0 20 20'
+                        strokeWidth='1.5'
+                        stroke='currentColor'
+                        className='size-5 tw-w-5  '
+                      >
+                        <path
+                          fillRule='evenodd'
+                          clipRule='evenodd'
+                          d='M9 3.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11ZM2 9a7 7 0 1 1 12.452 4.391l3.328 3.329a.75.75 0 1 1-1.06 1.06l-3.329-3.328A7 7 0 0 1 2 9Z'
+                        />
+                      </svg>
                     </button>
                   </div>
                 </form>
                 {/* Counter START */}
                 <div className='row g-3 mb-0 '>
                   {/* Item */}
-                  <div className='col-sm-6'>
+                  <div className='col-sm-6 '>
                     <div className='d-flex align-items-center'>
                       {/* Icon */}
                       <div className='icon-lg fs-4 text-orange bg-orange bg-opacity-10 rounded'>
@@ -104,7 +115,7 @@ Main Banner START */}
                       <div className='ms-3'>
                         <div className='d-flex'>
                           <h4
-                            className='purecounter fw-bold mb-0'
+                            className='purecounter fw-bold mb-0 '
                             data-purecounter-start={0}
                             data-purecounter-end={600}
                             data-purecounter-delay={100}
@@ -118,7 +129,7 @@ Main Banner START */}
                     </div>
                   </div>
                   {/* Item */}
-                  <div className='col-sm-6'>
+                  <div className='col-sm-6 '>
                     <div className='d-flex align-items-center'>
                       {/* Icon */}
                       <div className='icon-lg fs-4 text-info bg-info bg-opacity-10 rounded'>
@@ -129,7 +140,7 @@ Main Banner START */}
                       <div className='ms-3'>
                         <div className='d-flex'>
                           <h4
-                            className='purecounter fw-bold mb-0'
+                            className='purecounter fw-bold mb-0 '
                             data-purecounter-start={0}
                             data-purecounter-end={400}
                             data-purecounter-delay={100}
@@ -147,7 +158,7 @@ Main Banner START */}
               </div>
               {/* Left content END */}
               {/* Right content START */}
-              <div className='col-lg-6 col-xl-7 text-center position-relative m-0  p-0 '>
+              <div className='col-lg-6 col-xl-7 text-center position-relative m-0  p-0  d-none d-lg-block'>
                 {/* SVG decoration */}
 
                 <Image

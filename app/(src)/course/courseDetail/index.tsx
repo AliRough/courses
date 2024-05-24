@@ -16,7 +16,7 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
   const { id } = params;
 
   const { data } = useCourseById(id);
-  console.log('----------------------------------->', data);
+  console.log('----------------------------------->', data?.data);
 
   console.log('Not completed');
 
@@ -256,6 +256,38 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                       <div className='row g-5'>
                         {/* Lecture item START */}
                         <div className='col-12'>
+                          {data?.data?.episodes.map((episod: any) => (
+                            <>
+                              <div className='d-sm-flex justify-content-sm-between align-items-center'>
+                                <div className='d-flex'>
+                                  <a
+                                    href='#'
+                                    className='btn btn-danger-soft btn-round mb-0'
+                                  >
+                                    <i className='fas fa-play' />
+                                  </a>
+                                  <div className='ms-2 ms-sm-3 mt-1 mt-sm-0'>
+                                    <h6 className='mb-0 fw-normal'>
+                                      {episod.title}
+                                    </h6>
+                                    <p className='mb-2 mb-sm-0 small'>
+                                      ۱۵ دقیقه
+                                    </p>
+                                  </div>
+                                </div>
+                                {/* Button */}
+                                <a
+                                  href='#'
+                                  className='btn btn-sm btn-success mb-0'
+                                >
+                                  پخش
+                                </a>
+                              </div>
+                              {/* Divider */}
+                              <hr />
+                            </>
+                          ))}
+                          static
                           {/* Curriculum item */}
                           <h5 className='mb-4 font-base'>
                             معرفی دوره فتوشاپ (3 ویدیو)

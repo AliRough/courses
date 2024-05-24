@@ -67,7 +67,7 @@ export default function Profile({ name, email }: any) {
     console.log(res);
   };
   return (
-    <div className='dropdown ms-1 ms-lg-0'>
+    <div className='dropdown ps-3 ms-lg-0'>
       <a
         className='avatar avatar-sm p-0'
         href='#'

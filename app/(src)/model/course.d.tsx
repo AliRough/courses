@@ -8,6 +8,7 @@ export type TCourses = {
   title: string;
   level: string;
   cover: string;
+  image: string;
   description: string;
   liked: boolean;
   rating: number;

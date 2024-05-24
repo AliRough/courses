@@ -3,6 +3,8 @@
  * Copyright 2011-2023 The Bootstrap Authors
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+@tailwind base;
+
 @font-face {
   font-family: IRANSans;
   src: url('./fonts/IRANSans/IRANSansWeb.eot');
@@ -32,6 +34,37 @@
     url('./fonts/vazir/Vazir-Bold.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
+}
+@font-face {
+  font-family: Kalameh;
+  src: url('./fonts/kalame/Kalameh_thin.ttf') format('ttf');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Kalameh;
+  src: url('./fonts/kalame/Kalameh_Regular.ttf') format('ttf');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Kalameh;
+  src: url('./fonts/kalame/Kalameh_Bold.ttf') format('ttf');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Kalameh;
+  src: url('./fonts/kalame/Kalameh_Black.ttf') format('ttf');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
 }
 :root,
 [data-bs-theme='light'] {
