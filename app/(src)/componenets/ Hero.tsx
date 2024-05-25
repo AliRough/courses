@@ -44,7 +44,7 @@ Main Banner START */}
 
           {/* Content START */}
           <div className='container'>
-            <div className='row align-items-end justify-content-xl-between justify-content-center '>
+            <div className='row align-items-center justify-content-xl-between justify-content-center '>
               {/* Left content START */}
               <div className='col-md-9 col-lg-6 col-xl-5 position-relative z-index-1  text-center text-lg-start mb-2 mb-xl-0'>
                 {/* Title */}
@@ -73,10 +73,10 @@ Main Banner START */}
                 {/* Content */}
 
                 {/* Search bar */}
-                <form className='!tw-border rounded p-2 mb-4 tw-shadow-md '>
+                <form className='!tw-border rounded p-2 mb-4 tw-shadow-md   '>
                   <div className='input-group'>
                     <input
-                      className='form-control border-0 me-1 '
+                      className='form-control border-0 me-1 bg-transparent   '
                       type='search'
                       placeholder='جستجو...'
                     />
@@ -164,7 +164,7 @@ Main Banner START */}
                 <Image
                   width={1000}
                   height={1000}
-                  src='/images/element/intro.png'
+                  src='/images/element/04.svg'
                   className='w-100 h-auto ms-xl-5 px-1 px-md-0  '
                   alt=''
                 />

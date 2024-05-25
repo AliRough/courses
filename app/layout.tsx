@@ -24,7 +24,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang='fa' dir='rtl'>
-      <body>
+      <body className='tw-bg-[#F8F9FA]'>
         <ToastContainer className={'fw-bold '} />
 
         <RecoilTanstackProvider>{children}</RecoilTanstackProvider>

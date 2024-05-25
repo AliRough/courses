@@ -25,24 +25,27 @@ export default function CoursesSlider({ datas }: any) {
           autoplay={true}
           breakpoints={{
             640: {
-              slidesPerView: 1,
-              spaceBetween: 50,
+              slidesPerView: 2,
+              spaceBetween: 10,
             },
             768: {
-              slidesPerView: 2,
-              spaceBetween: 40,
-            },
-            1024: {
               slidesPerView: 3,
-              spaceBetween: 50,
+              spaceBetween: 20,
+            },
+            1200: {
+              slidesPerView: 4,
+              spaceBetween: 30,
             },
           }}
           initialSlide={datas.length}
           onSwiper={() => {}}
         >
           {datas?.map((data: any) => (
-            <SwiperSlide key={data.id}>
-              <div className='card action-trigger-hover border bg-transparent m-1 m-md-0 '>
+            <SwiperSlide
+              key={data.id}
+              className='d-flex justify-content-center bg-white  '
+            >
+              <div className='card action-trigger-hover border bg-transparent m-1 m-md-0 tw-max-w-96   '>
                 {/* Image */}
                 <Image
                   unoptimized={true}
@@ -59,22 +62,7 @@ export default function CoursesSlider({ datas }: any) {
                 {/* Card body */}
                 <div className='card-body pb-0'>
                   {/* Badge and favorite */}
-                  <div className='d-flex justify-content-between mb-3'>
-                    <span className='hstack gap-2'>
-                      <a
-                        href='#'
-                        className='badge bg-primary bg-opacity-10 text-primary'
-                      >
-                        {data.category}
-                      </a>
-                      <a href='#' className='badge text-bg-dark'>
-                        {data.level}
-                      </a>
-                    </span>
-                    <a href='#' className='h6 fw-light mb-0'>
-                      <i className='far fa-bookmark' />
-                    </a>
-                  </div>
+
                   {/* Title */}
                   <h5 className='card-title fw-normal'>
                     <a href={`/course/${data.id}`}>{data.title}</a>

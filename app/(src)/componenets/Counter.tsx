@@ -64,14 +64,14 @@ Main Banner END */}
 Counter START */}
 
       <section className=''>
-        <div className='container'>
+        <div className='container '>
           <div className='row g-sm-4 g-2'>
             {categories?.map((c: any, index: any) => (
               <div
-                className='col-3 col-sm-3 col-lg-2 col-xl-2 px-1 '
+                className='col-3 col-sm-3 col-lg-2 col-xl-2 px-1  '
                 key={index}
               >
-                <div className='card card-body rounded-3 px-0  '>
+                <div className='card card-body rounded-3 px-0  tw-border tw-border-gray-200'>
                   <div className='d-flex flex-column   align-items-center justify-content-center   '>
                     {/* Icon */}
                     <div

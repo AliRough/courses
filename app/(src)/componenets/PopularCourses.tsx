@@ -305,7 +305,7 @@ Popular course START */}
             <div className=' '>
               <div className='row g-4'>
                 {filterdData?.map((e: any) => (
-                  <div key={e?.id} className='col-sm-6 col-xl-4'>
+                  <div key={e?.id} className='col-sm-6   col-md-4 col-xl-3'>
                     <CourseTile data={e} />
                   </div>
                 ))}

@@ -197,7 +197,7 @@ export default function Header({ children }: any) {
       <>
         <>
           {/* Header START */}
-          <header className='navbar-light '>
+          <header className='navbar-light bg-transparent  '>
             {/* Nav START */}
             <nav className='navbar navbar-expand-xl z-index-9'>
               <div className='container'>
@@ -237,9 +237,9 @@ export default function Header({ children }: any) {
                   <div className='col-xxl-6'>
                     <div className='nav my-3 my-xl-0 px-4 flex-nowrap align-items-center'>
                       <div className='nav-item w-100'>
-                        <form className='rounded position-relative'>
+                        <form className='rounded position-relative tw-border tw-border-gray-100 tw-shadow-sm '>
                           <input
-                            className='form-control pe-5 bg-secondary bg-opacity-10 border-0'
+                            className='form-control pe-5   bg-opacity-10 border-0'
                             type='search'
                             placeholder='جستجو...'
                             aria-label='Search'

@@ -12,7 +12,7 @@ const CourseTile = ({ data }: { data: TCourses }) => {
   console.log(data);
 
   return (
-    <div className='card shadow h-100'>
+    <div className='card shadow h-100 tw-max-w-96'>
       <Image
         unoptimized={true}
         src={'/' + data?.image || 'https://fanavaran.liara.run/' + data?.cover}
