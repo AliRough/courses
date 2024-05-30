@@ -97,16 +97,16 @@ const ProfileStudentDashboard = () => {
             </div>
 
             <div className='col-md-3'>
-              <form>
+              <form className='' action={''}>
                 <select
                   className='form-select js-choice border-0 z-index-9 bg-transparent'
                   aria-label='.form-select-sm'
                 >
-                  <option value=''>مرتب سازی</option>
-                  <option>رایگان</option>
-                  <option>جدیدترین</option>
-                  <option>پربازدیدترین</option>
-                  <option>پرفروش ترین</option>
+                  <option value='0'>مرتب سازی</option>
+                  <option value='1'>رایگان</option>
+                  <option value='2'>جدیدترین</option>
+                  <option value='3'>پربازدیدترین</option>
+                  <option value='4'>پرفروش ترین</option>
                 </select>
               </form>
             </div>

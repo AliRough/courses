@@ -6,7 +6,7 @@ import { getAllCategories } from '../api/categoriesApi';
 export default function Counter() {
   const [categories, setCategories]: any = useState();
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchData = async () => { 
       let { data } = await getAllCategories();
       console.log(data);
 

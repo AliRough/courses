@@ -1,1 +1,1 @@
-export { default } from '@/app/(src)/login/signUp';
+export { default } from '@/app/(src)/login/loginController/singUpController';

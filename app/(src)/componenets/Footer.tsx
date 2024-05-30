@@ -3,7 +3,7 @@ import React from 'react';
 
 export default function Footer() {
   return (
-    <footer className='pt-5'>
+    <footer className='pt-5 border-top'>
       <div className='container'>
         {/* Row START */}
         <div className='row g-4'>
@@ -203,7 +203,7 @@ export default function Footer() {
             <div className='d-lg-flex justify-content-between align-items-center py-3 text-center text-md-left'>
               {/* copyright text */}
               <div className='text-primary-hover'>
-               تمامی حقوق این سایت محفوظ است
+                تمامی حقوق این سایت محفوظ است
               </div>
               {/* copyright links*/}
               <div className='justify-content-center mt-3 mt-lg-0'>

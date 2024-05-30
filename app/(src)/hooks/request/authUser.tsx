@@ -2,7 +2,7 @@
 
 import * as api from '@/app/(src)/api/authApi';
 
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 
 import { TCourse } from '@/app/(src)/model/course.d';
 import { useRecoilState } from 'recoil';
@@ -24,6 +24,12 @@ import { authUserState } from '../../state/atoms';
 //   });
 // };
 
+export const useGetUser = (token: any): any => {
+  return useQuery({
+    queryKey: ['course', token],
+    queryFn: () => api.getUserByToken(token),
+  });
+};
 
 export const useAuthUser: any = (data: any) =>
   useMutation({
@@ -43,9 +49,6 @@ export const authUser = (data: any) => {
   });
 };
 
-export const useCourseById = (id: number): UseQueryResult<TCourse, Error> => {
-    return useQuery({ queryKey: ['course', id], queryFn: () => api.CourseByIdApi(id) })
-}
 */
 }
 

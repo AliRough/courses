@@ -13,17 +13,24 @@ const LayoutProfileStudentHeader = () => {
 
   let item = cookies.Authorization;
 
+  if (!authUserdata) {
+    console.log(
+      '-_______________--------------____________----------------------------log',
+    );
+    return (
+      <>
+        <div className=''>not found</div>
+      </>
+    );
+    // const authUserdata=JSON.parse(item)
+  }
   // useEffect(() => {
-  //   if (item) {
-  //     setAuthUser(item);
-  //     // const authUserdata=JSON.parse(item)
-  //   }
   // }, []);
   console.log('Not completed');
 
   return (
-    <section className='pt-0'>
-      <div className='container-fluid px-0'>
+    <section className='pt-0 pb-0'>
+      <div className='container tw-rounded-t-3xl  px-0 overflow-hidden mt-3'>
         <div
           className='card bg-blue h-100px h-md-200px rounded-0'
           style={{
@@ -32,7 +39,7 @@ const LayoutProfileStudentHeader = () => {
           }}
         ></div>
       </div>
-      <div className='container mt-n4'>
+      <div className='container mt-n4 bg-white'>
         <div className='row'>
           <div className='col-12  '>
             <div className='card bg-transparent card-body pb-0 px-0 mt-2 mt-sm-0'>

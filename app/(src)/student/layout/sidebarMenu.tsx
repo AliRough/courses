@@ -17,6 +17,18 @@ const LayoutProfileStudentSidebarMenu = ({
   console.log('Not completed');
 
   const menu: TMenu[] = [
+    { name: 'ویرایش پروفایل', link: 'edit-profile', icon: 'bi-pencil-square' },
+    {
+      name: 'تغییر رمزعبور',
+      link: 'change-password',
+      icon: 'bi-pencil-square',
+    },
+    { name: 'لیست دوره ها', link: 'course-list', icon: 'bi-basket' },
+  ];
+
+  {
+    /*
+const menu: TMenu[] = [
     { name: 'داشبورد', link: 'dashboard', icon: 'bi-ui-checks-grid' },
     { name: 'مدیریت پکیج', link: 'subscription', icon: 'bi-card-checklist' },
     { name: 'لیست دوره ها', link: 'course-list', icon: 'bi-basket' },
@@ -36,12 +48,13 @@ const LayoutProfileStudentSidebarMenu = ({
     { name: 'تنظیمات', link: 'setting', icon: 'bi-gear' },
     { name: 'حذف پروفایل', link: 'delete-account', icon: 'bi-trash' },
   ];
-
+*/
+  }
   const path = usePathname();
 
   return (
-    <section className='pt-0'>
-      <div className='container'>
+    <section className='pt-0 '>
+      <div className='container bg-white pt-4 tw-shadow-lg tw-rounded-b-3xl pb-4'>
         <div className='row'>
           <div className='col-xl-3'>
             <div
@@ -83,32 +96,6 @@ const LayoutProfileStudentSidebarMenu = ({
                     >
                       <i className='fas fa-sign-out-alt fa-fw me-2'></i>خروج
                     </Link>
-                    <a
-                      className='list-group-item'
-                      data-bs-toggle='collapse'
-                      href='#collapseauthentication'
-                      role='button'
-                      aria-expanded='false'
-                      aria-controls='collapseauthentication'
-                    >
-                      <i className='bi bi-lock fa-fw me-2'></i>زیر منو
-                    </a>
-                    <ul
-                      className='nav collapse flex-column'
-                      id='collapseauthentication'
-                      data-bs-parent='#navbar-sidebar'
-                    >
-                      <li className='nav-item'>
-                        <a className='nav-link' href='#'>
-                          عنوان 1
-                        </a>
-                      </li>
-                      <li className='nav-item'>
-                        <a className='nav-link' href='#'>
-                          عنوان 2
-                        </a>
-                      </li>
-                    </ul>
                   </div>
                 </div>
               </div>

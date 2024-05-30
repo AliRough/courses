@@ -41,9 +41,6 @@ export default function Profile({ name, email }: any) {
   };
   3;
   const logOutHamdler = async (e: any) => {
-    console.log(e);
-    // console.log(authUserdata);
-
     const data = await api.logOutUser(cookies.Authorization);
     removeCookie('Authorization', { path: '/' });
 
@@ -56,16 +53,9 @@ export default function Profile({ name, email }: any) {
       mobileVerifiedAt: null,
       createdAt: null,
     });
-    // res.redirect('/auth/login')
     router.push('/');
-
-    console.log(data);
   };
 
-  const testHandler = async () => {
-    const res = await api.getUserByToken(cookies.Authorization);
-    console.log(res);
-  };
   return (
     <div className='dropdown ps-3 ms-lg-0'>
       <a
@@ -118,7 +108,7 @@ export default function Profile({ name, email }: any) {
         </li>
         {/* Links */}
         <li>
-          <Link className='dropdown-item' href='#'>
+          <Link className='dropdown-item' href='/profile/s/edit-profile'>
             <i className='bi bi-person fa-fw me-2' />
             ویرایش
           </Link>
@@ -135,15 +125,7 @@ export default function Profile({ name, email }: any) {
             پشتیبانی
           </a>
         </li>
-        <li>
-          <button
-            className='dropdown-item bg-danger-soft-hover'
-            onClick={testHandler}
-          >
-            <i className='bi bi-power fa-fw me-2' />
-            تست api
-          </button>
-        </li>
+
         <li>
           <button
             className='dropdown-item bg-danger-soft-hover'

@@ -15,64 +15,12 @@ import { useAuthUser } from '../hooks/request/authUser';
 import Image from 'next/image';
 import { useCookies } from 'react-cookie';
 
-export default function SignUp() {
-  const router = useRouter();
-
-  const [authUserdata, setAuthUser]:any = useRecoilState(authUserState);
-
-  // const R: any = RMutation();
-  // const { mutate, isPending, data, isError, isSuccess, error } = useAuthUser();
-  // console.log(isPending);
-  // console.log('sucses', isSuccess);
-
-  const [isPending, setIsPending] = useState(false);
-  const [cookies, setCookie, removeCookie] = useCookies(['Authorization']);
-
-  // onSuccess: () => {
-  //   // Invalidate and refetch
-  //   QueryClient.invalidateQueries({ queryKey: ['R'] });
-  // },
-  // });
-  const signUpFormHandler: any = async (data: any) => {
-    setIsPending(true);
-    console.log(data);
-    // await R(data);
-    let response: any = await api.registerUser(data);
-    console.log('response', response);
-
-    if (response?.status === 201) {
-      // setAuthUser(data);
-      setCookie('Authorization', data, { path: '/' });
-      // localStorage.setItem('userData', JSON.stringify(data));
-
-      router.push('/profile/s/dashboard');
-    }
-    setIsPending(false);
-    // data.password !== data.passwordConfirmation && console.log('error');
-  };
-
-  console.log(authUserdata);
-
-  const {
-    // ساختار پارامتر
-    register,
-    // کنترل دکمه سابمت به صورت اتوماتیک حالت رفرش رو غیر فعال میکنه.
-    handleSubmit,
-    // اگه اروری تولید کرد انتقال بده
-    formState: { errors },
-    watch,
-    setValue,
-  } = useForm({
-    resolver: zodResolver(signUpValidate),
-  });
-
-  const input: any = {
-    name: register('name'),
-    email: register('email'),
-    password: register('password'),
-    passwordConfirmation: register('passwordConfirmation'),
-  };
-
+export default function SignUp({
+  signUpHandler,
+  input,
+  errors,
+  isPending,
+}: any) {
   return (
     <main>
       <section className='p-0 d-flex align-items-center position-relative overflow-hidden'>
@@ -163,10 +111,10 @@ export default function SignUp() {
                     از دیدن شما خوشحالم! لطفا با حساب کاربری خود ثبت نام کنید.
                   </p>
                   {/* Form START */}
-                  <form onSubmit={handleSubmit(signUpFormHandler)}>
+                  <form onSubmit={signUpHandler}>
                     {/* Name */}
                     <div className='mb-4'>
-                      <label className='form-label'>نام کاربری</label>
+                      <label className='form-label'>نام </label>
                       <div className='input-group input-group-lg'>
                         <span className='input-group-text bg-light rounded-start border-0 text-secondary px-3'>
                           <i className='bi bi-person-fill '></i>{' '}

@@ -71,6 +71,11 @@ Main Banner START */}
                   </span>
                 </h1>
                 {/* Content */}
+                <p className='my-4 tw-font-[Kalameh] tw-font-semibold tw-text-lg'>
+                  بازار آنلاین آموزش و یادگیری با بیش از 5K دوره و 10 میلیون
+                  دانشجو. توسط متخصصان آموزش داده می شود تا به شما در کسب مهارت
+                  های جدید کمک کند.
+                </p>
 
                 {/* Search bar */}
                 <form className='!tw-border rounded p-2 mb-4 tw-shadow-md   '>

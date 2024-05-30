@@ -53,35 +53,3 @@
     box-shadow: var(--bs-box-shadow) !important;
   }
 }
-/* @font-face {
-  font-family: Kalameh;
-  src: url('../public/fonts/kalame/Kalameh_thin.ttf') format('ttf');
-  font-weight: 100;
-  font-style: normal;
-  font-display: swap;
-}
- */
-
-/* @font-face {
-  font-family: Kalameh;
-  src: url('../public/fonts/kalame/Kalameh_Regular.ttf') format('ttf');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: Kalameh;
-  src: url('../public/fonts/kalame/Kalameh_Bold.ttf') format('ttf');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: Kalameh;
-  src: url('../public/fonts/kalame/Kalameh_Black.ttf') format('ttf');
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
-} */
