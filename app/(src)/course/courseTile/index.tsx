@@ -7,15 +7,18 @@ import Rating from '@/app/(src)/componenets/rating';
 
 import { TCourses } from '@/app/(src)/model/course.d';
 
-const CourseTile = ({ data }: { data: TCourses }) => {
+const CourseTile = ({ data }: { data: any }) => {
   console.log('Not completed');
   console.log(data);
 
   return (
-    <div className='card shadow h-100 tw-max-w-96'>
+    <div className='card shadow h-100 tw-max-w-96 rounded-4 overflow-hidden '>
       <Image
         unoptimized={true}
-        src={'/' + data?.image || 'https://fanavaran.liara.run/' + data?.cover}
+        src={
+          (data?.image && '/' + data?.image) ||
+          'https://fanavaran.liara.run/' + data?.cover
+        }
         width='500'
         height='500'
         className='card-img-top'
@@ -25,7 +28,7 @@ const CourseTile = ({ data }: { data: TCourses }) => {
         <div className='d-flex justify-content-between mb-2'>
           <>{console.log('Link')}</>
           <Link href='#' className='badge bg-purple bg-opacity-10 text-purple'>
-            {data?.level}
+            {data?.packageName}
           </Link>
           <a href='#' className='h6 fw-light mb-0'>
             <i className='far fa-heart'></i>

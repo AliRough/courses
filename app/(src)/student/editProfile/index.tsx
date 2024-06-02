@@ -4,7 +4,12 @@ import Image from 'next/image';
 import { useRecoilState } from 'recoil';
 import { authUserState } from '../../state/atoms';
 import { useCookies } from 'react-cookie';
-import { sendVerificationEmail } from '../../api/authApi';
+import { edittUserData, sendVerificationEmail } from '../../api/authApi';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { EditProfileValidata } from '../../validations/editProfile';
+import { useEffect } from 'react';
+import { ErrorMessage } from '@hookform/error-message';
 
 const ProfileStudentEditProfile = () => {
   console.log('Not completed');
@@ -17,6 +22,37 @@ const ProfileStudentEditProfile = () => {
 
     const data = await sendVerificationEmail(cookies.Authorization);
   };
+
+  const {
+    // ساختار پارامتر
+    register,
+    // کنترل دکمه سابمت به صورت اتوماتیک حالت رفرش رو غیر فعال میکنه.
+    handleSubmit,
+    // اگه اروری تولید کرد انتقال بده
+    formState: { errors },
+    watch,
+    setValue,
+  } = useForm({
+    resolver: zodResolver(EditProfileValidata),
+  });
+
+  const input: any = {
+    aliasName: register('aliasName'),
+    name: register('name'),
+  };
+  const editeProfileHandler = async (data: any) => {
+    console.log(data);
+    const response = await edittUserData(data, cookies.Authorization);
+    console.log(response);
+  };
+
+  useEffect(() => {
+    console.log('useEffect', authUserdata);
+
+    setValue('name', authUserdata.name);
+    setValue('aliasName', authUserdata.aliasName);
+  }, [authUserdata]);
+
   return (
     <>
       <div className='card bg-transparent border rounded-3'>
@@ -24,7 +60,10 @@ const ProfileStudentEditProfile = () => {
           <h3 className='card-header-title mb-0 ff-vb fs-5'>ویرایش پروفایل</h3>
         </div>
         <div className='card-body'>
-          <form className='row g-4'>
+          <form
+            className='row g-4'
+            onSubmit={handleSubmit(editeProfileHandler)}
+          >
             <div className='col-12 justify-content-center align-items-center'>
               <label className='form-label'>تصویر</label>
               <div className='d-flex align-items-center'>
@@ -67,21 +106,47 @@ const ProfileStudentEditProfile = () => {
                 <input
                   type='text'
                   className='form-control'
-                  value={authUserdata.name}
                   placeholder='نام'
+                  {...input.name}
+                />
+              </div>
+              <ErrorMessage
+                errors={errors}
+                name='name'
+                render={({ message }) => (
+                  <p className='text-danger'>{message}</p>
+                )}
+              />
+            </div>
+
+            <div className='col-md-6'>
+              <label className='form-label'>نام مستعار</label>
+              <div className='tw-relative'>
+                <input
+                  className='form-control'
+                  type='text'
+                  placeholder='aliko'
+                  {...input.aliasName}
+                />
+                <ErrorMessage
+                  errors={errors}
+                  name='aliasName'
+                  render={({ message }) => (
+                    <p className='text-danger'>{message}</p>
+                  )}
                 />
               </div>
             </div>
-
             <div className='col-md-6'>
               <label className='form-label'>ایمیل</label>
               <div className='tw-relative'>
                 <input
                   className='form-control'
                   type='email'
-                  value={authUserdata.email}
                   placeholder='ایمیل'
+                  value={authUserdata.email}
                 />
+
                 {!authUserdata.emailVerifiedAt ? (
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
@@ -137,10 +202,7 @@ const ProfileStudentEditProfile = () => {
                 placeholder='شماره تماس'
               />
             </div>
-            <div className='col-md-6'>
-              <label className='form-label'>آدرس</label>
-              <input className='form-control' type='text' value='تهران' />
-            </div>
+
             <div className='col-12'>
               <label className='form-label'>درباره من</label>
               <textarea className='form-control' rows={3}>
@@ -152,57 +214,11 @@ const ProfileStudentEditProfile = () => {
             </div>
 
             <div className='d-sm-flex justify-content-end'>
-              <button type='button' className='btn btn-primary mb-0'>
+              <button type='submit' className='btn btn-primary mb-0'>
                 ذخیره
               </button>
             </div>
           </form>
-        </div>
-      </div>
-      <div className='row g-4 mt-3'>
-        <div className='col-lg-6'>
-          <div className='card border bg-transparent rounded-3'>
-            <div className='card-header bg-transparent border-bottom'>
-              <h5 className='card-header-title mb-0'>تغییر رمز عبور</h5>
-            </div>
-            <div className='card-body'>
-              <div className='mb-3'>
-                <label className='form-label'>رمز فعلی</label>
-                <input
-                  className='form-control'
-                  type='password'
-                  placeholder='********'
-                />
-              </div>
-              <div className='mb-3'>
-                <label className='form-label'> رمز جدید</label>
-                <div className='input-group'>
-                  <input
-                    className='form-control'
-                    type='password'
-                    placeholder='********'
-                  />
-                  <span className='input-group-text p-0 bg-transparent'>
-                    <i className='far fa-eye cursor-pointer p-2 w-40px'></i>
-                  </span>
-                </div>
-                <div className='rounded mt-1' id='psw-strength'></div>
-              </div>
-              <div>
-                <label className='form-label'>تایید رمز جدید</label>
-                <input
-                  className='form-control'
-                  type='password'
-                  placeholder='********'
-                />
-              </div>
-              <div className='d-flex justify-content-end mt-4'>
-                <button type='button' className='btn btn-primary mb-0'>
-                  تغییر رمز
-                </button>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </>

@@ -4,7 +4,7 @@ import Link from 'next/link';
 export default function NotFound() {
   return (
     <>
-      <main>
+      <main className='tw-min-h-screen'>
         <section className='pt-5'>
           <div className='container'>
             <div className='row'>

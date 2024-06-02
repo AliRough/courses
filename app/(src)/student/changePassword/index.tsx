@@ -3,15 +3,48 @@
 import Image from 'next/image';
 import { useRecoilState } from 'recoil';
 import { authUserState } from '../../state/atoms';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { changePassValidate } from '../../validations/editProfile';
+import { ErrorMessage } from '@hookform/error-message';
+import { useState } from 'react';
+import { changeUserPass } from '../../api/authApi';
+import { useCookies } from 'react-cookie';
 
 const ProfileStudentChangePassword = () => {
+  const [showPass, setSowPass] = useState(false);
   console.log('Not completed');
   const [authUserdata, setAuthUser]: any = useRecoilState(authUserState);
+  const [cookies, setCookie, removeCookie] = useCookies(['Authorization']);
+
+  const changePassHandler = async (data: any) => {
+    console.log(data);
+    const response = await changeUserPass(data, cookies.Authorization);
+    console.log(response);
+  };
+  const {
+    // ساختار پارامتر
+    register,
+    // کنترل دکمه سابمت به صورت اتوماتیک حالت رفرش رو غیر فعال میکنه.
+    handleSubmit,
+    // اگه اروری تولید کرد انتقال بده
+    formState: { errors },
+    watch,
+    setValue,
+  } = useForm({
+    resolver: zodResolver(changePassValidate),
+  });
+
+  const input: any = {
+    oldPassword: register('oldPassword'),
+    password: register('password'),
+    passwordConfirmation: register('passwordConfirmation'),
+  };
 
   return (
     <>
       <div className='row g-4 justify-content-center'>
-        <div className=''>
+        <form onSubmit={handleSubmit(changePassHandler)} className=''>
           <div className='card border bg-transparent rounded-3'>
             <div className='card-header bg-transparent border-bottom'>
               <h5 className='card-header-title mb-0'>تغییر رمز عبور</h5>
@@ -23,20 +56,43 @@ const ProfileStudentChangePassword = () => {
                   className='form-control'
                   type='password'
                   placeholder='********'
+                  {...input.oldPassword}
                 />
               </div>
+              <ErrorMessage
+                errors={errors}
+                name='oldPassword'
+                render={({ message }) => (
+                  <p className='text-danger'>{message}</p>
+                )}
+              />
               <div className='mb-3'>
                 <label className='form-label'> رمز جدید</label>
                 <div className='input-group'>
                   <input
                     className='form-control'
-                    type='password'
+                    type={showPass ? 'text' : 'password'}
                     placeholder='********'
+                    {...input.password}
                   />
-                  <span className='input-group-text p-0 bg-transparent'>
+
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setSowPass(!showPass);
+                    }}
+                    className='input-group-text p-0 bg-transparent'
+                  >
                     <i className='far fa-eye cursor-pointer p-2 w-40px'></i>
-                  </span>
+                  </button>
                 </div>
+                <ErrorMessage
+                  errors={errors}
+                  name='password'
+                  render={({ message }) => (
+                    <p className='text-danger'>{message}</p>
+                  )}
+                />
                 <div className='rounded mt-1' id='psw-strength'></div>
               </div>
               <div>
@@ -45,16 +101,24 @@ const ProfileStudentChangePassword = () => {
                   className='form-control'
                   type='password'
                   placeholder='********'
+                  {...input.passwordConfirmation}
                 />
               </div>
+              <ErrorMessage
+                errors={errors}
+                name='passwordConfirmation'
+                render={({ message }) => (
+                  <p className='text-danger'>{message}</p>
+                )}
+              />
               <div className='d-flex justify-content-end mt-4'>
-                <button type='button' className='btn btn-primary mb-0'>
+                <button type='submit' className='btn btn-primary mb-0'>
                   تغییر رمز
                 </button>
               </div>
             </div>
           </div>
-        </div>
+        </form>
       </div>
     </>
   );

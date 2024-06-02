@@ -30,7 +30,7 @@ const LayoutProfileStudentHeader = () => {
 
   return (
     <section className='pt-0 pb-0'>
-      <div className='container tw-rounded-t-3xl  px-0 overflow-hidden mt-3'>
+      <div className='container sm:tw-rounded-t-3xl  px-0 overflow-hidden sm:tw-mt-5'>
         <div
           className='card bg-blue h-100px h-md-200px rounded-0'
           style={{

@@ -1,9 +1,13 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 import clsx from 'clsx';
+import { useRecoilState } from 'recoil';
+import { authUserState } from '../../state/atoms';
+import { useCookies } from 'react-cookie';
+import * as api from '@/app/(src)/api/authApi';
 
 type TMenu = {
   name: string;
@@ -50,7 +54,27 @@ const menu: TMenu[] = [
   ];
 */
   }
+  const [authUserdata, setAuthUser]: any = useRecoilState(authUserState);
+
+  const [cookies, setCookie, removeCookie] = useCookies(['Authorization']);
+  const router = useRouter();
+
   const path = usePathname();
+  const logOutHamdler = async (e: any) => {
+    const data = await api.logOutUser(cookies.Authorization);
+    removeCookie('Authorization', { path: '/' });
+
+    setAuthUser({
+      name: null,
+      aliasName: null,
+      email: null,
+      mobile: null,
+      emailVerifiedAt: null,
+      mobileVerifiedAt: null,
+      createdAt: null,
+    });
+    router.push('/');
+  };
 
   return (
     <section className='pt-0 '>
@@ -90,12 +114,12 @@ const menu: TMenu[] = [
                         {e.name}
                       </Link>
                     ))}
-                    <Link
-                      className='list-group-item text-danger bg-danger-soft-hover'
-                      href='#'
+                    <button
+                      className='list-group-item text-danger bg-danger-soft-hover d-flex justify-content-start align-items-center  '
+                      onClick={logOutHamdler}
                     >
                       <i className='fas fa-sign-out-alt fa-fw me-2'></i>خروج
-                    </Link>
+                    </button>
                   </div>
                 </div>
               </div>

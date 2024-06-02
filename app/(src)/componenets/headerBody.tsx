@@ -6,7 +6,7 @@ const HeaderBody = ({ name }: { name: string }) => {
   return (
     <>
       <section
-        className='bg-blue align-items-center d-flex'
+        className='container mt-3 tw-rounded-3xl bg-blue align-items-center d-flex'
         style={{
           background: 'url(images/pattern/04.png) no-repeat center center',
           backgroundSize: 'cover',

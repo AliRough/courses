@@ -6,7 +6,7 @@ import { getAllCategories } from '../api/categoriesApi';
 export default function Counter() {
   const [categories, setCategories]: any = useState();
   useEffect(() => {
-    const fetchData = async () => { 
+    const fetchData = async () => {
       let { data } = await getAllCategories();
       console.log(data);
 
@@ -68,10 +68,10 @@ Counter START */}
           <div className='row g-sm-4 g-2'>
             {categories?.map((c: any, index: any) => (
               <div
-                className='col-3 col-sm-3 col-lg-2 col-xl-2 px-1  '
+                className='col-3 col-sm-3 col-lg-2 col-xl-2 px-1   '
                 key={index}
               >
-                <div className='card card-body rounded-3 px-0  tw-border tw-border-gray-200'>
+                <div className='card card-body rounded-3 px-0  md:tw-border tw-border-gray-200 tw-bg-transparent md:tw-bg-white'>
                   <div className='d-flex flex-column   align-items-center justify-content-center   '>
                     {/* Icon */}
                     <div

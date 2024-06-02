@@ -41,17 +41,56 @@ export const logInUser = async (formData: any) => {
   }
 };
 
-export const edittUserData = async (formData: any) => {
-  try {
-    const data = await axios.put(`${baseUrl}/api/user`, formData);
-    console.log(data);
-    if (data.status === 201) {
-      console.log(formData);
-    }
+export const changeUserPass = async (formData: any, token: any) => {
+  let config = {
+    method: 'put',
+    maxBodyLength: Infinity,
+    url: `${baseUrl}/api/user/password`,
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    data: formData,
+  };
+  const data: any = await axios
+    .request(config)
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      console.log(error);
+      toast.error(error.message);
+    });
+  console.log(data);
+  if (data.status === 204) {
+    toast.success('رمز عبور با موفقیت تقییر کرد');
+  }
+};
 
-    return data;
-  } catch (error: any) {
-    throw error.response.data;
+export const edittUserData = async (formData: any, token: any) => {
+  let config = {
+    method: 'put',
+    maxBodyLength: Infinity,
+    url: `${baseUrl}/api/user`,
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    data: formData,
+  };
+  const data: any = await axios
+    .request(config)
+    .then((response) => {
+      console.log(JSON.stringify(response.data));
+      console.log(JSON.stringify(response));
+      return response;
+    })
+    .catch((error) => {
+      console.log(error);
+      toast.error(error.message);
+    });
+  console.log(data);
+
+  if (data.status === 204) {
+    toast.success('chbhashb');
   }
 };
 
