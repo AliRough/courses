@@ -1,19 +1,11 @@
 'use client';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
-import { getAllCategories } from '../api/categoriesApi';
+import { getAllPackages } from '../api/courseApi';
+import { useGetAllPackages } from '../hooks/request/requestCourse';
 
 export default function Counter() {
-  const [categories, setCategories]: any = useState();
-  useEffect(() => {
-    const fetchData = async () => {
-      let { data } = await getAllCategories();
-      console.log(data);
-
-      setCategories(data);
-    };
-    fetchData();
-  }, []);
+  const { data: packages } = useGetAllPackages();
 
   const dataicon: any = [
     {
@@ -66,7 +58,7 @@ Counter START */}
       <section className=''>
         <div className='container '>
           <div className='row g-sm-4 g-2'>
-            {categories?.map((c: any, index: any) => (
+            {packages?.data?.map((c: any, index: any) => (
               <div
                 className='col-3 col-sm-3 col-lg-2 col-xl-2 px-1   '
                 key={index}

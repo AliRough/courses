@@ -6,8 +6,25 @@ import * as api from '@/app/(src)/api/courseApi';
 
 import { TCourse } from '@/app/(src)/model/course.d';
 
-export const useCourseAll = () => {
-  return useQuery({ queryKey: ['course_all'], queryFn: api.CourseAllApi });
+export const useGetAllCourses = () => {
+  return useQuery({
+    queryKey: ['course_all'],
+    queryFn: api.CourseAllApi,
+  });
+};
+
+export const useGetAllCategories = () => {
+  return useQuery({
+    queryKey: ['categories_all'],
+    queryFn: () => api.getAllCategories(),
+  });
+};
+
+export const useGetAllPackages = () => {
+  return useQuery({
+    queryKey: ['Packages_all'],
+    queryFn: () => api.getAllPackages(),
+  });
 };
 
 export const useCourseById = (id: number): UseQueryResult<any, Error> => {

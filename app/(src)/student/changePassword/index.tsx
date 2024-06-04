@@ -5,22 +5,20 @@ import { useRecoilState } from 'recoil';
 import { authUserState } from '../../state/atoms';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { changePassValidate } from '../../validations/editProfile';
+import { changePassValidate } from '../../validations/editProfileValidate';
 import { ErrorMessage } from '@hookform/error-message';
 import { useState } from 'react';
 import { changeUserPass } from '../../api/authApi';
 import { useCookies } from 'react-cookie';
+import { useChangeUserPass } from '../../hooks/request/authUser';
 
 const ProfileStudentChangePassword = () => {
   const [showPass, setSowPass] = useState(false);
-  console.log('Not completed');
-  const [authUserdata, setAuthUser]: any = useRecoilState(authUserState);
   const [cookies, setCookie, removeCookie] = useCookies(['Authorization']);
+  const { mutate: mutateChangeUserPass } = useChangeUserPass();
 
   const changePassHandler = async (data: any) => {
-    console.log(data);
-    const response = await changeUserPass(data, cookies.Authorization);
-    console.log(response);
+    mutateChangeUserPass({ formData: data, token: cookies.Authorization });
   };
   const {
     // ساختار پارامتر

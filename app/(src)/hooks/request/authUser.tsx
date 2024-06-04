@@ -2,7 +2,8 @@
 
 import * as api from '@/app/(src)/api/authApi';
 
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { toast } from 'react-toastify';
 
 import { TCourse } from '@/app/(src)/model/course.d';
 import { useRecoilState } from 'recoil';
@@ -23,11 +24,78 @@ import { authUserState } from '../../state/atoms';
 //     // },
 //   });
 // };
+export const useLogOutUser = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (token: any) => api.logOutUser(token),
+    onSuccess: () => {
+      queryClient.resetQueries({ queryKey: ['userData'] });
+
+      toast.success('شما از پنل خود خارج شدید');
+    },
+  });
+};
+
+export const useChangeAvatar = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: ({ formData, token }: any) =>
+      api.changeUserAvatar(formData, token),
+    onSuccess: () => {
+      console.log('rrrrrrrrrrrrrrrresulrt', queryClient);
+      queryClient.invalidateQueries({ queryKey: ['userData'] });
+
+      toast.success('عکس شما با موفقیت تغییر کرد');
+      // toast.success(result);
+    },
+  });
+};
+
+export const useDeleteAvatar = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (token) => api.deleteUserAvatar(token),
+    onSuccess: () => {
+      console.log('rrrrrrrrrrrrrrrresulrt', queryClient);
+      queryClient.invalidateQueries({ queryKey: ['userData'] });
+
+      toast.success('عکس شما با موفقیت  پاک شد');
+      // toast.success(result);
+    },
+  });
+};
 
 export const useGetUser = (token: any): any => {
   return useQuery({
-    queryKey: ['course', token],
+    queryKey: ['userData'],
     queryFn: () => api.getUserByToken(token),
+  });
+};
+
+export const useEditUserData = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: ({ formData, token }: any) => api.editUserData(formData, token),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['userData'] });
+
+      toast.success('اطلاعات شما با موفقیت تغییر کرد');
+      // toast.success(result);
+    },
+  });
+};
+
+export const useChangeUserPass = () => {
+  return useMutation({
+    mutationFn: ({ formData, token }: any) =>
+      api.changeUserPass(formData, token),
+    onSuccess: () => {
+      toast.success('رمز شما با موفقیت تغییر کرد');
+    },
   });
 };
 
@@ -39,58 +107,3 @@ export const useAuthUser: any = (data: any) =>
       console.log('dataaa', e.data.token);
     },
   });
-{
-  /*
-export const authUser = (data: any) => {
-  return useMutation({
-    mutationFn: () => {
-      return api.registerUser(data);
-    },
-  });
-};
-
-*/
-}
-
-{
-  /*
-export const useReqCheckPhone = () =>
-  useMutation({ mutationFn: api.registerUser });
-
-export const useReqOtp = () => useMutation({ mutationFn: api.OtpApiV1 });
-
-export const useReqRegister = () =>
-  useMutation({
-    mutationFn: api.RegisterApiV1,
-    onSuccess: (e) => {
-      if (e.status === 200) {
-        SetCookieAuth(e.data.token);
-        window.location.replace(GetPathRedirect());
-      }
-    },
-  });
-
-export const useReqForgetPassword = () =>
-  useMutation({ mutationFn: api.ForgetPasswordApiV1 });
-
-export const useReqLogin = () =>
-  useMutation({
-    mutationFn: api.LoginApiV1,
-    onSuccess: (e) => {
-      if (e.status === 200) {
-        SetCookieAuth(e.data.token);
-        window.location.replace(GetPathRedirect());
-      }
-    },
-  });
-
-export const useReqOtpReceiver = () =>
-  useMutation({ mutationFn: api.OtpReceiverApiV1 });
-
-export const useReqCheckOtpReceiver = () =>
-  useMutation({ mutationFn: api.CheckOtpReceiverApiV1 });
-
-export const useReqResendOtp = () =>
-  useMutation({ mutationFn: api.ResendOtpApiV1 });
-*/
-}

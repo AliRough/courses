@@ -4,22 +4,41 @@ import Image from 'next/image';
 import { useRecoilState } from 'recoil';
 import { authUserState } from '../../state/atoms';
 import { useCookies } from 'react-cookie';
-import { edittUserData, sendVerificationEmail } from '../../api/authApi';
+import {
+  changeUserAvatar,
+  deleteUserAvatar,
+  editUserData,
+  sendVerificationEmail,
+} from '../../api/authApi';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { EditProfileValidata } from '../../validations/editProfile';
+import { EditProfileValidata } from '../../validations/editProfileValidate';
 import { useEffect } from 'react';
 import { ErrorMessage } from '@hookform/error-message';
+import {
+  useChangeAvatar,
+  useDeleteAvatar,
+  useEditUserData,
+  useGetUser,
+} from '../../hooks/request/authUser';
+import { useQueryClient } from '@tanstack/react-query';
 
 const ProfileStudentEditProfile = () => {
+  const { mutate: mutateDeleteAvatar } = useDeleteAvatar();
+  const { mutate: mutateChangeAvatar } = useChangeAvatar();
+  const { mutate: mutateEditUserData } = useEditUserData();
+  const deleteAvatarHandler = async (e: any) => {
+    e.preventDefault();
+
+    mutateDeleteAvatar(cookies.Authorization);
+  };
   console.log('Not completed');
-  const [authUserdata, setAuthUser]: any = useRecoilState(authUserState);
   const [cookies, setCookie, removeCookie] = useCookies(['Authorization']);
+  const { data: userData } = useGetUser(cookies.Authorization);
 
   const sendVerification = async (e: any) => {
     e.preventDefault();
     console.log(cookies.Authorization);
-
     const data = await sendVerificationEmail(cookies.Authorization);
   };
 
@@ -40,18 +59,24 @@ const ProfileStudentEditProfile = () => {
     aliasName: register('aliasName'),
     name: register('name'),
   };
-  const editeProfileHandler = async (data: any) => {
-    console.log(data);
-    const response = await edittUserData(data, cookies.Authorization);
-    console.log(response);
+
+  const editeProfileHandler = (data: any) => {
+    mutateEditUserData({ formData: data, token: cookies.Authorization });
   };
 
   useEffect(() => {
-    console.log('useEffect', authUserdata);
+    console.log('useEffect', userData);
 
-    setValue('name', authUserdata.name);
-    setValue('aliasName', authUserdata.aliasName);
-  }, [authUserdata]);
+    setValue('name', userData?.name);
+    setValue('aliasName', userData?.aliasName);
+  }, [userData]);
+
+  const changeUserAvatarHandler = async (e: any) => {
+    mutateChangeAvatar({
+      formData: { avatar: e.target.files[0] },
+      token: cookies.Authorization,
+    });
+  };
 
   return (
     <>
@@ -79,13 +104,23 @@ const ProfileStudentEditProfile = () => {
                       height='500'
                       id='uploadfile-1-preview'
                       className='avatar-img rounded-circle border border-white border-3 shadow'
-                      src='/images/avatar/User.png'
+                      src={
+                        (userData?.avatar &&
+                          'https://eduapi.liara.run/' + userData?.avatar) ||
+                        '/images/avatar/User.png'
+                      }
                       alt=''
                     />
                   </span>
-                  <button type='button' className='uploadremove'>
-                    <i className='bi bi-x text-white'></i>
-                  </button>
+                  {userData?.avatar && (
+                    <button
+                      type='button'
+                      className='uploadremove'
+                      onClick={deleteAvatarHandler}
+                    >
+                      <i className='bi bi-x text-white tw-text-xl'></i>
+                    </button>
+                  )}
                 </label>
                 <label
                   className='btn btn-primary-soft mb-0'
@@ -97,6 +132,7 @@ const ProfileStudentEditProfile = () => {
                   id='uploadfile-1'
                   className='form-control d-none'
                   type='file'
+                  onChange={changeUserAvatarHandler}
                 />
               </div>
             </div>
@@ -144,10 +180,10 @@ const ProfileStudentEditProfile = () => {
                   className='form-control'
                   type='email'
                   placeholder='ایمیل'
-                  value={authUserdata.email}
+                  value={userData?.email}
                 />
 
-                {!authUserdata.emailVerifiedAt ? (
+                {!userData?.emailVerifiedAt ? (
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
                     fill='none'
@@ -180,7 +216,7 @@ const ProfileStudentEditProfile = () => {
                 )}
               </div>
               <div
-                className={`${authUserdata.emailVerifiedAt ? 'd-none' : 'd-flex'} mt-2 tw-text-sm gap-1`}
+                className={`${userData?.emailVerifiedAt ? 'd-none' : 'd-flex'} mt-2 tw-text-sm gap-1`}
               >
                 <p className='text-danger m-0 py-1 '>
                   ایمیل خود را تایید کنید{' '}

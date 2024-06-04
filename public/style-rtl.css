@@ -101,7 +101,7 @@
   --bs-orange: #fd7e14;
   --bs-purple: #6f42c1;
   --bs-blue: #1d3b53;
-  --bs-primary-rgb: 6, 106, 201;
+  --bs-primary-rgb: 92, 107, 192;
   --bs-white-rgb: 255, 255, 255;
   --bs-secondary-rgb: 154, 158, 164;
   --bs-success-rgb: 12, 188, 135;
@@ -163,10 +163,10 @@
   --bs-tertiary-bg: #f5f7f9;
   --bs-tertiary-bg-rgb: 245, 247, 249;
   --bs-heading-color: var(--bs-gray-800);
-  --bs-link-color: #066ac9;
+  --bs-link-color: #5c6bc0;
   --bs-link-color-rgb: 6, 106, 201;
   --bs-link-decoration: none;
-  --bs-link-hover-color: #0555a1;
+  --bs-link-hover-color: #5c6bc0;
   --bs-link-hover-color-rgb: 5, 85, 161;
   --bs-code-color: #d63384;
   --bs-highlight-color: #212529;
@@ -3858,7 +3858,7 @@ fieldset:disabled .btn {
 
 .btn-primary {
   --bs-btn-color: #fff;
-  --bs-btn-bg: #066ac9;
+  --bs-btn-bg: #5c6bc0;
   --bs-btn-border-color: #066ac9;
   --bs-btn-hover-color: #fff;
   --bs-btn-hover-bg: #055aab;
@@ -4882,7 +4882,7 @@ fieldset:disabled .btn {
 .nav-pills {
   --bs-nav-pills-border-radius: 0.325rem;
   --bs-nav-pills-link-active-color: #fff;
-  --bs-nav-pills-link-active-bg: #066ac9;
+  --bs-nav-pills-link-active-bg: #5c6bc0;
 }
 .nav-pills .nav-link {
   border-radius: var(--bs-nav-pills-border-radius);
@@ -18482,7 +18482,7 @@ fieldset:disabled .btn {
 .btn-primary-soft:active,
 .btn-primary-soft:hover {
   color: #fff !important;
-  background-color: #066ac9 !important;
+  background-color: #5c6bc0 !important;
   border-color: #066ac9 !important;
 }
 .btn-primary-soft:focus {

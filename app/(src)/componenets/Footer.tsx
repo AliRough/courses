@@ -15,16 +15,8 @@ export default function Footer() {
                 unoptimized={true}
                 width={100}
                 height={100}
-                className='light-mode-item h-40px'
-                src='/images/logo.svg'
-                alt='logo'
-              />
-              <Image
-                unoptimized={true}
-                width={100}
-                height={100}
-                className='dark-mode-item h-40px'
-                src='/images/logo-light.svg'
+                className='light-mode-item tw-h-20 w-auto'
+                src='/images/OIG4.png'
                 alt='logo'
               />
             </a>

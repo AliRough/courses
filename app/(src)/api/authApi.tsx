@@ -60,13 +60,9 @@ export const changeUserPass = async (formData: any, token: any) => {
       console.log(error);
       toast.error(error.message);
     });
-  console.log(data);
-  if (data.status === 204) {
-    toast.success('رمز عبور با موفقیت تقییر کرد');
-  }
 };
 
-export const edittUserData = async (formData: any, token: any) => {
+export const editUserData = async (formData: any, token: any) => {
   let config = {
     method: 'put',
     maxBodyLength: Infinity,
@@ -79,19 +75,66 @@ export const edittUserData = async (formData: any, token: any) => {
   const data: any = await axios
     .request(config)
     .then((response) => {
-      console.log(JSON.stringify(response.data));
-      console.log(JSON.stringify(response));
       return response;
     })
     .catch((error) => {
       console.log(error);
       toast.error(error.message);
     });
+};
+
+export const deleteUserAvatar = async (token: any) => {
+  let config = {
+    method: 'post',
+    maxBodyLength: Infinity,
+    url: `${baseUrl}/api/user/delete-avatar`,
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'multipart/form-data',
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const data: any = await axios
+    .request(config)
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      console.log(error);
+      toast.error(error.response.data.message);
+    });
   console.log(data);
 
-  if (data.status === 204) {
-    toast.success('chbhashb');
+  if (data.status === 200) {
+    toast.success('عکس شما با موفقیت تغییر کرد');
   }
+};
+
+export const changeUserAvatar = async (formData: any, token: any) => {
+  console.log(formData);
+
+  let config = {
+    method: 'post',
+    maxBodyLength: Infinity,
+    url: `${baseUrl}/api/user/change-avatar`,
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'multipart/form-data',
+
+      Authorization: `Bearer ${token}`,
+    },
+    data: formData,
+  };
+  const data: any = await axios
+    .request(config)
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      console.log(error);
+      toast.error(error.response.data.message);
+    });
+  console.log(data);
 };
 
 export const getUserByToken = async (token: string) => {
@@ -100,7 +143,7 @@ export const getUserByToken = async (token: string) => {
   };
   try {
     const data = await axios.get(`${baseUrl}/api/user`, config);
-    return data.data;
+    return data.data?.data;
   } catch (error: any) {
     throw error.response.data;
   }

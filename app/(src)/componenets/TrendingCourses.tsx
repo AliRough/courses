@@ -1,10 +1,10 @@
 'use client';
-import { useCourseAll } from '../hooks/request/requestCourse';
+import { useGetAllCourses } from '../hooks/request/requestCourse';
 
 import CoursesSlider from './other/CoursesSlider';
 
 export default function TrendingCourses() {
-  const { data } = useCourseAll();
+  const { data } = useGetAllCourses();
   console.log(data?.data);
 
   return (

@@ -9,12 +9,16 @@ import { authUserState } from '../state/atoms';
 import { redirect } from 'next/dist/server/api-utils';
 import * as api from '@/app/(src)/api/authApi';
 import { useRouter } from 'next/navigation';
+import { useGetUser, useLogOutUser } from '../hooks/request/authUser';
+import { useQueryClient } from '@tanstack/react-query';
 
 export default function Profile({ name, email }: any) {
   const [theme, setTheme]: any = useState();
-  const [authUserdata, setAuthUser]: any = useRecoilState(authUserState);
 
   const [cookies, setCookie, removeCookie] = useCookies(['Authorization']);
+
+  const { data: userData } = useGetUser(cookies.Authorization);
+  const { mutate: mutateLogOut } = useLogOutUser();
 
   const router = useRouter();
 
@@ -39,20 +43,11 @@ export default function Profile({ name, email }: any) {
       setTheme(e.target.dataset.bsThemeValue);
     }
   };
-  3;
+  let queryClient = useQueryClient();
   const logOutHamdler = async (e: any) => {
-    const data = await api.logOutUser(cookies.Authorization);
+    mutateLogOut(cookies.Authorization);
     removeCookie('Authorization', { path: '/' });
 
-    setAuthUser({
-      name: null,
-      aliasName: null,
-      email: null,
-      mobile: null,
-      emailVerifiedAt: null,
-      mobileVerifiedAt: null,
-      createdAt: null,
-    });
     router.push('/');
   };
 
@@ -73,7 +68,11 @@ export default function Profile({ name, email }: any) {
           width={100}
           height={100}
           className='avatar-img rounded-circle'
-          src='/images/avatar/User.png'
+          src={
+            (userData?.avatar &&
+              'https://eduapi.liara.run/' + userData?.avatar) ||
+            '/images/avatar/User.png'
+          }
           alt='avatar'
         />
       </a>
@@ -91,7 +90,11 @@ export default function Profile({ name, email }: any) {
                 width={100}
                 height={100}
                 className='avatar-img rounded-circle shadow'
-                src='/images/avatar/User.png'
+                src={
+                  (userData?.avatar &&
+                    'https://eduapi.liara.run/' + userData?.avatar) ||
+                  '/images/avatar/User.png'
+                }
                 alt='avatar'
               />
             </div>

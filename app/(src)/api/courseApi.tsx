@@ -2,6 +2,7 @@
 
 import axios from 'axios';
 
+
 const baseUrl = process.env.NEXT_PUBLIC_APP_URL;
 
 // axios.defaults.baseURL = baseUrl;
@@ -31,5 +32,27 @@ export const CourseByTagApi = async (tag: string) => {
     return data.data;
   } catch (error: any) {
     throw error.response.data;
+  }
+};
+
+export const getAllPackages = async () => {
+  try {
+    const data = await axios.get('https://eduapi.liara.run/api/packages ');
+
+    return data.data;
+  } catch (error: any) {
+    throw error;
+  }
+};
+
+export const getAllCategories = async (perPage?: any) => {
+  let url = `https://eduapi.liara.run/api/categories${perPage ? '?perPage=' + perPage : ''}`;
+
+  try {
+    const data = await axios.get(url);
+
+    return data.data;
+  } catch (error: any) {
+    throw error;
   }
 };

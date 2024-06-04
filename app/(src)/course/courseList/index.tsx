@@ -3,7 +3,7 @@
 import HeaderBody from '@/app/(src)/componenets/headerBody';
 import PaginationCenter from '@/app/(src)/componenets/pagination';
 import CourseTile from '@/app/(src)/course/courseTile';
-import { useCourseAll } from '@/app/(src)/hooks/request/requestCourse';
+import { useGetAllCourses } from '@/app/(src)/hooks/request/requestCourse';
 import CourseListFillter from '@/app/(src)/course/courseList/courseListFillter';
 import CourseAdvancedSearch from '@/app/(src)/course/courseList/courseAdvancedSearch';
 import Newsletter from '@/app/(src)/componenets/other/newsletter';
@@ -11,7 +11,7 @@ import Newsletter from '@/app/(src)/componenets/other/newsletter';
 import { TCourses } from '@/app/(src)/model/course.d';
 
 const CourseList = () => {
-  const { data } = useCourseAll();
+  const { data } = useGetAllCourses();
 
   console.log('Not completed');
 

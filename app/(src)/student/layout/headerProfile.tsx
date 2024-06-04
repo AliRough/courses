@@ -5,27 +5,12 @@ import { useRecoilState } from 'recoil';
 import { authUserState } from '../../state/atoms';
 import { useEffect } from 'react';
 import { useCookies } from 'react-cookie';
+import { useGetUser } from '../../hooks/request/authUser';
 
 const LayoutProfileStudentHeader = () => {
-  const [authUserdata, setAuthUser]: any = useRecoilState(authUserState);
   const [cookies, setCookie, removeCookie] = useCookies(['Authorization']);
-  // console.log();
+  const { data: userData } = useGetUser(cookies.Authorization);
 
-  let item = cookies.Authorization;
-
-  if (!authUserdata) {
-    console.log(
-      '-_______________--------------____________----------------------------log',
-    );
-    return (
-      <>
-        <div className=''>not found</div>
-      </>
-    );
-    // const authUserdata=JSON.parse(item)
-  }
-  // useEffect(() => {
-  // }, []);
   console.log('Not completed');
 
   return (
@@ -51,7 +36,11 @@ const LayoutProfileStudentHeader = () => {
                       width='500'
                       height='500'
                       className='avatar-img rounded-circle border border-white border-3 shadow'
-                      src='/images/avatar/User.png'
+                      src={
+                        (userData?.avatar &&
+                          'https://eduapi.liara.run/' + userData?.avatar) ||
+                        '/images/avatar/User.png'
+                      }
                       alt=''
                     />
                     <span className='badge text-bg-success rounded-pill position-absolute top-50 start-100 translate-middle mt-4 mt-md-5 ms-n3 px-md-3'>
@@ -61,7 +50,7 @@ const LayoutProfileStudentHeader = () => {
                 </div>
                 <div className='col d-sm-flex justify-content-between align-items-center'>
                   <div>
-                    <h1 className='my-3 fs-4'>{authUserdata.name}</h1>
+                    <h1 className='my-3 fs-4'>{userData?.name}</h1>
                     <ul className='list-inline mb-0'>
                       <li className='list-inline-item me-3 mb-1 mb-sm-0'>
                         <span className='h6'>255</span>
