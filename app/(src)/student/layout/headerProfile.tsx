@@ -1,15 +1,10 @@
 'use client';
 
 import Image from 'next/image';
-import { useRecoilState } from 'recoil';
-import { authUserState } from '../../state/atoms';
-import { useEffect } from 'react';
-import { useCookies } from 'react-cookie';
 import { useGetUser } from '../../hooks/request/authUser';
 
 const LayoutProfileStudentHeader = () => {
-  const [cookies, setCookie, removeCookie] = useCookies(['Authorization']);
-  const { data: userData } = useGetUser(cookies.Authorization);
+  const { data: userData } = useGetUser();
 
   console.log('Not completed');
 

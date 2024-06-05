@@ -31,8 +31,6 @@ export const logInUser = async (formData: any) => {
     console.log(data);
     if (data.status === 201) {
       console.log(formData);
-
-      // SetUserAtom(formData);
     }
 
     return data;
@@ -59,6 +57,7 @@ export const changeUserPass = async (formData: any, token: any) => {
     .catch((error) => {
       console.log(error);
       toast.error(error.message);
+      throw new Error(error.message);
     });
 };
 
@@ -80,6 +79,7 @@ export const editUserData = async (formData: any, token: any) => {
     .catch((error) => {
       console.log(error);
       toast.error(error.message);
+      throw new Error(error.message);
     });
 };
 
@@ -102,6 +102,7 @@ export const deleteUserAvatar = async (token: any) => {
     .catch((error) => {
       console.log(error);
       toast.error(error.response.data.message);
+      throw new Error(error.response.data.message);
     });
   console.log(data);
 
@@ -133,6 +134,7 @@ export const changeUserAvatar = async (formData: any, token: any) => {
     .catch((error) => {
       console.log(error);
       toast.error(error.response.data.message);
+      throw new Error(error.response.data.message);
     });
   console.log(data);
 };
@@ -165,6 +167,7 @@ export const logOutUser = async (token: string) => {
     })
     .catch((error) => {
       console.log(error);
+      throw new Error(error.message);
     });
 };
 
@@ -200,6 +203,7 @@ export const sendVerificationEmail = async (token: string) => {
     .catch((error: any) => {
       console.log(error);
       toast.error(error.message);
+      throw new Error(error.message);
     });
 
   // try {

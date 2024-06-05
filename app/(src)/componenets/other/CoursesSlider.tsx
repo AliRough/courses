@@ -45,14 +45,14 @@ export default function CoursesSlider({ datas }: any) {
               key={data.id}
               className='d-flex justify-content-center bg-white  '
             >
-              <div className='card action-trigger-hover border bg-transparent m-1 m-md-0 tw-max-w-96   '>
+              <div className='card action-trigger-hover border bg-transparent m-1 m-md-0 tw-max-w-96  w-100  '>
                 {/* Image */}
                 <Image
                   unoptimized={true}
                   width={100}
                   height={100}
                   src={'https://fanavaran.liara.run/' + data.cover}
-                  className='card-img-top'
+                  className='card-img-top tw-max-h-[40 %]'
                   alt='course image'
                 />
                 {/* Ribbon */}

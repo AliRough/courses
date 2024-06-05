@@ -1,32 +1,16 @@
 // import { LayoutProps } from '@/.next/types/app/layout';
 'use client';
-import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Profile from './Profile';
 import Link from 'next/link';
-import { getHeader } from '@/app/(src)/api/layoutApi';
-import { useRecoilState } from 'recoil';
-import { authUserState } from '../state/atoms';
-import { useCookies } from 'react-cookie';
-import * as api from '@/app/(src)/api/authApi';
-import { useGetUser, useLogOutUser } from '../hooks/request/authUser';
-import { boolean } from 'zod';
-import { getAllCategories } from '../api/courseApi';
+import { useGetUser } from '../hooks/request/authUser';
 import { useGetAllCategories } from '../hooks/request/requestCourse';
 
 export default function Header({ children }: any) {
-  const [cookies, setCookie, removeCookie] = useCookies(['Authorization']);
-  const { data: userData } = useGetUser(cookies.Authorization);
+  const { data: userData } = useGetUser();
   const { data: allCategoriesData } = useGetAllCategories();
 
   console.log('allCategoriesData is', allCategoriesData);
-
-  // const [authUserdata, setAuthUser]: any = useRecoilState(authUserState);
-
-  // if (!authUserdata.name && userData) {
-  //   setAuthUser(userData.data);
-  // }
-  let authUserdata = userData;
 
   console.log('hooooooooooook', userData);
 

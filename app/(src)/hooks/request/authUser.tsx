@@ -5,50 +5,26 @@ import * as api from '@/app/(src)/api/authApi';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
 
-import { TCourse } from '@/app/(src)/model/course.d';
-import { useRecoilState } from 'recoil';
-import { authUserState } from '../../state/atoms';
-
-// export const useRegisterUser = () => {
-//   return useQuery({ queryKey: ['registerUser'], queryFn: api.registerUser });
-// };
-// export const authUser = () => {
-//   // const QueryClient = useQueryClient();
-//   const RegisterUserMutation = useMutation({
-//     mutationFn: (data) => {
-//       return api.registerUser(data);
-//     },
-//     // onSuccess: () => {
-//     //   // Invalidate and refetch
-//     //   QueryClient.invalidateQueries({ queryKey: ['registerUser'] });
-//     // },
-//   });
-// };
-export const useLogOutUser = () => {
-  const queryClient = useQueryClient();
-
-  return useMutation({
-    mutationFn: (token: any) => api.logOutUser(token),
-    onSuccess: () => {
-      queryClient.resetQueries({ queryKey: ['userData'] });
-
-      toast.success('شما از پنل خود خارج شدید');
-    },
-  });
-};
+import { useCookies } from 'react-cookie';
+import { useRouter } from 'next/navigation';
 
 export const useChangeAvatar = () => {
   const queryClient = useQueryClient();
+  const [cookies, setCookie, removeCookie] = useCookies(['Authorization']);
 
   return useMutation({
-    mutationFn: ({ formData, token }: any) =>
-      api.changeUserAvatar(formData, token),
+    mutationFn: (formData: any) =>
+      api.changeUserAvatar(formData, cookies.Authorization),
     onSuccess: () => {
-      console.log('rrrrrrrrrrrrrrrresulrt', queryClient);
       queryClient.invalidateQueries({ queryKey: ['userData'] });
 
       toast.success('عکس شما با موفقیت تغییر کرد');
+      console.log('sucses');
+
       // toast.success(result);
+    },
+    onError: () => {
+      console.log('erroe');
     },
   });
 };
@@ -65,13 +41,6 @@ export const useDeleteAvatar = () => {
       toast.success('عکس شما با موفقیت  پاک شد');
       // toast.success(result);
     },
-  });
-};
-
-export const useGetUser = (token: any): any => {
-  return useQuery({
-    queryKey: ['userData'],
-    queryFn: () => api.getUserByToken(token),
   });
 };
 
@@ -99,11 +68,77 @@ export const useChangeUserPass = () => {
   });
 };
 
-export const useAuthUser: any = (data: any) =>
-  useMutation({
-    mutationFn: api.registerUser,
-    onSuccess: (e) => {
-      // SetUserAtom(e.data.token);
-      console.log('dataaa', e.data.token);
+export const useLogInUser = () => {
+  const queryClient = useQueryClient();
+  const [cookies, setCookie, removeCookie] = useCookies(['Authorization']);
+  const router = useRouter();
+
+  return useMutation({
+    mutationFn: (formData: any) => api.logInUser(formData),
+    onSuccess: (data) => {
+      console.log('hoookdataaaaaa is', data);
+
+      queryClient.invalidateQueries({ queryKey: ['userData'] });
+
+      setCookie('Authorization', data.data.accessToken, { path: '/' });
+
+      toast.success(' شما با موفقیت وارد شدید');
+      router.push('/profile/s/edit-profile');
+    },
+    onError: (error) => {
+      console.log(error);
+      toast.error(error.message);
     },
   });
+};
+
+export const useLogOutUser = () => {
+  const queryClient = useQueryClient();
+  const [cookies, setCookie, removeCookie] = useCookies(['Authorization']);
+  const router = useRouter();
+
+  return useMutation({
+    mutationFn: () => api.logOutUser(cookies.Authorization),
+    onSuccess: () => {
+      queryClient.removeQueries({ queryKey: ['userData'] });
+
+      removeCookie('Authorization', { path: '/' });
+
+      toast.success('شما از پنل خود خارج شدید');
+      router.push('/');
+    },
+  });
+};
+
+export const useRegisterUser = () => {
+  const queryClient = useQueryClient();
+  const [cookies, setCookie, removeCookie] = useCookies(['Authorization']);
+  const router = useRouter();
+
+  return useMutation({
+    mutationFn: (formData: any) => api.registerUser(formData),
+    onSuccess: (data) => {
+      console.log('hoookdataaaaaa is', data);
+
+      queryClient.invalidateQueries({ queryKey: ['userData'] });
+
+      setCookie('Authorization', data.data.accessToken, { path: '/' });
+
+      toast.success(' شما با موفقیت وارد شدید');
+      toast.warning(' ایمیل ارسال شد ,ایمیل خود را تایید کنید');
+      router.push('/profile/s/edit-profile');
+    },
+    onError: (error) => {
+      toast.error(error.message);
+    },
+  });
+};
+
+export const useGetUser = (): any => {
+  const [cookies, setCookie, removeCookie] = useCookies(['Authorization']);
+
+  return useQuery({
+    queryKey: ['userData'],
+    queryFn: () => api.getUserByToken(cookies.Authorization),
+  });
+};

@@ -1,13 +1,10 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
 import clsx from 'clsx';
-import { useRecoilState } from 'recoil';
-import { authUserState } from '../../state/atoms';
-import { useCookies } from 'react-cookie';
-import * as api from '@/app/(src)/api/authApi';
+import { useLogOutUser } from '../../hooks/request/authUser';
 
 type TMenu = {
   name: string;
@@ -18,8 +15,6 @@ type TMenu = {
 const LayoutProfileStudentSidebarMenu = ({
   children,
 }: Readonly<{ children: React.ReactNode }>) => {
-  console.log('Not completed');
-
   const menu: TMenu[] = [
     { name: 'ویرایش پروفایل', link: 'edit-profile', icon: 'bi-pencil-square' },
     {
@@ -30,51 +25,8 @@ const LayoutProfileStudentSidebarMenu = ({
     { name: 'لیست دوره ها', link: 'course-list', icon: 'bi-basket' },
   ];
 
-  {
-    /*
-const menu: TMenu[] = [
-    { name: 'داشبورد', link: 'dashboard', icon: 'bi-ui-checks-grid' },
-    { name: 'مدیریت پکیج', link: 'subscription', icon: 'bi-card-checklist' },
-    { name: 'لیست دوره ها', link: 'course-list', icon: 'bi-basket' },
-    {
-      name: 'توضیحات دوره',
-      link: 'course-resume',
-      icon: 'far fa-fw fa-file-alt',
-    },
-    { name: 'امتحانات', link: 'quiz', icon: 'bi-question-diamond' },
-    {
-      name: 'اطلاعات کارت',
-      link: 'payment-info',
-      icon: 'bi-credit-card-2-front',
-    },
-    { name: 'موردعلاقه ها', link: 'bookmark', icon: 'bi-cart-check' },
-    { name: 'ویرایش پروفایل', link: 'edit-profile', icon: 'bi-pencil-square' },
-    { name: 'تنظیمات', link: 'setting', icon: 'bi-gear' },
-    { name: 'حذف پروفایل', link: 'delete-account', icon: 'bi-trash' },
-  ];
-*/
-  }
-  const [authUserdata, setAuthUser]: any = useRecoilState(authUserState);
-
-  const [cookies, setCookie, removeCookie] = useCookies(['Authorization']);
-  const router = useRouter();
-
   const path = usePathname();
-  const logOutHamdler = async (e: any) => {
-    const data = await api.logOutUser(cookies.Authorization);
-    removeCookie('Authorization', { path: '/' });
-
-    setAuthUser({
-      name: null,
-      aliasName: null,
-      email: null,
-      mobile: null,
-      emailVerifiedAt: null,
-      mobileVerifiedAt: null,
-      createdAt: null,
-    });
-    router.push('/');
-  };
+  const { mutate: mutateLogOut } = useLogOutUser();
 
   return (
     <section className='pt-0 '>
@@ -116,7 +68,9 @@ const menu: TMenu[] = [
                     ))}
                     <button
                       className='list-group-item text-danger bg-danger-soft-hover d-flex justify-content-start align-items-center  '
-                      onClick={logOutHamdler}
+                      onClick={() => {
+                        mutateLogOut();
+                      }}
                     >
                       <i className='fas fa-sign-out-alt fa-fw me-2'></i>خروج
                     </button>

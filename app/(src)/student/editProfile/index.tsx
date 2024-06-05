@@ -1,15 +1,8 @@
 'use client';
 
 import Image from 'next/image';
-import { useRecoilState } from 'recoil';
-import { authUserState } from '../../state/atoms';
 import { useCookies } from 'react-cookie';
-import {
-  changeUserAvatar,
-  deleteUserAvatar,
-  editUserData,
-  sendVerificationEmail,
-} from '../../api/authApi';
+import { sendVerificationEmail } from '../../api/authApi';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { EditProfileValidata } from '../../validations/editProfileValidate';
@@ -21,12 +14,12 @@ import {
   useEditUserData,
   useGetUser,
 } from '../../hooks/request/authUser';
-import { useQueryClient } from '@tanstack/react-query';
 
 const ProfileStudentEditProfile = () => {
   const { mutate: mutateDeleteAvatar } = useDeleteAvatar();
   const { mutate: mutateChangeAvatar } = useChangeAvatar();
   const { mutate: mutateEditUserData } = useEditUserData();
+
   const deleteAvatarHandler = async (e: any) => {
     e.preventDefault();
 
@@ -34,7 +27,7 @@ const ProfileStudentEditProfile = () => {
   };
   console.log('Not completed');
   const [cookies, setCookie, removeCookie] = useCookies(['Authorization']);
-  const { data: userData } = useGetUser(cookies.Authorization);
+  const { data: userData } = useGetUser();
 
   const sendVerification = async (e: any) => {
     e.preventDefault();
@@ -72,10 +65,7 @@ const ProfileStudentEditProfile = () => {
   }, [userData]);
 
   const changeUserAvatarHandler = async (e: any) => {
-    mutateChangeAvatar({
-      formData: { avatar: e.target.files[0] },
-      token: cookies.Authorization,
-    });
+    mutateChangeAvatar({ avatar: e.target.files[0] });
   };
 
   return (

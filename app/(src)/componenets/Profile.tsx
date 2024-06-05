@@ -15,12 +15,8 @@ import { useQueryClient } from '@tanstack/react-query';
 export default function Profile({ name, email }: any) {
   const [theme, setTheme]: any = useState();
 
-  const [cookies, setCookie, removeCookie] = useCookies(['Authorization']);
-
-  const { data: userData } = useGetUser(cookies.Authorization);
+  const { data: userData } = useGetUser();
   const { mutate: mutateLogOut } = useLogOutUser();
-
-  const router = useRouter();
 
   const changeThemeHandler = (e: any) => {
     console.log(setTheme);
@@ -42,13 +38,6 @@ export default function Profile({ name, email }: any) {
       document.documentElement.dataset.bsTheme = e.target.dataset.bsThemeValue;
       setTheme(e.target.dataset.bsThemeValue);
     }
-  };
-  let queryClient = useQueryClient();
-  const logOutHamdler = async (e: any) => {
-    mutateLogOut(cookies.Authorization);
-    removeCookie('Authorization', { path: '/' });
-
-    router.push('/');
   };
 
   return (
@@ -132,7 +121,9 @@ export default function Profile({ name, email }: any) {
         <li>
           <button
             className='dropdown-item bg-danger-soft-hover'
-            onClick={logOutHamdler}
+            onClick={() => {
+              mutateLogOut();
+            }}
           >
             <i className='bi bi-power fa-fw me-2' />
             خروج
