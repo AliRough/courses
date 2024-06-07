@@ -1,6 +1,6 @@
 'use client';
 
-const CourseListFillter = () => {
+const CoursePakageFillter = () => {
   console.log('Not completed');
 
   return (
@@ -22,19 +22,7 @@ const CourseListFillter = () => {
           </div>
         </form>
       </div>
-      <div className='col-xl-3 mt-3 mt-xl-0'>
-        <form className='border rounded p-2 input-borderless'>
-          <select
-            className='form-select form-select-sm js-choice border-0'
-            aria-label='.form-select-sm'
-          >
-            <option value=''>پربازدیدترین</option>
-            <option>بروزترین</option>
-            <option>پرفروش ترین</option>
-            <option>جدیدترین</option>
-          </select>
-        </form>
-      </div>
+
       <div className='col-12 col-xl-3 d-flex justify-content-between align-items-center mt-3 mt-xl-0'>
         <button
           className='btn btn-primary mb-0 d-lg-none'
@@ -51,4 +39,4 @@ const CourseListFillter = () => {
   );
 };
 
-export default CourseListFillter;
+export default CoursePakageFillter;

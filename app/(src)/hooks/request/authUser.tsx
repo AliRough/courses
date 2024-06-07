@@ -83,7 +83,7 @@ export const useLogInUser = () => {
       setCookie('Authorization', data.data.accessToken, { path: '/' });
 
       toast.success(' شما با موفقیت وارد شدید');
-      router.push('/profile/s/edit-profile');
+      router.push('/profile/edit-profile');
     },
     onError: (error) => {
       console.log(error);
@@ -126,7 +126,7 @@ export const useRegisterUser = () => {
 
       toast.success(' شما با موفقیت وارد شدید');
       toast.warning(' ایمیل ارسال شد ,ایمیل خود را تایید کنید');
-      router.push('/profile/s/edit-profile');
+      router.push('/profile/edit-profile');
     },
     onError: (error) => {
       toast.error(error.message);

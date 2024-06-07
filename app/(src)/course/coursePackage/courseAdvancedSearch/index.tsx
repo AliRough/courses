@@ -4,40 +4,44 @@ import CourseFillterCategory from '@/app/(src)/course/courseList/courseAdvancedS
 import CourseFillterLang from '@/app/(src)/course/courseList/courseAdvancedSearch/courseFillterLang';
 import CourseFillterLavel from '@/app/(src)/course/courseList/courseAdvancedSearch/courseFillterLavel';
 import CoursefillterPrice from '@/app/(src)/course/courseList/courseAdvancedSearch/coursefillterPrice';
+import Link from 'next/link';
 
 const CourseAdvancedSearch = () => {
   console.log('Not completed');
 
   return (
-    <div className='col-lg-4 col-xl-3'>
-      <div
-        className='offcanvas-lg offcanvas-end'
-        tabIndex={-1}
-        id='offcanvasSidebar'
-      >
-        <div className='offcanvas-header bg-light'>
-          <h5 className='offcanvas-title' id='offcanvasNavbarLabel'>
-            جستجوی پیشرفته
-          </h5>
-          <button
-            type='button'
-            className='btn-close'
-            data-bs-dismiss='offcanvas'
-            data-bs-target='#offcanvasSidebar'
-            aria-label='Close'
-          ></button>
+    <div className='tw-w-1/4 ps-2 md:tw-block tw-hidden '>
+      <div className='tw-bg-white tw-rounded-xl tw-shadow-lg p-2  '>
+        <div className='tw-flex tw-items-center tw-border tw-rounded-md tw-bg-gray-50 shadow-sm p-2 mb-2'>
+          <div className='tw-flex tw-justify-center tw-items-center icon-md bg-orange bg-opacity-10 rounded-circle text-orange'>
+            <i className='fas fa-crop-alt tw-text-xl ' />
+          </div>
+          <span className='ps-2'>طراحی وب</span>
         </div>
-        <div className=' p-3 p-lg-0 '>
-          <form>
-            <CourseFillterCategory />
-            <CoursefillterPrice />
-            {/* <CourseFillterLavel />
-            <CourseFillterLang /> */}
-          </form>
+        <div className='tw-flex tw-items-center tw-border tw-rounded-md tw-bg-gray-50 shadow-sm p-2 mb-2'>
+          <div className='tw-flex tw-justify-center tw-items-center icon-md bg-orange bg-opacity-10 rounded-circle text-orange'>
+            <i className='fas fa-crop-alt tw-text-xl ' />
+          </div>
+          <span className='ps-2'>طراحی وب</span>
         </div>
-        <div className='d-grid p-2 p-lg-0 text-center'>
-          <button className='btn btn-primary mb-0'>نتیجه فیلتر</button>
+        <div className='tw-flex tw-items-center tw-border tw-rounded-md tw-bg-gray-50 shadow-sm p-2 mb-2'>
+          <div className='tw-flex tw-justify-center tw-items-center icon-md bg-orange bg-opacity-10 rounded-circle text-orange'>
+            <i className='fas fa-crop-alt tw-text-xl ' />
+          </div>
+          <span className='ps-2'>طراحی وب</span>
         </div>
+        <div className='tw-flex tw-items-center tw-border tw-rounded-md tw-bg-gray-50 shadow-sm p-2 mb-2'>
+          <div className='tw-flex tw-justify-center tw-items-center icon-md bg-orange bg-opacity-10 rounded-circle text-orange'>
+            <i className='fas fa-crop-alt tw-text-xl ' />
+          </div>
+          <span className='ps-2'>طراحی وب</span>
+        </div>
+        <Link
+          href={'#'}
+          className=' tw-text-sm text-end btn btn-primary w-100 text-center'
+        >
+          <span>مشاهده همه </span>
+        </Link>
       </div>
     </div>
   );

@@ -15,7 +15,7 @@ export default function SignInController() {
   };
 
   const {
-    // ساختار پارامتر
+    // ساختار پارامتر`
     register,
     // کنترل دکمه سابمت به صورت اتوماتیک حالت رفرش رو غیر فعال میکنه.
     handleSubmit,

@@ -8,6 +8,7 @@ import { authUserState } from '../../state/atoms';
 import { useRecoilState } from 'recoil';
 import Loading from '@/app/loading';
 import { useCookies } from 'react-cookie';
+import Header from '../../componenets/Header';
 
 const LayoutProfileStudent = ({
   children,
@@ -27,6 +28,8 @@ const LayoutProfileStudent = ({
 
   return (
     <>
+      <Header />
+
       <LayoutProfileStudentHeader />
       <LayoutProfileStudentSidebarMenu>
         {children}
