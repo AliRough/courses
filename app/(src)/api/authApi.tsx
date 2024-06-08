@@ -174,11 +174,13 @@ export const logOutUser = async (token: string) => {
 export const verifyEmail = async (id: any, hash: any) => {
   try {
     const data = await axios.post(
-      `${baseUrl}auth/email/verify?id=${id}&hash=${hash}`,
+      `${baseUrl}/api/auth/email/verify?id=${id}&hash=${hash}`,
     );
-
+    toast.success('ایمیل شما با موفقیت تایید شد');
     return data;
   } catch (error: any) {
+    console.log(error);
+    toast.error(error.response.data.message);
     throw error.response;
   }
 };
@@ -205,18 +207,4 @@ export const sendVerificationEmail = async (token: string) => {
       toast.error(error.message);
       throw new Error(error.message);
     });
-
-  // try {
-  //   const config = {
-  //     maxBodyLength: Infinity,
-  //     headers: { Accept: 'application/json', Authorization: `Bearer ${token}` },
-  //   };
-  //   const data = await axios.post(
-  // baseUrl    `${}/api/auth/email/send-verify`,
-  //     config,
-  //   );
-  //   return data.data;
-  // } catch (error: any) {
-  //   throw error.response.data;
-  // }
 };

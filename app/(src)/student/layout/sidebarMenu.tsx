@@ -58,9 +58,9 @@ const LayoutProfileStudentSidebarMenu = ({
                         key={e.name}
                         className={clsx(
                           'list-group-item',
-                          '/profile/s/' + e.link === path && 'active',
+                          '/profile/' + e.link === path && 'active',
                         )}
-                        href={'/profile/s/' + e.link}
+                        href={'/profile/' + e.link}
                       >
                         <i className={clsx(e.icon, 'bi fa-fw me-2')}></i>
                         {e.name}

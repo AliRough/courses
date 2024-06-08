@@ -5,10 +5,12 @@ import Profile from './Profile';
 import Link from 'next/link';
 import { useGetUser } from '../hooks/request/authUser';
 import { useGetAllCategories } from '../hooks/request/requestCourse';
+import Loading from '@/app/loading';
 
 export default function Header({ children }: any) {
-  const { data: userData } = useGetUser();
-  const { data: allCategoriesData } = useGetAllCategories();
+  const { data: userData, isPending: isUserPending } = useGetUser();
+  const { data: allCategoriesData, isPending: isCategoryPending } =
+    useGetAllCategories();
 
   console.log('allCategoriesData is', allCategoriesData);
 
@@ -16,6 +18,7 @@ export default function Header({ children }: any) {
 
   return (
     <>
+      {isUserPending && isCategoryPending && <Loading />}
       {/* Header START */}
       <header className='navbar-light bg-transparent container max-sm:tw-px-0   sm:tw-mt-4  px-0  '>
         {/* Nav START */}

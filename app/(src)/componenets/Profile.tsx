@@ -100,7 +100,7 @@ export default function Profile({ name, email }: any) {
         </li>
         {/* Links */}
         <li>
-          <Link className='dropdown-item' href='/profile/s/edit-profile'>
+          <Link className='dropdown-item' href='/profile/edit-profile'>
             <i className='bi bi-person fa-fw me-2' />
             ویرایش
           </Link>

@@ -1,42 +1,21 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import { useRecoilState } from 'recoil';
-import { authUserState } from '../state/atoms';
-import { useParams, useSearchParams } from 'next/navigation';
 import { verifyEmail } from '../api/authApi';
 import Link from 'next/link';
 
-export default function VerifyEmail({ params }: any) {
-  const [authUserdata, setAuthUser]: any = useRecoilState(authUserState);
-  console.log('verfy ', authUserdata);
-  console.log(params);
-  const param = useParams();
-  console.log('ppppppppppparam', param);
-  const searchParams = useSearchParams();
-
-  const id = searchParams.get('id');
-  const hash = searchParams.get('hash');
-  console.log(id);
-  console.log(hash);
-  const [massage, setMassage]: any = useState('منتطر بمانید ...');
+export default function VerifyEmail({ params, searchParams }: any) {
   const [verified, setVerified]: any = useState();
   useEffect(() => {
     const verifyEmailHandler = async () => {
-      console.log('999999999999999999999');
       try {
-        const data: any = await verifyEmail(id, hash);
+        const data: any = await verifyEmail(searchParams.id, searchParams.hash);
 
         console.log(data);
 
-        setMassage(data);
         setVerified(true);
       } catch (error: any) {
-        setMassage(error);
         setVerified(false);
       }
-
-      // setMassage(data.message);
-      // return data.message;
     };
     verifyEmailHandler();
   }, []);
@@ -72,7 +51,7 @@ export default function VerifyEmail({ params }: any) {
       </div>
     );
   }
-  if (verified === true) {
+  if (verified) {
     return (
       <div className='container tw-h-screen d-flex justify-content-center tw-items-center flex-column '>
         <svg
