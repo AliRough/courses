@@ -54,51 +54,52 @@ export default function Counter() {
 Main Banner END */}
       {/* =======================
 Counter START */}
-
-      <section className=''>
-        <div className='container '>
-          <div className='row g-sm-4 g-2'>
-            {packages?.data?.map((c: any, index: any) => (
-              <div
-                className='col-3 col-sm-3 col-lg-2 col-xl-2 px-1   '
-                key={index}
-              >
-                <div className='card card-body rounded-3 px-0  md:tw-border tw-border-gray-200 tw-bg-transparent md:tw-bg-white'>
-                  <div className='d-flex flex-column   align-items-center justify-content-center   '>
-                    {/* Icon */}
-                    <div
-                      className={
-                        dataicon.length > index
-                          ? dataicon[index]?.divStyle
-                          : dataicon[
-                              Math.floor(Math.random() * dataicon.length)
-                            ]?.divStyle
-                      }
-                    >
-                      <i
+      {packages?.data[0] && (
+        <section className=''>
+          <div className='container '>
+            <div className='row g-sm-4 g-2'>
+              {packages?.data?.map((c: any, index: any) => (
+                <div
+                  className='col-3 col-sm-3 col-lg-2 col-xl-2 px-1   '
+                  key={index}
+                >
+                  <div className='card card-body rounded-3 px-0  md:tw-border tw-border-gray-200 tw-bg-transparent md:tw-bg-white'>
+                    <div className='d-flex flex-column   align-items-center justify-content-center   '>
+                      {/* Icon */}
+                      <div
                         className={
                           dataicon.length > index
-                            ? dataicon[index]?.iconStyle
+                            ? dataicon[index]?.divStyle
                             : dataicon[
                                 Math.floor(Math.random() * dataicon.length)
-                              ]?.iconStyle
+                              ]?.divStyle
                         }
-                      />
-                    </div>
-                    <div className='mt-2'>
-                      <h5 className='mb-0 fw-normal h6 text-center fw-normal  '>
-                        <Link href='course/all' className='stretched-link'>
-                          {c.title}
-                        </Link>
-                      </h5>
+                      >
+                        <i
+                          className={
+                            dataicon.length > index
+                              ? dataicon[index]?.iconStyle
+                              : dataicon[
+                                  Math.floor(Math.random() * dataicon.length)
+                                ]?.iconStyle
+                          }
+                        />
+                      </div>
+                      <div className='mt-2'>
+                        <h5 className='mb-0 fw-normal h6 text-center fw-normal  '>
+                          <Link href='course/all' className='stretched-link'>
+                            {c.title}
+                          </Link>
+                        </h5>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* =======================
 Counter END */}

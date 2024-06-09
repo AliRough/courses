@@ -91,7 +91,13 @@ export default function Profile({ name, email }: any) {
               <a className='h6' href='#'>
                 {name}{' '}
               </a>
-              <p className='small m-0 '>{email}</p>
+
+              <p
+                dir='ltr'
+                className='small m-0 tw-max-w-36 tw-truncate ![direction:ltr]'
+              >
+                {email}
+              </p>
             </div>
           </div>
         </li>
@@ -129,11 +135,11 @@ export default function Profile({ name, email }: any) {
             خروج
           </button>
         </li>
-        <li>
+        {/* <li>
           <hr className='dropdown-divider' />
-        </li>
+        </li> */}
         {/* Dark mode options START */}
-        <li>
+        {/* <li>
           <div className='bg-light dark-mode-switch theme-icon-active d-flex align-items-center p-1 rounded mt-2 justify-content-center '>
             <button
               type='button'
@@ -194,7 +200,7 @@ export default function Profile({ name, email }: any) {
               خودکار
             </button>
           </div>
-        </li>
+        </li> */}
         {/* Dark mode options END*/}
       </ul>
     </div>

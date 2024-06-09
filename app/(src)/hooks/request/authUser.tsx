@@ -10,7 +10,7 @@ import { useRouter } from 'next/navigation';
 
 export const useChangeAvatar = () => {
   const queryClient = useQueryClient();
-  const [cookies, setCookie, removeCookie] = useCookies(['Authorization']);
+  const [cookies] = useCookies(['Authorization']);
 
   return useMutation({
     mutationFn: (formData: any) =>
@@ -19,9 +19,6 @@ export const useChangeAvatar = () => {
       queryClient.invalidateQueries({ queryKey: ['userData'] });
 
       toast.success('عکس شما با موفقیت تغییر کرد');
-      console.log('sucses');
-
-      // toast.success(result);
     },
     onError: () => {
       console.log('erroe');
@@ -31,29 +28,29 @@ export const useChangeAvatar = () => {
 
 export const useDeleteAvatar = () => {
   const queryClient = useQueryClient();
+  const [cookies] = useCookies(['Authorization']);
 
   return useMutation({
-    mutationFn: (token) => api.deleteUserAvatar(token),
+    mutationFn: () => api.deleteUserAvatar(cookies.Authorization),
     onSuccess: () => {
-      console.log('rrrrrrrrrrrrrrrresulrt', queryClient);
       queryClient.invalidateQueries({ queryKey: ['userData'] });
 
       toast.success('عکس شما با موفقیت  پاک شد');
-      // toast.success(result);
     },
   });
 };
 
 export const useEditUserData = () => {
   const queryClient = useQueryClient();
+  const [cookies] = useCookies(['Authorization']);
 
   return useMutation({
-    mutationFn: ({ formData, token }: any) => api.editUserData(formData, token),
+    mutationFn: (formData: any) =>
+      api.editUserData(formData, cookies.Authorization),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['userData'] });
 
       toast.success('اطلاعات شما با موفقیت تغییر کرد');
-      // toast.success(result);
     },
   });
 };
@@ -64,6 +61,36 @@ export const useChangeUserPass = () => {
       api.changeUserPass(formData, token),
     onSuccess: () => {
       toast.success('رمز شما با موفقیت تغییر کرد');
+    },
+  });
+};
+
+export const useResetPassword = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (formData: any) => api.resetPassword(formData),
+    onSuccess: (data) => {
+      toast.success('رمز عبور شما با موفقیت تغییر کرد');
+    },
+    onError: (error) => {
+      console.log(error);
+      toast.error(error.message);
+    },
+  });
+};
+
+export const useForgotPassword = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (formData: any) => api.forgotPassword(formData),
+    onSuccess: (data) => {
+      toast.success('ایمیل با موفقیت ارسال شد');
+    },
+    onError: (error) => {
+      console.log(error);
+      toast.error(error.message);
     },
   });
 };

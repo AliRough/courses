@@ -39,6 +39,40 @@ export const logInUser = async (formData: any) => {
   }
 };
 
+export const forgotPassword = async (formData: any) => {
+  try {
+    const data = await axios.post(
+      `${baseUrl}/api/auth/password/send-reset-link`,
+      formData,
+    );
+    console.log(data);
+    if (data.status === 200) {
+      console.log(formData);
+    }
+
+    return data;
+  } catch (error: any) {
+    throw error.response.data;
+  }
+};
+
+export const resetPassword = async (formData: any) => {
+  try {
+    const data = await axios.post(
+      `${baseUrl}/api/auth/password/reset`,
+      formData,
+    );
+    console.log(data);
+    if (data.status === 200) {
+      console.log(formData);
+    }
+
+    return data;
+  } catch (error: any) {
+    throw error.response.data;
+  }
+};
+
 export const changeUserPass = async (formData: any, token: any) => {
   let config = {
     method: 'put',

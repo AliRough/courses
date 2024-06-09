@@ -18,7 +18,7 @@ export default function Header({ children }: any) {
 
   return (
     <>
-      {isUserPending && isCategoryPending && <Loading />}
+      {isUserPending || isCategoryPending && <Loading />}
       {/* Header START */}
       <header className='navbar-light bg-transparent container max-sm:tw-px-0   sm:tw-mt-4  px-0  '>
         {/* Nav START */}

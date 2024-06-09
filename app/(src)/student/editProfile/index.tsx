@@ -14,16 +14,36 @@ import {
   useEditUserData,
   useGetUser,
 } from '../../hooks/request/authUser';
+import Loading from '@/app/loading';
 
 const ProfileStudentEditProfile = () => {
-  const { mutate: mutateDeleteAvatar } = useDeleteAvatar();
-  const { mutate: mutateChangeAvatar } = useChangeAvatar();
-  const { mutate: mutateEditUserData } = useEditUserData();
+  const { mutate: mutateDeleteAvatar, isPending: isDeleteAvatarPending } =
+    useDeleteAvatar();
+  const { mutate: mutateChangeAvatar, isPending: isChangeAvatarPending } =
+    useChangeAvatar();
+  const { mutate: mutateEditUserData, isPending: isEditUserDataPending } =
+    useEditUserData();
 
   const deleteAvatarHandler = async (e: any) => {
     e.preventDefault();
+    console.log(
+      'isDeleteAvatarPending',
+      isDeleteAvatarPending,
+      'isChangeAvatarPending:',
+      isChangeAvatarPending,
+      'isEditUserDataPending:',
+      isEditUserDataPending,
+    );
 
     mutateDeleteAvatar(cookies.Authorization);
+    console.log(
+      'isDeleteAvatarPending',
+      isDeleteAvatarPending,
+      'isChangeAvatarPending:',
+      isChangeAvatarPending,
+      'isEditUserDataPending:',
+      isEditUserDataPending,
+    );
   };
   console.log('Not completed');
   const [cookies, setCookie, removeCookie] = useCookies(['Authorization']);
@@ -54,7 +74,7 @@ const ProfileStudentEditProfile = () => {
   };
 
   const editeProfileHandler = (data: any) => {
-    mutateEditUserData({ formData: data, token: cookies.Authorization });
+    mutateEditUserData(data);
   };
 
   useEffect(() => {
@@ -65,11 +85,39 @@ const ProfileStudentEditProfile = () => {
   }, [userData]);
 
   const changeUserAvatarHandler = async (e: any) => {
+    console.log(
+      'isDeleteAvatarPending',
+      isDeleteAvatarPending,
+      'isChangeAvatarPending:',
+      isChangeAvatarPending,
+      'isEditUserDataPending:',
+      isEditUserDataPending,
+    );
+
     mutateChangeAvatar({ avatar: e.target.files[0] });
+    console.log(
+      'isDeleteAvatarPending',
+      isDeleteAvatarPending,
+      'isChangeAvatarPending:',
+      isChangeAvatarPending,
+      'isEditUserDataPending:',
+      isEditUserDataPending,
+    );
   };
+  console.log(
+    'isDeleteAvatarPending',
+    isDeleteAvatarPending,
+    'isChangeAvatarPending:',
+    isChangeAvatarPending,
+    'isEditUserDataPending:',
+    isEditUserDataPending,
+  );
 
   return (
     <>
+      {isDeleteAvatarPending ||
+        isChangeAvatarPending ||
+        (isEditUserDataPending && <Loading />)}
       <div className='card bg-transparent border rounded-3'>
         <div className='card-header bg-transparent border-bottom'>
           <h3 className='card-header-title mb-0 ff-vb fs-5'>ویرایش پروفایل</h3>

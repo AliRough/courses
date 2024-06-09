@@ -29,3 +29,24 @@ export const signInValidate = z.object({
   email: z.string().min(1, { message: 'لطفا ایمیل خود را وارد کنید ' }),
   password: z.string().min(1, { message: 'لطفا رمز عبور خود را وارد کنید ' }),
 });
+
+export const forgotPasswordValidate = z.object({
+  email: z.string().min(1, { message: 'لطفا ایمیل خود را وارد کنید ' }),
+});
+
+export const resetPassValidate = z
+  .object({
+    password: z
+      .string()
+      .regex(phoneValidation, {
+        message: 'رمز عبور باید حداقل ۸ کاراکتر حروف کوچک بزرگ و اعداد باشد',
+      })
+      .min(8),
+    password_confirmation: z
+      .string()
+      .min(8, { message: 'لطفا رمز عبور خود را تایید کنید' }),
+  })
+  .refine((data) => data.password === data.password_confirmation, {
+    message: 'رمز عبور با تکرار رمز عبور برابر نیست',
+    path: ['password_confirmation'],
+  });
