@@ -165,12 +165,12 @@ export default function SignIn({
                           </label>
                         </div>
                         <div className='text-primary-hover'>
-                          <a
-                            href='forgot-password.html'
+                          <Link
+                            href='/auth/forgotPassword'
                             className='text-secondary'
                           >
                             <u>رمز خود را فراموش کرده اید؟</u>
-                          </a>
+                          </Link>
                         </div>
                       </div>
                       {/* Button */}
