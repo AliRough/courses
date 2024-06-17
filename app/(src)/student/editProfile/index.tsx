@@ -280,7 +280,6 @@ const ProfileStudentEditProfile = () => {
               </button>
             </div>
           </form>
-          z
         </div>
       </div>
     </>

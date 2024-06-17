@@ -4,14 +4,14 @@ import { useGetAllCourses } from '../hooks/request/requestCourse';
 import CoursesSlider from './other/CoursesSlider';
 
 export default function TrendingCourses() {
-  const { data } = useGetAllCourses();
-  console.log(data?.data);
+  const { data: courses } = useGetAllCourses();
+  console.log(courses?.data);
 
   return (
     <>
       {/* =======================
 Trending courses START */}
-      {data?.data[0] && (
+      {courses?.data.data[0] && (
         <section className='pb-5 pt-0 pt-lg-5'>
           <div className='container'>
             {/* Title */}
@@ -23,7 +23,7 @@ Trending courses START */}
             </div>
             <div className='row justify-content-center '>
               {/* Slider START */}
-              <CoursesSlider datas={data?.data} />
+              <CoursesSlider allCourses={courses?.data.data} />
 
               {/* Slider END */}
             </div>

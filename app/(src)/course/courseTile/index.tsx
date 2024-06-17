@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Rating from '@/app/(src)/componenets/rating';
 
 import { TCourses } from '@/app/(src)/model/course.d';
+import { routes } from '../../routes';
 
 const CourseTile = ({ data }: { data: any }) => {
   console.log('Not completed');
@@ -44,7 +45,7 @@ const CourseTile = ({ data }: { data: any }) => {
         </div>
         <>{console.log('Link')}</>
         <h5 className='card-title fw-normal'>
-          <Link href={'/courses/' + data?.id}>{data?.title}</Link>
+          <Link href={routes.courses + '/' + data?.id}>{data?.title}</Link>
         </h5>
         <p className='mb-2 text-truncate-2'>{data?.description}</p>
         <ul className='list-inline mb-0'>

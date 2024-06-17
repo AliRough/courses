@@ -59,20 +59,20 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                     <video
                       controls
                       playsInline
-                      poster='assets/images/videos/poster.jpg'
+                      poster='/images/videos/poster.jpg'
                     >
                       <source
-                        src='assets/images/videos/360p.mp4'
+                        src='/images/videos/360p.mp4'
                         type='video/mp4'
                         // size={360}
                       />
                       <source
-                        src='assets/images/videos/720p.mp4'
+                        src='/images/videos/720p.mp4'
                         type='video/mp4'
                         // size={720}
                       />
                       <source
-                        src='assets/images/videos/1080p.mp4'
+                        src='/images/videos/1080p.mp4'
                         type='video/mp4'
                         // size={1080}
                       />
@@ -81,14 +81,14 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                         kind='captions'
                         label='English'
                         srcLang='en'
-                        src='assets/images/videos/en.vtt'
+                        src='/images/videos/en.vtt'
                         default
                       />
                       <track
                         kind='captions'
                         label='French'
                         srcLang='fr'
-                        src='assets/images/videos/fr.vtt'
+                        src='/images/videos/fr.vtt'
                       />
                     </video>
                   </div>

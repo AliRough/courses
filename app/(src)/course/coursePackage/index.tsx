@@ -12,20 +12,28 @@ import { TCourses } from '@/app/(src)/model/course.d';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import LoadingPackage from '../../componenets/other/loading/package';
+import { routes } from '../../routes';
 
-const CoursePakage = ({ searchParams }: any) => {
+const CoursePakage = ({ params }: any) => {
+  const [category, setCategory] = useState(params.Pid);
+
   const [currentPage, setCurrentPage] = useState(1);
-  const { data, refetch, isPending } = useGetAllCourses(currentPage, 9);
-  console.log('data is -------------->', data);
+
+  const [param, setParam] = useState();
+
+  const {
+    data: allCourses,
+    refetch,
+    isPending,
+  } = useGetAllCourses(currentPage, 9, param, category);
+
   useEffect(() => {
     refetch();
   }, [currentPage]);
 
-  const btnHandler = (e: any) => {
-    e.preventDefault();
-    console.log('click');
-    setCurrentPage(currentPage + 1);
-  };
+  useEffect(() => {
+    refetch();
+  }, [param]);
 
   console.log('Not completed');
 
@@ -49,6 +57,10 @@ const CoursePakage = ({ searchParams }: any) => {
                       type='text'
                       className='tw-outline-none w-100 bg-transparent tw-text-xs '
                       placeholder='جستجو در پکیج ...'
+                      value={param}
+                      onChange={(e: any) => {
+                        setParam(e.target.value);
+                      }}
                     />
                     <button className='text-primary'>
                       <svg
@@ -92,12 +104,12 @@ const CoursePakage = ({ searchParams }: any) => {
               <div className=' md:tw-w-3/4 tw-w-full justify-content-center ps-3'>
                 {isPending ? (
                   <LoadingPackage number={4} />
-                ) : data?.data.data.length ? (
-                  data?.data?.data.map((e: any, index: number) => (
+                ) : allCourses?.data.data.length ? (
+                  allCourses?.data?.data.map((e: any, index: number) => (
                     <>
                       <Link
                         key={e.id}
-                        href={'#'}
+                        href={routes.courses + '/' + e.id}
                         className='tw-text-gray-600 tw-flex pe-3'
                       >
                         <div className='sm:tw-block tw-hidden tw-border-s-2 tw-border-dashed mx-2'>
@@ -110,7 +122,8 @@ const CoursePakage = ({ searchParams }: any) => {
                             <div className='sm:tw-w-1/5 tw-w-2/5 tw-flex '>
                               <img
                                 className='tw-w-full tw-rounded-xl overflow-hidden xl:tw-aspect-[4/3] tw-aspect-square tw-shadow-md tw-object-cover '
-                                src={`https://fanavaran.liara.run/${e.cover}`}
+                                // src={`https://fanavaran.liara.run/${e.cover}`}
+                                src={`/images/courses/4by3/${Math.floor(Math.random() * 16) + 1}.jpg`}
                                 alt={e.cover}
                               />
                             </div>
@@ -149,7 +162,7 @@ const CoursePakage = ({ searchParams }: any) => {
                                   </svg>
 
                                   <span className='tw-w-max sm:text-base tw-text-xs'>
-                                    نیما علیپور{' '}
+                                    {e.teacherName}
                                   </span>
                                 </div>
 
@@ -171,8 +184,7 @@ const CoursePakage = ({ searchParams }: any) => {
 
                 <div className='col-12'>
                   <PaginationCenter
-                    sParams={searchParams}
-                    data={data}
+                    data={allCourses}
                     setCurrentPage={setCurrentPage}
                     currentPage={currentPage}
                   />

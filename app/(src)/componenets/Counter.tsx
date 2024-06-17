@@ -3,6 +3,7 @@ import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { getAllPackages } from '../api/courseApi';
 import { useGetAllPackages } from '../hooks/request/requestCourse';
+import { routes } from '../routes';
 
 export default function Counter() {
   const { data: packages } = useGetAllPackages();
@@ -87,7 +88,10 @@ Counter START */}
                       </div>
                       <div className='mt-2'>
                         <h5 className='mb-0 fw-normal h6 text-center fw-normal  '>
-                          <Link href='course/all' className='stretched-link'>
+                          <Link
+                            href={`${routes.packages}/${c.id}`}
+                            className='stretched-link'
+                          >
                             {c.title}
                           </Link>
                         </h5>
