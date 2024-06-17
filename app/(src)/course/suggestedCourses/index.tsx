@@ -9,6 +9,10 @@ const SuggestedCourses = () => {
   const { data } = useGetAllCourses();
 
   console.log('Not completed');
+  console.log(
+    data,
+    '----------------------------------------------------------------------------',
+  );
 
   return (
     <section className='pt-0'>
@@ -28,7 +32,7 @@ const SuggestedCourses = () => {
               data-items-lg='2'
               data-items-sm='1'
             >
-              {data?.map((e: TCourses) => (
+              {data?.data.map((e: TCourses) => (
                 <div key={e?.id} className='pb-4'>
                   <CourseTile data={e} />
                 </div>
