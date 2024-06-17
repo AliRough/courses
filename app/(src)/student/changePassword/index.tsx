@@ -14,11 +14,10 @@ import { useChangeUserPass } from '../../hooks/request/authUser';
 
 const ProfileStudentChangePassword = () => {
   const [showPass, setSowPass] = useState(false);
-  const [cookies, setCookie, removeCookie] = useCookies(['Authorization']);
   const { mutate: mutateChangeUserPass } = useChangeUserPass();
 
   const changePassHandler = async (data: any) => {
-    mutateChangeUserPass({ formData: data, token: cookies.Authorization });
+    mutateChangeUserPass(data);
   };
   const {
     // ساختار پارامتر

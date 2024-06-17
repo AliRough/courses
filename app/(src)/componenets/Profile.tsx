@@ -201,7 +201,7 @@ export default function Profile({ name, email }: any) {
             </button>
           </div>
         </li> */}
-        {/* Dark mode options END*/}
+        {/* Dark mode options END */}
       </ul>
     </div>
   );

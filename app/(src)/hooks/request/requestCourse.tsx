@@ -6,24 +6,29 @@ import * as api from '@/app/(src)/api/courseApi';
 
 import { TCourse } from '@/app/(src)/model/course.d';
 
-export const useGetAllCourses = () => {
+export const useGetAllCourses = (
+  page?: number,
+  perPage?: number,
+  params?: string,
+  Cid?: any,
+) => {
   return useQuery({
     queryKey: ['course_all'],
-    queryFn: api.CourseAllApi,
+    queryFn: () => api.CourseAllApi(page, perPage, params, Cid),
   });
 };
 
-export const useGetAllCategories = () => {
+export const useGetAllCategories = (perPage?: any) => {
   return useQuery({
     queryKey: ['categories_all'],
-    queryFn: () => api.getAllCategories(),
+    queryFn: () => api.getAllCategories(perPage),
   });
 };
 
-export const useGetAllPackages = () => {
+export const useGetAllPackages = (perPage?: any) => {
   return useQuery({
     queryKey: ['Packages_all'],
-    queryFn: () => api.getAllPackages(),
+    queryFn: () => api.getAllPackages(perPage),
   });
 };
 

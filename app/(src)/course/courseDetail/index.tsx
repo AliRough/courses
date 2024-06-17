@@ -167,6 +167,21 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                   </div>
                 </div>
                 {/* Curriculum END */}
+                {/* comment START */}
+                <div className='col-12'>
+                  <div className='card border rounded-3'>
+                    {/* Card header START */}
+                    <div className='card-header border-bottom'>
+                      <h3 className='mb-0 fs-5'>جلسات دوره</h3>
+                    </div>
+                    {/* Card header END */}
+                    {/* Card body START */}
+                    <Testimonials />
+
+                    {/* Card body START */}
+                  </div>
+                </div>
+                {/* comment END */}
               </div>
             </div>
             {/* Main content END */}
@@ -345,7 +360,6 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
 
       {/* -------------------------- */}
 
-      <Testimonials />
       <TrendingCourses />
     </>
   );

@@ -5,7 +5,6 @@ import Footer from './(src)/componenets/Footer';
 import Counter from './(src)/componenets/Counter';
 import PopularCourses from './(src)/componenets/PopularCourses';
 import TrendingCourses from './(src)/componenets/TrendingCourses';
-import Image from 'next/image';
 
 export default function page() {
   return (

@@ -25,7 +25,9 @@ export default function RootLayout({
   return (
     <html lang='fa' dir='rtl'>
       <body className='tw-bg-gradient-to-b tw-from-[#f3f4f6] tw-to-white'>
-        <ToastContainer className={'fw-bold tw-w-screen  max-sm:!tw-right-0'} />
+        <ToastContainer
+          className={'fw-bold max-sm:tw-w-screen  max-sm:!tw-right-0'}
+        />
 
         <RecoilTanstackProvider>{children}</RecoilTanstackProvider>
 

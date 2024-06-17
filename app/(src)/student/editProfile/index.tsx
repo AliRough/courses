@@ -15,6 +15,8 @@ import {
   useGetUser,
 } from '../../hooks/request/authUser';
 import Loading from '@/app/loading';
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 
 const ProfileStudentEditProfile = () => {
   const { mutate: mutateDeleteAvatar, isPending: isDeleteAvatarPending } =
@@ -26,24 +28,34 @@ const ProfileStudentEditProfile = () => {
 
   const deleteAvatarHandler = async (e: any) => {
     e.preventDefault();
-    console.log(
-      'isDeleteAvatarPending',
-      isDeleteAvatarPending,
-      'isChangeAvatarPending:',
-      isChangeAvatarPending,
-      'isEditUserDataPending:',
-      isEditUserDataPending,
-    );
 
-    mutateDeleteAvatar(cookies.Authorization);
-    console.log(
-      'isDeleteAvatarPending',
-      isDeleteAvatarPending,
-      'isChangeAvatarPending:',
-      isChangeAvatarPending,
-      'isEditUserDataPending:',
-      isEditUserDataPending,
-    );
+    confirmAlert({
+      customUI: ({ onClose }) => {
+        return (
+          <div className='tw-w-96 tw-max-w-[100vw] tw-p-5 tw-bg-gray-100 tw-rounded-xl'>
+            <h1 className='tw-text-xl'>حذف پروفایل</h1>
+            <p className='tw-my-8'>آیا مطمئن هستید ؟؟</p>
+            <div className='tw-w-full tw-flex tw-justify-between'>
+              <button
+                className='btn btn-secondary w-5 tw-py-1 m-0'
+                onClick={onClose}
+              >
+                خیر
+              </button>
+              <button
+                className='btn btn-danger m-0 tw-py-1'
+                onClick={() => {
+                  mutateDeleteAvatar();
+                  onClose();
+                }}
+              >
+                بله
+              </button>
+            </div>
+          </div>
+        );
+      },
+    });
   };
   console.log('Not completed');
   const [cookies, setCookie, removeCookie] = useCookies(['Authorization']);
@@ -85,39 +97,14 @@ const ProfileStudentEditProfile = () => {
   }, [userData]);
 
   const changeUserAvatarHandler = async (e: any) => {
-    console.log(
-      'isDeleteAvatarPending',
-      isDeleteAvatarPending,
-      'isChangeAvatarPending:',
-      isChangeAvatarPending,
-      'isEditUserDataPending:',
-      isEditUserDataPending,
-    );
-
     mutateChangeAvatar({ avatar: e.target.files[0] });
-    console.log(
-      'isDeleteAvatarPending',
-      isDeleteAvatarPending,
-      'isChangeAvatarPending:',
-      isChangeAvatarPending,
-      'isEditUserDataPending:',
-      isEditUserDataPending,
-    );
   };
-  console.log(
-    'isDeleteAvatarPending',
-    isDeleteAvatarPending,
-    'isChangeAvatarPending:',
-    isChangeAvatarPending,
-    'isEditUserDataPending:',
-    isEditUserDataPending,
-  );
 
   return (
     <>
-      {isDeleteAvatarPending ||
-        isChangeAvatarPending ||
-        (isEditUserDataPending && <Loading />)}
+      {Boolean(
+        isDeleteAvatarPending || isChangeAvatarPending || isEditUserDataPending,
+      ) && <Loading />}
       <div className='card bg-transparent border rounded-3'>
         <div className='card-header bg-transparent border-bottom'>
           <h3 className='card-header-title mb-0 ff-vb fs-5'>ویرایش پروفایل</h3>
@@ -293,6 +280,7 @@ const ProfileStudentEditProfile = () => {
               </button>
             </div>
           </form>
+          z
         </div>
       </div>
     </>

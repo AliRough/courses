@@ -56,9 +56,11 @@ export const useEditUserData = () => {
 };
 
 export const useChangeUserPass = () => {
+  const [cookies] = useCookies(['Authorization']);
+
   return useMutation({
-    mutationFn: ({ formData, token }: any) =>
-      api.changeUserPass(formData, token),
+    mutationFn: (formData) =>
+      api.changeUserPass(formData, cookies.Authorization),
     onSuccess: () => {
       toast.success('رمز شما با موفقیت تغییر کرد');
     },
@@ -166,6 +168,7 @@ export const useGetUser = (): any => {
 
   return useQuery({
     queryKey: ['userData'],
-    queryFn: () => api.getUserByToken(cookies.Authorization),
+    queryFn: () =>
+      cookies.Authorization && api.getUserByToken(cookies.Authorization),
   });
 };

@@ -31,8 +31,7 @@ const CourseAdvancedSearch = () => {
           <form>
             <CourseFillterCategory />
             <CoursefillterPrice />
-            {/* <CourseFillterLavel />
-            <CourseFillterLang /> */}
+            
           </form>
         </div>
         <div className='d-grid p-2 p-lg-0 text-center'>

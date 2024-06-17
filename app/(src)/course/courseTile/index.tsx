@@ -9,16 +9,24 @@ import { TCourses } from '@/app/(src)/model/course.d';
 
 const CourseTile = ({ data }: { data: any }) => {
   console.log('Not completed');
-  console.log(data);
+  console.log('dat:', data);
 
   return (
     <div className='card shadow h-100 tw-max-w-96 rounded-4 overflow-hidden '>
-      <Image
+      {/* <Image
         unoptimized={true}
         src={
           (data?.image && '/' + data?.image) ||
           'https://fanavaran.liara.run/' + data?.cover
         }
+        width='500'
+        height='500'
+        className='card-img-top'
+        alt='course image'
+      /> */}
+      <Image
+        unoptimized={true}
+        src={`/images/courses/4by3/${Math.floor(Math.random() * 16) + 1}.jpg`}
         width='500'
         height='500'
         className='card-img-top'
@@ -36,7 +44,7 @@ const CourseTile = ({ data }: { data: any }) => {
         </div>
         <>{console.log('Link')}</>
         <h5 className='card-title fw-normal'>
-          <Link href={'/course/' + data?.id}>{data?.title}</Link>
+          <Link href={'/courses/' + data?.id}>{data?.title}</Link>
         </h5>
         <p className='mb-2 text-truncate-2'>{data?.description}</p>
         <ul className='list-inline mb-0'>
@@ -48,11 +56,11 @@ const CourseTile = ({ data }: { data: any }) => {
         <div className='d-flex justify-content-between'>
           <span className='h6 fw-light mb-0'>
             <i className='far fa-clock text-danger me-2'></i>
-            {data?.time}
+            {data?.durationMinutes}
           </span>
           <span className='h6 fw-light mb-0'>
             <i className='fas fa-table text-orange me-2'></i>
-            {data?.videos} ویدیو
+            {data?.episodeCount} ویدیو
           </span>
         </div>
       </div>

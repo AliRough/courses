@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useGetUser } from '../hooks/request/authUser';
 import { useGetAllCategories } from '../hooks/request/requestCourse';
 import Loading from '@/app/loading';
+import { boolean } from 'zod';
 
 export default function Header({ children }: any) {
   const { data: userData, isPending: isUserPending } = useGetUser();
@@ -15,10 +16,11 @@ export default function Header({ children }: any) {
   console.log('allCategoriesData is', allCategoriesData);
 
   console.log('hooooooooooook', userData);
+  console.log();
 
   return (
     <>
-      {isUserPending || isCategoryPending && <Loading />}
+      {Boolean(isUserPending) && <Loading />}
       {/* Header START */}
       <header className='navbar-light bg-transparent container max-sm:tw-px-0   sm:tw-mt-4  px-0  '>
         {/* Nav START */}
@@ -86,28 +88,6 @@ export default function Header({ children }: any) {
                 </div>
               </div>
               {/* Nav Search END */}
-              {/* Nav Main menu START */}
-              <ul className='navbar-nav navbar-nav-scroll ms-auto '>
-                {/* Nav item 1 Demos */}
-                <li className='nav-item dropdown'>
-                  <a className='nav-link' href='#'>
-                    بزرگسالان
-                  </a>
-                </li>
-                {/* Nav item 2 Eduport Business */}
-                <li className='nav-item dropdown'>
-                  <a className='nav-link' href='#'>
-                    نوجوانان
-                  </a>
-                </li>
-                {/* Nav item 3 My learning */}
-                <li className='nav-item'>
-                  <a className='nav-link' href='#'>
-                    کودکان
-                  </a>
-                </li>
-              </ul>
-              {/* Nav Main menu END */}
             </div>
             {/* Main navbar END */}
             {userData?.name ? (
@@ -227,7 +207,7 @@ export default function Header({ children }: any) {
                     <li className='nav-item dropdown ' key={item.id}>
                       <Link
                         className={`nav-link tw-text-gray-600  ${item.children ? ' dropdown-toggle ' : ''}`}
-                        href={item?.src || `/course/all?category=${item?.id}`}
+                        href={item?.src || `/courses/all?category=${item?.id}`}
                         id={item.children && 'demoMenu'}
                         data-bs-toggle={item.children && 'dropdown'}
                         aria-haspopup={item.children && 'true'}

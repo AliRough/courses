@@ -10,15 +10,28 @@ import Newsletter from '@/app/(src)/componenets/other/newsletter';
 
 import { TCourses } from '@/app/(src)/model/course.d';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import LoadingPackage from '../../componenets/other/loading/package';
 
-const CoursePakage = () => {
-  const { data } = useGetAllCourses();
+const CoursePakage = ({ searchParams }: any) => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const { data, refetch, isPending } = useGetAllCourses(currentPage, 9);
+  console.log('data is -------------->', data);
+  useEffect(() => {
+    refetch();
+  }, [currentPage]);
+
+  const btnHandler = (e: any) => {
+    e.preventDefault();
+    console.log('click');
+    setCurrentPage(currentPage + 1);
+  };
 
   console.log('Not completed');
 
   return (
     <>
-      <HeaderBody name={'طراحی وب دوره ها'} />
+      <HeaderBody name={'طراحی وب '} />
       <section className='py-5'>
         <div className='container'>
           <div className='row'>
@@ -77,366 +90,92 @@ const CoursePakage = () => {
             </div>
             <div className='tw-flex px-0'>
               <div className=' md:tw-w-3/4 tw-w-full justify-content-center ps-3'>
-                {data?.data?.map((e: TCourses, index: number) => (
-                  <>
-                    <div key={e.id} className={`col-lg-10 col-xxl-6`}>
-                      {' '}
-                      <div className='card rounded overflow-hidden shadow'>
-                        <div className='row g-0'>
-                          {/* Image */}
-                          <div className='col-md-4'>
-                            <img
-                              className='tw-h-full'
-                              src={`https://fanavaran.liara.run/${e.cover}`}
-                              alt='card image'
-                            />
-                          </div>
-                          {/* Card body */}
-                          <div className='col-md-8'>
-                            <div className='card-body'>
-                              {/* Title */}
-                              <div className='d-flex justify-content-between mb-2'>
-                                <h5 className='card-title mb-0 fw-normal'>
-                                  <a href='#'>آموزش ساخت سایت خبری با لاراول</a>
-                                </h5>
-                                {/* Wishlist icon */}
-                                <a href='#'>
-                                  <i className='fas fa-heart text-danger' />
-                                </a>
-                              </div>
-                              {/* Content */}
+                {isPending ? (
+                  <LoadingPackage number={4} />
+                ) : data?.data.data.length ? (
+                  data?.data?.data.map((e: any, index: number) => (
+                    <>
+                      <Link
+                        key={e.id}
+                        href={'#'}
+                        className='tw-text-gray-600 tw-flex pe-3'
+                      >
+                        <div className='sm:tw-block tw-hidden tw-border-s-2 tw-border-dashed mx-2'>
+                          <span className='tw-flex tw-justify-center tw-items-center tw-bg-white tw-w-8 tw-aspect-square tw-rounded-b-full  tw-shadow-sm border tw-translate-x-1/2 '>
+                            {index + 1}
+                          </span>
+                        </div>
+                        <div className='tw-bg-white  tw-rounded-xl tw-w-full tw-shadow-lg  overflow-hidden mb-3'>
+                          <div className='tw-flex tw-w-full tw-p-4 '>
+                            <div className='sm:tw-w-1/5 tw-w-2/5 tw-flex '>
+                              <img
+                                className='tw-w-full tw-rounded-xl overflow-hidden xl:tw-aspect-[4/3] tw-aspect-square tw-shadow-md tw-object-cover '
+                                src={`https://fanavaran.liara.run/${e.cover}`}
+                                alt={e.cover}
+                              />
+                            </div>
+                            <div className='tw-w-4/5 tw-flex tw-flex-col  tw-ps-6'>
                               {/* Info */}
-                              <ul className='list-inline mb-1'>
-                                <li className='list-inline-item h6 fw-light mb-1 mb-sm-0'>
-                                  <i className='far fa-clock text-danger me-2' />
-                                  6ساعت
+                              <ul className='tw-flex tw-justify-between mb-1 text-end ps-0 '>
+                                <li className='list-inline-item tw-text-sm fw-light mb-1 mb-sm-0'>
+                                  <i className='fas fa-table tw-text-orange-300 me-2' />
+                                  {e.episodeCount} ویدیو
                                 </li>
-                                <li className='list-inline-item h6 fw-light mb-1 mb-sm-0'>
-                                  <i className='fas fa-table text-orange me-2' />
-                                  82 ویدیو
+                                <li className='list-inline-item tw-text-sm fw-light mb-1 mb-sm-0'>
+                                  <i className='far fa-clock tw-text-red-500 me-2' />
+                                  {e.durationMinutes}دقیقه
                                 </li>
                               </ul>
+                              <div className='tw-font-bold tw-text-base sm:tw-text-lg tw-py-1 pb-2'>
+                                <span>{e.title}</span>
+                              </div>
+                              <div className='tw-h-full tw-w-full'></div>
                               {/* Rating */}
+                              <div className=' tw-flex tw-justify-between tw-items-end'>
+                                <div className='tw-flex tw-items-center'>
+                                  <svg
+                                    xmlns='http://www.w3.org/2000/svg'
+                                    fill='none'
+                                    viewBox='0 0 24 24'
+                                    stroke-width='1.5'
+                                    stroke='currentColor'
+                                    className='tw-h-4  me-1'
+                                  >
+                                    <path
+                                      stroke-linecap='round'
+                                      stroke-linejoin='round'
+                                      d='M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z'
+                                    />
+                                  </svg>
+
+                                  <span className='tw-w-max sm:text-base tw-text-xs'>
+                                    نیما علیپور{' '}
+                                  </span>
+                                </div>
+
+                                <button className='tw-text-xs sm:tw-text-base max-sm:tw-px-2 btn btn-primary mb-0'>
+                                  مشاهده دوره
+                                </button>
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    </div>
-                  </>
-                ))}
-
-                <Link href={'#'} className='tw-text-gray-600 tw-flex pe-3'>
-                  <div className='sm:tw-block tw-hidden tw-border-s-2 tw-border-dashed mx-2'>
-                    <span className='tw-flex tw-justify-center tw-items-center tw-bg-white tw-w-8 tw-aspect-square tw-rounded-b-full  tw-shadow-sm border tw-translate-x-1/2 '>
-                      1
-                    </span>
+                      </Link>
+                    </>
+                  ))
+                ) : (
+                  <div className='tw-rounded-md p-2 !tw-border tw-border-gray-400 text-center'>
+                    دوره ی مورد نظر شما یافت نشد !
                   </div>
-                  <div className='tw-bg-white  tw-rounded-xl tw-w-full tw-shadow-lg  overflow-hidden mb-3'>
-                    <div className='tw-flex tw-w-full tw-p-4 '>
-                      <div className='sm:tw-w-1/5 tw-w-2/5 tw-flex '>
-                        <img
-                          className='tw-w-full tw-rounded-xl overflow-hidden xl:tw-aspect-[4/3] tw-aspect-square tw-shadow-md tw-object-cover '
-                          src={`/images/courses/4by3/01.jpg`}
-                          alt=''
-                        />
-                      </div>
-                      <div className='tw-w-4/5 tw-flex tw-flex-col  tw-ps-6'>
-                        {/* Info */}
-                        <ul className='tw-flex tw-justify-between mb-1 text-end ps-0 '>
-                          <li className='list-inline-item tw-text-sm fw-light mb-1 mb-sm-0'>
-                            <i className='fas fa-table tw-text-orange-300 me-2' />
-                            82 ویدیو
-                          </li>
-                          <li className='list-inline-item tw-text-sm fw-light mb-1 mb-sm-0'>
-                            <i className='far fa-clock tw-text-red-500 me-2' />
-                            6ساعت
-                          </li>
-                        </ul>
-                        <div className='tw-font-bold tw-text-base sm:tw-text-lg tw-py-1 pb-2'>
-                          <span>آموزش ساخت سایت خبری با لاراول</span>
-                        </div>
-                        <div className='tw-h-full tw-w-full'></div>
-                        {/* Rating */}
-                        <div className=' tw-flex tw-justify-between tw-items-end'>
-                          <div className='tw-flex tw-items-center'>
-                            <svg
-                              xmlns='http://www.w3.org/2000/svg'
-                              fill='none'
-                              viewBox='0 0 24 24'
-                              stroke-width='1.5'
-                              stroke='currentColor'
-                              className='tw-h-4  me-1'
-                            >
-                              <path
-                                stroke-linecap='round'
-                                stroke-linejoin='round'
-                                d='M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z'
-                              />
-                            </svg>
+                )}
 
-                            <span className='tw-w-max sm:text-base tw-text-xs'>
-                              نیما علیپور{' '}
-                            </span>
-                          </div>
-
-                          <button className='tw-text-xs sm:tw-text-base max-sm:tw-px-2 btn btn-primary mb-0'>
-                            مشاهده دوره
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-                <Link href={'#'} className='tw-text-gray-600 tw-flex pe-3'>
-                  <div className='sm:tw-block tw-hidden tw-border-s-2 tw-border-dashed mx-2'>
-                    <span className='tw-flex tw-justify-center tw-items-center tw-bg-white tw-w-8 tw-aspect-square tw-rounded-b-full  tw-shadow-sm border tw-translate-x-1/2 '>
-                      1
-                    </span>
-                  </div>
-                  <div className='tw-bg-white  tw-rounded-xl tw-w-full tw-shadow-lg  overflow-hidden mb-3'>
-                    <div className='tw-flex tw-w-full tw-p-4 '>
-                      <div className='sm:tw-w-1/5 tw-w-2/5 tw-flex '>
-                        <img
-                          className='tw-w-full tw-rounded-xl overflow-hidden xl:tw-aspect-[4/3] tw-aspect-square tw-shadow-md tw-object-cover '
-                          src={`/images/courses/4by3/01.jpg`}
-                          alt=''
-                        />
-                      </div>
-                      <div className='tw-w-4/5 tw-flex tw-flex-col  tw-ps-6'>
-                        {/* Info */}
-                        <ul className='tw-flex tw-justify-between mb-1 text-end ps-0 '>
-                          <li className='list-inline-item tw-text-sm fw-light mb-1 mb-sm-0'>
-                            <i className='fas fa-table tw-text-orange-300 me-2' />
-                            82 ویدیو
-                          </li>
-                          <li className='list-inline-item tw-text-sm fw-light mb-1 mb-sm-0'>
-                            <i className='far fa-clock tw-text-red-500 me-2' />
-                            6ساعت
-                          </li>
-                        </ul>
-                        <div className='tw-font-bold tw-text-base sm:tw-text-lg tw-py-1 pb-2'>
-                          <span>آموزش ساخت سایت خبری با لاراول</span>
-                        </div>
-                        <div className='tw-h-full tw-w-full'></div>
-                        {/* Rating */}
-                        <div className=' tw-flex tw-justify-between tw-items-end'>
-                          <div className='tw-flex tw-items-center'>
-                            <svg
-                              xmlns='http://www.w3.org/2000/svg'
-                              fill='none'
-                              viewBox='0 0 24 24'
-                              stroke-width='1.5'
-                              stroke='currentColor'
-                              className='tw-h-4  me-1'
-                            >
-                              <path
-                                stroke-linecap='round'
-                                stroke-linejoin='round'
-                                d='M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z'
-                              />
-                            </svg>
-
-                            <span className='tw-w-max sm:text-base tw-text-xs'>
-                              نیما علیپور{' '}
-                            </span>
-                          </div>
-
-                          <button className='tw-text-xs sm:tw-text-base max-sm:tw-px-2 btn btn-primary mb-0'>
-                            مشاهده دوره
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-                <Link href={'#'} className='tw-text-gray-600 tw-flex pe-3'>
-                  <div className='sm:tw-block tw-hidden tw-border-s-2 tw-border-dashed mx-2'>
-                    <span className='tw-flex tw-justify-center tw-items-center tw-bg-white tw-w-8 tw-aspect-square tw-rounded-b-full  tw-shadow-sm border tw-translate-x-1/2 '>
-                      1
-                    </span>
-                  </div>
-                  <div className='tw-bg-white  tw-rounded-xl tw-w-full tw-shadow-lg  overflow-hidden mb-3'>
-                    <div className='tw-flex tw-w-full tw-p-4 '>
-                      <div className='sm:tw-w-1/5 tw-w-2/5 tw-flex '>
-                        <img
-                          className='tw-w-full tw-rounded-xl overflow-hidden xl:tw-aspect-[4/3] tw-aspect-square tw-shadow-md tw-object-cover '
-                          src={`/images/courses/4by3/01.jpg`}
-                          alt=''
-                        />
-                      </div>
-                      <div className='tw-w-4/5 tw-flex tw-flex-col  tw-ps-6'>
-                        {/* Info */}
-                        <ul className='tw-flex tw-justify-between mb-1 text-end ps-0 '>
-                          <li className='list-inline-item tw-text-sm fw-light mb-1 mb-sm-0'>
-                            <i className='fas fa-table tw-text-orange-300 me-2' />
-                            82 ویدیو
-                          </li>
-                          <li className='list-inline-item tw-text-sm fw-light mb-1 mb-sm-0'>
-                            <i className='far fa-clock tw-text-red-500 me-2' />
-                            6ساعت
-                          </li>
-                        </ul>
-                        <div className='tw-font-bold tw-text-base sm:tw-text-lg tw-py-1 pb-2'>
-                          <span>آموزش ساخت سایت خبری با لاراول</span>
-                        </div>
-                        <div className='tw-h-full tw-w-full'></div>
-                        {/* Rating */}
-                        <div className=' tw-flex tw-justify-between tw-items-end'>
-                          <div className='tw-flex tw-items-center'>
-                            <svg
-                              xmlns='http://www.w3.org/2000/svg'
-                              fill='none'
-                              viewBox='0 0 24 24'
-                              stroke-width='1.5'
-                              stroke='currentColor'
-                              className='tw-h-4  me-1'
-                            >
-                              <path
-                                stroke-linecap='round'
-                                stroke-linejoin='round'
-                                d='M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z'
-                              />
-                            </svg>
-
-                            <span className='tw-w-max sm:text-base tw-text-xs'>
-                              نیما علیپور{' '}
-                            </span>
-                          </div>
-
-                          <button className='tw-text-xs sm:tw-text-base max-sm:tw-px-2 btn btn-primary mb-0'>
-                            مشاهده دوره
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-                <Link href={'#'} className='tw-text-gray-600 tw-flex pe-3'>
-                  <div className='sm:tw-block tw-hidden tw-border-s-2 tw-border-dashed mx-2'>
-                    <span className='tw-flex tw-justify-center tw-items-center tw-bg-white tw-w-8 tw-aspect-square tw-rounded-b-full  tw-shadow-sm border tw-translate-x-1/2 '>
-                      1
-                    </span>
-                  </div>
-                  <div className='tw-bg-white  tw-rounded-xl tw-w-full tw-shadow-lg  overflow-hidden mb-3'>
-                    <div className='tw-flex tw-w-full tw-p-4 '>
-                      <div className='sm:tw-w-1/5 tw-w-2/5 tw-flex '>
-                        <img
-                          className='tw-w-full tw-rounded-xl overflow-hidden xl:tw-aspect-[4/3] tw-aspect-square tw-shadow-md tw-object-cover '
-                          src={`/images/courses/4by3/01.jpg`}
-                          alt=''
-                        />
-                      </div>
-                      <div className='tw-w-4/5 tw-flex tw-flex-col  tw-ps-6'>
-                        {/* Info */}
-                        <ul className='tw-flex tw-justify-between mb-1 text-end ps-0 '>
-                          <li className='list-inline-item tw-text-sm fw-light mb-1 mb-sm-0'>
-                            <i className='fas fa-table tw-text-orange-300 me-2' />
-                            82 ویدیو
-                          </li>
-                          <li className='list-inline-item tw-text-sm fw-light mb-1 mb-sm-0'>
-                            <i className='far fa-clock tw-text-red-500 me-2' />
-                            6ساعت
-                          </li>
-                        </ul>
-                        <div className='tw-font-bold tw-text-base sm:tw-text-lg tw-py-1 pb-2'>
-                          <span>آموزش ساخت سایت خبری با لاراول</span>
-                        </div>
-                        <div className='tw-h-full tw-w-full'></div>
-                        {/* Rating */}
-                        <div className=' tw-flex tw-justify-between tw-items-end'>
-                          <div className='tw-flex tw-items-center'>
-                            <svg
-                              xmlns='http://www.w3.org/2000/svg'
-                              fill='none'
-                              viewBox='0 0 24 24'
-                              stroke-width='1.5'
-                              stroke='currentColor'
-                              className='tw-h-4  me-1'
-                            >
-                              <path
-                                stroke-linecap='round'
-                                stroke-linejoin='round'
-                                d='M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z'
-                              />
-                            </svg>
-
-                            <span className='tw-w-max sm:text-base tw-text-xs'>
-                              نیما علیپور{' '}
-                            </span>
-                          </div>
-
-                          <button className='tw-text-xs sm:tw-text-base max-sm:tw-px-2 btn btn-primary mb-0'>
-                            مشاهده دوره
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-                <Link href={'#'} className='tw-text-gray-600 tw-flex pe-3'>
-                  <div className='sm:tw-block tw-hidden tw-border-s-2 tw-border-dashed mx-2'>
-                    <span className='tw-flex tw-justify-center tw-items-center tw-bg-white tw-w-8 tw-aspect-square tw-rounded-b-full  tw-shadow-sm border tw-translate-x-1/2 '>
-                      1
-                    </span>
-                  </div>
-                  <div className='tw-bg-white  tw-rounded-xl tw-w-full tw-shadow-lg  overflow-hidden mb-3'>
-                    <div className='tw-flex tw-w-full tw-p-4 '>
-                      <div className='sm:tw-w-1/5 tw-w-2/5 tw-flex '>
-                        <img
-                          className='tw-w-full tw-rounded-xl overflow-hidden xl:tw-aspect-[4/3] tw-aspect-square tw-shadow-md tw-object-cover '
-                          src={`/images/courses/4by3/01.jpg`}
-                          alt=''
-                        />
-                      </div>
-                      <div className='tw-w-4/5 tw-flex tw-flex-col  tw-ps-6'>
-                        {/* Info */}
-                        <ul className='tw-flex tw-justify-between mb-1 text-end ps-0 '>
-                          <li className='list-inline-item tw-text-sm fw-light mb-1 mb-sm-0'>
-                            <i className='fas fa-table tw-text-orange-300 me-2' />
-                            82 ویدیو
-                          </li>
-                          <li className='list-inline-item tw-text-sm fw-light mb-1 mb-sm-0'>
-                            <i className='far fa-clock tw-text-red-500 me-2' />
-                            6ساعت
-                          </li>
-                        </ul>
-                        <div className='tw-font-bold tw-text-base sm:tw-text-lg tw-py-1 pb-2'>
-                          <span>آموزش ساخت سایت خبری با لاراول</span>
-                        </div>
-                        <div className='tw-h-full tw-w-full'></div>
-                        {/* Rating */}
-                        <div className=' tw-flex tw-justify-between tw-items-end'>
-                          <div className='tw-flex tw-items-center'>
-                            <svg
-                              xmlns='http://www.w3.org/2000/svg'
-                              fill='none'
-                              viewBox='0 0 24 24'
-                              stroke-width='1.5'
-                              stroke='currentColor'
-                              className='tw-h-4  me-1'
-                            >
-                              <path
-                                stroke-linecap='round'
-                                stroke-linejoin='round'
-                                d='M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z'
-                              />
-                            </svg>
-
-                            <span className='tw-w-max sm:text-base tw-text-xs'>
-                              نیما علیپور{' '}
-                            </span>
-                          </div>
-
-                          <button className='tw-text-xs sm:tw-text-base max-sm:tw-px-2 btn btn-primary mb-0'>
-                            مشاهده دوره
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </Link>
                 <div className='col-12'>
-                  <PaginationCenter />
+                  <PaginationCenter
+                    sParams={searchParams}
+                    data={data}
+                    setCurrentPage={setCurrentPage}
+                    currentPage={currentPage}
+                  />
                 </div>
               </div>
               <CourseAdvancedSearch />
@@ -444,7 +183,7 @@ const CoursePakage = () => {
           </div>
         </div>
       </section>
-      <Newsletter />
+      {/* <Newsletter /> */}
     </>
   );
 };

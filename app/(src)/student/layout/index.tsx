@@ -9,6 +9,7 @@ import { useRecoilState } from 'recoil';
 import Loading from '@/app/loading';
 import { useCookies } from 'react-cookie';
 import Header from '../../componenets/Header';
+import Footer from '../../componenets/Footer';
 
 const LayoutProfileStudent = ({
   children,
@@ -34,6 +35,7 @@ const LayoutProfileStudent = ({
       <LayoutProfileStudentSidebarMenu>
         {children}
       </LayoutProfileStudentSidebarMenu>
+      <Footer />
     </>
   );
 };

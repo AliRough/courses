@@ -1,7 +1,8 @@
 'use client';
 
-const CourseListFillter = () => {
+const CourseListFillter = ({ data, params, setParams }: any) => {
   console.log('Not completed');
+  console.log('dataaaaaa', data);
 
   return (
     <div className='row mb-4 align-items-center'>
@@ -9,9 +10,13 @@ const CourseListFillter = () => {
         <form className='border rounded p-2'>
           <div className='input-group input-borderless'>
             <input
+              value={params}
               className='form-control me-1'
               type='search'
               placeholder='جستجو دوره ...'
+              onChange={(e) => {
+                setParams(e.target.value);
+              }}
             />
             <button
               type='button'
@@ -45,7 +50,12 @@ const CourseListFillter = () => {
         >
           <i className='fas fa-sliders-h me-1'></i> نمایش فیلتر
         </button>
-        <p className='mb-0 text-end'>نمایش 1-7 از 32 نتیجه</p>
+        {data?.data.to && (
+          <p className='mb-0 text-end'>
+            نمایش {data?.data.to}-{data?.data.to - data?.data.data.length + 1}{' '}
+            از {data?.data.total} نتیجه
+          </p>
+        )}
       </div>
     </div>
   );

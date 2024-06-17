@@ -9,9 +9,35 @@ import CourseAdvancedSearch from '@/app/(src)/course/courseList/courseAdvancedSe
 import Newsletter from '@/app/(src)/componenets/other/newsletter';
 
 import { TCourses } from '@/app/(src)/model/course.d';
+import { useEffect, useState } from 'react';
+import LoadingCourse from '../../componenets/other/loading/course';
 
-const CourseList = () => {
-  const { data } = useGetAllCourses();
+const CourseList = ({ searchParams }: any) => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [params, setParams] = useState('');
+  const [Cid, setCid] = useState();
+
+  const { data, refetch, isPending } = useGetAllCourses(
+    currentPage,
+    9,
+    params,
+    Cid,
+  );
+  console.log('data is -------------->', data);
+  useEffect(() => {
+    refetch();
+  }, [currentPage]);
+  useEffect(() => {
+    let timer: any;
+    clearTimeout(timer);
+    let fetchData = () => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        refetch();
+      }, 1000);
+    };
+    fetchData();
+  }, [params]);
 
   console.log('Not completed');
 
@@ -22,23 +48,41 @@ const CourseList = () => {
         <div className='container'>
           <div className='row'>
             <div className='col-lg-8 col-xl-9'>
-              <CourseListFillter />
+              <CourseListFillter
+                data={data}
+                params={params}
+                setParams={setParams}
+                Cid={Cid}
+                seCid={setCid}
+              />
               <div className='row g-4'>
-                {data?.data?.map((e: TCourses) => (
-                  <div key={e?.id} className='col-sm-6 col-xl-4 '>
-                    <CourseTile data={e} />
+                {isPending ? (
+                  <LoadingCourse number={5} />
+                ) : data?.data.data.length ? (
+                  data?.data.data?.map((e: TCourses) => (
+                    <div key={e?.id} className='col-sm-6 col-xl-4 '>
+                      <CourseTile data={e} />
+                    </div>
+                  ))
+                ) : (
+                  <div className='tw-rounded-md p-2 !tw-border tw-border-gray-400 text-center'>
+                    دوره ی مورد نظر شما یافت نشد !
                   </div>
-                ))}
+                )}
               </div>
               <div className='col-12'>
-                <PaginationCenter />
+                <PaginationCenter
+                  currentPage={currentPage}
+                  setCurrentPage={setCurrentPage}
+                  data={data}
+                />
               </div>
             </div>
             <CourseAdvancedSearch />
           </div>
         </div>
       </section>
-      <Newsletter />
+      {/* <Newsletter /> */}
     </>
   );
 };
