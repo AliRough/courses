@@ -1,6 +1,6 @@
 'use client';
 
-const CoursefillterPrice = () => {
+const CoursefillterPrice = ({ input }: any) => {
   return (
     <div className='card card-body shadow p-4 mb-4'>
       <h4 className='mb-3 fs-6'>فیلتر قیمت</h4>
@@ -11,6 +11,8 @@ const CoursefillterPrice = () => {
             className='btn-check'
             name='options'
             id='option1'
+            value={'all'}
+            {...input.pricing}
           />
           <label
             className='btn btn-light btn-primary-soft-check'
@@ -25,6 +27,8 @@ const CoursefillterPrice = () => {
             className='btn-check'
             name='options'
             id='option2'
+            value={'free'}
+            {...input.pricing}
           />
           <label
             className='btn btn-light btn-primary-soft-check'
@@ -39,6 +43,8 @@ const CoursefillterPrice = () => {
             className='btn-check'
             name='options'
             id='option3'
+            value={'pay'}
+            {...input.pricing}
           />
           <label
             className='btn btn-light btn-primary-soft-check'

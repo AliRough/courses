@@ -18,7 +18,7 @@ const PackageCourseTile = ({ data }: { data: any }) => {
         unoptimized={true}
         src={
           (data?.image && '/' + data?.image) ||
-          'https://fanavaran.liara.run/' + data?.cover
+          process.env.NEXT_PUBLIC_ASSETS_URL + data?.cover
         }
         width='500'
         height='500'
@@ -37,7 +37,7 @@ const PackageCourseTile = ({ data }: { data: any }) => {
         </div>
         <>{console.log('Link')}</>
         <h5 className='card-title fw-normal'>
-          <Link href={routes.courses+'/' + data?.id}>{data?.title}</Link>
+          <Link href={routes.courses + '/' + data?.id}>{data?.title}</Link>
         </h5>
         <p className='mb-2 text-truncate-2'>{data?.description}</p>
         <ul className='list-inline mb-0'>

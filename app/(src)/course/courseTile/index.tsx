@@ -13,12 +13,12 @@ const CourseTile = ({ data }: { data: any }) => {
   console.log('dat:', data);
 
   return (
-    <div className='card shadow h-100 tw-max-w-96 rounded-4 overflow-hidden '>
+    <div className='card shadow h-100 tw-max-w-96 rounded-4 overflow-hidden tw-w-full '>
       {/* <Image
         unoptimized={true}
         src={
           (data?.image && '/' + data?.image) ||
-          'https://fanavaran.liara.run/' + data?.cover
+          process.env.NEXT_PUBLIC_ASSETS_URL  + data?.cover
         }
         width='500'
         height='500'
@@ -27,10 +27,12 @@ const CourseTile = ({ data }: { data: any }) => {
       /> */}
       <Image
         unoptimized={true}
+        blurDataURL={`/images/courses/4by3/artist.svg`}
+        placeholder='blur'
         src={`/images/courses/4by3/${Math.floor(Math.random() * 16) + 1}.jpg`}
         width='500'
         height='500'
-        className='card-img-top'
+        className='card-img-top !tw-w-full tw-aspect-[4/3] overflow-hidden'
         alt='course image'
       />
       <div className='card-body pb-0'>

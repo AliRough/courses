@@ -33,7 +33,7 @@ const LayoutProfileStudentHeader = () => {
                       className='avatar-img rounded-circle border border-white border-3 shadow'
                       src={
                         (userData?.avatar &&
-                          'https://eduapi.liara.run/' + userData?.avatar) ||
+                          process.env.NEXT_PUBLIC_APP_URL + userData?.avatar) ||
                         '/images/avatar/User.png'
                       }
                       alt=''

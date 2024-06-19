@@ -8,9 +8,14 @@ import { useGetAllCategories } from '../hooks/request/requestCourse';
 import Loading from '@/app/loading';
 import { boolean } from 'zod';
 import { routes } from '../routes';
+import { useRecoilState } from 'recoil';
+import { showfirstState } from '../state/atoms';
+import { useRouter } from 'next/navigation';
 
 export default function Header({ children }: any) {
+  const [showFirst, setShowFirst] = useRecoilState(showfirstState);
   const { data: userData, isPending: isUserPending } = useGetUser();
+  let router = useRouter();
   const { data: allCategoriesData, isPending: isCategoryPending } =
     useGetAllCategories();
 
@@ -18,6 +23,16 @@ export default function Header({ children }: any) {
 
   console.log('hooooooooooook', userData);
   console.log();
+
+  const changeCategoryHandler = (e: any, category: any) => {
+    e.preventDefault();
+
+    setShowFirst((data: any) => ({
+      ...data,
+      category: category,
+    }));
+    router.push(`${routes.courses}/all?category=${category?.title}`);
+  };
 
   return (
     <>
@@ -208,7 +223,8 @@ export default function Header({ children }: any) {
                     <li className='nav-item dropdown ' key={item.id}>
                       <Link
                         className={`nav-link tw-text-gray-600  ${item.children ? ' dropdown-toggle ' : ''}`}
-                        href={item?.src || `${routes.courses}/all?category=${item?.id}`}
+                        href={item?.src || `#`}
+                        onClick={(e: any) => changeCategoryHandler(e, item)}
                         id={item.children && 'demoMenu'}
                         data-bs-toggle={item.children && 'dropdown'}
                         aria-haspopup={item.children && 'true'}

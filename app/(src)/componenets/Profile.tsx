@@ -59,7 +59,7 @@ export default function Profile({ name, email }: any) {
           className='avatar-img rounded-circle'
           src={
             (userData?.avatar &&
-              'https://eduapi.liara.run/' + userData?.avatar) ||
+              process.env.NEXT_PUBLIC_APP_URL + userData?.avatar) ||
             '/images/avatar/User.png'
           }
           alt='avatar'
@@ -81,7 +81,7 @@ export default function Profile({ name, email }: any) {
                 className='avatar-img rounded-circle shadow'
                 src={
                   (userData?.avatar &&
-                    'https://eduapi.liara.run/' + userData?.avatar) ||
+                    process.env.NEXT_PUBLIC_APP_URL + userData?.avatar) ||
                   '/images/avatar/User.png'
                 }
                 alt='avatar'

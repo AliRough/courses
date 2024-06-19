@@ -38,10 +38,3 @@ export const useCourseById = (id: number): UseQueryResult<any, Error> => {
     queryFn: () => api.CourseByIdApi(id),
   });
 };
-
-export const useCourseByTag = (tag: string): UseQueryResult<TCourse, Error> => {
-  return useQuery({
-    queryKey: ['course', tag],
-    queryFn: () => api.CourseByTagApi(tag),
-  });
-};

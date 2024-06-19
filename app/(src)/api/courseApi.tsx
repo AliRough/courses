@@ -1,6 +1,7 @@
 'use client';
 
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const baseUrl = process.env.NEXT_PUBLIC_APP_URL;
 
@@ -32,16 +33,6 @@ export const CourseByIdApi = async (id: number) => {
   }
 };
 
-export const CourseByTagApi = async (tag: string) => {
-  try {
-    const data = await axios.get('http://localhost:9000/courses');
-
-    return data.data;
-  } catch (error: any) {
-    throw error.response.data;
-  }
-};
-
 export const getAllPackages = async (perPage?: any) => {
   try {
     const data = await axios.get(
@@ -65,13 +56,30 @@ export const getAllCategories = async (perPage?: any) => {
     throw error;
   }
 };
-export const getFillteredCourses = async (param?: any) => {
-  let url = `/api/courses?title[lk]=%${param}%`;
-  try {
-    const data = await axios.get(url);
 
-    return data.data;
-  } catch (error: any) {
-    throw error;
-  }
+export const postComments = async (formData: any, token: any) => {
+  let config = {
+    method: 'post',
+    maxBodyLength: Infinity,
+    url: `api/comments`,
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'multipart/form-data',
+
+      Authorization: `Bearer ${token}`,
+    },
+    data: formData,
+  };
+
+  const data: any = await axios
+    .request(config)
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      console.log(error);
+      toast.error(error.response.data.message);
+      throw new Error(error.response.data.message);
+    });
+  console.log(data);
 };

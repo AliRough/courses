@@ -16,6 +16,14 @@ export const authUserState: any = atom({
   },
 });
 
+export const showfirstState: any = atom({
+  key: 'showfirst',
+  default: {
+    category: null,
+    package: null,
+  },
+});
+
 // export const todoListState = atom({
 //   key: 'todoListState',
 //   default: [

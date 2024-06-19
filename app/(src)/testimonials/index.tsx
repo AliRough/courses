@@ -3,10 +3,12 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import { Rating } from 'react-simple-star-rating';
+import RatingStar from '../componenets/other/raiting';
 
 const Testimonials = () => {
   console.log('Not completed');
   const [rating, setRating] = useState(0);
+  const [comment, setComment] = useState(0);
 
   // Catch Rating value
   const handleRating = (rate: number) => {
@@ -15,6 +17,10 @@ const Testimonials = () => {
     setRating(rate);
 
     // other logic
+  };
+  const handaleCommentForm = (e: any) => {
+    e.preventDefault();
+    console.log(e.target);
   };
 
   return (
@@ -30,26 +36,13 @@ const Testimonials = () => {
           {' '}
           {/* Review START */}
           <div className='row mb-4 '>
-            <h5 className='mb-4'>دیدگاه کاربران</h5>
             {/* Rating info */}
             <div className='col-md-4 mb-3 mb-md-0'>
               <div className='text-center tw-text-xs'>
                 {/* Info */}
                 <h2 className='mb-0'>4.5</h2>
                 {/* Star */}
-                <Rating
-                  customIcons={[
-                    { icon: <i className='fas fa-star tw-text-3xl' /> },
-                    { icon: <i className='fas fa-star tw-text-3xl ' /> },
-                    { icon: <i className='fas fa-star  tw-text-3xl' /> },
-                    { icon: <i className='fas fa-star  tw-text-3xl' /> },
-                    { icon: <i className='fas fa-star  tw-text-3xl' /> },
-                  ]}
-                  rtl
-                  readonly
-                  allowFraction
-                  initialValue={4.5}
-                />
+                <RatingStar readonly value={4.5} className='tw-text-2xl' />
 
                 <p className='mb-0'>(بر اساس بررسی امروز)</p>
               </div>
@@ -73,23 +66,7 @@ const Testimonials = () => {
                 </div>
                 <div className='col-6 col-sm-4'>
                   {/* Star item */}
-                  <ul className='list-inline mb-0'>
-                    <li className='list-inline-item me-0 small'>
-                      <i className='fas fa-star text-warning' />
-                    </li>
-                    <li className='list-inline-item me-0 small'>
-                      <i className='fas fa-star text-warning' />
-                    </li>
-                    <li className='list-inline-item me-0 small'>
-                      <i className='fas fa-star text-warning' />
-                    </li>
-                    <li className='list-inline-item me-0 small'>
-                      <i className='fas fa-star text-warning' />
-                    </li>
-                    <li className='list-inline-item me-0 small'>
-                      <i className='fas fa-star text-warning' />
-                    </li>
-                  </ul>
+                  <RatingStar readonly value={5} />
                 </div>
                 {/* Progress bar and Rating */}
                 <div className='col-6 col-sm-8'>
@@ -107,23 +84,7 @@ const Testimonials = () => {
                 </div>
                 <div className='col-6 col-sm-4'>
                   {/* Star item */}
-                  <ul className='list-inline mb-0'>
-                    <li className='list-inline-item me-0 small'>
-                      <i className='fas fa-star text-warning' />
-                    </li>
-                    <li className='list-inline-item me-0 small'>
-                      <i className='fas fa-star text-warning' />
-                    </li>
-                    <li className='list-inline-item me-0 small'>
-                      <i className='fas fa-star text-warning' />
-                    </li>
-                    <li className='list-inline-item me-0 small'>
-                      <i className='fas fa-star text-warning' />
-                    </li>
-                    <li className='list-inline-item me-0 small'>
-                      <i className='far fa-star text-warning' />
-                    </li>
-                  </ul>
+                  <RatingStar readonly value={4} />
                 </div>
                 {/* Progress bar and Rating */}
                 <div className='col-6 col-sm-8'>
@@ -141,23 +102,7 @@ const Testimonials = () => {
                 </div>
                 <div className='col-6 col-sm-4'>
                   {/* Star item */}
-                  <ul className='list-inline mb-0'>
-                    <li className='list-inline-item me-0 small'>
-                      <i className='fas fa-star text-warning' />
-                    </li>
-                    <li className='list-inline-item me-0 small'>
-                      <i className='fas fa-star text-warning' />
-                    </li>
-                    <li className='list-inline-item me-0 small'>
-                      <i className='fas fa-star text-warning' />
-                    </li>
-                    <li className='list-inline-item me-0 small'>
-                      <i className='far fa-star text-warning' />
-                    </li>
-                    <li className='list-inline-item me-0 small'>
-                      <i className='far fa-star text-warning' />
-                    </li>
-                  </ul>
+                  <RatingStar readonly value={3} />
                 </div>
                 {/* Progress bar and Rating */}
                 <div className='col-6 col-sm-8'>
@@ -175,23 +120,7 @@ const Testimonials = () => {
                 </div>
                 <div className='col-6 col-sm-4'>
                   {/* Star item */}
-                  <ul className='list-inline mb-0'>
-                    <li className='list-inline-item me-0 small'>
-                      <i className='fas fa-star text-warning' />
-                    </li>
-                    <li className='list-inline-item me-0 small'>
-                      <i className='fas fa-star text-warning' />
-                    </li>
-                    <li className='list-inline-item me-0 small'>
-                      <i className='far fa-star text-warning' />
-                    </li>
-                    <li className='list-inline-item me-0 small'>
-                      <i className='far fa-star text-warning' />
-                    </li>
-                    <li className='list-inline-item me-0 small'>
-                      <i className='far fa-star text-warning' />
-                    </li>
-                  </ul>
+                  <RatingStar readonly value={2} />
                 </div>
                 {/* Progress bar and Rating */}
                 <div className='col-6 col-sm-8'>
@@ -209,23 +138,7 @@ const Testimonials = () => {
                 </div>
                 <div className='col-6 col-sm-4'>
                   {/* Star item */}
-                  <ul className='list-inline mb-0'>
-                    <li className='list-inline-item me-0 small'>
-                      <i className='fas fa-star text-warning' />
-                    </li>
-                    <li className='list-inline-item me-0 small'>
-                      <i className='far fa-star text-warning' />
-                    </li>
-                    <li className='list-inline-item me-0 small'>
-                      <i className='far fa-star text-warning' />
-                    </li>
-                    <li className='list-inline-item me-0 small'>
-                      <i className='far fa-star text-warning' />
-                    </li>
-                    <li className='list-inline-item me-0 small'>
-                      <i className='far fa-star text-warning' />
-                    </li>
-                  </ul>
+                  <RatingStar readonly value={1} />
                 </div>
               </div>
             </div>
@@ -234,24 +147,14 @@ const Testimonials = () => {
           {/* Leave Review START */}
           <div className=''>
             <h5 className='mb-4'>ثبت دیدگاه</h5>
-            <form className='row g-3'>
+            <form className='row g-3' onSubmit={handaleCommentForm}>
               {/* Rating */}
 
-              <div className='text-center '>
-                <Rating
-                  onClick={handleRating}
-                  rtl
-                  customIcons={[
-                    { icon: <i className='fas fa-star tw-text-3xl' /> },
-                    { icon: <i className='fas fa-star tw-text-3xl ' /> },
-                    { icon: <i className='fas fa-star  tw-text-3xl' /> },
-                    { icon: <i className='fas fa-star  tw-text-3xl' /> },
-                    { icon: <i className='fas fa-star  tw-text-3xl' /> },
-                  ]}
-                />
+              <div className=' '>
+                <RatingStar onClick={handleRating} className='tw-text-2xl' />
               </div>
               {/* Name */}
-              <div className='col-md-6 bg-light-input '>
+              {/* <div className='col-md-6 bg-light-input '>
                 <input
                   type='text'
                   className='form-control'
@@ -259,16 +162,16 @@ const Testimonials = () => {
                   placeholder='نام'
                   aria-label='First name'
                 />
-              </div>
+              </div> */}
               {/* Email */}
-              <div className='col-md-6 bg-light-input'>
+              {/* <div className='col-md-6 bg-light-input'>
                 <input
                   type='email'
                   className='form-control'
                   placeholder='ایمیل'
                   id='inputEmail4'
                 />
-              </div>
+              </div> */}
 
               {/* Message */}
               <div className='col-12 bg-light-input'>
@@ -306,23 +209,7 @@ const Testimonials = () => {
                 <div className='d-sm-flex mt-1 mt-md-0 align-items-center'>
                   <h5 className='me-3 mb-0 fw-normal'>نیلوفر سجادی</h5>
                   {/* Review star */}
-                  <ul className='list-inline mb-0'>
-                    <li className='list-inline-item me-0'>
-                      <i className='fas fa-star text-warning' />
-                    </li>
-                    <li className='list-inline-item me-0'>
-                      <i className='fas fa-star text-warning' />
-                    </li>
-                    <li className='list-inline-item me-0'>
-                      <i className='fas fa-star text-warning' />
-                    </li>
-                    <li className='list-inline-item me-0'>
-                      <i className='fas fa-star text-warning' />
-                    </li>
-                    <li className='list-inline-item me-0'>
-                      <i className='far fa-star text-warning' />
-                    </li>
-                  </ul>
+                  <RatingStar readonly value={4} />
                 </div>
                 {/* Info */}
                 <p className='small mb-2'>2 روز قبل</p>
@@ -414,23 +301,7 @@ const Testimonials = () => {
                 <div className='d-sm-flex mt-1 mt-md-0 align-items-center'>
                   <h5 className='me-3 mb-0 fw-normal'>علی مرادی</h5>
                   {/* Review star */}
-                  <ul className='list-inline mb-0'>
-                    <li className='list-inline-item me-0'>
-                      <i className='fas fa-star text-warning' />
-                    </li>
-                    <li className='list-inline-item me-0'>
-                      <i className='fas fa-star text-warning' />
-                    </li>
-                    <li className='list-inline-item me-0'>
-                      <i className='fas fa-star text-warning' />
-                    </li>
-                    <li className='list-inline-item me-0'>
-                      <i className='fas fa-star text-warning' />
-                    </li>
-                    <li className='list-inline-item me-0'>
-                      <i className='far fa-star text-warning' />
-                    </li>
-                  </ul>
+                  <RatingStar readonly value={4} />
                 </div>
                 {/* Info */}
                 <p className='small mb-2'>2 روز قبل</p>

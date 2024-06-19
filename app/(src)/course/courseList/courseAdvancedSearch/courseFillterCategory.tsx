@@ -2,16 +2,15 @@
 
 import { useGetAllCategories } from '@/app/(src)/hooks/request/requestCourse';
 
-const CourseFillterCategory = () => {
-  const { data } = useGetAllCategories();
-  console.log(data);
+const CourseFillterCategory = ({ input }: any) => {
+  const { data: allCategories } = useGetAllCategories();
 
   return (
     <div className='card card-body shadow p-4 mb-4'>
       <h4 className='mb-3 fs-6'>فیلتر دسته بندی</h4>
       <div className='col-12'>
-        {data?.data.length ? (
-          data?.data.map((category: any, index: any) => (
+        {allCategories?.data.length ? (
+          allCategories?.data.map((category: any, index: any) => (
             <div
               key={category.id}
               className='d-flex justify-content-between align-items-center'
@@ -19,10 +18,12 @@ const CourseFillterCategory = () => {
             >
               <div className='form-check'>
                 <input
+                  name='category'
                   className='form-check-input'
-                  type='checkbox'
-                  value=''
+                  type='radio'
+                  value={JSON.stringify(category)}
                   id={'flexCheckDefault9'}
+                  {...input.category}
                 />
                 <label className='form-check-label' htmlFor='flexCheckDefault9'>
                   {category.title}

@@ -11,8 +11,13 @@ import { TCurriculum, TCurriculumDetail } from '@/app/(src)/model/course.d';
 import { TFaq, TTag } from '@/app/(src)/model/other.d';
 import TrendingCourses from '@/app/(src)/componenets/TrendingCourses';
 import Script from 'next/script';
+import RatingStar from '../../componenets/other/raiting';
+import { postComments } from '../../api/courseApi';
+import { useCookies } from 'react-cookie';
 
 const CourseDetail = ({ params }: { params: { id: number } }) => {
+  const [cookies, setCookie, removeCookie] = useCookies(['Authorization']);
+
   const { id } = params;
 
   const { data } = useCourseById(id);
@@ -25,10 +30,18 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
     return date;
   };
   let test = "<h2 className='fs-3'>آموزش رایگان Blazor WebAssembly</h2>";
-
+  const handler = async () => {
+    let formData = {
+      episode_id: 1,
+      description: 'این یک کامنت تست است.',
+    };
+    let { data }: any = await postComments(formData, cookies.Authorization);
+    console.log(data);
+  };
   return (
     <>
       <section className='pt-3 pt-xl-5'>
+        <button onClick={handler}>click</button>
         <div className='container ' data-stickyContainer>
           <div className='row g-4  '>
             {/* Main content START */}
@@ -172,7 +185,7 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                   <div className='card border rounded-3'>
                     {/* Card header START */}
                     <div className='card-header border-bottom'>
-                      <h3 className='mb-0 fs-5'>جلسات دوره</h3>
+                      <h3 className='mb-0 fs-5'>دیدگاه کاربران</h3>
                     </div>
                     {/* Card header END */}
                     {/* Card body START */}
@@ -196,7 +209,8 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                         <img
                           className='rounded-3 mb-3'
                           src={
-                            'https://fanavaran.liara.run/' + data?.data?.cover
+                            process.env.NEXT_PUBLIC_ASSETS_URL +
+                            data?.data?.cover
                           }
                           alt=''
                         />
@@ -301,7 +315,7 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                             className='avatar-img rounded-circle'
                             src={
                               (data?.data?.avatar &&
-                                'https://eduapi.liara.run/' +
+                                process.env.NEXT_PUBLIC_APP_URL +
                                   data?.data?.avatar) ||
                               '/images/avatar/User.png'
                             }
@@ -310,36 +324,18 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                         </div>
                         <div className='ms-sm-3 mt-2 mt-sm-0'>
                           <h5 className='mb-0'>
-                            <a href='#'>{data?.data.teacher.name}</a>
+                            <a href='#'>{data?.data.teacherName}</a>
                           </h5>
                           <p className='mb-0 small'>
-                            مدرس {data?.data.teacher.field}
+                            {data?.data?.teacherField}
                           </p>
                         </div>
                       </div>
                       {/* Rating and follow */}
                       <div className='d-sm-flex justify-content-sm-between align-items-center mt-0 mt-sm-2'>
                         {/* Rating star */}
-                        <ul className='list-inline mb-0'>
-                          <li className='list-inline-item me-0 small'>
-                            <i className='fas fa-star text-warning' />
-                          </li>
-                          <li className='list-inline-item me-0 small'>
-                            <i className='fas fa-star text-warning' />
-                          </li>
-                          <li className='list-inline-item me-0 small'>
-                            <i className='fas fa-star text-warning' />
-                          </li>
-                          <li className='list-inline-item me-0 small'>
-                            <i className='fas fa-star text-warning' />
-                          </li>
-                          <li className='list-inline-item me-0 small'>
-                            <i className='fas fa-star-half-alt text-warning' />
-                          </li>
-                          <li className='list-inline-item ms-2 h6 fw-light mb-0'>
-                            4.5/5.0
-                          </li>
-                        </ul>
+                        <RatingStar readonly value={4.5} />
+
                         {/* button */}
                         <button className='btn btn-sm btn-primary mb-0 mt-2 mt-sm-0'>
                           دنبال کردن

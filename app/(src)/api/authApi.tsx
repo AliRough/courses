@@ -7,13 +7,13 @@ import { useRouter } from 'next/router';
 import { redirect } from 'next/navigation';
 import { toast } from 'react-toastify';
 
-const baseUrl = 'https://eduapi.liara.run';
+const baseUrl = process.env.NEXT_PUBLIC_APP_URL;
 
-// axios.defaults.baseURL = baseUrl;
+axios.defaults.baseURL = baseUrl;
 
 export const registerUser = async (formData: any) => {
   try {
-    const data = await axios.post(`${baseUrl}/api/auth/register`, formData);
+    const data = await axios.post(`api/auth/register`, formData);
     console.log(data);
     if (data.status === 201) {
       console.log(formData);
@@ -27,7 +27,7 @@ export const registerUser = async (formData: any) => {
 
 export const logInUser = async (formData: any) => {
   try {
-    const data = await axios.post(`${baseUrl}/api/auth/login`, formData);
+    const data = await axios.post(`api/auth/login`, formData);
     console.log(data);
     if (data.status === 201) {
       console.log(formData);
@@ -42,7 +42,7 @@ export const logInUser = async (formData: any) => {
 export const forgotPassword = async (formData: any) => {
   try {
     const data = await axios.post(
-      `${baseUrl}/api/auth/password/send-reset-link`,
+      `api/auth/password/send-reset-link`,
       formData,
     );
     console.log(data);
@@ -58,10 +58,7 @@ export const forgotPassword = async (formData: any) => {
 
 export const resetPassword = async (formData: any) => {
   try {
-    const data = await axios.post(
-      `${baseUrl}/api/auth/password/reset`,
-      formData,
-    );
+    const data = await axios.post(`api/auth/password/reset`, formData);
     console.log(data);
     if (data.status === 200) {
       console.log(formData);
@@ -77,7 +74,7 @@ export const changeUserPass = async (formData: any, token: any) => {
   let config = {
     method: 'put',
     maxBodyLength: Infinity,
-    url: `${baseUrl}/api/user/password`,
+    url: `api/user/password`,
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -99,7 +96,7 @@ export const editUserData = async (formData: any, token: any) => {
   let config = {
     method: 'put',
     maxBodyLength: Infinity,
-    url: `${baseUrl}/api/user`,
+    url: `api/user`,
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -121,7 +118,7 @@ export const deleteUserAvatar = async (token: any) => {
   let config = {
     method: 'post',
     maxBodyLength: Infinity,
-    url: `${baseUrl}/api/user/delete-avatar`,
+    url: `api/user/delete-avatar`,
     headers: {
       Accept: 'application/json',
       'Content-Type': 'multipart/form-data',
@@ -151,7 +148,7 @@ export const changeUserAvatar = async (formData: any, token: any) => {
   let config = {
     method: 'post',
     maxBodyLength: Infinity,
-    url: `${baseUrl}/api/user/change-avatar`,
+    url: `api/user/change-avatar`,
     headers: {
       Accept: 'application/json',
       'Content-Type': 'multipart/form-data',
@@ -160,6 +157,7 @@ export const changeUserAvatar = async (formData: any, token: any) => {
     },
     data: formData,
   };
+
   const data: any = await axios
     .request(config)
     .then((response) => {
@@ -178,7 +176,7 @@ export const getUserByToken = async (token: string) => {
     headers: { Authorization: `Bearer ${token}` },
   };
   try {
-    const data = await axios.get(`${baseUrl}/api/user`, config);
+    const data = await axios.get(`api/user`, config);
     return data.data?.data;
   } catch (error: any) {
     throw error.response.data;
@@ -189,7 +187,7 @@ export const logOutUser = async (token: string) => {
   let config = {
     method: 'post',
     maxBodyLength: Infinity,
-    url: `${baseUrl}/api/auth/logout`,
+    url: `api/auth/logout`,
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -208,7 +206,7 @@ export const logOutUser = async (token: string) => {
 export const verifyEmail = async (id: any, hash: any) => {
   try {
     const data = await axios.post(
-      `${baseUrl}/api/auth/email/verify?id=${id}&hash=${hash}`,
+      `api/auth/email/verify?id=${id}&hash=${hash}`,
     );
     toast.success('ایمیل شما با موفقیت تایید شد');
     return data;
@@ -223,7 +221,7 @@ export const sendVerificationEmail = async (token: string) => {
   let config = {
     method: 'post',
     maxBodyLength: Infinity,
-    url: `${baseUrl}/api/auth/email/send-verify`,
+    url: `api/auth/email/send-verify`,
     headers: {
       Accept: 'application/json',
       Authorization: `Bearer ${token}`,

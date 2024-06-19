@@ -11,13 +11,20 @@ import Newsletter from '@/app/(src)/componenets/other/newsletter';
 import { TCourses } from '@/app/(src)/model/course.d';
 import { useEffect, useState } from 'react';
 import LoadingCourse from '../../componenets/other/loading/course';
+import { useRouter } from 'next/navigation';
+import { routes } from '../../routes';
+import { useRecoilState } from 'recoil';
+import { showfirstState } from '../../state/atoms';
 
 const CourseList = ({ searchParams }: any) => {
+  const router = useRouter();
+  const [showFirst, setShowFirst]: any = useRecoilState(showfirstState);
+
   const [currentPage, setCurrentPage] = useState(1);
   const [params, setParams] = useState('');
-  const [Cid, setCid] = useState();
+  const [Cid, setCid] = useState(showFirst?.category?.id);
 
-  const { data, refetch, isPending } = useGetAllCourses(
+  const { data, refetch, isPending, isFetching } = useGetAllCourses(
     currentPage,
     9,
     params,
@@ -25,8 +32,11 @@ const CourseList = ({ searchParams }: any) => {
   );
   console.log('data is -------------->', data);
   useEffect(() => {
+    setCid(showFirst?.category?.id);
+  }, [showFirst]);
+  useEffect(() => {
     refetch();
-  }, [currentPage]);
+  }, [currentPage, Cid]);
   useEffect(() => {
     let timer: any;
     clearTimeout(timer);
@@ -39,11 +49,21 @@ const CourseList = ({ searchParams }: any) => {
     fetchData();
   }, [params]);
 
+  const categoryFormHandler = (data: any) => {
+    console.log(data);
+    console.log(data);
+
+    let category = JSON.parse(data.category);
+
+    setCid(category.id);
+    router.push(routes.courses + '/all?category=' + category.title);
+  };
+
   console.log('Not completed');
 
   return (
     <>
-      <HeaderBody name={'لیست دوره ها'} />
+      <HeaderBody name={searchParams.category} />
       <section className='py-5'>
         <div className='container'>
           <div className='row'>
@@ -56,7 +76,7 @@ const CourseList = ({ searchParams }: any) => {
                 seCid={setCid}
               />
               <div className='row g-4'>
-                {isPending ? (
+                {Boolean(isPending || isFetching) ? (
                   <LoadingCourse number={5} />
                 ) : data?.data.data.length ? (
                   data?.data.data?.map((e: TCourses) => (
@@ -78,7 +98,10 @@ const CourseList = ({ searchParams }: any) => {
                 />
               </div>
             </div>
-            <CourseAdvancedSearch />
+            <CourseAdvancedSearch
+              searchParams={searchParams}
+              categoryFormHandler={categoryFormHandler}
+            />
           </div>
         </div>
       </section>

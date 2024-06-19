@@ -10,7 +10,7 @@ import { routes } from '@/app/(src)/routes';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
-const CourseAdvancedSearch = () => {
+const CourseAdvancedSearch = ({ changePackageHandler }: any) => {
   const [perPage, setPerPage] = useState(5);
   const { data: packages, refetch, isPending } = useGetAllPackages(perPage);
   useEffect(() => {
@@ -69,7 +69,11 @@ const CourseAdvancedSearch = () => {
         ) : packages?.data.length ? (
           <>
             {packages?.data.map((pack: any, index: any) => (
-              <Link href={routes.packages + '/' + pack.id} key={pack.id}>
+              <Link
+                href={routes.packages + '/' + pack.title}
+                onClick={(e) => changePackageHandler(e, pack)}
+                key={pack.id}
+              >
                 <div className='tw-flex tw-items-center tw-border tw-rounded-md tw-bg-gray-50 shadow-sm p-2 mb-2 hover:tw-bg-gray-100'>
                   <div
                     className={

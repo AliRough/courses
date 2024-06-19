@@ -13,6 +13,8 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import LoadingPackage from '../../componenets/other/loading/package';
 import { routes } from '../../routes';
+import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 const CoursePakage = ({ params }: any) => {
   const [category, setCategory] = useState(params.Pid);
@@ -25,15 +27,18 @@ const CoursePakage = ({ params }: any) => {
     data: allCourses,
     refetch,
     isPending,
-  } = useGetAllCourses(currentPage, 9, param, category);
+    isFetching,
+  } = useGetAllCourses(currentPage, 5, param, category);
+  const router = useRouter();
+  const changePackageHandler = (e: any, pack: any) => {
+    e.preventDefault();
+    setCategory(pack.Id);
+    router.push(routes.packages + '/' + pack.title);
+  };
 
   useEffect(() => {
     refetch();
-  }, [currentPage]);
-
-  useEffect(() => {
-    refetch();
-  }, [param]);
+  }, [category, currentPage, param]);
 
   console.log('Not completed');
 
@@ -102,7 +107,7 @@ const CoursePakage = ({ params }: any) => {
             </div>
             <div className='tw-flex px-0'>
               <div className=' md:tw-w-3/4 tw-w-full justify-content-center ps-3'>
-                {isPending ? (
+                {Boolean(isPending || isFetching) ? (
                   <LoadingPackage number={4} />
                 ) : allCourses?.data.data.length ? (
                   allCourses?.data?.data.map((e: any, index: number) => (
@@ -120,9 +125,13 @@ const CoursePakage = ({ params }: any) => {
                         <div className='tw-bg-white  tw-rounded-xl tw-w-full tw-shadow-lg  overflow-hidden mb-3'>
                           <div className='tw-flex tw-w-full tw-p-4 '>
                             <div className='sm:tw-w-1/5 tw-w-2/5 tw-flex '>
-                              <img
+                              <Image
+                                blurDataURL={`/images/courses/4by3/artist.svg`}
+                                placeholder='blur'
+                                width={100}
+                                height={100}
                                 className='tw-w-full tw-rounded-xl overflow-hidden xl:tw-aspect-[4/3] tw-aspect-square tw-shadow-md tw-object-cover '
-                                // src={`https://fanavaran.liara.run/${e.cover}`}
+                                // src={ process.env.NEXT_PUBLIC_ASSETS_URL + e.cover}
                                 src={`/images/courses/4by3/${Math.floor(Math.random() * 16) + 1}.jpg`}
                                 alt={e.cover}
                               />
@@ -190,7 +199,9 @@ const CoursePakage = ({ params }: any) => {
                   />
                 </div>
               </div>
-              <CourseAdvancedSearch />
+              <CourseAdvancedSearch
+                changePackageHandler={changePackageHandler}
+              />
             </div>
           </div>
         </div>

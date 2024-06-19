@@ -4,9 +4,40 @@ import CourseFillterCategory from '@/app/(src)/course/courseList/courseAdvancedS
 import CourseFillterLang from '@/app/(src)/course/courseList/courseAdvancedSearch/courseFillterLang';
 import CourseFillterLavel from '@/app/(src)/course/courseList/courseAdvancedSearch/courseFillterLavel';
 import CoursefillterPrice from '@/app/(src)/course/courseList/courseAdvancedSearch/coursefillterPrice';
+import { categoryFillterValidate } from '@/app/(src)/validations/categoryFillter';
+import { ErrorMessage } from '@hookform/error-message';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
 
-const CourseAdvancedSearch = () => {
+const CourseAdvancedSearch = ({ searchParams, categoryFormHandler }: any) => {
+  console.log(
+    '++++++++++++++++++++===========================++++++++++++++++++====',
+    searchParams,
+  );
+
   console.log('Not completed');
+
+  const {
+    // ساختار پارامتر`
+    register,
+    // کنترل دکمه سابمت به صورت اتوماتیک حالت رفرش رو غیر فعال میکنه.
+    handleSubmit,
+    // اگه اروری تولید کرد انتقال بده
+    formState: { errors },
+    watch,
+    setValue,
+  } = useForm({
+    defaultValues: {
+      category: searchParams.category,
+      pricing: 'all',
+    },
+    resolver: zodResolver(categoryFillterValidate),
+  });
+
+  const input: any = {
+    category: register('category'),
+    pricing: register('pricing'),
+  };
 
   return (
     <div className='col-lg-4 col-xl-3'>
@@ -28,14 +59,14 @@ const CourseAdvancedSearch = () => {
           ></button>
         </div>
         <div className=' p-3 p-lg-0 '>
-          <form>
-            <CourseFillterCategory />
-            <CoursefillterPrice />
-            
+          <form onSubmit={handleSubmit(categoryFormHandler)}>
+            <CourseFillterCategory input={input} />
+            <CoursefillterPrice input={input} />
+
+            <div className='d-grid p-2 p-lg-0 text-center'>
+              <button className='btn btn-primary mb-0'>نتیجه فیلتر</button>
+            </div>
           </form>
-        </div>
-        <div className='d-grid p-2 p-lg-0 text-center'>
-          <button className='btn btn-primary mb-0'>نتیجه فیلتر</button>
         </div>
       </div>
     </div>
