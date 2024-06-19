@@ -58,10 +58,8 @@ const ProfileStudentCourseList = () => {
               </select>
             </form>
           </div>
-          data
-          {courses?.data.length}
         </div>
-        {courses?.data.data.length ? (
+        {false ? (
           <>
             <div className='table-responsive border-0'>
               <table className='table table-dark-gray align-middle p-4 mb-0 table-hover'>

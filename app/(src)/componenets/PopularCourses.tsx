@@ -9,13 +9,13 @@ import LoadingCourse from './other/loading/course';
 
 export default function PopularCourses() {
   const [tag, setTag]: any = useState(1);
-  const { data: categories, isPending }: any = useGetAllCategories();
-  const { data: courses, refetch }: any = useGetAllCourses(
-    undefined,
-    12,
-    undefined,
-    tag,
-  );
+  const { data: categories }: any = useGetAllCategories();
+  const {
+    data: courses,
+    refetch,
+    isPending,
+    isFetching,
+  }: any = useGetAllCourses(undefined, 12, undefined, tag);
   useEffect(() => {
     refetch();
   }, [tag]);
@@ -61,13 +61,15 @@ Popular course START */}
           <div className='tab-content'>
             <div className=' '>
               <div className='row g-4'>
-                {isPending && <LoadingCourse number={6} />}
-
-                {courses?.data?.data?.map((e: any) => (
-                  <div key={e?.id} className='col-sm-6   col-md-4 col-xl-3'>
-                    <CourseTile data={e} />
-                  </div>
-                ))}
+                {Boolean(isPending || isFetching) ? (
+                  <LoadingCourse number={6} />
+                ) : (
+                  courses?.data?.data?.map((e: any) => (
+                    <div key={e?.id} className='col-sm-6   col-md-4 col-xl-3'>
+                      <CourseTile data={e} />
+                    </div>
+                  ))
+                )}
               </div>
               {/* Row END */}
             </div>

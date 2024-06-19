@@ -7,19 +7,25 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { changePassValidate } from '../../validations/editProfileValidate';
 import { ErrorMessage } from '@hookform/error-message';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { changeUserPass } from '../../api/authApi';
 import { useCookies } from 'react-cookie';
 import { useChangeUserPass } from '../../hooks/request/authUser';
+import Loading from '@/app/loading';
 
 const ProfileStudentChangePassword = () => {
   const [showPass, setSowPass] = useState(false);
-  const { mutate: mutateChangeUserPass } = useChangeUserPass();
+  const {
+    mutate: mutateChangeUserPass,
+    isPending,
+    isSuccess,
+  } = useChangeUserPass();
 
   const changePassHandler = async (data: any) => {
     mutateChangeUserPass(data);
   };
   const {
+    reset,
     // ساختار پارامتر
     register,
     // کنترل دکمه سابمت به صورت اتوماتیک حالت رفرش رو غیر فعال میکنه.
@@ -31,6 +37,11 @@ const ProfileStudentChangePassword = () => {
   } = useForm({
     resolver: zodResolver(changePassValidate),
   });
+  useEffect(() => {
+    setValue('oldPassword', '');
+    setValue('password', '');
+    setValue('passwordConfirmation', '');
+  }, [isSuccess]);
 
   const input: any = {
     oldPassword: register('oldPassword'),
@@ -40,6 +51,7 @@ const ProfileStudentChangePassword = () => {
 
   return (
     <>
+      {isPending && <Loading />}
       <div className='row g-4 justify-content-center'>
         <form onSubmit={handleSubmit(changePassHandler)} className=''>
           <div className='card border bg-transparent rounded-3'>

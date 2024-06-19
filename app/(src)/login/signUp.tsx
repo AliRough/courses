@@ -4,6 +4,7 @@ import Link from 'next/link';
 import React from 'react';
 
 import Image from 'next/image';
+import Loading from '@/app/loading';
 
 export default function SignUp({
   signUpHandler,
@@ -13,19 +14,13 @@ export default function SignUp({
 }: any) {
   return (
     <>
-      {isPending && (
-        <div className='preloader opacity-50 '>
-          <div className='preloader-item'>
-            <div className='spinner-grow text-primary' />
-          </div>
-        </div>
-      )}
+      {isPending && <Loading />}
       <main>
         <section className='p-0 d-flex align-items-center position-relative overflow-hidden'>
           <div className='container-fluid'>
             <div className='row'>
               {/* left */}
-              <div className='col-12 col-lg-6 d-lg-flex d-none align-items-center justify-content-center bg-primary bg-opacity-10 lg:tw-h-  '>
+              <div className='col-12 col-lg-6 d-lg-flex d-none align-items-center justify-content-center bg-primary bg-opacity-10 vh-lg-100'>
                 <div className='p-3 p-lg-5'>
                   {/* Title */}
                   <div className='text-center'>

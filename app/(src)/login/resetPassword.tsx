@@ -13,12 +13,6 @@ export default function ResetPassword({ searchParams }: any) {
   const { mutate: mutateResetPassword, isPending } = useResetPassword();
 
   const resetPasswordFormHandler = (data: any) => {
-    console.log({
-      token: searchParams.token,
-      email: searchParams.email,
-      ...data,
-    });
-
     mutateResetPassword({
       token: searchParams.token,
       email: searchParams.email,

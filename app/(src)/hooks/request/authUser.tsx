@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 
 import { useCookies } from 'react-cookie';
 import { useRouter } from 'next/navigation';
+import { routes } from '../../routes';
 
 export const useChangeAvatar = () => {
   const queryClient = useQueryClient();
@@ -69,11 +70,13 @@ export const useChangeUserPass = () => {
 
 export const useResetPassword = () => {
   const queryClient = useQueryClient();
+  const router = useRouter();
 
   return useMutation({
     mutationFn: (formData: any) => api.resetPassword(formData),
     onSuccess: (data) => {
       toast.success('رمز عبور شما با موفقیت تغییر کرد');
+      router.push(routes.auth + '/login');
     },
     onError: (error) => {
       console.log(error);
@@ -84,11 +87,13 @@ export const useResetPassword = () => {
 
 export const useForgotPassword = () => {
   const queryClient = useQueryClient();
+  const router = useRouter();
 
   return useMutation({
     mutationFn: (formData: any) => api.forgotPassword(formData),
     onSuccess: (data) => {
       toast.success('ایمیل با موفقیت ارسال شد');
+      router.push(routes.auth + '/login');
     },
     onError: (error) => {
       console.log(error);
