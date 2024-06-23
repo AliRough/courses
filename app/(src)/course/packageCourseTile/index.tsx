@@ -27,7 +27,6 @@ const PackageCourseTile = ({ data }: { data: any }) => {
       />
       <div className='card-body pb-0'>
         <div className='d-flex justify-content-between mb-2'>
-          <>{console.log('Link')}</>
           <Link href='#' className='badge bg-purple bg-opacity-10 text-purple'>
             {data?.packageName}
           </Link>
@@ -35,7 +34,6 @@ const PackageCourseTile = ({ data }: { data: any }) => {
             <i className='far fa-heart'></i>
           </a>
         </div>
-        <>{console.log('Link')}</>
         <h5 className='card-title fw-normal'>
           <Link href={routes.courses + '/' + data?.id}>{data?.title}</Link>
         </h5>

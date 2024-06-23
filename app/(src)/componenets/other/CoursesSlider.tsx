@@ -15,7 +15,6 @@ import CourseTile from '../../course/courseTile';
 
 export default function CoursesSlider({ allCourses }: any) {
   let slider = useSwiper();
-  console.log(allCourses?.length - 5);
 
   return (
     <>

@@ -13,7 +13,7 @@ export const useGetAllCourses = (
   Cid?: any,
 ) => {
   return useQuery({
-    queryKey: ['course_all'],
+    queryKey: ['course_all', 'categoryId ' + Cid, 'pageNumber ' + page],
     queryFn: () => api.CourseAllApi(page, perPage, params, Cid),
   });
 };
@@ -29,6 +29,12 @@ export const useGetAllPackages = (perPage?: any) => {
   return useQuery({
     queryKey: ['Packages_all'],
     queryFn: () => api.getAllPackages(perPage),
+  });
+};
+export const useGetPackage = (id?: any) => {
+  return useQuery({
+    queryKey: ['Package ', id],
+    queryFn: () => api.getPackage(id),
   });
 };
 

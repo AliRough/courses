@@ -20,8 +20,7 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
 
   const { id } = params;
 
-  const { data } = useCourseById(id);
-  console.log('----------------------------------->', data?.data);
+  const { data: course } = useCourseById(id);
 
   console.log('Not completed');
 
@@ -35,14 +34,14 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
       episode_id: 1,
       description: 'این یک کامنت تست است.',
     };
-    let { data }: any = await postComments(formData, cookies.Authorization);
-    console.log(data);
+    let { course }: any = await postComments(formData, cookies.Authorization);
+    console.log(course);
   };
   return (
     <>
       <section className='pt-3 pt-xl-5'>
         <button onClick={handler}>click</button>
-        <div className='container ' data-stickyContainer>
+        <div className='container ' course-stickyContainer>
           <div className='row g-4  '>
             {/* Main content START */}
             <div className='col-xl-8'>
@@ -50,7 +49,7 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                 {/* Title START */}
                 <div className='col-12'>
                   {/* Title */}
-                  <h2 className='fs-3'>{data?.data.title}</h2>
+                  <h2 className='fs-3'>{course?.data.title}</h2>
 
                   {/* Content */}
                   <ul className='list-inline mb-0'>
@@ -61,7 +60,7 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
 
                     <li className='list-inline-item fw-light h6 me-3 mb-1 mb-sm-0'>
                       <i className='bi bi-patch-exclamation-fill me-2' />
-                      آخرین بروزرسانی {getDateFormat(data?.data.updetedAt)}
+                      آخرین بروزرسانی {getDateFormat(course?.data.updetedAt)}
                     </li>
                   </ul>
                 </div>
@@ -117,7 +116,7 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                     {/* Card body START */}
                     <div className='card-body'>
                       <div id='collapseContent' className=''>
-                        {data?.data.description}
+                        {course?.data.description}
                       </div>
                     </div>
                     {/* Card body START */}
@@ -137,7 +136,7 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                       <div className='row g-5'>
                         {/* Lecture item START */}
                         <div className='col-12'>
-                          {data?.data?.episodes.map(
+                          {course?.data?.episodes?.map(
                             (episod: any, index: number) => (
                               <>
                                 <div className='d-sm-flex justify-content-sm-between align-items-center'>
@@ -166,9 +165,8 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                                   </a>
                                 </div>
                                 {/* Divider */}
-                                {index + 1 !== data?.data?.episodes.length && (
-                                  <hr />
-                                )}
+                                {index + 1 !==
+                                  course?.data?.episodes.length && <hr />}
                               </>
                             ),
                           )}
@@ -205,13 +203,14 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                   <div className='col-md-6 col-xl-12'>
                     {/* Course info START */}
                     <div className='card card-body border p-4'>
-                      {data && (
+                      {course && (
                         <img
                           className='rounded-3 mb-3'
-                          src={
-                            process.env.NEXT_PUBLIC_ASSETS_URL +
-                            data?.data?.cover
-                          }
+                          src={`/images/courses/4by3/${Math.floor(Math.random() * 16) + 1}.jpg`}
+                          // src={
+                          //   process.env.NEXT_PUBLIC_ASSETS_URL +
+                          //   course?.data?.cover
+                          // }
                           alt=''
                         />
                       )}
@@ -219,7 +218,7 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                       <div className='d-flex justify-content-between align-items-center'>
                         {/* Price */}
                         <h3 className='fw-bold mb-0 me-2 fs-5'>
-                          {data?.data?.price
+                          {course?.data?.price
                             .toString()
                             .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}{' '}
                           تومان
@@ -231,7 +230,7 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                             className='btn btn-sm btn-light rounded mb-0 small'
                             role='button'
                             id='dropdownShare'
-                            data-bs-toggle='dropdown'
+                            course-bs-toggle='dropdown'
                             aria-expanded='false'
                           >
                             <i className='fas fa-fw fa-share-alt' />
@@ -281,13 +280,13 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                       <hr />
                       {/* Title */}
                       <h5 className='mb-3 fs-5'>مشخصات دوره</h5>
-                      <ul className='list-group list-group-borderless'>
+                      <ul className='list-group list-group-borderless border-bottom-0 rounded-0'>
                         <li className='list-group-item d-flex justify-content-between align-items-center'>
                           <span className='h6 fw-light mb-0'>
                             <i className='fas fa-fw fa-book-open text-primary' />
                             تعداد ویدیو ها
                           </span>
-                          <span>{data?.data.episodeCount}</span>
+                          <span>{course?.data.episodeCount}</span>
                         </li>
                         <li className='list-group-item d-flex justify-content-between align-items-center'>
                           <span className='h6 fw-light mb-0'>
@@ -302,7 +301,7 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                             <i className='fas fa-fw fa-user-clock text-primary' />
                             تاریخ بروزرسانی
                           </span>
-                          <span>{getDateFormat(data?.data.updetedAt)}</span>
+                          <span>{getDateFormat(course?.data.updetedAt)}</span>
                         </li>
                       </ul>
                       {/* Divider */}
@@ -314,9 +313,9 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                           <img
                             className='avatar-img rounded-circle'
                             src={
-                              (data?.data?.avatar &&
+                              (course?.data?.avatar &&
                                 process.env.NEXT_PUBLIC_APP_URL +
-                                  data?.data?.avatar) ||
+                                  course?.data?.teacher.avatar) ||
                               '/images/avatar/User.png'
                             }
                             alt='avatar'
@@ -324,10 +323,10 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                         </div>
                         <div className='ms-sm-3 mt-2 mt-sm-0'>
                           <h5 className='mb-0'>
-                            <a href='#'>{data?.data.teacherName}</a>
+                            <a href='#'>{course?.data.teacher.name}</a>
                           </h5>
                           <p className='mb-0 small'>
-                            {data?.data?.teacherField}
+                            {course?.data?.teacher.field}
                           </p>
                         </div>
                       </div>

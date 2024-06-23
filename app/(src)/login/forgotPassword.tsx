@@ -11,8 +11,6 @@ export default function ForgotPassword() {
   const { mutate: mutateForgotPassword, isPending } = useForgotPassword();
 
   const forgotPasswordFormHandler = (data: any) => {
-    console.log(data);
-
     mutateForgotPassword(data);
   };
 

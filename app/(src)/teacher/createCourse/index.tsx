@@ -23,7 +23,6 @@ import Header from '../../componenets/Header';
 const ProfileTeacherCreateCourse = () => {
   console.log('Not completed');
   const [steper, setSteper] = useState(1);
-  console.log(steper);
 
   // // ساحتار اولیه برای شکل گیری فرم
   // const {
@@ -60,7 +59,6 @@ const ProfileTeacherCreateCourse = () => {
     setSteper((step) => step + 1);
     // ارسال دیتا
     // درصورت نیاز قبل از ارسال تغییرات نهایی لحاظ بشه
-    console.log(data);
   };
 
   // برای راحتی کار پارامتر ها اینجا قرار میگیرن.بعد فقط اینپوتس ارسال میشه سمت یو آی

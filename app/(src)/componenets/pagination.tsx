@@ -8,7 +8,6 @@ const PaginationCenter = ({ data, setCurrentPage, currentPage }: any) => {
     return;
   }
 
-  console.log('Pagination change location');
 
   return (
     data && (

@@ -22,7 +22,7 @@ const CourseList = ({ searchParams }: any) => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [params, setParams] = useState('');
-  const [Cid, setCid] = useState(showFirst?.category?.id);
+  const [Cid, setCid] = useState();
 
   const { data, refetch, isPending, isFetching } = useGetAllCourses(
     currentPage,
@@ -30,33 +30,22 @@ const CourseList = ({ searchParams }: any) => {
     params,
     Cid,
   );
-  console.log('data is -------------->', data);
+
   useEffect(() => {
     setCid(showFirst?.category?.id);
-  }, [showFirst]);
+  }, [showFirst.category]);
   useEffect(() => {
     refetch();
-  }, [currentPage, Cid]);
-  useEffect(() => {
-    let timer: any;
-    clearTimeout(timer);
-    let fetchData = () => {
-      clearTimeout(timer);
-      timer = setTimeout(() => {
-        refetch();
-      }, 1000);
-    };
-    fetchData();
   }, [params]);
 
   const categoryFormHandler = (data: any) => {
     console.log(data);
-    console.log(data);
-
     let category = JSON.parse(data.category);
+    console.log(category);
+    
 
-    setCid(category.id);
-    router.push(routes.courses + '/all?category=' + category.title);
+    // setCid(category.id);
+    // router.push(routes.courses + '/all?category=' + category.title);
   };
 
   console.log('Not completed');

@@ -9,10 +9,7 @@ const SuggestedCourses = () => {
   const { data } = useGetAllCourses();
 
   console.log('Not completed');
-  console.log(
-    data,
-    '----------------------------------------------------------------------------',
-  );
+ 
 
   return (
     <section className='pt-0'>

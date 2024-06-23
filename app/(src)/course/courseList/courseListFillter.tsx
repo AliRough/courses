@@ -30,7 +30,7 @@ const CourseListFillter = ({ data, params, setParams }: any) => {
       <div className='col-xl-3 mt-3 mt-xl-0'>
         <form className='border rounded p-2 input-borderless'>
           <select
-            className='form-select form-select-sm js-choice border-0'
+            className='form-select form-select-sm  border-0'
             aria-label='.form-select-sm'
           >
             <option value=''>پربازدیدترین</option>

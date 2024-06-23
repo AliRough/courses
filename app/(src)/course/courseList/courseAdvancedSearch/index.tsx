@@ -10,13 +10,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 
 const CourseAdvancedSearch = ({ searchParams, categoryFormHandler }: any) => {
-  console.log(
-    '++++++++++++++++++++===========================++++++++++++++++++====',
-    searchParams,
-  );
-
-  console.log('Not completed');
-
   const {
     // ساختار پارامتر`
     register,

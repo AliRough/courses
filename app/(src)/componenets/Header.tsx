@@ -19,10 +19,7 @@ export default function Header({ children }: any) {
   const { data: allCategoriesData, isPending: isCategoryPending } =
     useGetAllCategories();
 
-  console.log('allCategoriesData is', allCategoriesData);
 
-  console.log('hooooooooooook', userData);
-  console.log();
 
   const changeCategoryHandler = (e: any, category: any) => {
     e.preventDefault();

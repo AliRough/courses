@@ -5,7 +5,6 @@ export default function LoadingMiniPackage({ number }: any) {
   for (let i = 0; i < number; i++) {
     loadingCard.push(i + 1);
   }
-  console.log(number, loadingCard);
 
   return loadingCard.map((item) => (
     <div

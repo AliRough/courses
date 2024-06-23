@@ -26,7 +26,7 @@ export const CourseAllApi = async (
 
 export const CourseByIdApi = async (id: number) => {
   try {
-    const data = await axios.get('/api/courses/' + id);
+    const data = await axios.get('/api/courses/' + id + '?includeEpisodes');
     return data.data;
   } catch (error: any) {
     throw error.response.data;
@@ -38,6 +38,16 @@ export const getAllPackages = async (perPage?: any) => {
     const data = await axios.get(
       `/api/packages?perPage=${perPage ? perPage : ''}`,
     );
+
+    return data.data;
+  } catch (error: any) {
+    throw error;
+  }
+};
+
+export const getPackage = async (id: any) => {
+  try {
+    const data = await axios.get(`/api/packages/${id}?includeCourses`);
 
     return data.data;
   } catch (error: any) {

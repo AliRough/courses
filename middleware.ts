@@ -3,7 +3,6 @@ import type { NextRequest } from 'next/server';
 
 export function middleware(request: NextRequest) {
   const orginalPath: string = request.nextUrl.href;
-  // console.log(orginalPath);
 
   const newPath: string = ConvertUrlToStandard(orginalPath);
   let isToken: boolean = request.cookies.has('Authorization');

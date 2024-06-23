@@ -5,7 +5,6 @@ export default function LoadingCourse({ number }: any) {
   for (let i = 0; i < number; i++) {
     loadingCard.push(i + 1);
   }
-  console.log(number, loadingCard);
 
   return loadingCard.map((item) => (
     <div key={item} className='col-sm-6 col-xl-4 tw-animate-pulse'>

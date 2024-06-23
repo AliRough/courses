@@ -13,6 +13,8 @@ import { useEffect, useState } from 'react';
 const CourseAdvancedSearch = ({ changePackageHandler }: any) => {
   const [perPage, setPerPage] = useState(5);
   const { data: packages, refetch, isPending } = useGetAllPackages(perPage);
+  console.log('------>', packages);
+
   useEffect(() => {
     refetch();
   }, [perPage]);

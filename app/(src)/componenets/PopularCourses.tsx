@@ -19,7 +19,6 @@ export default function PopularCourses() {
   useEffect(() => {
     refetch();
   }, [tag]);
-  console.log('dat===============>', courses);
 
   return (
     <>

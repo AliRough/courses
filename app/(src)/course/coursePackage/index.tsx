@@ -3,7 +3,10 @@
 import HeaderBody from '@/app/(src)/componenets/headerBody';
 import PaginationCenter from '@/app/(src)/componenets/pagination';
 import CourseTile from '@/app/(src)/course/courseTile';
-import { useGetAllCourses } from '@/app/(src)/hooks/request/requestCourse';
+import {
+  useGetAllCourses,
+  useGetPackage,
+} from '@/app/(src)/hooks/request/requestCourse';
 import CoursePakageFillter from '@/app/(src)/course/coursePackage/coursePakageFillter';
 import CourseAdvancedSearch from '@/app/(src)/course/coursePackage/courseAdvancedSearch';
 import Newsletter from '@/app/(src)/componenets/other/newsletter';
@@ -15,36 +18,44 @@ import LoadingPackage from '../../componenets/other/loading/package';
 import { routes } from '../../routes';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import { useRecoilState } from 'recoil';
+import { packageIdState, showfirstState } from '../../state/atoms';
 
 const CoursePakage = ({ params }: any) => {
-  const [category, setCategory] = useState(params.Pid);
+  const router = useRouter();
 
-  const [currentPage, setCurrentPage] = useState(1);
+  const [packageId, setPackageId] = useRecoilState(packageIdState);
 
   const [param, setParam] = useState();
 
   const {
-    data: allCourses,
+    data: Package,
     refetch,
     isPending,
     isFetching,
-  } = useGetAllCourses(currentPage, 5, param, category);
-  const router = useRouter();
+  } = useGetPackage(packageId);
+
+  console.log(Package, packageId);
+
   const changePackageHandler = (e: any, pack: any) => {
     e.preventDefault();
-    setCategory(pack.Id);
-    router.push(routes.packages + '/' + pack.title);
+    console.log(e, pack);
+    setPackageId(pack.id);
   };
 
   useEffect(() => {
+    router.push(routes.packages + '/' + Package?.data.title);
+  }, [packageId]);
+
+  useEffect(() => {
     refetch();
-  }, [category, currentPage, param]);
+  }, [param]);
 
   console.log('Not completed');
 
   return (
     <>
-      <HeaderBody name={'طراحی وب '} />
+      <HeaderBody name={Package?.data.title} />
       <section className='py-5'>
         <div className='container'>
           <div className='row'>
@@ -109,8 +120,8 @@ const CoursePakage = ({ params }: any) => {
               <div className=' md:tw-w-3/4 tw-w-full justify-content-center ps-3'>
                 {Boolean(isPending || isFetching) ? (
                   <LoadingPackage number={4} />
-                ) : allCourses?.data.data.length ? (
-                  allCourses?.data?.data.map((e: any, index: number) => (
+                ) : Package?.data.courses.length ? (
+                  Package?.data.courses.map((e: any, index: number) => (
                     <>
                       <Link
                         key={e.id}
@@ -190,14 +201,6 @@ const CoursePakage = ({ params }: any) => {
                     دوره ی مورد نظر شما یافت نشد !
                   </div>
                 )}
-
-                <div className='col-12'>
-                  <PaginationCenter
-                    data={allCourses}
-                    setCurrentPage={setCurrentPage}
-                    currentPage={currentPage}
-                  />
-                </div>
               </div>
               <CourseAdvancedSearch
                 changePackageHandler={changePackageHandler}
@@ -206,7 +209,6 @@ const CoursePakage = ({ params }: any) => {
           </div>
         </div>
       </section>
-      {/* <Newsletter /> */}
     </>
   );
 };

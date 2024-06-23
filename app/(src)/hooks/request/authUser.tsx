@@ -152,8 +152,6 @@ export const useRegisterUser = () => {
   return useMutation({
     mutationFn: (formData: any) => api.registerUser(formData),
     onSuccess: (data) => {
-      console.log('hoookdataaaaaa is', data);
-
       queryClient.invalidateQueries({ queryKey: ['userData'] });
 
       setCookie('Authorization', data.data.accessToken, { path: '/' });

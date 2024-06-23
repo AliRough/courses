@@ -12,8 +12,6 @@ const Testimonials = () => {
 
   // Catch Rating value
   const handleRating = (rate: number) => {
-    console.log(rate);
-
     setRating(rate);
 
     // other logic

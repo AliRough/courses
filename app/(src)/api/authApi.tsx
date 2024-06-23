@@ -14,10 +14,6 @@ axios.defaults.baseURL = baseUrl;
 export const registerUser = async (formData: any) => {
   try {
     const data = await axios.post(`api/auth/register`, formData);
-    console.log(data);
-    if (data.status === 201) {
-      console.log(formData);
-    }
 
     return data;
   } catch (error: any) {
@@ -28,10 +24,6 @@ export const registerUser = async (formData: any) => {
 export const logInUser = async (formData: any) => {
   try {
     const data = await axios.post(`api/auth/login`, formData);
-    console.log(data);
-    if (data.status === 201) {
-      console.log(formData);
-    }
 
     return data;
   } catch (error: any) {
@@ -45,10 +37,6 @@ export const forgotPassword = async (formData: any) => {
       `api/auth/password/send-reset-link`,
       formData,
     );
-    console.log(data);
-    if (data.status === 200) {
-      console.log(formData);
-    }
 
     return data;
   } catch (error: any) {
@@ -59,10 +47,6 @@ export const forgotPassword = async (formData: any) => {
 export const resetPassword = async (formData: any) => {
   try {
     const data = await axios.post(`api/auth/password/reset`, formData);
-    console.log(data);
-    if (data.status === 200) {
-      console.log(formData);
-    }
 
     return data;
   } catch (error: any) {
@@ -135,7 +119,6 @@ export const deleteUserAvatar = async (token: any) => {
       toast.error(error.response.data.message);
       throw new Error(error.response.data.message);
     });
-  console.log(data);
 
   if (data.status === 200) {
     toast.success('عکس شما با موفقیت تغییر کرد');
@@ -143,8 +126,6 @@ export const deleteUserAvatar = async (token: any) => {
 };
 
 export const changeUserAvatar = async (formData: any, token: any) => {
-  console.log(formData);
-
   let config = {
     method: 'post',
     maxBodyLength: Infinity,
@@ -168,7 +149,6 @@ export const changeUserAvatar = async (formData: any, token: any) => {
       toast.error(error.response.data.message);
       throw new Error(error.response.data.message);
     });
-  console.log(data);
 };
 
 export const getUserByToken = async (token: string) => {
@@ -194,9 +174,7 @@ export const logOutUser = async (token: string) => {
   };
   axios
     .request(config)
-    .then((response) => {
-      console.log(JSON.stringify(response.data));
-    })
+    .then((response) => {})
     .catch((error) => {
       console.log(error);
       throw new Error(error.message);
@@ -231,7 +209,6 @@ export const sendVerificationEmail = async (token: string) => {
   const data = axios
     .request(config)
     .then((response: any) => {
-      console.log(JSON.stringify(response.data));
       toast.success(response.data.message);
     })
     .catch((error: any) => {

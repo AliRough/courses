@@ -17,7 +17,6 @@ const InstructorListItem = ({ data }: { data: TInstructorListItem }) => {
     social_media,
   } = data;
 
-  console.log('link نام مدرس');
 
   return (
     <div className='col-lg-10 col-xl-6'>

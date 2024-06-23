@@ -63,7 +63,6 @@ const ProfileStudentEditProfile = () => {
 
   const sendVerification = async (e: any) => {
     e.preventDefault();
-    console.log(cookies.Authorization);
     const data = await sendVerificationEmail(cookies.Authorization);
   };
 
@@ -90,8 +89,6 @@ const ProfileStudentEditProfile = () => {
   };
 
   useEffect(() => {
-    console.log('useEffect', userData);
-
     setValue('name', userData?.name);
     setValue('aliasName', userData?.aliasName);
   }, [userData]);

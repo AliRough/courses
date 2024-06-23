@@ -4,8 +4,12 @@ import React, { useEffect, useState } from 'react';
 import { getAllPackages } from '../api/courseApi';
 import { useGetAllPackages } from '../hooks/request/requestCourse';
 import { routes } from '../routes';
+import { useRecoilState } from 'recoil';
+import { packageIdState } from '../state/atoms';
 
 export default function Counter() {
+  const [packageId, setPackageId] = useRecoilState(packageIdState);
+
   const { data: packages } = useGetAllPackages();
 
   const dataicon: any = [
@@ -64,7 +68,12 @@ Counter START */}
                   className='col-3 col-sm-3 col-lg-2 col-xl-2 px-1   '
                   key={index}
                 >
-                  <div className='card card-body rounded-3 px-0  md:tw-border tw-border-gray-200 tw-bg-transparent md:tw-bg-white'>
+                  <div
+                    onClick={() => {
+                      setPackageId(c.id);
+                    }}
+                    className='card card-body rounded-3 px-0  md:tw-border tw-border-gray-200 tw-bg-transparent md:tw-bg-white'
+                  >
                     <div className='d-flex flex-column   align-items-center justify-content-center   '>
                       {/* Icon */}
                       <div
@@ -89,7 +98,7 @@ Counter START */}
                       <div className='mt-2'>
                         <h5 className='mb-0 fw-normal h6 text-center fw-normal  '>
                           <Link
-                            href={`${routes.packages}/${c.id}`}
+                            href={`${routes.packages}/${c.title}`}
                             className='stretched-link'
                           >
                             {c.title}

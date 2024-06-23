@@ -5,7 +5,6 @@ import CoursesSlider from './other/CoursesSlider';
 
 export default function TrendingCourses() {
   const { data: courses } = useGetAllCourses();
-  console.log(courses?.data);
 
   return (
     <>
