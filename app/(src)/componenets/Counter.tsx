@@ -77,7 +77,7 @@ Counter START */}
                   >
                     <div className='d-flex flex-column   align-items-center justify-content-center   '>
                       {/* Icon */}
-                      <div className='min-[520px]:tw-w-1/4'>
+                      <div className='sm:tw-w-1/4 tw-w-1/2'>
                         <Image
                           width={100}
                           height={100}
@@ -91,7 +91,7 @@ Counter START */}
                         <h5 className='mb-0 fw-normal h6 text-center fw-normal  '>
                           <Link
                             href={`${routes.packages}/${pack.slug}`}
-                            className='stretched-link'
+                            className='stretched-link !tw-text-xs sm:tw-text-base'
                           >
                             {pack.title}
                           </Link>
