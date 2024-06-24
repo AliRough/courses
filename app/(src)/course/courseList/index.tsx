@@ -18,11 +18,10 @@ import { showfirstState } from '../../state/atoms';
 
 const CourseList = ({ searchParams }: any) => {
   const router = useRouter();
-  const [showFirst, setShowFirst]: any = useRecoilState(showfirstState);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [params, setParams] = useState('');
-  const [Cid, setCid] = useState();
+  const [Cid, setCid] = useState(searchParams.category);
 
   const { data, refetch, isPending, isFetching } = useGetAllCourses(
     currentPage,
@@ -32,20 +31,13 @@ const CourseList = ({ searchParams }: any) => {
   );
 
   useEffect(() => {
-    setCid(showFirst?.category?.id);
-  }, [showFirst.category]);
-  useEffect(() => {
     refetch();
   }, [params]);
 
   const categoryFormHandler = (data: any) => {
     console.log(data);
-    let category = JSON.parse(data.category);
-    console.log(category);
-    
 
-    // setCid(category.id);
-    // router.push(routes.courses + '/all?category=' + category.title);
+    setCid(data.category);
   };
 
   console.log('Not completed');

@@ -37,15 +37,9 @@ const CoursePakage = ({ params }: any) => {
 
   console.log(Package, packageId);
 
-  const changePackageHandler = (e: any, pack: any) => {
-    e.preventDefault();
-    console.log(e, pack);
-    setPackageId(pack.id);
+  const changePackageHandler = (pack: any) => {
+    setPackageId(pack.slug);
   };
-
-  useEffect(() => {
-    router.push(routes.packages + '/' + Package?.data.title);
-  }, [packageId]);
 
   useEffect(() => {
     refetch();
@@ -120,7 +114,7 @@ const CoursePakage = ({ params }: any) => {
               <div className=' md:tw-w-3/4 tw-w-full justify-content-center ps-3'>
                 {Boolean(isPending || isFetching) ? (
                   <LoadingPackage number={4} />
-                ) : Package?.data.courses.length ? (
+                ) : Package?.data.courses?.length ? (
                   Package?.data.courses.map((e: any, index: number) => (
                     <>
                       <Link
@@ -142,9 +136,8 @@ const CoursePakage = ({ params }: any) => {
                                 width={100}
                                 height={100}
                                 className='tw-w-full tw-rounded-xl overflow-hidden xl:tw-aspect-[4/3] tw-aspect-square tw-shadow-md tw-object-cover '
-                                // src={ process.env.NEXT_PUBLIC_ASSETS_URL + e.cover}
-                                src={`/images/courses/4by3/${Math.floor(Math.random() * 16) + 1}.jpg`}
-                                alt={e.cover}
+                                src={e.cover}
+                                alt={e.title}
                               />
                             </div>
                             <div className='tw-w-4/5 tw-flex tw-flex-col  tw-ps-6'>
@@ -182,7 +175,7 @@ const CoursePakage = ({ params }: any) => {
                                   </svg>
 
                                   <span className='tw-w-max sm:text-base tw-text-xs'>
-                                    {e.teacherName}
+                                    {e.teacher.name}
                                   </span>
                                 </div>
 
@@ -203,6 +196,7 @@ const CoursePakage = ({ params }: any) => {
                 )}
               </div>
               <CourseAdvancedSearch
+                params={params}
                 changePackageHandler={changePackageHandler}
               />
             </div>

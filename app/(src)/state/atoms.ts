@@ -18,7 +18,7 @@ export const authUserState: any = atom({
 
 export const packageIdState: any = atom({
   key: 'PackageId',
-  default: null,
+  default: undefined,
 });
 
 export const showfirstState: any = atom({

@@ -57,11 +57,7 @@ export default function Profile({ name, email }: any) {
           width={100}
           height={100}
           className='avatar-img rounded-circle'
-          src={
-            (userData?.avatar &&
-              process.env.NEXT_PUBLIC_APP_URL + userData?.avatar) ||
-            '/images/avatar/User.png'
-          }
+          src={userData?.avatar || '/images/avatar/User.png'}
           alt='avatar'
         />
       </a>
@@ -79,11 +75,7 @@ export default function Profile({ name, email }: any) {
                 width={100}
                 height={100}
                 className='avatar-img rounded-circle shadow'
-                src={
-                  (userData?.avatar &&
-                    process.env.NEXT_PUBLIC_APP_URL + userData?.avatar) ||
-                  '/images/avatar/User.png'
-                }
+                src={userData?.avatar || '/images/avatar/User.png'}
                 alt='avatar'
               />
             </div>

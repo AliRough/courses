@@ -2,6 +2,7 @@
 
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { boolean } from 'zod';
 
 const baseUrl = process.env.NEXT_PUBLIC_APP_URL;
 
@@ -11,11 +12,11 @@ export const CourseAllApi = async (
   page?: any,
   perPage?: any,
   param?: any,
-  Cid?: any,
+  Cslug?: any,
 ) => {
   try {
     const data = await axios.get(
-      `/api/courses?perPage=${perPage ? perPage : ''}${page ? '&page=' + page : ''}&title[lk]=%${param ? param : ''}%&categoryId[eq]=${Cid ? Cid : ''}`,
+      `/api/courses?perPage=${perPage ? perPage : ''}${page ? '&page=' + page : ''}&title[lk]=%${param ? param : ''}%&category[eq]=${Cslug ? Cslug : ''}`,
     );
 
     return { data: data.data, perPage };
@@ -47,9 +48,10 @@ export const getAllPackages = async (perPage?: any) => {
 
 export const getPackage = async (id: any) => {
   try {
-    const data = await axios.get(`/api/packages/${id}?includeCourses`);
-
-    return data.data;
+    if (id) {
+      const data = await axios.get(`/api/packages/${id}?includeCourses`);
+      return data.data;
+    }
   } catch (error: any) {
     throw error;
   }

@@ -126,11 +126,7 @@ const ProfileStudentEditProfile = () => {
                       height='500'
                       id='uploadfile-1-preview'
                       className='avatar-img rounded-circle border border-white border-3 shadow'
-                      src={
-                        (userData?.avatar &&
-                          process.env.NEXT_PUBLIC_APP_URL + userData?.avatar) ||
-                        '/images/avatar/User.png'
-                      }
+                      src={userData?.avatar || '/images/avatar/User.png'}
                       alt=''
                     />
                   </span>

@@ -205,12 +205,9 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                     <div className='card card-body border p-4'>
                       {course && (
                         <img
-                          className='rounded-3 mb-3'
-                          src={`/images/courses/4by3/${Math.floor(Math.random() * 16) + 1}.jpg`}
-                          // src={
-                          //   process.env.NEXT_PUBLIC_ASSETS_URL +
-                          //   course?.data?.cover
-                          // }
+                          className='rounded-3 mb-3 '
+                          // src={`/images/courses/4by3/${Math.floor(Math.random() * 16) + 1}.jpg`}
+                          src={course?.data?.cover}
                           alt=''
                         />
                       )}

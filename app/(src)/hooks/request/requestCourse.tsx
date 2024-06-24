@@ -10,11 +10,11 @@ export const useGetAllCourses = (
   page?: number,
   perPage?: number,
   params?: string,
-  Cid?: any,
+  Cslug?: any,
 ) => {
   return useQuery({
-    queryKey: ['course_all', 'categoryId ' + Cid, 'pageNumber ' + page],
-    queryFn: () => api.CourseAllApi(page, perPage, params, Cid),
+    queryKey: ['course_all', 'categoryId ' + Cslug, 'pageNumber ' + page],
+    queryFn: () => api.CourseAllApi(page, perPage, params, Cslug),
   });
 };
 
@@ -31,9 +31,9 @@ export const useGetAllPackages = (perPage?: any) => {
     queryFn: () => api.getAllPackages(perPage),
   });
 };
-export const useGetPackage = (id?: any) => {
+export const useGetPackage = (id: any) => {
   return useQuery({
-    queryKey: ['Package ', id],
+    queryKey: ['Package', id],
     queryFn: () => api.getPackage(id),
   });
 };

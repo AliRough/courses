@@ -28,10 +28,11 @@ const CourseTile = ({ data }: { data: any }) => {
         unoptimized={true}
         blurDataURL={`/images/courses/4by3/artist.svg`}
         placeholder='blur'
-        src={`/images/courses/4by3/${Math.floor(Math.random() * 16) + 1}.jpg`}
+        src={data?.cover}
+        // src={`/images/courses/4by3/${Math.floor(Math.random() * 16) + 1}.jpg`}
         width='500'
         height='500'
-        className='card-img-top !tw-w-full tw-aspect-[4/3] overflow-hidden'
+        className='card-img-top !tw-w-full tw-aspect-[4/3] overflow-hidden '
         alt='course image'
       />
       <div className='card-body pb-0'>

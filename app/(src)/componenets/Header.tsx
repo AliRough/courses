@@ -19,8 +19,6 @@ export default function Header({ children }: any) {
   const { data: allCategoriesData, isPending: isCategoryPending } =
     useGetAllCategories();
 
-
-
   const changeCategoryHandler = (e: any, category: any) => {
     e.preventDefault();
 
@@ -28,7 +26,7 @@ export default function Header({ children }: any) {
       ...data,
       category: category,
     }));
-    router.push(`${routes.courses}/all?category=${category?.title}`);
+    router.push(`${routes.courses}/all?category=${category?.slug}`);
   };
 
   return (

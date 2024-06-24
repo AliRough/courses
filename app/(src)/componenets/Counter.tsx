@@ -6,6 +6,7 @@ import { useGetAllPackages } from '../hooks/request/requestCourse';
 import { routes } from '../routes';
 import { useRecoilState } from 'recoil';
 import { packageIdState } from '../state/atoms';
+import Image from 'next/image';
 
 export default function Counter() {
   const [packageId, setPackageId] = useRecoilState(packageIdState);
@@ -63,45 +64,36 @@ Counter START */}
         <section className=''>
           <div className='container '>
             <div className='row g-sm-4 g-2'>
-              {packages?.data?.map((c: any, index: any) => (
+              {packages?.data?.map((pack: any, index: any) => (
                 <div
                   className='col-3 col-sm-3 col-lg-2 col-xl-2 px-1   '
                   key={index}
                 >
                   <div
                     onClick={() => {
-                      setPackageId(c.id);
+                      setPackageId(pack.id);
                     }}
                     className='card card-body rounded-3 px-0  md:tw-border tw-border-gray-200 tw-bg-transparent md:tw-bg-white'
                   >
                     <div className='d-flex flex-column   align-items-center justify-content-center   '>
                       {/* Icon */}
-                      <div
-                        className={
-                          dataicon.length > index
-                            ? dataicon[index]?.divStyle
-                            : dataicon[
-                                Math.floor(Math.random() * dataicon.length)
-                              ]?.divStyle
-                        }
-                      >
-                        <i
-                          className={
-                            dataicon.length > index
-                              ? dataicon[index]?.iconStyle
-                              : dataicon[
-                                  Math.floor(Math.random() * dataicon.length)
-                                ]?.iconStyle
-                          }
+                      <div className='min-[520px]:tw-w-1/4'>
+                        <Image
+                          width={100}
+                          height={100}
+                          className=' tw-rounded-full tw-aspect-square tw-bg-cover'
+                          src={pack.cover}
+                          alt=''
                         />
                       </div>
+
                       <div className='mt-2'>
                         <h5 className='mb-0 fw-normal h6 text-center fw-normal  '>
                           <Link
-                            href={`${routes.packages}/${c.title}`}
+                            href={`${routes.packages}/${pack.slug}`}
                             className='stretched-link'
                           >
-                            {c.title}
+                            {pack.title}
                           </Link>
                         </h5>
                       </div>

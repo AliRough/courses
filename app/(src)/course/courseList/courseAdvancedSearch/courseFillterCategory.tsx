@@ -21,7 +21,7 @@ const CourseFillterCategory = ({ input }: any) => {
                   name='category'
                   className='form-check-input'
                   type='radio'
-                  value={JSON.stringify(category)}
+                  value={category.slug}
                   id={'flexCheckDefault9'}
                   {...input.category}
                 />

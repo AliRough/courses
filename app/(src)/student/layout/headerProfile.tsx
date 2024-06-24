@@ -31,11 +31,7 @@ const LayoutProfileStudentHeader = () => {
                       width='500'
                       height='500'
                       className='avatar-img rounded-circle border border-white border-3 shadow'
-                      src={
-                        (userData?.avatar &&
-                          process.env.NEXT_PUBLIC_APP_URL + userData?.avatar) ||
-                        '/images/avatar/User.png'
-                      }
+                      src={userData?.avatar || '/images/avatar/User.png'}
                       alt=''
                     />
                     <span className='badge text-bg-success rounded-pill position-absolute top-50 start-100 translate-middle mt-4 mt-md-5 ms-n3 px-md-3'>

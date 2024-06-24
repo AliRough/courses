@@ -8,6 +8,12 @@ const nextConfig = {
         port: '',
         pathname: '/files/course/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'edu-cloud.storage.iran.liara.space',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
 };
