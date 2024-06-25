@@ -3,8 +3,6 @@
 import Image from 'next/image';
 
 const ProfileTeacherEditProfile = () => {
-  console.log('Not completed');
-
   return (
     <>
       <div className='card bg-transparent border rounded-3'>

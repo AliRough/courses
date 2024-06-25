@@ -7,7 +7,7 @@
 @import url('../public/vendor/apexcharts/css/apexcharts.css');
 @import url('../public/vendor/quill/css/quill.snow.css');
 @import url('../public/style-rtl.css');
-
+@import url('../public/vendor/plyr/plyr.css');
 
 @tailwind components;
 @tailwind utilities;

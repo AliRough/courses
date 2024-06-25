@@ -3,8 +3,6 @@
 import Image from 'next/image';
 
 const ProfileTeacherDashboard = () => {
-  console.log('Not completed');
-
   return (
     <>
       <div className='row g-4'>

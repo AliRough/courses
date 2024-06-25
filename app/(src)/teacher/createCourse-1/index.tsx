@@ -3,8 +3,6 @@
 import Image from 'next/image';
 
 const ProfileTeacherCreateCourse = () => {
-  console.log('Not completed');
-
   return (
     <>
       <section
@@ -116,7 +114,7 @@ const ProfileTeacherCreateCourse = () => {
               </div>
               <div className='card-body'>
                 <div className='bs-stepper-content'>
-                  <form >
+                  <form>
                     <div
                       id='step-1'
                       role='tabpanel'
@@ -939,9 +937,8 @@ const ProfileTeacherCreateCourse = () => {
                               ثبت دوره
                             </a>
                             <p className='mb-0 small mt-1'>
-                              پس از کلیک بر روی ارسال یک دوره، دوره شما آپلود
-                              می شود و به عنوان در انتظار بررسی علامت گذاری می
-                              شود.
+                              پس از کلیک بر روی ارسال یک دوره، دوره شما آپلود می
+                              شود و به عنوان در انتظار بررسی علامت گذاری می شود.
                             </p>
                           </div>
                         </div>

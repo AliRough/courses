@@ -1,8 +1,6 @@
 'use client';
 
 const ProfileStudentSetting = () => {
-  console.log('Not completed');
-
   return (
     <div className='border rounded-3'>
       <div className='row'>

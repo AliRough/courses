@@ -4,8 +4,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const LayoutProfileTeacherHeader = () => {
-  console.log('Not completed');
-
   return (
     <section className='pt-0'>
       <div className='container-fluid px-0'>

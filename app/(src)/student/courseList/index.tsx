@@ -14,12 +14,6 @@ const ProfileStudentCourseList = () => {
     refetch,
     isPending,
   } = useGetAllCourses(currentPage, 9, params, Cid);
-  console.log(
-    courses,
-    'hiafieauigffaiugduuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu',
-  );
-
-  console.log('Not completed');
 
   return (
     <div className='card bg-transparent border rounded-3'>
@@ -46,10 +40,7 @@ const ProfileStudentCourseList = () => {
           </div>
           <div className='col-md-3'>
             <form>
-              <select
-                className='form-select js-choice border-0 z-index-9 bg-transparent'
-                aria-label='.form-select-sm'
-              >
+              <select className='form-select  border-0 z-index-9 bg-transparent'>
                 <option value=''>مرتب سازی</option>
                 <option>رایگان</option>
                 <option>جدیدترین</option>

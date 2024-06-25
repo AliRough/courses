@@ -17,8 +17,6 @@ const InstructorDetail = ({ params }: { params: { id: number } }) => {
   const { data } = useInstructorById(id);
   console.log(data);
 
-  console.log('Not completed');
-
   return (
     <>
       <section className='pt-5 pb-8'>

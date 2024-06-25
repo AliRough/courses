@@ -1,8 +1,6 @@
 'use client';
 
 const ProfileStudentSubscription = () => {
-  console.log('Not completed');
-
   return (
     <div className='card card-body bg-transparent border rounded-3'>
       <div className='row g-4'>

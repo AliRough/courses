@@ -8,9 +8,6 @@ import { TCourses } from '@/app/(src)/model/course.d';
 const SuggestedCourses = () => {
   const { data } = useGetAllCourses();
 
-  console.log('Not completed');
- 
-
   return (
     <section className='pt-0'>
       <div className='container'>

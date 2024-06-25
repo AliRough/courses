@@ -13,8 +13,6 @@ type TMenu = {
 const LayoutProfileTeacherSidebarMenu = ({
   children,
 }: Readonly<{ children: React.ReactNode }>) => {
-  console.log('Not completed');
-
   const menu: TMenu[] = [
     { name: 'داشبورد', link: 'dashboard', icon: 'bi-ui-checks-grid' },
     { name: 'لیست دوره ها', link: 'manage-course', icon: 'bi-basket' },

@@ -1,8 +1,6 @@
 'use client';
 
 const ProfileStudentDeleteAccount = () => {
-  console.log('Not completed');
-
   return (
     <div className='card border bg-transparent rounded-3 mb-0'>
       <div className='card-header bg-transparent border-bottom'>

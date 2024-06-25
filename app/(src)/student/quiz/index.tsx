@@ -3,8 +3,6 @@
 import Image from 'next/image';
 
 const ProfileStudentQuiz = () => {
-  console.log('Not completed');
-
   return (
     <div className='card border'>
       <div className='card-header border-bottom'>

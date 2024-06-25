@@ -3,8 +3,6 @@
 import Image from 'next/image';
 
 const ProfileStudentBookmark = () => {
-  console.log('Not completed');
-
   return (
     <div className='card bg-transparent border rounded-3'>
       <div className='card-header bg-transparent border-bottom'>

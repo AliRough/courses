@@ -57,7 +57,7 @@ const ProfileStudentEditProfile = () => {
       },
     });
   };
-  console.log('Not completed');
+
   const [cookies, setCookie, removeCookie] = useCookies(['Authorization']);
   const { data: userData } = useGetUser();
 
@@ -211,7 +211,7 @@ const ProfileStudentEditProfile = () => {
                     className='tw-h-8 tw-absolute end-0 top-0 text-danger m-1'
                   >
                     <path
-                      stroke-linecap='round'
+                      strokeLinecap='round'
                       stroke-linejoin='round'
                       d='M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z'
                     />
@@ -226,7 +226,7 @@ const ProfileStudentEditProfile = () => {
                     className='tw-h-8 tw-absolute end-0 top-0 text-success m-1'
                   >
                     <path
-                      stroke-linecap='round'
+                      strokeLinecap='round'
                       stroke-linejoin='round'
                       d='M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z'
                     />

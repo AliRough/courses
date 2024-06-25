@@ -9,7 +9,6 @@ import { TCourses } from '@/app/(src)/model/course.d';
 import { routes } from '../../routes';
 
 const PackageCourseTile = ({ data }: { data: any }) => {
-  console.log('Not completed');
   console.log(data);
 
   return (

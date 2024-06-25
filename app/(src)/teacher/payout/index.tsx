@@ -1,8 +1,6 @@
 'use client';
 
 const ProfileTeacherPayout = () => {
-  console.log('Not completed');
-
   return (
     <>
       <div className='row g-4 mb-4'>

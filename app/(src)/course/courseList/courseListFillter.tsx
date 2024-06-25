@@ -1,7 +1,6 @@
 'use client';
 
 const CourseListFillter = ({ data, params, setParams }: any) => {
-  console.log('Not completed');
   console.log('dataaaaaa', data);
 
   return (

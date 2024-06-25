@@ -2,11 +2,10 @@
 
 import Image from 'next/image';
 import { useGetUser } from '../../hooks/request/authUser';
+import Link from 'next/link';
 
 const LayoutProfileStudentHeader = () => {
   const { data: userData } = useGetUser();
-
-  console.log('Not completed');
 
   return (
     <section className='pt-0 pb-0'>
@@ -44,28 +43,28 @@ const LayoutProfileStudentHeader = () => {
                     <h1 className='my-3 fs-4'>{userData?.name}</h1>
                     <ul className='list-inline mb-0'>
                       <li className='list-inline-item me-3 mb-1 mb-sm-0'>
-                        <span className='h6'>255</span>
+                        <span className='h6 tw-pe-1'>۰</span>
                         <span className='text-body fw-light'>امتیازات</span>
                       </li>
                       <li className='list-inline-item me-3 mb-1 mb-sm-0'>
-                        <span className='h6'>7</span>
+                        <span className='h6 tw-pe-1'>۰</span>
                         <span className='text-body fw-light'>
                           دوره های تکمیل شده
                         </span>
                       </li>
                       <li className='list-inline-item me-3 mb-1 mb-sm-0'>
-                        <span className='h6'>52</span>
+                        <span className='h6 tw-pe-1'>۰</span>
                         <span className='text-body fw-light'>ویدیو</span>
                       </li>
                     </ul>
                   </div>
                   <div className='mt-2 mt-sm-0'>
-                    <a
-                      href='student-course-list.html'
+                    <Link
+                      href='/profile/course-list'
                       className='btn btn-outline-primary mb-0'
                     >
                       مشاهده دوره های من
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>

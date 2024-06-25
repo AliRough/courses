@@ -40,8 +40,6 @@ const CourseList = ({ searchParams }: any) => {
     setCid(data.category);
   };
 
-  console.log('Not completed');
-
   return (
     <>
       <HeaderBody name={searchParams.category} />

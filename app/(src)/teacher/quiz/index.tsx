@@ -3,8 +3,6 @@
 import Image from 'next/image';
 
 const ProfileTeacherQuiz = () => {
-  console.log('Not completed');
-
   return (
     <>
       <div className='card border bg-transparent rounded-3'>

@@ -11,8 +11,6 @@ const ProfileTeacherCreateCourseUi = ({
   price,
   plus,
 }: TCreateCourseProps) => {
-  console.log('Not completed');
-
   return (
     <form onSubmit={handleSubmit(submit)}>
       <input type='text' {...input.price} placeholder='price' />
@@ -25,8 +23,6 @@ const ProfileTeacherCreateCourseUi = ({
         name='price'
         render={({ message }) => <p className='text-danger'>{message}</p>}
       />
-
-      
 
       <button>کلیک</button>
     </form>

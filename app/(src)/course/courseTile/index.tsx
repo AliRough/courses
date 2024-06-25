@@ -9,30 +9,16 @@ import { TCourses } from '@/app/(src)/model/course.d';
 import { routes } from '../../routes';
 
 const CourseTile = ({ data }: { data: any }) => {
-  console.log('Not completed');
-
   return (
     <div className='card shadow h-100 tw-max-w-96 rounded-4 overflow-hidden tw-w-full '>
-      {/* <Image
-        unoptimized={true}
-        src={
-          (data?.image && '/' + data?.image) ||
-          process.env.NEXT_PUBLIC_ASSETS_URL  + data?.cover
-        }
-        width='500'
-        height='500'
-        className='card-img-top'
-        alt='course image'
-      /> */}
       <Image
         unoptimized={true}
         blurDataURL={`/images/courses/4by3/artist.svg`}
         placeholder='blur'
         src={data?.cover}
-        // src={`/images/courses/4by3/${Math.floor(Math.random() * 16) + 1}.jpg`}
         width='500'
         height='500'
-        className='card-img-top !tw-w-full tw-aspect-[4/3] overflow-hidden '
+        className='card-img-top !tw-w-full tw-aspect-[4/3] overflow-hidden tw-object-cover '
         alt='course image'
       />
       <div className='card-body pb-0'>

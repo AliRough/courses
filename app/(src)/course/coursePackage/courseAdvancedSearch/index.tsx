@@ -24,8 +24,6 @@ const CourseAdvancedSearch = ({ changePackageHandler, params }: any) => {
     refetch();
   }, [perPage]);
 
-  console.log('Not completed');
-
   return (
     <div className='tw-w-1/4 ps-2 md:tw-block tw-hidden '>
       <div className='tw-bg-white tw-rounded-xl tw-shadow-lg p-2  '>

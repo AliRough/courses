@@ -42,12 +42,14 @@ Popular course START */}
             id='course-pills-tab'
             role='tablist'
           >
+            <>{console.log(categories)}</>
             {categories?.data?.map((category: any) => (
-              <li key={category} className='nav-item me-2 me-sm-5'>
+              <li key={category.id} className='nav-item me-2 me-sm-5'>
+                <>{console.log(category)}</>
                 <button
-                  className={`nav-link mb-2 mb-md-0 ${tag === category.id && 'active'}`}
+                  className={`nav-link mb-2 mb-md-0 ${tag === category.slug && 'active'}`}
                   onClick={() => {
-                    setTag(category.id);
+                    setTag(category.slug);
                   }}
                 >
                   {category.title}{' '}

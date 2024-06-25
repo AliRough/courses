@@ -21,7 +21,6 @@ import { useState } from 'react';
 import Header from '../../componenets/Header';
 
 const ProfileTeacherCreateCourse = () => {
-  console.log('Not completed');
   const [steper, setSteper] = useState(1);
 
   // // ساحتار اولیه برای شکل گیری فرم

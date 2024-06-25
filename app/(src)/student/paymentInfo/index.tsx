@@ -3,8 +3,6 @@
 import Image from 'next/image';
 
 const ProfileStudentPaymentInfo = () => {
-  console.log('Not completed');
-
   return (
     <>
       <div className='card bg-transparent border rounded-3 mb-4 z-index-9'>

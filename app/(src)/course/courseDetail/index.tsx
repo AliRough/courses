@@ -1,6 +1,8 @@
 'use client';
 
-import { Fragment } from 'react';
+import { Fragment, useEffect, useState } from 'react';
+import Video from 'next-video';
+
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -10,19 +12,20 @@ import Testimonials from '@/app/(src)/testimonials';
 import { TCurriculum, TCurriculumDetail } from '@/app/(src)/model/course.d';
 import { TFaq, TTag } from '@/app/(src)/model/other.d';
 import TrendingCourses from '@/app/(src)/componenets/TrendingCourses';
-import Script from 'next/script';
 import RatingStar from '../../componenets/other/raiting';
 import { postComments } from '../../api/courseApi';
 import { useCookies } from 'react-cookie';
+import { toast } from 'react-toastify';
 
 const CourseDetail = ({ params }: { params: { id: number } }) => {
   const [cookies, setCookie, removeCookie] = useCookies(['Authorization']);
-
   const { id } = params;
 
   const { data: course } = useCourseById(id);
-
-  console.log('Not completed');
+  const [showVideo, setShowVideo] = useState<any>();
+  useEffect(() => {
+    setShowVideo(course?.data.episodes[0]);
+  }, [course]);
 
   let getDateFormat = (uDate: any) => {
     let date = new Intl.DateTimeFormat('fa-IR').format(uDate);
@@ -37,11 +40,16 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
     let { course }: any = await postComments(formData, cookies.Authorization);
     console.log(course);
   };
+
+  const lockedCourseHandler = () => {
+    toast.warning('برای مشاهده ابتدا وارد شوید');
+    toast.warning('برای مشاهده ابتدا دوره را  خریداری کنید');
+  };
   return (
     <>
       <section className='pt-3 pt-xl-5'>
         <button onClick={handler}>click</button>
-        <div className='container ' course-stickyContainer>
+        <div className='container '>
           <div className='row g-4  '>
             {/* Main content START */}
             <div className='col-xl-8'>
@@ -67,42 +75,23 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                 {/* Title END */}
                 {/* Image and video */}
                 <div className='col-12 position-relative'>
-                  <div className='video-player rounded-3'>
-                    <video
-                      controls
-                      playsInline
-                      poster='/images/videos/poster.jpg'
-                    >
-                      <source
-                        src='/images/videos/360p.mp4'
-                        type='video/mp4'
-                        // size={360}
-                      />
-                      <source
-                        src='/images/videos/720p.mp4'
-                        type='video/mp4'
-                        // size={720}
-                      />
-                      <source
-                        src='/images/videos/1080p.mp4'
-                        type='video/mp4'
-                        // size={1080}
-                      />
-                      {/* Caption files */}
-                      <track
-                        kind='captions'
-                        label='English'
-                        srcLang='en'
-                        src='/images/videos/en.vtt'
-                        default
-                      />
-                      <track
-                        kind='captions'
-                        label='French'
-                        srcLang='fr'
-                        src='/images/videos/fr.vtt'
-                      />
-                    </video>
+                  <div
+                    className=' rounded-3 tw-bg-white tw-rounded-2xl'
+                    id='courseVideo'
+                  >
+                    <Video
+                      accentColor='#5173FF'
+                      src={showVideo?.video?.address}
+                      className='tw-rounded-2xl overflow-hidden'
+                    />
+                    <div className='tw-px-4 py-2'>
+                      <h3 className='tw-py-2  tw-text-base tw-text-justify'>
+                        {showVideo?.title}
+                      </h3>
+                      <p className='tw-pb-2  tw-text-base tw-text-justify'>
+                        {showVideo?.description}
+                      </p>
+                    </div>
                   </div>
                 </div>
                 {/* About course START */}
@@ -138,36 +127,71 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                         <div className='col-12'>
                           {course?.data?.episodes?.map(
                             (episod: any, index: number) => (
-                              <>
-                                <div className='d-sm-flex justify-content-sm-between align-items-center'>
+                              <div key={episod.id}>
+                                <div className='d-flex justify-content-between align-items-center'>
                                   <div className='d-flex'>
-                                    <a
-                                      href='#'
-                                      className='btn btn-danger-soft btn-round mb-0'
-                                    >
-                                      <i className='fas fa-play' />
-                                    </a>
+                                    {episod.isLocked ? (
+                                      <Link
+                                        href='#courseVideo'
+                                        onClick={() => {
+                                          setShowVideo(episod);
+                                        }}
+                                        className='btn btn-danger-soft btn-round mb-0'
+                                      >
+                                        <i className='fas fa-play' />
+                                      </Link>
+                                    ) : (
+                                      <div
+                                        className='btn btn-danger-soft btn-round mb-0 tw-flex tw-justify-center'
+                                        onClick={lockedCourseHandler}
+                                      >
+                                        <svg
+                                          xmlns='http://www.w3.org/2000/svg'
+                                          viewBox='0 0 24 24'
+                                          fill='currentColor'
+                                          className='tw-w-5 '
+                                        >
+                                          <path
+                                            fill-rule='evenodd'
+                                            d='M12 1.5a5.25 5.25 0 0 0-5.25 5.25v3a3 3 0 0 0-3 3v6.75a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3v-6.75a3 3 0 0 0-3-3v-3c0-2.9-2.35-5.25-5.25-5.25Zm3.75 8.25v-3a3.75 3.75 0 1 0-7.5 0v3h7.5Z'
+                                            clip-rule='evenodd'
+                                          />
+                                        </svg>
+                                      </div>
+                                    )}
                                     <div className='ms-2 ms-sm-3 mt-1 mt-sm-0'>
                                       <h6 className='mb-0 fw-normal'>
                                         {episod.title}
                                       </h6>
                                       <p className='mb-2 mb-sm-0 small'>
-                                        ۱۵ دقیقه
+                                        {episod.video.durationMinutes} دقیقه
                                       </p>
                                     </div>
                                   </div>
                                   {/* Button */}
-                                  <a
-                                    href='#'
-                                    className='btn btn-sm btn-success mb-0'
-                                  >
-                                    پخش
-                                  </a>
+                                  {episod.isLocked ? (
+                                    <Link
+                                      href='#courseVideo'
+                                      onClick={() => {
+                                        setShowVideo(episod);
+                                      }}
+                                      className='btn btn-sm btn-success mb-0'
+                                    >
+                                      پخش{' '}
+                                    </Link>
+                                  ) : (
+                                    <div
+                                      className='btn btn-danger-soft  mb-0 '
+                                      onClick={lockedCourseHandler}
+                                    >
+                                      پولی{' '}
+                                    </div>
+                                  )}
                                 </div>
                                 {/* Divider */}
                                 {index + 1 !==
                                   course?.data?.episodes.length && <hr />}
-                              </>
+                              </div>
                             ),
                           )}
                         </div>
@@ -206,7 +230,6 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                       {course && (
                         <img
                           className='rounded-3 mb-3 '
-                          // src={`/images/courses/4by3/${Math.floor(Math.random() * 16) + 1}.jpg`}
                           src={course?.data?.cover}
                           alt=''
                         />
@@ -310,9 +333,7 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                           <img
                             className='avatar-img rounded-circle'
                             src={
-                              (course?.data?.avatar &&
-                                process.env.NEXT_PUBLIC_APP_URL +
-                                  course?.data?.teacher.avatar) ||
+                              course?.data?.teacher.avatar ||
                               '/images/avatar/User.png'
                             }
                             alt='avatar'

@@ -3,8 +3,6 @@
 import Image from 'next/image';
 
 const ProfileStudentCourseResume = () => {
-  console.log('Not completed');
-
   return (
     <>
       <div className='card border'>

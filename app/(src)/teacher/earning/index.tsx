@@ -1,8 +1,6 @@
 'use client';
 
 const ProfileTeacherEarning = () => {
-  console.log('Not completed');
-
   return (
     <>
       <div className='row g-4'>

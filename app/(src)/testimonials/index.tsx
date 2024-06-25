@@ -6,7 +6,6 @@ import { Rating } from 'react-simple-star-rating';
 import RatingStar from '../componenets/other/raiting';
 
 const Testimonials = () => {
-  console.log('Not completed');
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState(0);
 

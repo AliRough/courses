@@ -31,7 +31,7 @@ Main Banner START */}
                       <svg
                         width='300px'
                         height='62.1px'
-                        enable-background='new 0 0 366 62.1'
+                        enableBackground='new 0 0 366 62.1'
                         viewBox='0 0 366 62.1'
                         xmlns='http://www.w3.org/2000/svg'
                       >

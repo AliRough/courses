@@ -1,8 +1,6 @@
 'use client';
 
 const CoursePakageFillter = () => {
-  console.log('Not completed');
-
   return (
     <div className='row mb-4 align-items-center'>
       <div className='col-xl-6'>

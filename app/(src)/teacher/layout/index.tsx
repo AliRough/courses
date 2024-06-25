@@ -9,8 +9,6 @@ import Header from '../../componenets/Header';
 const LayoutProfileTeacher = ({
   children,
 }: Readonly<{ children: React.ReactNode }>) => {
-  console.log('Not completed');
-
   const notSidbarAndMenu = ['create-course'];
   const path = usePathname();
   const pathNow = path.split('/profile/t/')[1].split('/')[0];
