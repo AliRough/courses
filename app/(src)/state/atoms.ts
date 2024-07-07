@@ -1,4 +1,5 @@
 'use client';
+import { useEffect } from 'react';
 import { atom } from 'recoil';
 
 export const authUserState: any = atom({
@@ -24,15 +25,16 @@ export const packageIdState: any = atom({
 const localStorageEffect =
   (key: any) =>
   ({ setSelf, onSet }: any) => {
+    const ISSERVER = typeof window === 'undefined';
+    if (!ISSERVER) {
+      const savedValue = window.localStorage.getItem(key);
+      if (savedValue != null) {
+        setSelf(JSON.parse(savedValue));
+      }
+    }
     console.log(key);
 
-    const savedValue = localStorage.getItem(key);
-    if (savedValue != null) {
-      setSelf(JSON.parse(savedValue));
-    }
-
     onSet((newValue: any, oo: any, isReset: any) => {
-
       isReset
         ? localStorage.removeItem(key)
         : localStorage.setItem(key, JSON.stringify(newValue));

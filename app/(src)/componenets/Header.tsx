@@ -119,10 +119,10 @@ export default function Header({ children }: any) {
             <div
               className='tw-relative tw-flex tw-justify-center tw-items-center  overflow-visible mb-0  '
               tabIndex={0}
-              onBlur={(e) => {
-                console.log(e);
-                setShowCart(false);
-              }}
+              // onBlur={(e) => {
+              //   console.log(e);
+              //   setShowCart(false);
+              // }}
             >
               {' '}
               <div
@@ -148,7 +148,7 @@ export default function Header({ children }: any) {
                 className={`tw-absolute  tw-top-full tw-flex tw-flex-col tw-bg-white p-1 mt-2 tw-rounded-lg  tw-shadow-md tw-border ${showCart ? '' : 'tw-hidden'}`}
               >
                 <ul className='tw-relative !tw-pr-0 tw-flex tw-flex-col tw-min-w-72  tw-max-h-96 tw-w-max  overflow-y-auto tw-min-h-56 mb-0 tw-divide-y tw-transition-all tw-duration-300'>
-                  {cart[0] ? (
+                  {cart && cart[0] ? (
                     cart?.map((cartCourse: any) => (
                       <li
                         key={cartCourse.id}
@@ -199,7 +199,7 @@ export default function Header({ children }: any) {
                 </ul>
 
                 <button
-                  disabled={!cart[0]}
+                  disabled={cart && !cart[0]}
                   className=' btn btn-primary bottom-0 tw-w-full tw-m-0 disabled:tw-opacity-50'
                 >
                   نهایی کردن خرید
