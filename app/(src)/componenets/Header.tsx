@@ -5,7 +5,6 @@ import Profile from './Profile';
 import Link from 'next/link';
 import { useGetUser } from '../hooks/request/authUser';
 import {
-  useAddToCart,
   useGetAllCategories,
 } from '../hooks/request/requestCourse';
 import Loading from '@/app/loading';

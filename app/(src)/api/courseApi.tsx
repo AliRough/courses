@@ -96,17 +96,3 @@ export const postComments = async (formData: any, token: any) => {
     });
   console.log(data);
 };
-export const addToCart = async (formData: any) => {
-  const [cookies, setCookie, removeCookie] = useCookies(['cart']);
-
-  console.log('cart', cookies.cart);
-  try {
-    const data = setCookie('cart', formData);
-    console.log('cart', cookies.cart);
-
-    return data;
-  } catch (error: any) {
-    console.log('cart', cookies.cart);
-    throw error.response.data;
-  }
-};

@@ -65,15 +65,3 @@ const addto = () => {
   return cookies;
 };
 
-export const useAddToCart = () => {
-  const [cookies, setCookie, removeCookie] = useCookies(['cart']);
-
-  return useMutation({
-    mutationFn: (formData: any) => {
-      setCookie('cart', formData);
-      console.log(typeof api.addToCart);
-
-      return api.addToCart(formData);
-    },
-  });
-};
