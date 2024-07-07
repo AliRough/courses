@@ -46,22 +46,3 @@ export const useCourseById = (id: number): UseQueryResult<any, Error> => {
     queryFn: () => api.CourseByIdApi(id),
   });
 };
-
-export const useGetCart = () => {
-  return useQuery({
-    queryKey: ['ach'],
-    queryFn: () => {
-      const [cookies] = useCookies(['cart']);
-
-      console.log('hhss', cookies);
-      return cookies;
-    },
-  });
-};
-const addto = () => {
-  const [cookies, setCookie, removeCookie] = useCookies(['cart']);
-  setCookie('cart', 'hdbscv');
-  console.log('hhss', cookies);
-  return cookies;
-};
-

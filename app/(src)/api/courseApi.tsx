@@ -1,7 +1,6 @@
 'use client';
 
 import axios from 'axios';
-import { useCookies } from 'react-cookie';
 import { toast } from 'react-toastify';
 import { boolean } from 'zod';
 

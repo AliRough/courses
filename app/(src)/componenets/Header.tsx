@@ -4,9 +4,7 @@ import React, { useState } from 'react';
 import Profile from './Profile';
 import Link from 'next/link';
 import { useGetUser } from '../hooks/request/authUser';
-import {
-  useGetAllCategories,
-} from '../hooks/request/requestCourse';
+import { useGetAllCategories } from '../hooks/request/requestCourse';
 import Loading from '@/app/loading';
 import { routes } from '../routes';
 import { useRecoilState } from 'recoil';
@@ -118,7 +116,14 @@ export default function Header({ children }: any) {
 
             {/* Wishlist START */}
 
-            <div className='tw-relative tw-flex tw-justify-center tw-items-center  overflow-visible mb-0  '>
+            <div
+              className='tw-relative tw-flex tw-justify-center tw-items-center  overflow-visible mb-0  '
+              tabIndex={0}
+              onBlur={(e) => {
+                console.log(e);
+                setShowCart(false);
+              }}
+            >
               {' '}
               <div
                 className='tw-flex tw-justify-center tw-items-center  btn btn-light btn-round mb-0 '
