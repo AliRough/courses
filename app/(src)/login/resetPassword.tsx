@@ -181,7 +181,7 @@ export default function ResetPassword({ searchParams }: any) {
                           </svg>
                         </span>
                         <input
-                          type='password'
+                          type={showPass ? 'text' : 'password'}
                           className='form-control border-0 bg-light rounded-end ps-1'
                           placeholder='********'
                           {...input.password_confirmation}

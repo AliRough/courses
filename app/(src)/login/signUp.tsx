@@ -1,7 +1,7 @@
 'use client';
 import { ErrorMessage } from '@hookform/error-message';
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 
 import Image from 'next/image';
 import Loading from '@/app/loading';
@@ -12,6 +12,8 @@ export default function SignUp({
   errors,
   isPending,
 }: any) {
+  const [showPass, setSowPass] = useState(false);
+
   return (
     <>
       {isPending && <Loading />}
@@ -156,12 +158,23 @@ export default function SignUp({
                           <span className='input-group-text bg-light rounded-start border-0 text-secondary px-3'>
                             <i className='fas fa-lock' />
                           </span>
-                          <input
-                            type='password'
-                            className='form-control border-0 bg-light rounded-end ps-1'
-                            placeholder='*********'
-                            {...input.password}
-                          />
+                          <div className='form-control tw-flex p-0'>
+                            <input
+                              type={showPass ? 'text' : 'password'}
+                              className='form-control border-0 bg-light rounded-end ps-1  tw-py-3'
+                              placeholder='*********'
+                              {...input.password}
+                            />
+                            <button
+                              onClick={(e) => {
+                                e.preventDefault();
+                                setSowPass(!showPass);
+                              }}
+                              className='input-group-text p-0 !bg-transparent border-0'
+                            >
+                              <i className='far fa-eye cursor-pointer p-2 w-40px'></i>
+                            </button>
+                          </div>
                         </div>
                         <ErrorMessage
                           errors={errors}
@@ -179,7 +192,7 @@ export default function SignUp({
                             <i className='fas fa-lock' />
                           </span>
                           <input
-                            type='password'
+                            type={showPass ? 'text' : 'password'}
                             className='form-control border-0 bg-light rounded-end ps-1'
                             placeholder='*********'
                             {...input.passwordConfirmation}
