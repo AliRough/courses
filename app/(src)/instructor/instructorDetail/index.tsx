@@ -2,20 +2,20 @@
 
 import Image from 'next/image';
 
-import { useInstructorById } from '@/app/(src)/hooks/request/requestInstructor';
+import { useTeacherById } from '@/app/(src)/hooks/request/requestInstructor';
 import CourseTile from '@/app/(src)/course/courseTile';
-import Rating from '@/app/(src)/componenets/rating';
 import InstructorRelated from '@/app/(src)/instructor/instructorDetail/instructorRelated';
 import Testimonials from '@/app/(src)/testimonials';
 
 import { TCourses } from '@/app/(src)/model/course.d';
 import Header from '../../componenets/Header';
+import RatingStar from '../../componenets/other/raiting';
 
-const InstructorDetail = ({ params }: { params: { id: number } }) => {
-  const id = params?.id;
+const InstructorDetail = ({ params }: { params: { TId: number } }) => {
+  const id = params?.TId;
 
-  const { data } = useInstructorById(id);
-  console.log(data);
+  const { data: teacher } = useTeacherById(id);
+  console.log(teacher);
 
   return (
     <>
@@ -29,7 +29,10 @@ const InstructorDetail = ({ params }: { params: { id: number } }) => {
                     <div className='rounded-3'>
                       <Image
                         unoptimized={true}
-                        src={data?.image}
+                        src={
+                          teacher?.data.cover ||
+                          '/images/avatar/teacherAvatar.jpeg'
+                        }
                         width='500'
                         height='500'
                         className='card-img'
@@ -38,54 +41,61 @@ const InstructorDetail = ({ params }: { params: { id: number } }) => {
                     </div>
                     <div className='card-body px-3'>
                       <ul className='list-inline'>
-                        {data?.rating && <Rating data={data?.rating} />}
+                        {teacher?.data.score && (
+                          <>
+                            <RatingStar readonly value={teacher?.data.score} />
+                            <span className='ms-2'>
+                              {teacher?.data.score} از 5
+                            </span>
+                          </>
+                        )}
                       </ul>
                       <ul className='list-inline mb-0'>
-                        {data?.social_media?.facebook && (
+                        {teacher?.data.social_media?.facebook && (
                           <li className='list-inline-item'>
                             <a
                               className='btn px-2 btn-sm bg-facebook'
-                              href={data?.social_media?.facebook}
+                              href={teacher?.data.social_media?.facebook}
                             >
                               <i className='fab fa-fw fa-facebook-f'></i>
                             </a>
                           </li>
                         )}
-                        {data?.social_media?.instagram && (
+                        {teacher?.data.social_media?.instagram && (
                           <li className='list-inline-item'>
                             <a
                               className='btn px-2 btn-sm bg-instagram-gradient'
-                              href={data?.social_media?.instagram}
+                              href={teacher?.data.social_media?.instagram}
                             >
                               <i className='fab fa-fw fa-instagram'></i>
                             </a>
                           </li>
                         )}
-                        {data?.social_media?.twitter && (
+                        {teacher?.data.social_media?.twitter && (
                           <li className='list-inline-item'>
                             <a
                               className='btn px-2 btn-sm bg-twitter'
-                              href={data?.social_media?.twitter}
+                              href={teacher?.data.social_media?.twitter}
                             >
                               <i className='fab fa-fw fa-twitter'></i>
                             </a>
                           </li>
                         )}
-                        {data?.social_media?.linkedin && (
+                        {teacher?.data.social_media?.linkedin && (
                           <li className='list-inline-item'>
                             <a
                               className='btn px-2 btn-sm bg-linkedin'
-                              href={data?.social_media?.linkedin}
+                              href={teacher?.data.social_media?.linkedin}
                             >
                               <i className='fab fa-fw fa-linkedin-in'></i>
                             </a>
                           </li>
                         )}
-                        {data?.social_media?.twitter && (
+                        {teacher?.data.social_media?.twitter && (
                           <li className='list-inline-item'>
                             <a
                               className='btn px-2 btn-sm bg-twitter'
-                              href={data?.social_media?.twitter}
+                              href={teacher?.data.social_media?.twitter}
                             >
                               <i className='fab fa-fw fa-telegram'></i>
                             </a>
@@ -95,13 +105,15 @@ const InstructorDetail = ({ params }: { params: { id: number } }) => {
                     </div>
                   </div>
                 </div>
-                {(data?.skill.length || data?.education.length) && (
+
+                {(teacher?.data.skill?.length ||
+                  teacher?.data.education?.length) && (
                   <div className='col-md-6 col-lg-12'>
                     <div className='card card-body shadow p-4 mb-4'>
-                      {data?.education.length && (
+                      {teacher?.data.education.length && (
                         <>
                           <h4 className='mb-3 fs-5'>تحصیلات</h4>
-                          {data?.education.map(
+                          {teacher?.data.education.map(
                             (e: {
                               university: string;
                               level_of_education: string;
@@ -126,11 +138,12 @@ const InstructorDetail = ({ params }: { params: { id: number } }) => {
                           )}
                         </>
                       )}
-                      {data?.education.length && data?.skill.length && <hr />}
-                      {data?.skill.length && (
+                      {teacher?.data.education.length &&
+                        teacher?.data.skill.length && <hr />}
+                      {teacher?.data.skill.length && (
                         <>
                           <h4 className='mb-3 fs-5'>مهارت ها</h4>
-                          {data?.skill.map(
+                          {teacher?.data.skill.map(
                             (e: { name: string; percent: string }) => (
                               <div
                                 key={Math.random()}
@@ -161,44 +174,44 @@ const InstructorDetail = ({ params }: { params: { id: number } }) => {
             </div>
             <div className='col-lg-8'>
               <h5 className='mb-0'>سلام، من</h5>
-              <h1 className='mb-0 fs-3'>{data?.name}</h1>
-              <p>هستم، {data?.categrory}</p>
-              <p className='mt-4'>{data?.description}</p>
+              <h1 className='mb-0 fs-3'>{teacher?.data.user.name}</h1>
+              <p>هستم، {teacher?.data.categrory}</p>
+              <p className='mt-4'>{teacher?.data.description}</p>
               <ul className='list-group list-group-borderless'>
-                {data?.address && (
+                {teacher?.data.address && (
                   <li className='list-group-item px-0'>
                     <span className='h6 fw-light'>
                       <i className='fas fa-fw fa-map-marker-alt text-primary me-1 me-sm-3'></i>
                       آدرس:
                     </span>
-                    <span>{data?.address}</span>
+                    <span>{teacher?.data.user.address}</span>
                   </li>
                 )}
-                {data?.email && (
+                {teacher?.data.user.email && (
                   <li className='list-group-item px-0'>
                     <span className='h6 fw-light'>
                       <i className='fas fa-fw fa-envelope text-primary me-1 me-sm-3'></i>
                       ایمیل:
                     </span>
-                    <span>{data?.email}</span>
+                    <span>{teacher?.data.user.email}</span>
                   </li>
                 )}
-                {data?.phone && (
+                {teacher?.data.mobile && (
                   <li className='list-group-item px-0'>
                     <span className='h6 fw-light'>
                       <i className='fas fa-fw fa-headphones text-primary me-1 me-sm-3'></i>
                       شماره تماس:
                     </span>
-                    <span>{data?.phone}</span>
+                    <span>{teacher?.data.mobile}</span>
                   </li>
                 )}
-                {data?.website && (
+                {teacher?.data.website && (
                   <li className='list-group-item px-0'>
                     <span className='h6 fw-light'>
                       <i className='fas fa-fw fa-globe text-primary me-1 me-sm-3'></i>
                       وب سایت:
                     </span>
-                    <span>{data?.website}</span>
+                    <span>{teacher?.data.website}</span>
                   </li>
                 )}
               </ul>
@@ -211,7 +224,7 @@ const InstructorDetail = ({ params }: { params: { id: number } }) => {
                     <div className='ms-3'>
                       <div className='d-flex'>
                         <h5 className='mb-0 fw-bold'>
-                          {data?.number_of_courses}
+                          {teacher?.data.number_of_courses}
                         </h5>
                         <span className='mb-0 h5'>+</span>
                       </div>
@@ -227,7 +240,7 @@ const InstructorDetail = ({ params }: { params: { id: number } }) => {
                     <div className='ms-3'>
                       <div className='d-flex'>
                         <h5 className='mb-0 fw-bold'>
-                          {data?.number_of_students}
+                          {teacher?.data.number_of_students}
                         </h5>
                         <span className='mb-0 h5'>+</span>
                       </div>
@@ -243,7 +256,7 @@ const InstructorDetail = ({ params }: { params: { id: number } }) => {
                     <div className='ms-3'>
                       <div className='d-flex'>
                         <h5 className='mb-0 fw-bold'>
-                          {data?.years_of_teaching_experience}
+                          {teacher?.data.years_of_teaching_experience}
                         </h5>
                         <span className='mb-0 h5'>+</span>
                       </div>
@@ -252,10 +265,10 @@ const InstructorDetail = ({ params }: { params: { id: number } }) => {
                   </div>
                 </div>
               </div>
-              {data?.courses?.length && (
+              {teacher?.data.courses?.length && (
                 <div className='row g-4 mt-4'>
                   <h2 className='fs-4'>لیست دوره ها</h2>
-                  {data?.courses?.map((e: TCourses) => (
+                  {teacher?.data.courses?.map((e: TCourses) => (
                     <div key={e?.id} className='col-sm-6'>
                       <CourseTile data={e} />
                     </div>

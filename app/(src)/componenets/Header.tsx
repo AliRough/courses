@@ -1,41 +1,56 @@
 // import { LayoutProps } from '@/.next/types/app/layout';
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import Profile from './Profile';
 import Link from 'next/link';
 import { useGetUser } from '../hooks/request/authUser';
-import { useGetAllCategories } from '../hooks/request/requestCourse';
+import {
+  useAddToCart,
+  useGetAllCategories,
+} from '../hooks/request/requestCourse';
 import Loading from '@/app/loading';
-import { boolean } from 'zod';
 import { routes } from '../routes';
 import { useRecoilState } from 'recoil';
-import { showfirstState } from '../state/atoms';
-import { useRouter } from 'next/navigation';
+import { cartState } from '../state/atoms';
 
 export default function Header({ children }: any) {
-  const [showFirst, setShowFirst] = useRecoilState(showfirstState);
   const { data: userData, isPending: isUserPending } = useGetUser();
-  let router = useRouter();
   const { data: allCategoriesData, isPending: isCategoryPending } =
     useGetAllCategories();
+  const [showCart, setShowCart] = useState(false);
+  const [cart, setCart] = useRecoilState<any>(cartState);
 
-  const changeCategoryHandler = (e: any, category: any) => {
+  console.log(cart);
+  let removeFromCart = (e: any, cId: any) => {
     e.preventDefault();
+    console.log(
+      e.target.parentElement.parentElement.parentElement.parentElement,
+    );
 
-    setShowFirst((data: any) => ({
-      ...data,
-      category: category,
-    }));
-    router.push(`${routes.courses}/all?category=${category?.slug}`);
+    e.target.parentElement.parentElement.parentElement.parentElement.classList.remove(
+      '-tw-translate-x-full',
+    );
+    setTimeout(() => {
+      setCart((cart: any) => {
+        let newCart = cart?.filter((cartCourse: any) => {
+          console.log(cartCourse?.id !== cId);
+          return cartCourse?.id !== cId;
+        });
+        console.log(newCart);
+
+        if (newCart) {
+          return [...newCart];
+        }
+      });
+    }, 500);
   };
-
   return (
     <>
       {Boolean(isUserPending) && <Loading />}
       {/* Header START */}
-      <header className='navbar-light bg-transparent container max-sm:tw-px-0   sm:tw-mt-4  px-0  '>
+      <header className='navbar-light bg-transparent container max-sm:tw-px-0   sm:tw-mt-4  px-0 tw-mb-5 '>
         {/* Nav START */}
-        <nav className='navbar navbar-expand-lg z-index-9 tw-bg-white sm:tw-rounded-3xl tw-shadow-md tw-shadow-gray-500/25'>
+        <nav className='navbar navbar-expand-lg z-index-9 tw-bg-white sm:tw-rounded-3xl tw-shadow-md tw-shadow-gray-500/25 px-3'>
           <div className='container'>
             {/* Logo START */}
             <Link className='navbar-brand py-3' href='/'>
@@ -101,16 +116,96 @@ export default function Header({ children }: any) {
               {/* Nav Search END */}
             </div>
             {/* Main navbar END */}
+
+            {/* Wishlist START */}
+
+            <div className='tw-relative tw-flex tw-justify-center tw-items-center  overflow-visible mb-0  '>
+              {' '}
+              <div
+                className='tw-flex tw-justify-center tw-items-center  btn btn-light btn-round mb-0 '
+                onClick={() => setShowCart(!showCart)}
+              >
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  fill='none'
+                  viewBox='0 0 24 24'
+                  strokeWidth='1.5'
+                  stroke='currentColor'
+                  className='tw-w-5 '
+                >
+                  <path
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    d='M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z'
+                  />
+                </svg>
+              </div>
+              <div
+                className={`tw-absolute  tw-top-full tw-flex tw-flex-col tw-bg-white p-1 mt-2 tw-rounded-lg  tw-shadow-md tw-border ${showCart ? '' : 'tw-hidden'}`}
+              >
+                <ul className='tw-relative !tw-pr-0 tw-flex tw-flex-col tw-min-w-72  tw-max-h-96 tw-w-max  overflow-y-auto tw-min-h-56 mb-0 tw-divide-y tw-transition-all tw-duration-300'>
+                  {cart[0] ? (
+                    cart?.map((cartCourse: any) => (
+                      <li
+                        key={cartCourse.id}
+                        className='tw-relative hover:tw-bg-gray-100 tw-transition-all tw-duration-300 tw-left-full -tw-translate-x-full '
+                      >
+                        <div className=' tw-flex   gap-2 p-2 px-2 '>
+                          <div className='tw-relative tw-w-max tw-top-0 tw-left-0 tw-flex tw-items-center tw-justify-end'>
+                            <div className='tw-rounded-lg tw-transition-all tw-duration-300  hover:tw-bg-red-500 hover:tw-text-white'>
+                              <svg
+                                xmlns='http://www.w3.org/2000/svg'
+                                viewBox='0 0 20 20'
+                                fill='currentColor'
+                                className='tw-w-6 '
+                              >
+                                <path d='M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z' />
+                              </svg>
+                              <button
+                                className='tw-absolute tw-w-full tw-h-full tw-top-0 tw-left-0 '
+                                onClick={(e) =>
+                                  removeFromCart(e, cartCourse?.id)
+                                }
+                              ></button>
+                            </div>
+                          </div>
+                          <img
+                            className='tw-aspect-square tw-object-cover tw-w-14 tw-rounded-lg'
+                            src={cartCourse?.cover}
+                            alt=''
+                          />
+                          <div className='tw-w-full '>
+                            <h5 className='tw-text-sm tw-font-normal tw-w-max'>
+                              {cartCourse?.title}{' '}
+                            </h5>
+                            <span className='tw-block tw-w-full tw-text-left tw-text-sm '>
+                              {cartCourse?.price === 0
+                                ? 'رایگان'
+                                : cartCourse?.price}
+                            </span>
+                          </div>
+                        </div>
+                      </li>
+                    ))
+                  ) : (
+                    <li className='p-2 tw-border tw-border-red-400 tw-text-red-600 tw-rounded lg !tw-font-normal tw-text-sm m-2 tw-w-max mx-auto'>
+                      سبد خرید شما در حال حاضر خالی است!
+                    </li>
+                  )}
+                </ul>
+
+                <button
+                  disabled={!cart[0]}
+                  className=' btn btn-primary bottom-0 tw-w-full tw-m-0 disabled:tw-opacity-50'
+                >
+                  نهایی کردن خرید
+                </button>
+              </div>
+            </div>
+            {/* Wishlist END */}
+
             {userData?.name ? (
               <ul className='nav flex-row align-items-center list-unstyled ms-xl-auto '>
-                {/* Wishlist START */}
-                <li className='nav-item ms-0 ms-sm-2 d-none d-sm-block'>
-                  <a className='btn btn-light btn-round mb-0' href='#'>
-                    {' '}
-                    <i className='bi bi-heart fa-fw' />
-                  </a>
-                </li>
-                {/* Wishlist END */}
                 {/* Notification dropdown START */}
                 <li className='nav-item ms-2 ms-sm-3 dropdown  d-none d-sm-block'>
                   {/* Notification button */}
@@ -218,8 +313,9 @@ export default function Header({ children }: any) {
                     <li className='nav-item dropdown ' key={item.id}>
                       <Link
                         className={`nav-link tw-text-gray-600  ${item.children ? ' dropdown-toggle ' : ''}`}
-                        href={item?.src || `#`}
-                        onClick={(e: any) => changeCategoryHandler(e, item)}
+                        href={
+                          `${routes.courses}/all?category=${item?.slug}` || `#`
+                        }
                         id={item.children && 'demoMenu'}
                         data-bs-toggle={item.children && 'dropdown'}
                         aria-haspopup={item.children && 'true'}

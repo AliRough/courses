@@ -6,28 +6,24 @@ import CourseTile from '@/app/(src)/course/courseTile';
 import { useGetAllCourses } from '@/app/(src)/hooks/request/requestCourse';
 import CourseListFillter from '@/app/(src)/course/courseList/courseListFillter';
 import CourseAdvancedSearch from '@/app/(src)/course/courseList/courseAdvancedSearch';
-import Newsletter from '@/app/(src)/componenets/other/newsletter';
 
 import { TCourses } from '@/app/(src)/model/course.d';
 import { useEffect, useState } from 'react';
 import LoadingCourse from '../../componenets/other/loading/course';
 import { useRouter } from 'next/navigation';
 import { routes } from '../../routes';
-import { useRecoilState } from 'recoil';
-import { showfirstState } from '../../state/atoms';
 
 const CourseList = ({ searchParams }: any) => {
   const router = useRouter();
 
   const [currentPage, setCurrentPage] = useState(1);
   const [params, setParams] = useState('');
-  const [Cid, setCid] = useState(searchParams.category);
 
   const { data, refetch, isPending, isFetching } = useGetAllCourses(
     currentPage,
     9,
     params,
-    Cid,
+    searchParams.category,
   );
 
   useEffect(() => {
@@ -37,23 +33,22 @@ const CourseList = ({ searchParams }: any) => {
   const categoryFormHandler = (data: any) => {
     console.log(data);
 
-    setCid(data.category);
+    router.push(`${routes.courses}/all?category=${data.category}`);
   };
 
   return (
     <>
-      <HeaderBody name={searchParams.category} />
+      <HeaderBody name={searchParams.category.replaceAll('-', ' ')} />
+
       <section className='py-5'>
         <div className='container'>
+          <CourseListFillter
+            data={data}
+            params={params}
+            setParams={setParams}
+          />
           <div className='row'>
             <div className='col-lg-8 col-xl-9'>
-              <CourseListFillter
-                data={data}
-                params={params}
-                setParams={setParams}
-                Cid={Cid}
-                seCid={setCid}
-              />
               <div className='row g-4'>
                 {Boolean(isPending || isFetching) ? (
                   <LoadingCourse number={5} />

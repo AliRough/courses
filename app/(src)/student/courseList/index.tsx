@@ -20,7 +20,7 @@ const ProfileStudentCourseList = () => {
       <div className='card-header bg-transparent border-bottom'>
         <h3 className='mb-0 fs-5 ff-vb'>لیست دوره های من</h3>
       </div>
-      <div className='card-body'>
+      <div className='card-body tw-min-h-80'>
         <div className='row g-3 align-items-center justify-content-between mb-4'>
           <div className='col-md-8'>
             <form className='rounded position-relative'>

@@ -21,12 +21,28 @@ export const packageIdState: any = atom({
   default: undefined,
 });
 
-export const showfirstState: any = atom({
-  key: 'showfirst',
-  default: {
-    category: null,
-    package: null,
-  },
+const localStorageEffect =
+  (key: any) =>
+  ({ setSelf, onSet }: any) => {
+    console.log(key);
+
+    const savedValue = localStorage.getItem(key);
+    if (savedValue != null) {
+      setSelf(JSON.parse(savedValue));
+    }
+
+    onSet((newValue: any, oo: any, isReset: any) => {
+
+      isReset
+        ? localStorage.removeItem(key)
+        : localStorage.setItem(key, JSON.stringify(newValue));
+    });
+  };
+
+export const cartState: any = atom({
+  key: 'cart',
+  default: null,
+  effects: [localStorageEffect('current_user')],
 });
 
 // export const todoListState = atom({

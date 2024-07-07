@@ -13,7 +13,8 @@ export const signUpValidate = z
     password: z
       .string()
       .regex(phoneValidation, {
-        message: 'رمز عبور باید حداقل ۸ کاراکتر حروف کوچک بزرگ و اعداد باشد',
+        message:
+          'رمز عبور باید بین ۸ تا ۱۶ کاراکتر حروف کوچک بزرگ و اعداد باشد',
       })
       .min(8),
     passwordConfirmation: z

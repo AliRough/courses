@@ -16,12 +16,17 @@ import RatingStar from '../../componenets/other/raiting';
 import { postComments } from '../../api/courseApi';
 import { useCookies } from 'react-cookie';
 import { toast } from 'react-toastify';
+import { useRecoilState } from 'recoil';
+import { cartState } from '../../state/atoms';
+import Loading from '@/app/loading';
 
 const CourseDetail = ({ params }: { params: { id: number } }) => {
+  const [cart, setCart] = useRecoilState(cartState);
+
   const [cookies, setCookie, removeCookie] = useCookies(['Authorization']);
   const { id } = params;
 
-  const { data: course } = useCourseById(id);
+  const { data: course ,isFetching } = useCourseById(id);
   const [showVideo, setShowVideo] = useState<any>();
   useEffect(() => {
     setShowVideo(course?.data.episodes[0]);
@@ -45,34 +50,56 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
     toast.warning('برای مشاهده ابتدا وارد شوید');
     toast.warning('برای مشاهده ابتدا دوره را  خریداری کنید');
   };
+
+  let addToCart = (e: any) => {
+    e.preventDefault();
+    setCart((cart: any) => {
+      let newCart = cart?.filter((cartCourse: any) => {
+        console.log(cartCourse);
+        return cartCourse.id !== course?.data.id;
+        // if (cartCourse.id !== course?.data.id) {
+        //   return cartCourse;
+        // }
+      });
+      console.log(newCart);
+
+      if (newCart) {
+        return [...newCart, course?.data];
+      }
+      return [course?.data];
+    });
+  };
   return (
     <>
+    {
+      isFetching&&<Loading/>
+    }
       <section className='pt-3 pt-xl-5'>
         <button onClick={handler}>click</button>
         <div className='container '>
+          {/* Title START */}
+          <div className='tw-flex tw-gap-12 mb-4 tw-items-center'>
+            {/* Title */}
+            <h2 className='fs-3'>{course?.data.title}</h2>
+
+            {/* Content */}
+            <ul className='list-inline mb-0 '>
+              <li className='list-inline-item fw-light h6 me-3 mb-1 mb-sm-0'>
+                <i className='fas fa-star me-2 tw-text-yellow-500' />
+                4.5/5.0
+              </li>
+
+              <li className='list-inline-item fw-light h6 me-3 mb-1 mb-sm-0'>
+                <i className='bi bi-patch-exclamation-fill tw-text-green-500 me-2' />
+                آخرین بروزرسانی {getDateFormat(course?.data.updetedAt)}
+              </li>
+            </ul>
+          </div>
+          {/* Title END */}
           <div className='row g-4  '>
             {/* Main content START */}
             <div className='col-xl-8'>
               <div className='row g-4'>
-                {/* Title START */}
-                <div className='col-12'>
-                  {/* Title */}
-                  <h2 className='fs-3'>{course?.data.title}</h2>
-
-                  {/* Content */}
-                  <ul className='list-inline mb-0'>
-                    <li className='list-inline-item fw-light h6 me-3 mb-1 mb-sm-0'>
-                      <i className='fas fa-star me-2' />
-                      4.5/5.0
-                    </li>
-
-                    <li className='list-inline-item fw-light h6 me-3 mb-1 mb-sm-0'>
-                      <i className='bi bi-patch-exclamation-fill me-2' />
-                      آخرین بروزرسانی {getDateFormat(course?.data.updetedAt)}
-                    </li>
-                  </ul>
-                </div>
-                {/* Title END */}
                 {/* Image and video */}
                 <div className='col-12 position-relative'>
                   <div
@@ -229,7 +256,7 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                     <div className='card card-body border p-4'>
                       {course && (
                         <img
-                          className='rounded-3 mb-3 '
+                          className='rounded-3 mb-3 tw-aspect-[4/3] object-fit-cover'
                           src={course?.data?.cover}
                           alt=''
                         />
@@ -289,9 +316,12 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                       </div>
                       {/* Buttons */}
                       <div className='mt-3 d-grid'>
-                        <a href='#' className='btn btn-outline-primary'>
+                        <button
+                          onClick={addToCart}
+                          className='btn btn-outline-primary'
+                        >
                           افزودن به سبد
-                        </a>
+                        </button>
                         <a href='#' className='btn btn-success'>
                           خرید آنلاین
                         </a>

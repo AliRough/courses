@@ -134,12 +134,25 @@ export default function SignIn({
                           <span className='input-group-text bg-light rounded-start border-0 text-secondary px-3'>
                             <i className='fas fa-lock' />
                           </span>
+                          <div className="form-control">
+
                           <input
                             type='password'
                             className='form-control border-0 bg-light rounded-end ps-1'
                             placeholder='*********'
                             {...input.password}
                           />
+                          <button
+                            onClick={(e) => {
+                              e.preventDefault();
+                              // setSowPass(!showPass);
+                            }}
+                            className='input-group-text p-0 bg-transparent'
+                          >
+                            <i className='far fa-eye cursor-pointer p-2 w-40px'></i>
+                          </button>
+                          </div>
+
                         </div>
                         <ErrorMessage
                           errors={errors}

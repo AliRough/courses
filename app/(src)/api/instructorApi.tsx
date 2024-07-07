@@ -15,9 +15,9 @@ export const InstructorAllApi = async () => {
   }
 };
 
-export const InstructorByIdApi = async (id: number) => {
+export const TeacherByIdApi = async (id: number) => {
   try {
-    const data = await axios.get('/instructor/' + id);
+    const data = await axios.get('api/teachers/' + id);
     return data.data;
   } catch (error: any) {
     throw error.response.data;

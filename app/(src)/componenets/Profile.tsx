@@ -3,14 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useCookies } from 'react-cookie';
-import { useRecoilState } from 'recoil';
-import { authUserState } from '../state/atoms';
-import { redirect } from 'next/dist/server/api-utils';
-import * as api from '@/app/(src)/api/authApi';
-import { useRouter } from 'next/navigation';
 import { useGetUser, useLogOutUser } from '../hooks/request/authUser';
-import { useQueryClient } from '@tanstack/react-query';
 
 export default function Profile({ name, email }: any) {
   const [theme, setTheme]: any = useState();

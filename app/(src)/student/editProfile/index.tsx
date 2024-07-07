@@ -206,13 +206,13 @@ const ProfileStudentEditProfile = () => {
                     xmlns='http://www.w3.org/2000/svg'
                     fill='none'
                     viewBox='0 0 24 24'
-                    stroke-width='1.5'
+                    strokeWidth='1.5'
                     stroke='currentColor'
                     className='tw-h-8 tw-absolute end-0 top-0 text-danger m-1'
                   >
                     <path
                       strokeLinecap='round'
-                      stroke-linejoin='round'
+                      strokeLinejoin='round'
                       d='M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z'
                     />
                   </svg>
@@ -221,13 +221,13 @@ const ProfileStudentEditProfile = () => {
                     xmlns='http://www.w3.org/2000/svg'
                     fill='none'
                     viewBox='0 0 24 24'
-                    stroke-width='1.5'
+                    strokeWidth='1.5'
                     stroke='currentColor'
                     className='tw-h-8 tw-absolute end-0 top-0 text-success m-1'
                   >
                     <path
                       strokeLinecap='round'
-                      stroke-linejoin='round'
+                      strokeLinejoin='round'
                       d='M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z'
                     />
                   </svg>

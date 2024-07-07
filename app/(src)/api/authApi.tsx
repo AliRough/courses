@@ -2,7 +2,6 @@
 
 import axios from 'axios';
 import { useRecoilState } from 'recoil';
-import { authUserState } from '../state/atoms';
 import { useRouter } from 'next/router';
 import { redirect } from 'next/navigation';
 import { toast } from 'react-toastify';

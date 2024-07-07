@@ -10,10 +10,10 @@ export const useInstructorAll = () => {
   });
 };
 
-export const useInstructorById = (id: number) => {
+export const useTeacherById = (id: number) => {
   return useQuery({
-    queryKey: ['instructor', id],
-    queryFn: () => api.InstructorByIdApi(id),
+    queryKey: ['teachers', id],
+    queryFn: () => api.TeacherByIdApi(id),
   });
 };
 

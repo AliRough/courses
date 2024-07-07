@@ -61,7 +61,7 @@ Main Banner END */}
       {/* =======================
 Counter START */}
       {packages?.data[0] && (
-        <section className=''>
+        <section className=' tw-mb-5'>
           <div className='container '>
             <div className='row g-sm-4 g-2'>
               {packages?.data?.map((pack: any, index: any) => (
@@ -91,7 +91,7 @@ Counter START */}
                         <h5 className='mb-0 fw-normal h6 text-center fw-normal  '>
                           <Link
                             href={`${routes.packages}/${pack.slug}`}
-                            className='stretched-link !tw-text-xs sm:tw-text-base'
+                            className='stretched-link !tw-text-xs sm:!tw-text-sm '
                           >
                             {pack.title}
                           </Link>

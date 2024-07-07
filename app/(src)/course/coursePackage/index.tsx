@@ -19,7 +19,7 @@ import { routes } from '../../routes';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { useRecoilState } from 'recoil';
-import { packageIdState, showfirstState } from '../../state/atoms';
+import { packageIdState } from '../../state/atoms';
 
 const CoursePakage = ({ params }: any) => {
   const router = useRouter();
@@ -75,13 +75,13 @@ const CoursePakage = ({ params }: any) => {
                         xmlns='http://www.w3.org/2000/svg'
                         fill='none'
                         viewBox='0 0 24 24'
-                        stroke-width='1.5'
+                        strokeWidth='1.5'
                         stroke='currentColor'
                         className='tw-w-6'
                       >
                         <path
                           strokeLinecap='round'
-                          stroke-linejoin='round'
+                          strokeLinejoin='round'
                           d='m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z'
                         />
                       </svg>
@@ -94,13 +94,13 @@ const CoursePakage = ({ params }: any) => {
                   xmlns='http://www.w3.org/2000/svg'
                   fill='none'
                   viewBox='0 0 24 24'
-                  stroke-width='1.5'
+                  strokeWidth='1.5'
                   stroke='currentColor'
                   className='tw-h-6 text-primary'
                 >
                   <path
                     strokeLinecap='round'
-                    stroke-linejoin='round'
+                    strokeLinejoin='round'
                     d='M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 0 1 0 3.75H5.625a1.875 1.875 0 0 1 0-3.75Z'
                   />
                 </svg>
@@ -161,13 +161,13 @@ const CoursePakage = ({ params }: any) => {
                                     xmlns='http://www.w3.org/2000/svg'
                                     fill='none'
                                     viewBox='0 0 24 24'
-                                    stroke-width='1.5'
+                                    strokeWidth='1.5'
                                     stroke='currentColor'
                                     className='tw-h-4  me-1'
                                   >
                                     <path
                                       strokeLinecap='round'
-                                      stroke-linejoin='round'
+                                      strokeLinejoin='round'
                                       d='M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z'
                                     />
                                   </svg>

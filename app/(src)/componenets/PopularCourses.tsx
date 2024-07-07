@@ -8,8 +8,8 @@ import CourseTile from '../course/courseTile';
 import LoadingCourse from './other/loading/course';
 
 export default function PopularCourses() {
-  const [tag, setTag]: any = useState(1);
   const { data: categories }: any = useGetAllCategories();
+  const [tag, setTag]: any = useState(categories?.data[3].slug);
   const {
     data: courses,
     refetch,
@@ -20,10 +20,17 @@ export default function PopularCourses() {
     refetch();
   }, [tag]);
 
+  if (!categories?.data.length) {
+    console.log(categories);
+
+    return;
+  }
+
   return (
     <>
       {/* =======================
 Popular course START */}
+
       <section>
         <div className='container'>
           {/* Title */}

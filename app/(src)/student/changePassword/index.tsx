@@ -1,15 +1,10 @@
 'use client';
 
-import Image from 'next/image';
-import { useRecoilState } from 'recoil';
-import { authUserState } from '../../state/atoms';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { changePassValidate } from '../../validations/editProfileValidate';
 import { ErrorMessage } from '@hookform/error-message';
 import { useEffect, useState } from 'react';
-import { changeUserPass } from '../../api/authApi';
-import { useCookies } from 'react-cookie';
 import { useChangeUserPass } from '../../hooks/request/authUser';
 import Loading from '@/app/loading';
 
@@ -108,7 +103,7 @@ const ProfileStudentChangePassword = () => {
                 <label className='form-label'>تایید رمز جدید</label>
                 <input
                   className='form-control'
-                  type='password'
+                  type={showPass ? 'text' : 'password'}
                   placeholder='********'
                   {...input.passwordConfirmation}
                 />

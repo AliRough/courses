@@ -1,6 +1,7 @@
 'use client';
 
 import axios from 'axios';
+import { useCookies } from 'react-cookie';
 import { toast } from 'react-toastify';
 import { boolean } from 'zod';
 
@@ -94,4 +95,18 @@ export const postComments = async (formData: any, token: any) => {
       throw new Error(error.response.data.message);
     });
   console.log(data);
+};
+export const addToCart = async (formData: any) => {
+  const [cookies, setCookie, removeCookie] = useCookies(['cart']);
+
+  console.log('cart', cookies.cart);
+  try {
+    const data = setCookie('cart', formData);
+    console.log('cart', cookies.cart);
+
+    return data;
+  } catch (error: any) {
+    console.log('cart', cookies.cart);
+    throw error.response.data;
+  }
 };
