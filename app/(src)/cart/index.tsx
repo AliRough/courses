@@ -5,7 +5,7 @@ import { useRecoilState } from 'recoil';
 import { cartState } from '../state/atoms';
 import Link from 'next/link';
 
-export default function cart() {
+export default function Cart() {
   const [cart, setCart] = useRecoilState<any>(cartState);
 
   let removeFromCart = (e: any, cId: any) => {
@@ -38,7 +38,7 @@ export default function cart() {
   return (
     <>
       <HeaderBody name={'سبد خرید'} />
-      {cart&&cart[0] ? (
+      {cart && cart[0] ? (
         <section className='pt-5'>
           <div className='container'>
             <div className='row g-4 g-sm-5'>
