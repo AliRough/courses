@@ -21,7 +21,8 @@ export default function Header({ children }: any) {
   let removeFromCart = (e: any, cId: any) => {
     e.preventDefault();
     console.log(
-      e.target.parentElement.parentElement.parentElement.parentElement,
+      e.target.parentElement.parentElement.parentElement.parentElement
+        .parentNode,
     );
 
     e.target.parentElement.parentElement.parentElement.parentElement.classList.remove(
@@ -41,6 +42,8 @@ export default function Header({ children }: any) {
       });
     }, 500);
   };
+
+  let totalCart: number = 0;
   return (
     <>
       {Boolean(isUserPending) && <Loading />}
@@ -117,16 +120,16 @@ export default function Header({ children }: any) {
             {/* Wishlist START */}
 
             <div
-              className='tw-relative tw-flex tw-justify-center tw-items-center  overflow-visible mb-0  '
-              tabIndex={0}
-              // onBlur={(e) => {
-              //   console.log(e);
-              //   setShowCart(false);
-              // }}
+              className='md:tw-relative tw-flex tw-justify-center tw-items-center  overflow-visible mb-0  '
+              onMouseLeave={() => console.log('out')}
+              onBlur={(e) => {
+                setShowCart(false);
+              }}
             >
               {' '}
               <div
-                className='tw-flex tw-justify-center tw-items-center  btn btn-light btn-round mb-0 '
+                tabIndex={0}
+                className='tw-flex tw-justify-center tw-items-center  btn btn-light btn-round mb-0 overflow-visible '
                 onClick={() => setShowCart(!showCart)}
               >
                 <svg
@@ -143,67 +146,101 @@ export default function Header({ children }: any) {
                     d='M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z'
                   />
                 </svg>
+                {Boolean(cart && cart.length) && (
+                  <div className='!tw-absolute !tw-top-auto !tw-bottom-0 tw-right-0 badge tw-bg-red-400/90 tw-h-max '>
+                    {cart.length}
+                  </div>
+                )}
               </div>
               <div
-                className={`tw-absolute  tw-top-full tw-flex tw-flex-col tw-bg-white p-1 mt-2 tw-rounded-lg  tw-shadow-md tw-border ${showCart ? '' : 'tw-hidden'}`}
+                className={`tw-absolute tw-top-full  max-lg:tw-left-0 tw-max-w-[100vw] tw-flex tw-flex-col tw-bg-white p-2 mt-2 tw-rounded-lg  tw-shadow-md tw-border hover:tw-flex tw-overflow-hidden  ${showCart ? '' : 'tw-hidden'}`}
               >
                 <ul className='tw-relative !tw-pr-0 tw-flex tw-flex-col tw-min-w-72  tw-max-h-96 tw-w-max  overflow-y-auto tw-min-h-56 mb-0 tw-divide-y tw-transition-all tw-duration-300'>
                   {cart && cart[0] ? (
-                    cart?.map((cartCourse: any) => (
-                      <li
-                        key={cartCourse.id}
-                        className='tw-relative hover:tw-bg-gray-100 tw-transition-all tw-duration-300 tw-left-full -tw-translate-x-full '
-                      >
-                        <div className=' tw-flex   gap-2 p-2 px-2 '>
-                          <div className='tw-relative tw-w-max tw-top-0 tw-left-0 tw-flex tw-items-center tw-justify-end'>
-                            <div className='tw-rounded-lg tw-transition-all tw-duration-300  hover:tw-bg-red-500 hover:tw-text-white'>
-                              <svg
-                                xmlns='http://www.w3.org/2000/svg'
-                                viewBox='0 0 20 20'
-                                fill='currentColor'
-                                className='tw-w-6 '
-                              >
-                                <path d='M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z' />
-                              </svg>
-                              <button
-                                className='tw-absolute tw-w-full tw-h-full tw-top-0 tw-left-0 '
-                                onClick={(e) =>
-                                  removeFromCart(e, cartCourse?.id)
-                                }
-                              ></button>
+                    cart?.map((cartCourse: any) => {
+                      totalCart = totalCart + Number(cartCourse.price);
+
+                      return (
+                        <li
+                          key={cartCourse.id}
+                          className='tw-relative hover:tw-bg-gray-100 tw-transition-all tw-duration-300 tw-left-full -tw-translate-x-full '
+                        >
+                          <div className=' tw-flex   gap-2 p-2 px-2 '>
+                            <div className='tw-relative tw-w-max tw-top-0 tw-left-0 tw-flex tw-items-center tw-justify-end'>
+                              <div className='tw-rounded-lg tw-transition-all tw-duration-300  hover:tw-bg-red-500 hover:tw-text-white'>
+                                <svg
+                                  xmlns='http://www.w3.org/2000/svg'
+                                  viewBox='0 0 20 20'
+                                  fill='currentColor'
+                                  className='tw-w-6 '
+                                >
+                                  <path d='M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z' />
+                                </svg>
+                                <button
+                                  className='tw-absolute tw-w-full tw-h-full tw-top-0 tw-left-0 '
+                                  tabIndex={0}
+                                  onClick={(e) =>
+                                    removeFromCart(e, cartCourse?.id)
+                                  }
+                                ></button>
+                              </div>
+                            </div>
+                            <img
+                              className='tw-aspect-square tw-object-cover sm:tw-w-14 tw-w-10 tw-rounded-lg'
+                              src={cartCourse?.cover}
+                              alt=''
+                            />
+                            <div className='tw-w-full '>
+                              <h5 className='tw-text-sm tw-font-normal tw-w-max sm:tw-max-w-52 tw-max-w-40 tw-line-clamp-1'>
+                                {cartCourse?.title}{' '}
+                              </h5>
+                              <span className='tw-block tw-w-full tw-text-left tw-text-sm '>
+                                {cartCourse?.price === 0
+                                  ? 'رایگان'
+                                  : cartCourse?.price
+                                      .toString()
+                                      .replace(/\B(?=(\d{3})+(?!\d))/g, ',') +
+                                    'تومان'}{' '}
+                              </span>
                             </div>
                           </div>
-                          <img
-                            className='tw-aspect-square tw-object-cover tw-w-14 tw-rounded-lg'
-                            src={cartCourse?.cover}
-                            alt=''
-                          />
-                          <div className='tw-w-full '>
-                            <h5 className='tw-text-sm tw-font-normal tw-w-max'>
-                              {cartCourse?.title}{' '}
-                            </h5>
-                            <span className='tw-block tw-w-full tw-text-left tw-text-sm '>
-                              {cartCourse?.price === 0
-                                ? 'رایگان'
-                                : cartCourse?.price}
-                            </span>
+                        </li>
+                      );
+                    })
+                  ) : (
+                    <section>
+                      <div className='container'>
+                        <div className='row'>
+                          <div className='col-12 text-center'>
+                            {/* Image */}
+                            <img
+                              src='/images/element/cart.svg'
+                              className='tw-h-16 mb-3 mx-auto'
+                              alt=''
+                            />
+                            {/* Subtitle */}
+                            <h2 className='tw-text-sm'>
+                              سبد خرید شما در حال حاضر خالی است!
+                            </h2>
                           </div>
                         </div>
-                      </li>
-                    ))
-                  ) : (
-                    <li className='p-2 tw-border tw-border-red-400 tw-text-red-600 tw-rounded lg !tw-font-normal tw-text-sm m-2 tw-w-max mx-auto'>
-                      سبد خرید شما در حال حاضر خالی است!
-                    </li>
+                      </div>
+                    </section>
                   )}
                 </ul>
-
-                <button
-                  disabled={cart && !cart[0]}
-                  className=' btn btn-primary bottom-0 tw-w-full tw-m-0 disabled:tw-opacity-50'
+                <div className='tw-flex tw-justify-between tw-p-1 tw-py-3 tw-text-sm'>
+                  <span>مجموع سبد خرید</span>
+                  <span>
+                    {totalCart.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}{' '}
+                    تومان
+                  </span>
+                </div>
+                <Link
+                  href={'/cart'}
+                  className={`btn btn-primary bottom-0 tw-w-full tw-m-0 disabled:tw-opacity-50 ${cart && !cart[0] && 'disabled'}`}
                 >
                   نهایی کردن خرید
-                </button>
+                </Link>
               </div>
             </div>
             {/* Wishlist END */}

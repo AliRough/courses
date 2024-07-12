@@ -20,11 +20,15 @@ export default function CoursesSlider({ allCourses }: any) {
     <>
       {allCourses && (
         <Swiper
-          className='arrow-round arrow-blur arrow-hover recentSlider'
+          className='arrow-round arrow-blur arrow-hover recentSlider  '
           modules={[Autoplay]}
           loop={true}
           autoplay={true}
           breakpoints={{
+            0: {
+              slidesPerView: 1,
+              spaceBetween: 10,
+            },
             640: {
               slidesPerView: 2,
               spaceBetween: 10,
@@ -44,15 +48,15 @@ export default function CoursesSlider({ allCourses }: any) {
           {allCourses?.map((course: any) => (
             <SwiperSlide
               key={course.id}
-              className='d-flex justify-content-center bg-white  '
+              className=' d-flex justify-content-center bg-white  '
             >
               <CourseTile data={course} />
             </SwiperSlide>
           ))}
-          <NextBtn className='nextBtn'>
+          <NextBtn className='nextBtn d-none d-sm-flex'>
             <i className='fas fa-chevron-right'></i>
           </NextBtn>
-          <PervBtn className='pervBtn '>
+          <PervBtn className='pervBtn d-none d-sm-flex '>
             <i className='fas fa-chevron-left'></i>
           </PervBtn>
         </Swiper>

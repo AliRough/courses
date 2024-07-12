@@ -21,12 +21,12 @@ import { cartState } from '../../state/atoms';
 import Loading from '@/app/loading';
 
 const CourseDetail = ({ params }: { params: { id: number } }) => {
-  const [cart, setCart] = useRecoilState(cartState);
+  const [cart, setCart]: any = useRecoilState(cartState);
 
   const [cookies, setCookie, removeCookie] = useCookies(['Authorization']);
   const { id } = params;
 
-  const { data: course ,isFetching } = useCourseById(id);
+  const { data: course, isFetching } = useCourseById(id);
   const [showVideo, setShowVideo] = useState<any>();
   useEffect(() => {
     setShowVideo(course?.data.episodes[0]);
@@ -50,6 +50,10 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
     toast.warning('برای مشاهده ابتدا وارد شوید');
     toast.warning('برای مشاهده ابتدا دوره را  خریداری کنید');
   };
+  console.log(
+    'it is ',
+    cart?.find((item: any) => item.id === course?.data.id),
+  );
 
   let addToCart = (e: any) => {
     e.preventDefault();
@@ -57,9 +61,6 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
       let newCart = cart?.filter((cartCourse: any) => {
         console.log(cartCourse);
         return cartCourse.id !== course?.data.id;
-        // if (cartCourse.id !== course?.data.id) {
-        //   return cartCourse;
-        // }
       });
       console.log(newCart);
 
@@ -69,18 +70,25 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
       return [course?.data];
     });
   };
+
   return (
     <>
-    {
-      isFetching&&<Loading/>
-    }
+      {isFetching && <Loading />}
       <section className='pt-3 pt-xl-5'>
         <button onClick={handler}>click</button>
         <div className='container '>
+          {/* go to cart */}
+          <div className='tw-fixed tw-bottom-0 tw-mx-auto tw-w-full  z-2    tw-right-0 lg:tw-hidden'>
+            <div className='container'>
+              <a href={'#courseInfo'} className='btn btn-primary tw-w-full'>
+                تبت نام در دوره
+              </a>
+            </div>
+          </div>
           {/* Title START */}
-          <div className='tw-flex tw-gap-12 mb-4 tw-items-center'>
+          <div className='tw-flex max-lg:tw-flex-col lg:tw-gap-12 mb-4 lg:tw-items-center'>
             {/* Title */}
-            <h2 className='fs-3'>{course?.data.title}</h2>
+            <h2 className=' sm:tw-text-3xl tw-text-lg'>{course?.data.title}</h2>
 
             {/* Content */}
             <ul className='list-inline mb-0 '>
@@ -248,8 +256,8 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
             </div>
             {/* Main content END */}
             {/* Right sidebar START */}
-            <div className='col-xl-4  '>
-              <div className='position-sticky top-0  '>
+            <div id='courseInfo' className='col-xl-4 tw-z-10  tw-bg-gray-50  '>
+              <div className='position-sticky top-0   '>
                 <div className='row g-4'>
                   <div className='col-md-6 col-xl-12'>
                     {/* Course info START */}
@@ -315,13 +323,26 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                         </div>
                       </div>
                       {/* Buttons */}
+
                       <div className='mt-3 d-grid'>
-                        <button
-                          onClick={addToCart}
-                          className='btn btn-outline-primary'
-                        >
-                          افزودن به سبد
-                        </button>
+                        {Boolean(
+                          cart?.find(
+                            (item: any) => item.id === course?.data.id,
+                          ),
+                        ) ? (
+                          <div className='tw-border tw-rounded-md p-2 text-center tw-text-red-700 tw-border-red-500 mb-2 '>
+                            به سبد خرید اضافه شد
+                            <i className='bi bi-check-lg ms-2'></i>
+                          </div>
+                        ) : (
+                          <button
+                            onClick={addToCart}
+                            className='btn btn-outline-primary'
+                          >
+                            افزودن به سبد
+                          </button>
+                        )}
+
                         <a href='#' className='btn btn-success'>
                           خرید آنلاین
                         </a>

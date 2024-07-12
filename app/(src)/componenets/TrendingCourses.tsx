@@ -20,7 +20,7 @@ Trending courses START */}
                 <p className='mb-0'>مشاهده دوره های جدید و 🔥 در جشنواره</p>
               </div>
             </div>
-            <div className='row justify-content-center '>
+            <div className='row justify-content-center tw-bg-gray-50 p-3 p-md-0 '>
               {/* Slider START */}
               <CoursesSlider allCourses={courses?.data.data} />
 
