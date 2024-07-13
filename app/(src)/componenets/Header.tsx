@@ -185,24 +185,29 @@ export default function Header({ children }: any) {
                                 ></button>
                               </div>
                             </div>
-                            <img
-                              className='tw-aspect-square tw-object-cover sm:tw-w-14 tw-w-10 tw-rounded-lg'
-                              src={cartCourse?.cover}
-                              alt=''
-                            />
-                            <div className='tw-w-full '>
-                              <h5 className='tw-text-sm tw-font-normal tw-w-max sm:tw-max-w-52 tw-max-w-40 tw-line-clamp-1'>
-                                {cartCourse?.title}{' '}
-                              </h5>
-                              <span className='tw-block tw-w-full tw-text-left tw-text-sm '>
-                                {cartCourse?.price === 0
-                                  ? 'رایگان'
-                                  : cartCourse?.price
-                                      .toString()
-                                      .replace(/\B(?=(\d{3})+(?!\d))/g, ',') +
-                                    'تومان'}{' '}
-                              </span>
-                            </div>
+                            <Link
+                              href={routes.courses + '/' + cartCourse.id}
+                              className='tw-flex gap-2 tw-w-full'
+                            >
+                              <img
+                                className='tw-aspect-square tw-object-cover sm:tw-w-14 tw-w-10 tw-rounded-lg'
+                                src={cartCourse?.cover}
+                                alt=''
+                              />
+                              <div className='tw-w-full '>
+                                <h5 className='tw-text-sm tw-font-normal tw-w-max sm:tw-max-w-52 tw-max-w-40 tw-line-clamp-1'>
+                                  {cartCourse?.title}{' '}
+                                </h5>
+                                <span className='tw-block tw-w-full tw-text-left tw-text-sm '>
+                                  {cartCourse?.price === 0
+                                    ? 'رایگان'
+                                    : cartCourse?.price
+                                        .toString()
+                                        .replace(/\B(?=(\d{3})+(?!\d))/g, ',') +
+                                      'تومان'}{' '}
+                                </span>
+                              </div>
+                            </Link>
                           </div>
                         </li>
                       );

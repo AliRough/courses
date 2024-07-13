@@ -273,10 +273,12 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                       <div className='d-flex justify-content-between align-items-center'>
                         {/* Price */}
                         <h3 className='fw-bold mb-0 me-2 fs-5'>
-                          {course?.data?.price
-                            .toString()
-                            .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}{' '}
-                          تومان
+                          {course?.data.price
+                            ? course?.data?.price
+                                .toString()
+                                .replace(/\B(?=(\d{3})+(?!\d))/g, ',') +
+                              ' تومان  '
+                            : 'رایگان '}{' '}
                         </h3>
                         {/* Share button with dropdown */}
                         <div className='dropdown'>

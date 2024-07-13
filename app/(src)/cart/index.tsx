@@ -43,8 +43,8 @@ export default function Cart() {
           <div className='container'>
             <div className='row g-4 g-sm-5'>
               {/* Main content START */}
-              <div className='col-lg-8 mb-4 mb-sm-0'>
-                <div className='card card-body p-4 shadow'>
+              <div className='col-lg-8 mb-4 mb-sm-0 '>
+                <div className='card card-body p-4 shadow !tw-min-h-56'>
                   <div className='table-responsive border-0 rounded-3'>
                     {/* Table START */}
                     <div className='table align-middle  mb-0'>
