@@ -16,7 +16,7 @@ const InstructorListAll = () => {
 
   return (
     <>
-      <HeaderBody name='لیست مدرس' />
+      <HeaderBody name='لیست مدرس' pathItem={[]} />
       <section className='pt-4'>
         <div className='container'>
           <InstructorListFilter />
