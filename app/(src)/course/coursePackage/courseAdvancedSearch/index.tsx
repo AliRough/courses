@@ -14,7 +14,7 @@ import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 
 const CourseAdvancedSearch = ({ changePackageHandler, params }: any) => {
-  const [perPage, setPerPage] = useState(5);
+  const [perPage, setPerPage] = useState<number>();
   const [packageId, setPackageId] = useRecoilState(packageIdState);
 
   const { data: packages, refetch, isPending } = useGetAllPackages(perPage);
@@ -23,9 +23,15 @@ const CourseAdvancedSearch = ({ changePackageHandler, params }: any) => {
   useEffect(() => {
     refetch();
   }, [perPage]);
+  console.log(perPage);
 
   return (
-    <div className='tw-w-1/4 ps-2 md:tw-block tw-hidden '>
+    <div
+      className='tw-w-1/4 ps-2 md:tw-block tw-hidden '
+      onLoad={() => {
+        if (!perPage) setPerPage(5);
+      }}
+    >
       <div className='tw-bg-white tw-rounded-xl tw-shadow-lg p-2  '>
         {isPending ? (
           <LoadingMiniPackage number={4} />
@@ -55,7 +61,7 @@ const CourseAdvancedSearch = ({ changePackageHandler, params }: any) => {
             <button
               className=' tw-text-sm text-end btn btn-primary w-100 text-center'
               onClick={() => {
-                setPerPage(perPage + 5);
+                return perPage ? setPerPage(perPage + 5) : '';
               }}
             >
               <span>مشاهده بیشتر </span>

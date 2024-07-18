@@ -20,7 +20,7 @@ export default function CoursesSlider({ allCourses }: any) {
     <>
       {allCourses && (
         <Swiper
-          className='arrow-round arrow-blur arrow-hover recentSlider  '
+          className='arrow-round arrow-blur arrow-hover recentSlider !tw-py-8 !tw-px-4  bg-transparent'
           modules={[Autoplay]}
           loop={true}
           autoplay={true}

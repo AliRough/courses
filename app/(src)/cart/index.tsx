@@ -37,7 +37,7 @@ export default function Cart() {
 
   return (
     <>
-      <HeaderBody name={'سبد خرید'} />
+      <HeaderBody name={'سبد خرید'} pathItem={[{ title: 'سبد خرید' }]} />
       {cart && cart[0] ? (
         <section className='pt-5'>
           <div className='container'>

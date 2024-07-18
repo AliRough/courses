@@ -6,7 +6,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
 
 import { useCookies } from 'react-cookie';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { routes } from '../../routes';
 
 export const useChangeAvatar = () => {
@@ -106,6 +106,8 @@ export const useLogInUser = () => {
   const queryClient = useQueryClient();
   const [cookies, setCookie, removeCookie] = useCookies(['Authorization']);
   const router = useRouter();
+  const search: any = useSearchParams();
+  const pathname = usePathname();
 
   return useMutation({
     mutationFn: (formData: any) => api.logInUser(formData),
@@ -117,7 +119,12 @@ export const useLogInUser = () => {
       setCookie('Authorization', data.data.accessToken, { path: '/' });
 
       toast.success(' شما با موفقیت وارد شدید');
-      router.push('/profile/edit-profile');
+
+      if (search.get('redirect')) {
+        router.push(search.get('redirect')?.replaceAll('$slash$', '/'));
+      } else {
+        router.push('/profile/edit-profile');
+      }
     },
     onError: (error) => {
       console.log(error);
@@ -130,6 +137,7 @@ export const useLogOutUser = () => {
   const queryClient = useQueryClient();
   const [cookies, setCookie, removeCookie] = useCookies(['Authorization']);
   const router = useRouter();
+  const pathname = usePathname();
 
   return useMutation({
     mutationFn: () => api.logOutUser(cookies.Authorization),
@@ -139,7 +147,9 @@ export const useLogOutUser = () => {
       removeCookie('Authorization', { path: '/' });
 
       toast.success('شما از پنل خود خارج شدید');
-      router.push('/');
+      if (pathname.includes('/profile')) {
+        router.push('/');
+      }
     },
   });
 };
@@ -148,6 +158,7 @@ export const useRegisterUser = () => {
   const queryClient = useQueryClient();
   const [cookies, setCookie, removeCookie] = useCookies(['Authorization']);
   const router = useRouter();
+  const search: any = useSearchParams();
 
   return useMutation({
     mutationFn: (formData: any) => api.registerUser(formData),
@@ -158,7 +169,11 @@ export const useRegisterUser = () => {
 
       toast.success(' شما با موفقیت وارد شدید');
       toast.warning(' ایمیل ارسال شد ,ایمیل خود را تایید کنید');
-      router.push('/profile/edit-profile');
+      if (search.get('redirect')) {
+        router.push(search.get('redirect')?.replaceAll('$slash$', '/'));
+      } else {
+        router.push('/profile/edit-profile');
+      }
     },
     onError: (error) => {
       toast.error(error.message);

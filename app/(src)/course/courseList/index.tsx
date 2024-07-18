@@ -12,6 +12,7 @@ import { useEffect, useState } from 'react';
 import LoadingCourse from '../../componenets/other/loading/course';
 import { useRouter } from 'next/navigation';
 import { routes } from '../../routes';
+import { useDebouncedCallback } from 'use-debounce';
 
 const CourseList = ({ searchParams }: any) => {
   const router = useRouter();
@@ -26,8 +27,12 @@ const CourseList = ({ searchParams }: any) => {
     searchParams.category,
   );
 
-  useEffect(() => {
+  const handler = useDebouncedCallback(() => {
     refetch();
+  }, 500);
+  useEffect(() => {
+    handler();
+    console.log('changed');
   }, [params]);
 
   const categoryFormHandler = (data: any) => {
@@ -38,7 +43,15 @@ const CourseList = ({ searchParams }: any) => {
 
   return (
     <>
-      <HeaderBody name={searchParams.category.replaceAll('-', ' ')} />
+      <HeaderBody
+        name={searchParams.category?.replaceAll('-', ' ') || 'همه دوره ها'}
+        pathItem={[
+          { title: 'همه دوره ها', path: '/courses/all' },
+          searchParams.category
+            ? { title: searchParams.category.replaceAll('-', ' ') }
+            : null,
+        ]}
+      />
 
       <section className='py-5'>
         <div className='container'>

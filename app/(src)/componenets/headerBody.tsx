@@ -1,6 +1,6 @@
 'use client';
 
-const HeaderBody = ({ name }: { name: string }) => {
+const HeaderBody = ({ name, pathItem }: { name: string; pathItem: any }) => {
   console.log('باید مسیر ها ساماندهی شود');
 
   return (
@@ -22,9 +22,11 @@ const HeaderBody = ({ name }: { name: string }) => {
                     <li className='breadcrumb-item'>
                       <a href='/'>صفحه اصلی</a>
                     </li>
-                    <li className='breadcrumb-item active' aria-current='page'>
-                      لیست نسخه 1
-                    </li>
+                    {pathItem?.map((item: any, index: any) => (
+                      <li key={index} className='breadcrumb-item'>
+                        <a href={item?.path || '#'}>{item?.title}</a>
+                      </li>
+                    ))}
                   </ol>
                 </nav>
               </div>

@@ -3,6 +3,7 @@ import { ErrorMessage } from '@hookform/error-message';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import Image from 'next/image';
+import { useSearchParams } from 'next/navigation';
 
 export default function SignIn({
   signInHandler,
@@ -11,6 +12,7 @@ export default function SignIn({
   isPending,
 }: any) {
   const [showPass, setSowPass] = useState(false);
+  const search = useSearchParams();
 
   return (
     <>
@@ -203,7 +205,12 @@ export default function SignIn({
                     {/* Sign up link */}
                     <div className='mt-4 text-center'>
                       <span>
-                        حساب کاربری ندارید؟ <Link href='signUp'>ثبت نام</Link>
+                        حساب کاربری ندارید؟{' '}
+                        <Link
+                          href={`signUp${search.get('redirect') ? '?redirect=' + search.get('redirect') : ''}`}
+                        >
+                          ثبت نام
+                        </Link>
                       </span>
                     </div>
                   </div>

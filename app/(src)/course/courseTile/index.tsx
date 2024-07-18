@@ -10,7 +10,7 @@ import { routes } from '../../routes';
 
 const CourseTile = ({ data }: { data: any }) => {
   return (
-    <div className='card shadow h-100 tw-max-w-96 rounded-4 overflow-hidden tw-w-full '>
+    <div className='card tw-shadow-lg h-100 tw-max-w-96 rounded-4 overflow-hidden tw-w-full '>
       <Image
         unoptimized={true}
         blurDataURL={`/images/courses/4by3/artist.svg`}

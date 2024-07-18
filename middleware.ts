@@ -19,23 +19,35 @@ export function middleware(request: NextRequest) {
     if (!token) {
       return NextResponse.redirect(new URL(`/auth/login`, request.url));
     }
+  } else if (orginalPath.includes('/login')) {
+    let token = request.cookies.get('Authorization');
+    if (token) {
+      return NextResponse.redirect(new URL(`/profile`, request.url));
+    }
+  } 
+   if (!orginalPath.includes('/login')) {
+    const path = request.nextUrl.pathname.replaceAll('/', '$slash$');
+    let search = request.nextUrl.search; //  search params
   }
+console.log(request.nextUrl.pathname,orginalPath);
+
   return;
   if (
     request.nextUrl.pathname !== '/auth/login' &&
-    !isToken &&
-    orginalPath.includes('/profile')
+    !isToken
+    // &&
+    // orginalPath.includes('/profile')
   ) {
     const path = request.nextUrl.pathname.replaceAll('/', '$slash$');
     let search = request.nextUrl.search;
-    if (request.nextUrl.pathname !== '/') {
-      search = search
+    if (request.nextUrl.pathname === '/') {
+      search === search
         ? `${search}&redirect=${path}`
         : `?redirect=${path + search}`;
+      return;
     }
-    return NextResponse.redirect(new URL(`/auth/login${search}`, request.url));
   }
-  return;
+  // return;
   if (newPath !== orginalPath) {
     return NextResponse.redirect(new URL(newPath));
   }
@@ -52,7 +64,7 @@ export function middleware(request: NextRequest) {
   If the token is not present and the next URL pathname is not "/login"
   در صورتی که توکن وجود ندارد و مسیر آدرس لاگین نبود
   */
-  if (request.nextUrl.pathname !== '/login' && !isToken) {
+  if (request.nextUrl.pathname !== 'auth/login' && !isToken) {
     const path = request.nextUrl.pathname.replaceAll('/', '$slash$');
     let search = request.nextUrl.search;
     if (request.nextUrl.pathname !== '/') {
@@ -60,7 +72,7 @@ export function middleware(request: NextRequest) {
         ? `${search}&redirect=${path}`
         : `?redirect=${path + search}`;
     }
-    return NextResponse.redirect(new URL(`/login${search}`, request.url));
+    return NextResponse.redirect(new URL(`/auth/login${search}`, request.url));
   }
 
   return NextResponse.next();

@@ -41,13 +41,16 @@ const CoursePakage = ({ params }: any) => {
     setPackageId(pack.slug);
   };
 
-  useEffect(() => {
-    refetch();
-  }, [param]);
+  // useEffect(() => {
+  //   refetch();
+  // }, [param]);
 
   return (
     <>
-      <HeaderBody name={Package?.data.title} />
+      <HeaderBody
+        name={Package?.data.title}
+        pathItem={[{ title: Package?.data.title }]}
+      />
       <section className='py-5'>
         <div className='container'>
           <div className='row'>

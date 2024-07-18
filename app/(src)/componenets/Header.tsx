@@ -9,6 +9,7 @@ import Loading from '@/app/loading';
 import { routes } from '../routes';
 import { useRecoilState } from 'recoil';
 import { cartState } from '../state/atoms';
+import { usePathname } from 'next/navigation';
 
 export default function Header({ children }: any) {
   const { data: userData, isPending: isUserPending } = useGetUser();
@@ -16,6 +17,8 @@ export default function Header({ children }: any) {
     useGetAllCategories();
   const [showCart, setShowCart] = useState(false);
   const [cart, setCart] = useRecoilState<any>(cartState);
+
+  const pathname = usePathname();
 
   console.log(cart);
   let removeFromCart = (e: any, cId: any) => {
@@ -326,7 +329,9 @@ export default function Header({ children }: any) {
                 <Profile {...userData} />
               </ul>
             ) : (
-              <Link href={'/auth/login'}>
+              <Link
+                href={`/auth/login${pathname === '/' ? '' : '?redirect=' + pathname.replaceAll('/', '$slash$')}`}
+              >
                 <div className='navbar-nav  d-inline-block lg:tw-ms-3  '>
                   <button className='btn btn-primary-soft text-primary hover:!tw-bg-[#5c6bc0] max-lg:!tw-text-gray-500 max-lg:tw-bg-transparent  mb-0  lg:tw-px-4 lg:tw-py-2 tw-p-1 tw-py-0'>
                     <i className='fas fa-sign-in-alt lg:tw-text-sm tw-text-xl lg:tw-me-2 ' />

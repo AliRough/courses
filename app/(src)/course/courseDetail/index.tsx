@@ -6,7 +6,11 @@ import Video from 'next-video';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { useCourseById } from '@/app/(src)/hooks/request/requestCourse';
+import {
+  useCourseById,
+  useGetCommentsEpisode,
+  usePostComments,
+} from '@/app/(src)/hooks/request/requestCourse';
 import Testimonials from '@/app/(src)/testimonials';
 
 import { TCurriculum, TCurriculumDetail } from '@/app/(src)/model/course.d';
@@ -23,11 +27,16 @@ import Loading from '@/app/loading';
 const CourseDetail = ({ params }: { params: { id: number } }) => {
   const [cart, setCart]: any = useRecoilState(cartState);
 
-  const [cookies, setCookie, removeCookie] = useCookies(['Authorization']);
   const { id } = params;
 
   const { data: course, isFetching } = useCourseById(id);
   const [showVideo, setShowVideo] = useState<any>();
+  const { data: comments } = useGetCommentsEpisode(
+    course?.data.id,
+    showVideo?.id,
+  );
+  console.log('showVideo', comments);
+
   useEffect(() => {
     setShowVideo(course?.data.episodes[0]);
   }, [course]);
@@ -37,16 +46,9 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
     return date;
   };
   let test = "<h2 className='fs-3'>آموزش رایگان Blazor WebAssembly</h2>";
-  const handler = async () => {
-    let formData = {
-      episode_id: 1,
-      description: 'این یک کامنت تست است.',
-    };
-    let { course }: any = await postComments(formData, cookies.Authorization);
-    console.log(course);
-  };
 
   const lockedCourseHandler = () => {
+    
     toast.warning('برای مشاهده ابتدا وارد شوید');
     toast.warning('برای مشاهده ابتدا دوره را  خریداری کنید');
   };
@@ -75,7 +77,6 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
     <>
       {isFetching && <Loading />}
       <section className='pt-3 pt-xl-5'>
-        <button onClick={handler}>click</button>
         <div className='container '>
           {/* go to cart */}
           <div className='tw-fixed tw-bottom-0 tw-mx-auto tw-w-full  z-2    tw-right-0 lg:tw-hidden'>
@@ -238,19 +239,27 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                 </div>
                 {/* Curriculum END */}
                 {/* comment START */}
-                <div className='col-12'>
-                  <div className='card border rounded-3'>
-                    {/* Card header START */}
-                    <div className='card-header border-bottom'>
-                      <h3 className='mb-0 fs-5'>دیدگاه کاربران</h3>
-                    </div>
-                    {/* Card header END */}
-                    {/* Card body START */}
-                    <Testimonials />
+                {showVideo && (
+                  <div className='col-12'>
+                    <div className='card border rounded-3'>
+                      {/* Card header START */}
+                      <div className='card-header border-bottom'>
+                        <h3 className='mb-0 fs-5'>
+                          {' '}
+                          دیدگاه کاربران قسمت {showVideo.title}
+                        </h3>
+                      </div>
+                      {/* Card header END */}
+                      {/* Card body START */}
+                      <Testimonials
+                        comments={comments}
+                        episodeId={showVideo.id}
+                      />
 
-                    {/* Card body START */}
+                      {/* Card body START */}
+                    </div>
                   </div>
-                </div>
+                )}
                 {/* comment END */}
               </div>
             </div>

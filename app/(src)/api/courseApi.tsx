@@ -33,6 +33,19 @@ export const CourseByIdApi = async (id: number) => {
     throw error.response.data;
   }
 };
+export const episodeCommentsApi = async (
+  courseId: number,
+  episodeId: number,
+) => {
+  try {
+    const data = await axios.get(
+      `/api/courses/${courseId}/episodes/${episodeId}/comments`,
+    );
+    return data.data;
+  } catch (error: any) {
+    throw error.response.data;
+  }
+};
 
 export const getAllPackages = async (perPage?: any) => {
   try {
@@ -70,6 +83,10 @@ export const getAllCategories = async (perPage?: any) => {
 };
 
 export const postComments = async (formData: any, token: any) => {
+  if (!token) {
+    toast.error('برای ارسال دیدگاه خود ابتدا وارد شوید');
+    throw new Error('برای ارسال دیدگاه خود ابتدا وارد شوید');
+  }
   let config = {
     method: 'post',
     maxBodyLength: Infinity,
@@ -91,7 +108,7 @@ export const postComments = async (formData: any, token: any) => {
     .catch((error) => {
       console.log(error);
       toast.error(error.response.data.message);
-      throw new Error(error.response.data.message);
+      throw new Error(error.response.data);
     });
   console.log(data);
 };
