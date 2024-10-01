@@ -47,6 +47,7 @@ export default function Header({ children }: any) {
   };
 
   let totalCart: number = 0;
+
   return (
     <>
       {Boolean(isUserPending) && <Loading />}
@@ -359,63 +360,69 @@ export default function Header({ children }: any) {
               <ul
                 className={`navbar-nav navbar-nav-scroll mx-auto tw-bg-gray-200 rounded-bottom-4 ${allCategoriesData ? 'xl:tw-h-12' : 'tw-h-0 overflow-hidden'} tw-transition-all `}
               >
-                {allCategoriesData?.data.map((item: any) => {
-                  return (
-                    <li className='nav-item dropdown ' key={item.id}>
-                      <Link
-                        className={`nav-link tw-text-gray-600  ${item.children ? ' dropdown-toggle ' : ''}`}
-                        href={
-                          `${routes.courses}/all?category=${item?.slug}` || `#`
-                        }
-                        id={item.children && 'demoMenu'}
-                        data-bs-toggle={item.children && 'dropdown'}
-                        aria-haspopup={item.children && 'true'}
-                        aria-expanded={item.children && 'false'}
-                      >
-                        {item.title}
-                      </Link>
-                      {item.children && (
-                        <ul
-                          className='dropdown-menu '
-                          aria-labelledby='demoMenu'
-                        >
-                          {item.children.map((subItem: any) => {
-                            return (
-                              <li
-                                className='dropdown-submenu dropend'
-                                key={subItem.id}
-                              >
-                                <Link
-                                  className={`dropdown-item  ${subItem.children && ' dropdown-toggle '}`}
-                                  href={subItem?.src || '#'}
-                                >
-                                  {subItem.title}
-                                </Link>
-                                {subItem.children && (
-                                  <ul
-                                    className='dropdown-menu dropdown-menu-start bg-light'
-                                    data-bs-popper='none'
+                {allCategoriesData?.data &&
+                  Object.values(allCategoriesData?.data)
+                    .slice(0,4)
+                    .map((item: any) => {
+                      return (
+                        <li className='nav-item dropdown ' key={item.id}>
+                          <Link
+                            className={`nav-link tw-text-gray-600  ${item.children ? ' dropdown-toggle ' : ''}`}
+                            href={
+                              `${routes.courses}/all?category=${item?.slug}` ||
+                              `#`
+                            }
+                            id={item.children && 'demoMenu'}
+                            data-bs-toggle={item.children && 'dropdown'}
+                            aria-haspopup={item.children && 'true'}
+                            aria-expanded={item.children && 'false'}
+                          >
+                            {item.title}
+                          </Link>
+                          {item.children && (
+                            <ul
+                              className='dropdown-menu '
+                              aria-labelledby='demoMenu'
+                            >
+                              {item.children.map((subItem: any) => {
+                                return (
+                                  <li
+                                    className='dropdown-submenu dropend'
+                                    key={subItem.id}
                                   >
-                                    {subItem.children.map((subSubItem: any) => (
-                                      <li key={subSubItem.id}>
-                                        <Link
-                                          className='dropdown-item'
-                                          href={subSubItem?.src || '#'}
-                                        >
-                                          {subSubItem.title}
-                                        </Link>
-                                      </li>
-                                    ))}
-                                  </ul>
-                                )}
-                              </li>
-                            );
-                          })}
-                        </ul>
-                      )}
-                    </li>
-                  );
-                })}
+                                    <Link
+                                      className={`dropdown-item  ${subItem.children && ' dropdown-toggle '}`}
+                                      href={subItem?.src || '#'}
+                                    >
+                                      {subItem.title}
+                                    </Link>
+                                    {subItem.children && (
+                                      <ul
+                                        className='dropdown-menu dropdown-menu-start bg-light'
+                                        data-bs-popper='none'
+                                      >
+                                        {subItem.children.map(
+                                          (subSubItem: any) => (
+                                            <li key={subSubItem.id}>
+                                              <Link
+                                                className='dropdown-item'
+                                                href={subSubItem?.src || '#'}
+                                              >
+                                                {subSubItem.title}
+                                              </Link>
+                                            </li>
+                                          ),
+                                        )}
+                                      </ul>
+                                    )}
+                                  </li>
+                                );
+                              })}
+                            </ul>
+                          )}
+                        </li>
+                      );
+                    })}
               </ul>
               {/* Nav Main menu END */}
             </div>

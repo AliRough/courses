@@ -9,7 +9,7 @@ import LoadingCourse from './other/loading/course';
 
 export default function PopularCourses() {
   const { data: categories }: any = useGetAllCategories();
-  const [tag, setTag]: any = useState(categories?.data[3].slug);
+  const [tag, setTag]: any = useState(categories?.data[3].id);
   const {
     data: courses,
     refetch,
@@ -20,8 +20,8 @@ export default function PopularCourses() {
     refetch();
   }, [tag]);
 
-  if (!categories?.data.length) {
-    console.log(categories);
+  if (categories?.data && !Object.values(categories?.data).length) {
+    console.log(categories.data.length);
 
     return;
   }
@@ -50,19 +50,22 @@ Popular course START */}
             role='tablist'
           >
             <>{console.log(categories)}</>
-            {categories?.data?.map((category: any) => (
-              <li key={category.id} className='nav-item me-2 me-sm-5'>
-                <>{console.log(category)}</>
-                <button
-                  className={`nav-link mb-2 mb-md-0 ${tag === category.slug && 'active'}`}
-                  onClick={() => {
-                    setTag(category.slug);
-                  }}
-                >
-                  {category.title}{' '}
-                </button>
-              </li>
-            ))}
+            {categories?.data &&
+              Object.values(categories?.data)
+                .splice(0, 4)
+                ?.map((category: any) => (
+                  <li key={category.id} className='nav-item me-2 me-sm-5'>
+                    <>{console.log(category)}</>
+                    <button
+                      className={`nav-link mb-2 mb-md-0 ${tag === category.id && 'active'}`}
+                      onClick={() => {
+                        setTag(category.id);
+                      }}
+                    >
+                      {category.title}{' '}
+                    </button>
+                  </li>
+                ))}
           </ul>
           {/* Tabs END */}
           {/* Tabs content START */}
@@ -72,11 +75,14 @@ Popular course START */}
                 {Boolean(isPending || isFetching) ? (
                   <LoadingCourse number={6} />
                 ) : (
-                  courses?.data?.data?.map((e: any) => (
-                    <div key={e?.id} className='col-sm-6   col-md-4 col-xl-3'>
-                      <CourseTile data={e} />
-                    </div>
-                  ))
+                  Object.values(courses?.data.data)?.map((e: any) => {
+                    console.log('e data', Object.values(e), courses?.data);
+                    return (
+                      <div key={e?.id} className='col-sm-6   col-md-4 col-xl-3'>
+                        <CourseTile data={e} />
+                      </div>
+                    );
+                  })
                 )}
               </div>
               {/* Row END */}

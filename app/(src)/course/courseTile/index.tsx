@@ -19,7 +19,7 @@ const CourseTile = ({ data }: { data: any }) => {
         width='500'
         height='500'
         className='card-img-top !tw-w-full tw-aspect-[4/3] overflow-hidden tw-object-cover '
-        alt='/images/courses/4by3/artist.svg'
+        alt={data?.cover}
       />
       <div className='card-body pb-0'>
         <div className='d-flex justify-content-between mb-2'>

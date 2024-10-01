@@ -31,14 +31,12 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
 
   const { data: course, isFetching } = useCourseById(id);
   const [showVideo, setShowVideo] = useState<any>();
-  const { data: comments } = useGetCommentsEpisode(
-    course?.data.id,
-    showVideo?.id,
-  );
+  const { data: comments } = useGetCommentsEpisode(course?.id, showVideo?.id);
+
   console.log('showVideo', comments);
 
   useEffect(() => {
-    setShowVideo(course?.data.episodes[0]);
+    setShowVideo(course?.episodes && course?.episodes[0]);
   }, [course]);
 
   let getDateFormat = (uDate: any) => {
@@ -48,13 +46,12 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
   let test = "<h2 className='fs-3'>آموزش رایگان Blazor WebAssembly</h2>";
 
   const lockedCourseHandler = () => {
-    
     toast.warning('برای مشاهده ابتدا وارد شوید');
     toast.warning('برای مشاهده ابتدا دوره را  خریداری کنید');
   };
   console.log(
     'it is ',
-    cart?.find((item: any) => item.id === course?.data.id),
+    cart?.find((item: any) => item.id === course?.id),
   );
 
   let addToCart = (e: any) => {
@@ -62,14 +59,14 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
     setCart((cart: any) => {
       let newCart = cart?.filter((cartCourse: any) => {
         console.log(cartCourse);
-        return cartCourse.id !== course?.data.id;
+        return cartCourse.id !== course?.id;
       });
       console.log(newCart);
 
       if (newCart) {
-        return [...newCart, course?.data];
+        return [...newCart, course];
       }
-      return [course?.data];
+      return [course];
     });
   };
 
@@ -89,7 +86,7 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
           {/* Title START */}
           <div className='tw-flex max-lg:tw-flex-col lg:tw-gap-12 mb-4 lg:tw-items-center'>
             {/* Title */}
-            <h2 className=' sm:tw-text-3xl tw-text-lg'>{course?.data.title}</h2>
+            <h2 className=' sm:tw-text-3xl tw-text-lg'>{course?.title}</h2>
 
             {/* Content */}
             <ul className='list-inline mb-0 '>
@@ -100,7 +97,7 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
 
               <li className='list-inline-item fw-light h6 me-3 mb-1 mb-sm-0'>
                 <i className='bi bi-patch-exclamation-fill tw-text-green-500 me-2' />
-                آخرین بروزرسانی {getDateFormat(course?.data.updetedAt)}
+                آخرین بروزرسانی {getDateFormat(course?.updetedAt)}
               </li>
             </ul>
           </div>
@@ -117,7 +114,7 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                   >
                     <Video
                       accentColor='#5173FF'
-                      src={showVideo?.video?.address}
+                      src={showVideo?.src}
                       className='tw-rounded-2xl overflow-hidden'
                     />
                     <div className='tw-px-4 py-2'>
@@ -141,7 +138,7 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                     {/* Card body START */}
                     <div className='card-body'>
                       <div id='collapseContent' className=''>
-                        {course?.data.description}
+                        {course?.description}
                       </div>
                     </div>
                     {/* Card body START */}
@@ -161,75 +158,76 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                       <div className='row g-5'>
                         {/* Lecture item START */}
                         <div className='col-12'>
-                          {course?.data?.episodes?.map(
-                            (episod: any, index: number) => (
-                              <div key={episod.id}>
-                                <div className='d-flex justify-content-between align-items-center'>
-                                  <div className='d-flex'>
+                          {course?.episodes &&
+                            course?.episodes?.map(
+                              (episod: any, index: number) => (
+                                <div key={episod.id}>
+                                  <div className='d-flex justify-content-between align-items-center'>
+                                    <div className='d-flex'>
+                                      {episod.isLocked ? (
+                                        <Link
+                                          href='#courseVideo'
+                                          onClick={() => {
+                                            setShowVideo(episod);
+                                          }}
+                                          className='btn btn-danger-soft btn-round mb-0'
+                                        >
+                                          <i className='fas fa-play' />
+                                        </Link>
+                                      ) : (
+                                        <div
+                                          className='btn btn-danger-soft btn-round mb-0 tw-flex tw-justify-center'
+                                          onClick={lockedCourseHandler}
+                                        >
+                                          <svg
+                                            xmlns='http://www.w3.org/2000/svg'
+                                            viewBox='0 0 24 24'
+                                            fill='currentColor'
+                                            className='tw-w-5 '
+                                          >
+                                            <path
+                                              fill-rule='evenodd'
+                                              d='M12 1.5a5.25 5.25 0 0 0-5.25 5.25v3a3 3 0 0 0-3 3v6.75a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3v-6.75a3 3 0 0 0-3-3v-3c0-2.9-2.35-5.25-5.25-5.25Zm3.75 8.25v-3a3.75 3.75 0 1 0-7.5 0v3h7.5Z'
+                                              clip-rule='evenodd'
+                                            />
+                                          </svg>
+                                        </div>
+                                      )}
+                                      <div className='ms-2 ms-sm-3 mt-1 mt-sm-0'>
+                                        <h6 className='mb-0 fw-normal'>
+                                          {episod.title}
+                                        </h6>
+                                        <p className='mb-2 mb-sm-0 small'>
+                                          {episod.video.durationMinutes} دقیقه
+                                        </p>
+                                      </div>
+                                    </div>
+                                    {/* Button */}
                                     {episod.isLocked ? (
                                       <Link
                                         href='#courseVideo'
                                         onClick={() => {
                                           setShowVideo(episod);
                                         }}
-                                        className='btn btn-danger-soft btn-round mb-0'
+                                        className='btn btn-sm btn-success mb-0'
                                       >
-                                        <i className='fas fa-play' />
+                                        پخش{' '}
                                       </Link>
                                     ) : (
                                       <div
-                                        className='btn btn-danger-soft btn-round mb-0 tw-flex tw-justify-center'
+                                        className='btn btn-danger-soft  mb-0 '
                                         onClick={lockedCourseHandler}
                                       >
-                                        <svg
-                                          xmlns='http://www.w3.org/2000/svg'
-                                          viewBox='0 0 24 24'
-                                          fill='currentColor'
-                                          className='tw-w-5 '
-                                        >
-                                          <path
-                                            fill-rule='evenodd'
-                                            d='M12 1.5a5.25 5.25 0 0 0-5.25 5.25v3a3 3 0 0 0-3 3v6.75a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3v-6.75a3 3 0 0 0-3-3v-3c0-2.9-2.35-5.25-5.25-5.25Zm3.75 8.25v-3a3.75 3.75 0 1 0-7.5 0v3h7.5Z'
-                                            clip-rule='evenodd'
-                                          />
-                                        </svg>
+                                        پولی{' '}
                                       </div>
                                     )}
-                                    <div className='ms-2 ms-sm-3 mt-1 mt-sm-0'>
-                                      <h6 className='mb-0 fw-normal'>
-                                        {episod.title}
-                                      </h6>
-                                      <p className='mb-2 mb-sm-0 small'>
-                                        {episod.video.durationMinutes} دقیقه
-                                      </p>
-                                    </div>
                                   </div>
-                                  {/* Button */}
-                                  {episod.isLocked ? (
-                                    <Link
-                                      href='#courseVideo'
-                                      onClick={() => {
-                                        setShowVideo(episod);
-                                      }}
-                                      className='btn btn-sm btn-success mb-0'
-                                    >
-                                      پخش{' '}
-                                    </Link>
-                                  ) : (
-                                    <div
-                                      className='btn btn-danger-soft  mb-0 '
-                                      onClick={lockedCourseHandler}
-                                    >
-                                      پولی{' '}
-                                    </div>
-                                  )}
+                                  {/* Divider */}
+                                  {index + 1 !== course?.episodes &&
+                                    course?.episodes?.length && <hr />}
                                 </div>
-                                {/* Divider */}
-                                {index + 1 !==
-                                  course?.data?.episodes.length && <hr />}
-                              </div>
-                            ),
-                          )}
+                              ),
+                            )}
                         </div>
                         {/* Lecture item END */}
                       </div>
@@ -274,7 +272,7 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                       {course && (
                         <img
                           className='rounded-3 mb-3 tw-aspect-[4/3] object-fit-cover'
-                          src={course?.data?.cover}
+                          src={course?.cover}
                           alt=''
                         />
                       )}
@@ -282,8 +280,8 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                       <div className='d-flex justify-content-between align-items-center'>
                         {/* Price */}
                         <h3 className='fw-bold mb-0 me-2 fs-5'>
-                          {course?.data.price
-                            ? course?.data?.price
+                          {course?.price
+                            ? course?.price
                                 .toString()
                                 .replace(/\B(?=(\d{3})+(?!\d))/g, ',') +
                               ' تومان  '
@@ -337,9 +335,7 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
 
                       <div className='mt-3 d-grid'>
                         {Boolean(
-                          cart?.find(
-                            (item: any) => item.id === course?.data.id,
-                          ),
+                          cart?.find((item: any) => item.id === course?.id),
                         ) ? (
                           <div className='tw-border tw-rounded-md p-2 text-center tw-text-red-700 tw-border-red-500 mb-2 '>
                             به سبد خرید اضافه شد
@@ -368,7 +364,7 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                             <i className='fas fa-fw fa-book-open text-primary' />
                             تعداد ویدیو ها
                           </span>
-                          <span>{course?.data.episodeCount}</span>
+                          <span>{course?.episodeCount}</span>
                         </li>
                         <li className='list-group-item d-flex justify-content-between align-items-center'>
                           <span className='h6 fw-light mb-0'>
@@ -383,7 +379,7 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                             <i className='fas fa-fw fa-user-clock text-primary' />
                             تاریخ بروزرسانی
                           </span>
-                          <span>{getDateFormat(course?.data.updetedAt)}</span>
+                          <span>{getDateFormat(course?.updetedAt)}</span>
                         </li>
                       </ul>
                       {/* Divider */}
@@ -395,7 +391,7 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                           <img
                             className='avatar-img rounded-circle'
                             src={
-                              course?.data?.teacher.avatar ||
+                              course?.teacher?.avatar ||
                               '/images/avatar/User.png'
                             }
                             alt='avatar'
@@ -403,11 +399,9 @@ const CourseDetail = ({ params }: { params: { id: number } }) => {
                         </div>
                         <div className='ms-sm-3 mt-2 mt-sm-0'>
                           <h5 className='mb-0'>
-                            <a href='#'>{course?.data.teacher.name}</a>
+                            <a href='#'>{course?.teacher?.name}</a>
                           </h5>
-                          <p className='mb-0 small'>
-                            {course?.data?.teacher.field}
-                          </p>
+                          <p className='mb-0 small'>{course?.teacher?.field}</p>
                         </div>
                       </div>
                       {/* Rating and follow */}

@@ -22,7 +22,7 @@ Trending courses START */}
             </div>
             <div className='row justify-content-center   p-md-0 '>
               {/* Slider START */}
-              <CoursesSlider allCourses={courses?.data.data} />
+              <CoursesSlider allCourses={Object.values(courses?.data.data)} />
 
               {/* Slider END */}
             </div>

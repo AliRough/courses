@@ -7,6 +7,7 @@ import { routes } from '../routes';
 import { useRecoilState } from 'recoil';
 import { packageIdState } from '../state/atoms';
 import Image from 'next/image';
+import { object } from 'zod';
 
 export default function Counter() {
   const [packageId, setPackageId] = useRecoilState(packageIdState);
@@ -54,6 +55,7 @@ export default function Counter() {
       iconStyle: 'fas fa-palette',
     },
   ];
+  
   return (
     <>
       {/* =======================
@@ -64,7 +66,7 @@ Counter START */}
         <section className=' tw-mb-5'>
           <div className='container '>
             <div className='row g-sm-4 g-2'>
-              {packages?.data?.map((pack: any, index: any) => (
+              {Object.values(packages?.data)?.map((pack: any, index: any) => (
                 <div
                   className='col-3 col-sm-3 col-lg-2 col-xl-2 px-1   '
                   key={index}
@@ -81,7 +83,7 @@ Counter START */}
                         <Image
                           width={100}
                           height={100}
-                          className=' tw-rounded-full tw-aspect-square tw-bg-cover'
+                          className=' tw-rounded-full tw-aspect-square tw-object-cover'
                           src={pack.cover}
                           alt=''
                         />

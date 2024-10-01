@@ -27,8 +27,8 @@ export const CourseAllApi = async (
 
 export const CourseByIdApi = async (id: number) => {
   try {
-    const data = await axios.get('/api/courses/' + id + '?includeEpisodes');
-    return data.data;
+    const { data } = await axios.get('/api/courses/' + id + '?includeEpisodes');
+    return data;
   } catch (error: any) {
     throw error.response.data;
   }
