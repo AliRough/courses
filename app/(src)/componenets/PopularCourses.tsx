@@ -75,8 +75,8 @@ Popular course START */}
                 {Boolean(isPending || isFetching) ? (
                   <LoadingCourse number={6} />
                 ) : (
+                  courses?.data.data &&
                   Object.values(courses?.data.data)?.map((e: any) => {
-                    console.log('e data', Object.values(e), courses?.data);
                     return (
                       <div key={e?.id} className='col-sm-6   col-md-4 col-xl-3'>
                         <CourseTile data={e} />
