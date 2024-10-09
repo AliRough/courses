@@ -31,7 +31,7 @@ const CourseTile = ({ data }: { data: any }) => {
           </a>
         </div>
         <h5 className='card-title fw-normal'>
-          <Link href={routes.courses + '/' + data?.id}>{data?.title}</Link>
+          <Link href={routes.courses + '/1'}>{data?.title}</Link>
         </h5>
         <p className='mb-2 text-truncate-2'>{data?.description}</p>
         <ul className='list-inline mb-0'>
