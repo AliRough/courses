@@ -10,6 +10,7 @@ import 'swiper/css/scrollbar';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { ToastContainer } from 'react-toastify';
+import Head from 'next/head';
 
 export const metadata: Metadata = {
   title: 'E D U',
@@ -24,6 +25,9 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang='fa' dir='rtl'>
+      <Head>
+        <link rel='manifest' href='/manifest.json' />
+      </Head>
       <body className='tw-bg-gradient-to-b tw-from-[#f3f4f6] tw-to-white'>
         <ToastContainer
           className={'fw-bold max-sm:tw-w-screen  max-sm:!tw-right-0'}

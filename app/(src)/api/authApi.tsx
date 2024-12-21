@@ -10,7 +10,7 @@ const baseUrl = process.env.NEXT_PUBLIC_APP_URL;
 
 axios.defaults.baseURL = baseUrl;
 
-export const registerUser = async (formData: any) => {
+export const registerUser =   async (formData: any) => {
   try {
     const data = await axios.post(`api/auth/register`, formData);
 
