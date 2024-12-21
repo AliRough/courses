@@ -30,33 +30,33 @@ const nextConfig = withPWA({
   skipWaiting: true, // Allow the service worker to skip waiting for activation
   // disable: process.env.NODE_ENV === 'development', // Disable PWA in development mode
   // Additional Workbox configuration options
-  workbox: {
-    // You can customize the service worker behavior here
-    runtimeCaching: [
-      {
-        urlPattern: /\/_next\/static\/.*/i, // Cache Next.js static files
-        handler: 'CacheFirst', // Use CacheFirst for these assets
-        options: {
-          cacheName: 'nextjs-static-assets',
-          expiration: {
-            maxEntries: 100,
-            maxAgeSeconds: 60 * 60 * 24 * 365, // Cache for 1 year
-          },
-        },
-      },
-      {
-        urlPattern: /\/static\/.*/i, // Cache static assets in public folder
-        handler: 'CacheFirst',
-        options: {
-          cacheName: 'static-assets',
-          expiration: {
-            maxEntries: 100,
-            maxAgeSeconds: 60 * 60 * 24 * 365, // Cache for 1 year
-          },
-        },
-      },
-    ],
-  },
+  // workbox: {
+  //   // You can customize the service worker behavior here
+  //   runtimeCaching: [
+  //     {
+  //       urlPattern: /\/_next\/static\/.*/i, // Cache Next.js static files
+  //       handler: 'CacheFirst', // Use CacheFirst for these assets
+  //       options: {
+  //         cacheName: 'nextjs-static-assets',
+  //         expiration: {
+  //           maxEntries: 100,
+  //           maxAgeSeconds: 60 * 60 * 24 * 365, // Cache for 1 year
+  //         },
+  //       },
+  //     },
+  //     {
+  //       urlPattern: /\/static\/.*/i, // Cache static assets in public folder
+  //       handler: 'CacheFirst',
+  //       options: {
+  //         cacheName: 'static-assets',
+  //         expiration: {
+  //           maxEntries: 100,
+  //           maxAgeSeconds: 60 * 60 * 24 * 365, // Cache for 1 year
+  //         },
+  //       },
+  //     },
+  //   ],
+  // },
 });
 
 export default nextConfig;
